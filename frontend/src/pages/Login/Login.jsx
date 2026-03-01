@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Navbar } from "../../components/index"
 import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg"
 
+
 export default function Login() {
 
     const [type, setType] = useState("password");
