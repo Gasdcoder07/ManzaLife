@@ -1,6 +1,5 @@
 import CategoriesCard from "./CategoriesCard";
 import { CategoriesItems } from "./CategoriesItems"
-import Image from "../../../imgs/HomeResources/peñablanca.jpg";
 
 const CategoriesGrid = () => {
   return (
@@ -11,7 +10,7 @@ const CategoriesGrid = () => {
                     <CategoriesCard
                         key={item.id}
                         CategorieIcon={item.icon}
-                        CategorieImage={Image}
+                        CategorieImage={item.image}
                         CategorieTitle={item.title}/>
                 )
             })
