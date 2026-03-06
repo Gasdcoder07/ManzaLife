@@ -12,7 +12,9 @@ Equipo 5
 - [Contribución](#-contribución)
 
 ## 📸 Vista Previa
+
 "Pantalla Principal"<img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
+
 "Panatlla Login"<img width="1596" height="765" alt="Captura de pantalla 2026-03-06 110416" src="https://github.com/user-attachments/assets/ba37fb25-f63e-4063-b901-30eee17c616e" />
 
 ## ✨ Características Principales
