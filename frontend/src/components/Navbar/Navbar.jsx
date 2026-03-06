@@ -2,6 +2,7 @@ import { NavItems } from "./NavItems";
 import { Link } from "react-router";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { useState } from "react";
+import logo from "../../../imgs/logomaxxing.svg"
 
 function Navbar() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -9,9 +10,12 @@ function Navbar() {
   return (
       <nav className={`${showMobileMenu ? "fixed bg-zinc-950 inset-0" : "absolute top-0 left-0 w-full border-b border-white"} z-10`}>
           <div className={`${showMobileMenu ? "relative inset-0 h-full" : "container mx-auto flex justify-between items-center px-6 py-4 md:px-20 lg:px-32 bg-transparent"}`}>
-              <h3 className={`${showMobileMenu ? "hidden" : "text-xl font-bold text-white"}`}>
-                  ManzaLife
-              </h3>
+
+            <Link
+                to={'/'}
+                className={`${showMobileMenu ? "hidden" : ""}`}>    
+                <img src={logo} alt="ManzaLife Logo" className="h-10 object-cover"/>
+            </Link>
 
               <ul className={`${showMobileMenu ? "h-full flex flex-col justify-center items-center" : "hidden md:flex"} gap-2 lg:gap-6`}>
                   {NavItems.map((item) => {
