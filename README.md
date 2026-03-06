@@ -9,7 +9,6 @@ Equipo 5
 - [Instalación](#-instalación)
 - [Uso](#-uso)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Contribución](#-contribución)
 
 ## 📸 Vista Previa
 
