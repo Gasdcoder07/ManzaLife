@@ -1,21 +1,16 @@
 export const NavItems = [
   {
     id: 1,
-    title: "Home",
-    path: "/"
-  },
-  {
-    id: 2,
     title: "Categorias",
     path: "/#categorias"
   },
   {
-    id: 3,
+    id: 2,
     title: "Playas",
     path: "/playas"
   },
   {
-    id: 4,
+    id: 3,
     title: "Restaurantes",
     path: "/restaurantes"
   }
