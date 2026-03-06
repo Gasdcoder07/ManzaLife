@@ -14,7 +14,7 @@ function Navbar() {
             <Link
                 to={'/'}
                 className={`${showMobileMenu ? "hidden" : ""}`}>    
-                <img src={logo} alt="ManzaLife Logo" className="h-10 object-cover"/>
+                <img src={logo} alt="ManzaLife Logo" className="h-10 object-cover select-none"/>
             </Link>
 
               <ul className={`${showMobileMenu ? "h-full flex flex-col justify-center items-center" : "hidden md:flex"} gap-2 lg:gap-6`}>

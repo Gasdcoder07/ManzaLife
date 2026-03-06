@@ -6,12 +6,12 @@ export const NavItems = [
   },
   {
     id: 2,
-    title: "Playas",
-    path: "/playas"
+    title: "Testimonios",
+    path: "/#testimonios"
   },
   {
     id: 3,
-    title: "Restaurantes",
-    path: "/restaurantes"
+    title: "Iniciar sesión",
+    path: "/login"
   }
 ];

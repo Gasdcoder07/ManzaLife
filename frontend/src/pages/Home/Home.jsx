@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Header, CategoriesSection, TestimonialsSection } from "../../components/index"
+import { Header, CategoriesSection, TestimonialsSection, Footer } from "../../components/index"
 
 export default function Home() {
     const [publicacion, setPub] = useState([]);
@@ -16,6 +16,7 @@ export default function Home() {
             <Header/>
             <CategoriesSection/>
             <TestimonialsSection/>
+            <Footer/>
         </>
     );
 }
