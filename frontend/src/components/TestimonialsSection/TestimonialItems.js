@@ -21,8 +21,8 @@ export const TestimonialItems = [
         id: 3,
         img: Grequito,
         nombre: "Greco",
-        ocup: "Actor Pornográfico de todo tipo",
-        test: "Definitivamente la mejor pagina de manzanillo, incluso siendo local de aqui no conocia muchos lugares buenos para pasar el rato y hacer escenas publicas"
+        ocup: "Actor",
+        test: "Definitivamente la mejor pagina de manzanillo, incluso siendo local de aqui no conocia muchos lugares buenos para pasar el rato."
 
 
 
