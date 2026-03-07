@@ -1,5 +1,6 @@
 import { NavItems } from "./NavItems";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import logo from "../../../imgs/logomaxxing.svg"
@@ -20,15 +21,27 @@ function Navbar() {
               <ul className={`${showMobileMenu ? "h-full flex flex-col justify-center items-center" : "hidden md:flex"} gap-2 lg:gap-6`}>
                   {NavItems.map((item) => {
                       return (
-                          <li key={item.id}>
-                              <Link
-                                    onClick={() => setShowMobileMenu(false)}
-                                  className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 hover:scale-105 transition-all duration-200 ease-in-out inline-block`}
-                                  to={item.path}
-                              >
-                                  {item.title}
-                              </Link>
-                          </li>
+                        <li key={item.id}>
+                            {
+                                item.path.includes("#") ? (
+                                    <HashLink
+                                        smooth
+                                        to={item.path}
+                                        onClick={() => setShowMobileMenu(false)}
+                                        className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 hover:scale-105 transition-all duration-200 ease-in-out inline-block`}>
+                                        {item.title}
+                                    </HashLink>
+                                ) : (
+                                    <Link
+                                        smooth={true}
+                                        to={item.path}
+                                        onClick={() => setShowMobileMenu(false)}
+                                        className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 hover:scale-105 transition-all duration-200 ease-in-out inline-block`}>
+                                        {item.title}
+                                    </Link>
+                                )
+                            }
+                        </li>
                       );
                   })}
               </ul>

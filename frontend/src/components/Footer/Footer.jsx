@@ -47,7 +47,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <hr className="border border-white"/>
+                <hr className="border border-neutral-900"/>
 
                 <p className="text-center text-sm">
                     © {new Date().getFullYear()} ManzaLife. Todos los derechos
