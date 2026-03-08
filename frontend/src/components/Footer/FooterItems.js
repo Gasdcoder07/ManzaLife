@@ -18,29 +18,71 @@ export const FooterIconsItems = [
     }
 ];
 
-export const FooterCategoryItems = [
+export const FooterItems = [
     {
-        id: 1,
-        title: "Playas"
+        title: "Blog",
+        subthemes: [
+            {
+                title_theme: "El blog más grande de Manzanillo"
+            },
+            {
+                title_theme: "¿Cómo funciona?"
+            }
+        ]
     },
     {
-        id: 2,
-        title: "Restaurantes"
+        title: "Publicaciones",
+        subthemes: [
+            {
+                title_theme: "Publicaciones recientes"
+            }
+        ]
     },
     {
-        id: 3,
-        title: "Actividades"
+        title: "Categorías",
+        subthemes: [
+            {
+                title_theme: "Playas"
+            },
+            {
+                title_theme: "Restaurantes"
+            },
+            {
+                title_theme: "Actividades"
+            },
+            {
+                title_theme: "Hospedaje"
+            },
+            {
+                title_theme: "Lugares turísticos"
+            },
+            {
+                title_theme: "Vida nocturna"
+            }
+        ]
     },
     {
-        id: 4,
-        title: "Hospedaje"
+        title: "Nosotros",
+        subthemes: [
+            {
+                title_theme: "¿Por qué explorar con nosotros?"
+            }
+        ]
     },
     {
-        id: 5,
-        title: "Lugares turísticos"
+        title: "Testimonios",
+        subthemes: [
+            {
+                title_theme: "Testimonios de nuestros visitantes"
+            }
+        ]
     },
     {
-        id: 6,
-        title: "Vida nocturna"
-    }
-]
+        title: "Únete",
+        subthemes: [
+            {
+                title_theme: "Únete a la comunidad"
+            }
+        ]
+    },
+];

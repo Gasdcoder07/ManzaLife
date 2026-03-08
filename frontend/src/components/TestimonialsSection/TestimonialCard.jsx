@@ -1,7 +1,7 @@
 import { FaStar } from "react-icons/fa";
-const TestimonialCard = ({ img, nombre, ocupacion, testimonio }) => {
+const TestimonialCard = ({ img, nombre, ocupacion, testimonio, className }) => {
   return (  
-        <div className="bg-linear-to-b from-orange-500 via-orange-600 to-orange-700 max-w-xs px-8 py-6 rounded-2xl flex flex-col items-center gap-6">
+        <div className={`bg-linear-to-b from-orange-500 via-orange-600 to-orange-700 w-full max-w-xs px-8 py-6 rounded-2xl flex flex-col items-center gap-6 ${className}`}>
 
             <div className="flex justify-center">
                 <img
@@ -22,7 +22,7 @@ const TestimonialCard = ({ img, nombre, ocupacion, testimonio }) => {
             <div className="flex justify-center items-center gap-2">
                 {
                     Array.from({ length: 5 }).map((_, i) => (
-                        <FaStar className="text-yellow-400 text-2xl"/>
+                        <FaStar key={i} className="text-yellow-400 text-2xl"/>
                     ))
                 }
             </div>

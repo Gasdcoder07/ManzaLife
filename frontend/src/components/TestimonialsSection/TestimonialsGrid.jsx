@@ -12,7 +12,8 @@ const TestimonialsGrid = () => {
                         img={testimonial.img}
                         nombre={testimonial.nombre}
                         ocupacion={testimonial.ocup}
-                        testimonio={testimonial.test}/>
+                        testimonio={testimonial.test}
+                        className={testimonial.id === 3 ? "md:col-span-2 lg:col-span-1" : ""}/>
                 )
             })
         }
