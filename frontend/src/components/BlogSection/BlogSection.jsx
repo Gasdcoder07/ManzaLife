@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
 import SideImage from "../../../imgs/HomeResources/CentroHisotrico.jpg";
 import { BlogItems} from "./BlogItems";
 import BlogItem from "./BlogItem";
 import HowItWorksGrid from "./HowItWorksGrid";
+import ActionButton from "../ActionButton";
+import SectionTitle from "../SectionTitle";
 
 const BlogSection = () => {
   return (
@@ -11,13 +12,7 @@ const BlogSection = () => {
           className="bg-zinc-950 text-white py-4 md:py-10 lg:py-12"
       >
           <div className="container mx-auto flex flex-col px-6 md:px-20 lg:px-32 gap-4 md:gap-10 lg:gap-12">
-              <div className="flex justify-center">
-                  <div className="bg-neutral-900 flex justify-center items-center py-2 px-3 rounded-full">
-                      <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800 text-sm">
-                          Blog
-                      </span>
-                  </div>
-              </div>
+              <SectionTitle Title={"Blog"}/>
 
               <h3 className="text-white text-4xl text-center">
                   El{" "}
@@ -53,9 +48,7 @@ const BlogSection = () => {
               </div>
 
               <div className="flex justify-center items-center my-6">
-                  <Link className="bg-orange-600 w-1/2 lg:w-1/5 py-2 rounded-md hover:-translate-y-1 hover:text-zinc-950 transition-all duration-200 ease-in-out flex justify-center">
-                      <span>Ver ahora</span>
-                  </Link>
+                  <ActionButton Text={"Ver ahora"}/>
               </div>
 
               <h3 className="text-2xl text-center tracking-wider">
