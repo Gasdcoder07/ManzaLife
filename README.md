@@ -23,10 +23,10 @@ Equipo 5
 - ✅ Guia: Acesso rapido a los mejores puntos turisticos emblematicos que pueden encontrar de Manzanillo .
 
 ## 🛠 Tecnologías Utilizadas
-- *Lenguaje:* [Ej. JavaScript, Python, Java]
-- *Framework/Librería:* [Ej. React, Django, Spring Boot]
-- *Base de Datos:* [Ej. PostgreSQL, MongoDB, MySQL]
-- *Herramientas:* [Ej. Docker, AWS, Git]
+- *Lenguaje:* [HTML5, Javascript, Css, Python]
+- *Framework/Librería:* [React, Django, Tailwind]
+- *Base de Datos:* [MySQL]
+- *Herramientas:* [Git]
 
 ## 🚀 Instalación
 Sigue estos pasos para configurar el proyecto localmente:
