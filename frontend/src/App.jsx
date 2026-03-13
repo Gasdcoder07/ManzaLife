@@ -1,4 +1,4 @@
-import { Home, Login, Register, Blog } from "./pages/index.js"
+import { Home, Login, Register, Blog, Pruebas } from "./pages/index.js"
 
 import { Routes, Route } from 'react-router-dom'
 
@@ -13,6 +13,8 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/blog" element={<Blog />} />
+                  <Route path="/pruebas" element={<Pruebas />} />
+
               </Routes>
           </main>
       </div>

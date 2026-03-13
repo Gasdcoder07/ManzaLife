@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Navbar } from "../../components/index";
-import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg";
+import SideImage from "../../../imgs/RegisterResourcers/atardecer.png";
 
 export default function Register() {
 
