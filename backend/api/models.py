@@ -11,10 +11,20 @@ class Category(models.Model):
         return self.name
 
 class UserProfile(models.Model):
+    USER_TYPES = [
+        ("admin", "Admin"),
+        ("writter", "Escritor"),
+        ("reader", "Lector")
+    ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     avatar = models.ImageField(upload_to="avatars/", null=True, blank=True)
     is_local_business = models.BooleanField(default=False) # Para saber si es dueño de un lugar
+    user_type = models.CharField(
+        max_length=20,
+        choices=USER_TYPES,
+        default="reader"
+    )
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
