@@ -1,21 +1,50 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useAsyncError } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Navbar } from "../../components/index";
 import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg";
+import axios from "axios"
 
 export default function Register() {
 
-    const [type, setType] = useState("password");
-    const [typeConfirm, setTypeConfirm] = useState("password");
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
 
     const handleType = () => {
         setType(prev => prev === "password" ? "text" : "password");
     };
 
-    const handleTypeConfirm = () => {
-        setTypeConfirm(prev => prev === "password" ? "text" : "password");
-    };
+    const handleRegister = async () => {
+        if (password != confirmPassword) {
+            alert("Las contraseñas no coinciden :v")
+            return 
+        }
+
+        try {
+            const response = await axios.post(
+                "http://localhost:8000/api/register/",
+                {
+                    username: username,
+                    email: email,
+                    password: password,
+                    password_confirm: confirmPassword,
+                    first_name: firstName,
+                    last_name: lastName
+                }
+            )
+
+            console.log(response.data)
+            alert("Usuario creado correctamente")
+
+        } catch (err) {
+            console.error(err)
+            alert("Error al crear usuario")
+        }
+    }
 
     return (
         <div className="relative h-screen flex justify-center items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-orange-950 overflow-hidden px-6 py-4 md:px-20 lg:px-32">
@@ -50,22 +79,44 @@ export default function Register() {
                                 className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
                                 type="text"
                                 placeholder="Usuario"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+
+                            <input
+                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
+                                type="text"
+                                placeholder="First name"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            />
+
+                            <input
+                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
+                                type="text"
+                                placeholder="Last name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
                             />
 
                             <input
                                 className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
                                 type="email"
                                 placeholder="Correo electrónico"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
 
                             <div className="relative">
                                 <input
                                     className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type={type}
+                                    type="password"
                                     placeholder="Contraseña"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
 
-                                {type === "password" ? (
+                                {/* {type === "password" ? (
                                     <FaEye
                                         onClick={handleType}
                                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
@@ -75,17 +126,19 @@ export default function Register() {
                                         onClick={handleType}
                                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                                     />
-                                )}
+                                )} */}
                             </div>
 
                             <div className="relative">
                                 <input
                                     className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type={typeConfirm}
+                                    type="password"
                                     placeholder="Confirmar contraseña"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
                                 />
 
-                                {typeConfirm === "password" ? (
+                                {/* {typeConfirm === "password" ? (
                                     <FaEye
                                         onClick={handleTypeConfirm}
                                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
@@ -95,12 +148,13 @@ export default function Register() {
                                         onClick={handleTypeConfirm}
                                         className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                                     />
-                                )}
+                                )} */}
                             </div>
 
                             <button
                                 type="button"
                                 className="rounded-lg mt-6 bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
+                                onClick={handleRegister}
                             >
                                 Crear cuenta
                             </button>

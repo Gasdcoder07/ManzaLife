@@ -14,11 +14,11 @@ const PostsGrid = () => {
                         <PostItem
                             key={post.id}
                             Image={post.image}
-                            Category={post.category.name}
+                            Category={post.category?.name}
                             Title={post.title}
                             Description={post.content}
                             AutorName={post.author.username}
-                            AutorAvatar={post.author.profile.avatar}
+                            AutorAvatar={post.author.profile?.avatar}
                             Date={formatDate(post.created_at)}/>
                     )
                 })
