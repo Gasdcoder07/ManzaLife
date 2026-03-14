@@ -48,7 +48,7 @@ const BlogSection = () => {
               </div>
 
               <div className="flex justify-center items-center my-6">
-                  <ActionButton Text={"Ver ahora"}/>
+                  <ActionButton Path={"/blog"} Text={"Ver ahora"}/>
               </div>
 
               <h3 className="text-2xl text-center tracking-wider">
