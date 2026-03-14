@@ -1,10 +1,7 @@
-import { usePosts } from "../../../hooks/usePosts";
 import { formatDate } from "../../../../utils/formatDate";
 import BlogPostsCard from "./BlogPostsCard";
 
-const BlogPostsGrid = () => {
-    const posts = usePosts()
-
+const BlogPostsGrid = ({posts}) => {
   return (
     <div className="h-full">
         <div className="flex flex-col py-4 gap-4 w-full">
