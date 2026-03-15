@@ -4,19 +4,40 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Post, Category, User, Comment, Review
 from .permissions import IsAuthorOrReadOnly
-from .serializers import PostSerializer, CategorySerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
+from .serializers import PostSerializer, PostListSerializer, CategorySerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    queryset = Post.objects.filter(status="published").select_related(
+        "author",
+        "author__userprofile",
+        "category"
+    ).order_by("-created_at")
+
+    lookup_field = "slug"
+
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly
+    ]
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return PostListSerializer
+        return PostSerializer
     
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    # queryset = Post.objects.all()
+    # serializer_class = PostSerializer
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    
+    # def perform_create(self, serializer):
+    #     serializer.save(author=self.request.user)
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()

@@ -11,11 +11,12 @@ const BlogPostsGrid = ({posts}) => {
                         <BlogPostsCard
                             key={item.id}
                             Image={item.image}
-                            Category={item.category?.name}
+                            Category={item.category_name}
                             Title={item.title}
                             Description={item.content}
-                            AutorName={item.author.username}
-                            AutorAvatar={item.author.profile?.avatar}
+                            Slug={item.slug}
+                            AutorName={item.author_name}
+                            AutorAvatar={item.author_avatar}
                             Date={formatDate(item.created_at)}/>
                     )
                 })

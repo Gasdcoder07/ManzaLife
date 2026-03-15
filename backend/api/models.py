@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 # Nuestros modelos irán a partir de aquí:
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True) # Útil para URLs amigables (ej: /categoria/playas)
+    icon = models.CharField(max_length=50, default="beach") # -> React Icon
+    image = models.ImageField(upload_to="categories/", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -29,6 +32,7 @@ class UserProfile(models.Model):
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
@@ -40,6 +44,20 @@ class Post(models.Model):
         ('published', 'Publicado'),
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.title)
+            counter = 1
+
+            while Post.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+
+            self.slug = slug
+
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title

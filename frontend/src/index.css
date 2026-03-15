@@ -22,3 +22,9 @@
 @theme {
     --font-SnPro: "SN Pro", sans-serif;
 }
+
+@layer utilities {
+    .custom-scrollbar {
+        @apply scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent scroll-smooth
+    }
+}

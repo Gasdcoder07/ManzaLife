@@ -9,41 +9,11 @@ import image4 from "../../../imgs/HomeResources/feria.png"
 import image5 from "../../../imgs/HomeResources/Pezvela.png"
 import image6 from "../../../imgs/HomeResources/Barcelo.jpg"
 
-export const CategoriesItems = [
-    {
-        id: 1,
-        icon: GiBigWave,
-        image: Image1,
-        title: "Playas"
-    },
-    {
-        id: 2,
-        icon: IoMdRestaurant,
-        image: image3,
-        title: "Restaurantes"
-    },
-    {
-        id: 3,
-        icon: FaUmbrellaBeach,
-        image: image4,
-        title: "Actividades"
-    },
-    {
-        id: 4,
-        icon: FaHotel,
-        image: image6,
-        title: "Hospedaje"
-    },
-    {
-        id: 5,
-        icon: FaPlaceOfWorship,
-        image: image5,
-        title: "Lugares turísticos"
-    },
-    {
-        id: 6,
-        icon: LuSunMoon,
-        image: Image2,
-        title: "Vida nocturna"
-    },
-]
+export const CategoryIcons = {
+    beach: GiBigWave,
+    restaurant: IoMdRestaurant,
+    activities: FaUmbrellaBeach,
+    hotel: FaHotel,
+    places: FaPlaceOfWorship,
+    nightlife: LuSunMoon
+};

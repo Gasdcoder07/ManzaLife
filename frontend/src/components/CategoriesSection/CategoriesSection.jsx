@@ -19,7 +19,7 @@ const CategoriesSection = () => {
                 <CategoriesGrid/>
 
                 <div className="flex justify-center items-center">
-                    <ActionButton Text={"Explorar categorías"}/>
+                    <ActionButton Path={"/blog/categories"} Text={"Explorar categorías"}/>
                 </div>
 
               <hr className="border border-neutral-900"/>
