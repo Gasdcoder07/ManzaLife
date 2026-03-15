@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 
 const BlogSidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
+    const [selected, setSelected] = useState("Home");
     const Icon = isOpen ? IoMenu : IoArrowForwardOutline;
 
   return (
@@ -23,7 +24,7 @@ const BlogSidebar = () => {
 
                         return (
                             <li key={index}>
-                                <Link to={item.path} className="flex justify-center items-center gap-2 rounded-xl px-2 py-1 hover:bg-zinc-900 cursor-pointer transition-colors duration-200 ease-in-out">
+                                <Link onClick={() => setSelected(item.text)} to={item.path} className={`${selected == item.text ? 'text-orange-600' : ''} flex justify-center items-center gap-2 rounded-xl px-2 py-1 hover:bg-zinc-900 cursor-pointer transition-colors duration-200 ease-in-out`}>
                                     <Icon/>
                                     <span>{item.text}</span>
                                 </Link>
