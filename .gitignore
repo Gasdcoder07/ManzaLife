@@ -158,7 +158,6 @@ db.sqlite3-journal
 # Archivos de media / uploads (si son locales)
 media/
 uploads/
-posts/
 
 # Archivos estáticos generados
 staticfiles/
