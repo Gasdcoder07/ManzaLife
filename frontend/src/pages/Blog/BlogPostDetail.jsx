@@ -34,7 +34,7 @@ const BlogPostDetail = () => {
                     <span>{formatDate(post.created_at)}</span>
                 </div>
 
-                <p className="text-lg font-light tracking-wider">{post.content}</p>
+                <p className="whitespace-pre-line text-lg font-light tracking-wider">{post.content}</p>
             </div>
         </div>
     </div>
