@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { BlogNavbar, BlogPostsGrid, BlogSidebar } from "../../components/Blog/index"
+import { BlogPostsGrid } from "../../components/Blog/index"
 import { usePosts } from "../../hooks/usePosts";
 import { MdArrowDropDown } from "react-icons/md";
 
 export default function Blog() {
-    const posts = usePosts();
+    const {posts, loading} = usePosts();
     const [categoriaActivada, setCategoriaActivada] = useState("Todas");
-    const categorias = ["Todas", ...new Set(posts.map(post => post.category?.name).filter(Boolean))];
+    const categorias = ["Todas", ...new Set(posts.map(post => post.category_name).filter(Boolean))];
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const postsFinales = categoriaActivada === "Todas" ? posts : posts.filter(post => post.category?.name === categoriaActivada);
+    const postsFinales = categoriaActivada === "Todas" ? posts : posts.filter(post => post.category_name === categoriaActivada);
+
+    if (loading) return <p className="mt-4">Cargando publicaciones...</p>
 
     return (
         <>
@@ -33,7 +35,7 @@ export default function Blog() {
 
                     {
                         dropdownVisible && (
-                            <div className="absolute top-full z-10 right-0 mt-2 w-36 rounded-xl shadow-lg shadow-orange-600/10 border border-neutral-800 bg-zinc-900">
+                            <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg shadow-orange-600/10 border border-neutral-800 bg-zinc-900 custom-scrollbar">
                                 <ul className="flex flex-col px-4 py-2 gap-2">
                                     {
                                         categorias.map((item, index) => {

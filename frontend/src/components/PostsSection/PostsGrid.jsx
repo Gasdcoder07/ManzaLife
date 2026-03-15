@@ -3,7 +3,9 @@ import { usePosts } from "../../hooks/usePosts"
 import { formatDate } from "../../../utils/formatDate"
 
 const PostsGrid = () => {
-    const posts = usePosts();
+    const {posts, loading} = usePosts();
+
+    console.log(posts)
 
   return (
       <div className="overflow-x-auto scroll-smooth no-scrollbar">
@@ -14,11 +16,11 @@ const PostsGrid = () => {
                         <PostItem
                             key={post.id}
                             Image={post.image}
-                            Category={post.category?.name}
+                            Category={post.category_name}
                             Title={post.title}
                             Description={post.content}
-                            AutorName={post.author.username}
-                            AutorAvatar={post.author.profile?.avatar}
+                            AutorName={post.author_name}
+                            AutorAvatar={post.author_avatar}
                             Date={formatDate(post.created_at)}/>
                     )
                 })

@@ -12,13 +12,11 @@ export const BlogSidebarItems = [
     {
        icon: BiSolidCategory,
         text: "Categorias",
-        path: "/blog"
+        path: "/blog/categories"
     },
      {
        icon: TbChartBarPopular,
         text: "Popular",
-        path: "/blog"
+        path: "/blog/popular"
     }
-
-
 ]

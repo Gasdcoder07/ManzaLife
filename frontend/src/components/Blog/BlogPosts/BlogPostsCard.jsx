@@ -1,13 +1,14 @@
 import PostActionButton from "../../PostsSection/PostActionButton"
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp"
 
-const BlogPostsCard = ({Image, Category, Title, Description, AutorAvatar, AutorName, Date}) => {
+const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, AutorName, Date}) => {
   return (
     <div className="w-full sm:h-56 border border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden">
         <div className="relative h-56 w-full sm:h-full sm:w-1/3 shrink-0">
             <img
                 src={Image}
                 alt={Title}
+                loading="lazy"
                 className="w-full h-full object-cover"/>
             <div className="absolute inset-0 flex justify-start items-end py-3 px-5">
                 <div className="bg-neutral-800 px-3 py-2 rounded-xl">
@@ -27,7 +28,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, AutorAvatar, AutorN
             </div>
 
             <div className="flex justify-end my-2">
-                <PostActionButton/>
+                <PostActionButton Slug={Slug}/>
             </div>
 
             <hr className="border border-neutral-800 my-2" />

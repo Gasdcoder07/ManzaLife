@@ -28,6 +28,25 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = "__all__"
 
+class PostListSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source="category.name")
+    author_name = serializers.CharField(source="author.username")
+    author_avatar = serializers.ImageField(source="author.userprofile.avatar", read_only=True)
+
+    class Meta:
+        model = Post
+        fields = [
+            "id",
+            "slug",
+            "title",
+            "content",
+            "image",
+            "created_at",
+            "category_name",
+            "author_name",
+            "author_avatar"
+        ]
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     password_confirm = serializers.CharField(write_only=True)

@@ -9,7 +9,7 @@ const BlogLayout = () => {
         <section className="flex-1 flex w-full overflow-hidden">
             <BlogSidebar/>
 
-            <div className="flex-1 container mx-auto w-full px-6 md:px-12 lg:px-24 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent scroll-smooth">
+            <div className="flex-1 container mx-auto w-full px-6 md:px-12 lg:px-24 overflow-y-auto custom-scrollbar">
 
                 {/* --> Componentes Hijos aca  */}
                 <Outlet/>
