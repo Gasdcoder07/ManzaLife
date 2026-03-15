@@ -1,4 +1,4 @@
-import { Home, Login, Register, BlogHome, Pruebas} from "./pages/index.js"
+import { Home, Login, Register, BlogHome, Pruebas, Posts} from "./pages/index.js"
 import BlogLayout from "./layouts/BlogLayout.jsx";
 import { Routes, Route } from 'react-router-dom'
 
@@ -20,6 +20,8 @@ function App() {
                   </Route>
 
                   <Route path="/pruebas" element={<Pruebas />} />
+                  <Route path="/posts" element={<Posts />} />
+
               </Routes>
           </main>
       </div>
