@@ -36,7 +36,7 @@ export default function Login() {
             const success = await login({ username, password });
 
             if (success) {
-                navigate("/");
+                navigate("/blog");
             } else {
                 setError("Usuario o contraseña incorrectos")
             }

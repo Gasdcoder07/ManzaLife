@@ -1,12 +1,37 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo from "../../../../imgs/logomaxxing.svg";
-import { FaSearch } from "react-icons/fa";
-import { IoMenu, IoClose } from "react-icons/io5"
-import { useState } from "react";
+import { FaSearch, FaUser } from "react-icons/fa";
+import { IoMenu, IoClose, IoLogOut } from "react-icons/io5"
+import { useEffect, useRef, useState } from "react";
 import { BlogSidebarItems } from "../BlogSidebar/BlogSidebarItems";
+import { useAuth } from "../../../context/AuthContext"
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { user, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const [avatarDropdownOpen, setAvatarDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)){
+                setAvatarDropdownOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const handleLogout = () => {
+        logout();
+        navigate("/");
+    }
+
+    console.log(user)
 
     return (
         <nav className="w-full border-b border-white flex justify-center items-center">
@@ -35,10 +60,43 @@ const BlogNavbar = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-4 shrink-0">
-                    <Link to={"/create-post"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
+                    <Link to={user ? "/create-post" : "/login"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
                         <span>Crear Post</span>
                     </Link>
-                    <div className="size-10 rounded-full bg-amber-200" />
+                    {
+                        user && (
+                            <div className="relative" ref={dropdownRef} onClick={() => setAvatarDropdownOpen(!avatarDropdownOpen)}>
+                                <div className="relative">
+                                    <img
+                                        src={user.profile.avatar}
+                                        alt={user.username}
+                                        className="size-10 object-cover rounded-full cursor-pointer"/>
+                                    <div className="absolute bottom-0 translate-x-1/2 size-2 rounded-full bg-green-600"/>
+                                </div>
+
+                                {
+                                    avatarDropdownOpen && (
+                                        <div className="absolute rounded-xl bg-zinc-800 border-neutral-800 shadow-lg top-full right-0 mt-2 w-48 max-h-52 z-20 overflow-y-auto custom-scrollbar">
+                                            <div className="w-full h-full px-6 py-3">
+                                                <div className="flex flex-col gap-2">
+                                                    <div className="flex gap-2 items-center">
+                                                        <FaUser/>
+                                                        <span>Perfil</span>
+                                                    </div>
+                                                    <hr className="text-neutral-600" />
+                                                    <button onClick={(handleLogout)} className="cursor-pointer rounded-lg flex gap-2 justify-center items-center px-2 py-1 hover:bg-zinc-700">
+                                                        <IoLogOut/>
+                                                        <span>Cerrar sesión</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+
+                            </div>
+                        )
+                    }
                 </div>
             </div>
 

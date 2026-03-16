@@ -7,10 +7,24 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const getUserProfile = async (token) => {
+        try {
+            const res = await api.get("perfil/");
+            setUser({ token: token, ...res.data })
+        } catch (e) {
+            console.error("Error al obtener el perfil de usuario: ", e);
+        } finally {
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem("token");
-        if (token) setUser(token);
-        setLoading(false);
+        if (token) {
+            getUserProfile(token);
+        } else {
+            setLoading(false);
+        }
     }, []);
 
     const login = async (credenciales) => {
@@ -21,9 +35,9 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("token", access);
             localStorage.setItem("refreshToken", refresh);
 
-            setUser({ token: access });
+            await getUserProfile(access);
 
-            return true
+            return true;
         } catch (error) {
             console.error("Error al hacer login: ", error.response?.data || error.message);
             return false;
