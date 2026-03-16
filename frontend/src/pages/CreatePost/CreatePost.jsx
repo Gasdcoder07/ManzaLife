@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useCategories } from "../../hooks/useCategories";
 import { postPost } from "../../services/postService";
+import toast from "react-hot-toast";
 import { MdArrowDropDown, MdAdd, MdOutlineImage, MdShortText, MdClose, MdPublish, MdSave } from "react-icons/md";
 
 export default function CreatePost() {
@@ -40,12 +41,16 @@ export default function CreatePost() {
     }
 
     const handleGuardarPost = async (status) => {
-        if (!formData.category_id) return alert("Selecciona una categoría valida");
-        if (!formData.title.trim()) return alert("El titulo es obligatorio");
+        if (!formData.category_id) return toast.error("Selecciona una categoría valida");
+        if (!formData.title.trim()) return toast.error("El titulo es obligatorio");
+        if (!formData.image) return toast.error("Debes subir una foto para la publicación");
+        if (!formData.content.trim()) return toast.error("La descripción no puede estar vacía");
+
+        const toastId = toast.loading("Creando publicación");
 
         try {
             await postPost({ ...formData, status });
-            alert("Post creado con exito!");
+            toast.success("¡Post creado exitosamente!", { id: toastId })
 
             setFormData({
                 title: "", content: "", category_id: null, category_name: "Seleccionar categoría",
@@ -65,7 +70,7 @@ export default function CreatePost() {
     return (
         <div className="flex flex-col justify-center items-center gap-4 py-12">
             <div className="flex flex-col justify-center items-center gap-4">
-                <h3 className="text-center text-2xl text-orange-600 font-medium tracking-wide">
+                <h3 className="text-center text-2xl text-orange-600 tracking-wide">
                     Empieza a publicar ahora
                 </h3>
                 <MdArrowDropDown className="text-4xl text-neutral-700 animate-bounce transition-all duration-300 ease-in-out" />
