@@ -35,12 +35,9 @@ const BlogNavbar = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-4 shrink-0">
-                    <a
-                        href="#"
-                        className="hover:text-orange-600 transition-colors duration-200 ease-in-out"
-                    >
-                        Crear Post
-                    </a>
+                    <Link to={"/create-post"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
+                        <span>Crear Post</span>
+                    </Link>
                     <div className="size-10 rounded-full bg-amber-200" />
                 </div>
             </div>

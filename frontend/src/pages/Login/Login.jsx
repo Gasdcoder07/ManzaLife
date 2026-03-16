@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Navbar } from "../../components/index"
+import { useAuth } from "../../context/AuthContext";
 import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg"
 
 export default function Login() {
@@ -15,39 +16,30 @@ export default function Login() {
 
     const navigate = useNavigate();
 
+    const { login } = useAuth();
+
     const handleType = () => {
         setType(prev => prev === "password" ? "text" : "password");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (!username.trim() || !password.trim()) {
+            return setError("Ingresa usuario y contraseña");
+        }
+
         setLoading(true)
         setError("")
 
         try {
-            const res = await fetch("http://127.0.0.1:8000/api/login/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username,
-                    password
-                })
-            })
+            const success = await login({ username, password });
 
-            const data = await res.json()
-            console.log("STATUS: ", data.status)
-            console.log("RESPONSE: ", data)
-
-            if (!res.ok)
-                throw new Error(JSON.stringify(data))
-
-            localStorage.setItem("access_token", data.access)
-            localStorage.setItem("refresh_token", data.refresh)
-
-            navigate("/")
-
+            if (success) {
+                navigate("/");
+            } else {
+                setError("Usuario o contraseña incorrectos")
+            }
         } catch (err) {
             setError(err.message)
         } finally {

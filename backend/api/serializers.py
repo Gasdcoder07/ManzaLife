@@ -24,13 +24,19 @@ class PostSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only = True)
     author = UserSerializer(read_only = True)
 
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(),
+        source='category',
+        write_only=True
+    )
+
     class Meta:
         model = Post
         fields = "__all__"
 
 class PostListSerializer(serializers.ModelSerializer):
-    category_name = serializers.CharField(source="category.name")
-    author_name = serializers.CharField(source="author.username")
+    category_name = serializers.ReadOnlyField(source="category.name")
+    author_name = serializers.ReadOnlyField(source="author.username")
     author_avatar = serializers.ImageField(source="author.userprofile.avatar", read_only=True)
 
     class Meta:

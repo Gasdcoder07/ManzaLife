@@ -14,7 +14,7 @@ export const postPost = async (data) => {
     const formData = new FormData();
 
     formData.append("title", data.title);
-    formData.append("category", data.category);
+    formData.append("category_id", data.category_id);
     formData.append("content", data.content);
     formData.append("status", data.status)
 
