@@ -13,7 +13,7 @@ const TestimonialsSection = () => {
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
                       Testimonios {" "}
                   </span>
-                  de nuestros visitantes
+                  de nuestros usuarios
               </h3>
 
               <TestimonialsGrid/>
