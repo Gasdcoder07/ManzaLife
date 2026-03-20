@@ -42,13 +42,13 @@ Desarrollo de una plataforma web que les permita a miles de usuarios conocer Man
 ## 🚀 Instalación
 Sigue estos pasos para configurar el proyecto localmente:
 
-Paso 1️⃣. *Clonar el repositorio:*
+- Paso 1️⃣. *Clonar el repositorio:*
    git clone [https://github.com/tu-usuario/tu-proyecto.git]([https://github.com/tu-usuario/tu-proyecto.git](https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git))
-Paso 2️⃣. * Instalar dependencias:
+- Paso 2️⃣. * Instalar dependencias:
    npm install  # O el comando que use tu lenguaje (pip install, composer install, etc.)
-Paso 3️⃣. * Configurar variables de entorno:
+- Paso 3️⃣. * Configurar variables de entorno:
    Crea un archivo .env basado en .env.example.
-Paso 4️⃣. * Ejecutar la aplicación:
+- Paso 4️⃣. * Ejecutar la aplicación:
    nmp run dev  o npm start 
    
 ## 💻 Uso
@@ -73,11 +73,11 @@ Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con
 
 ## 📬 Contacto
 - *Desarrolladores:*
-- NOMBRE: Diaz Hernandez Axl Enrique😄            EMAIL: adiaz106@ucol.mx📲
-- NOMBRE: Martinez Contreras Manuel Isahit😄      EMAIL: mmartinez134@ucol.mx📲
-- NOMBRE: Sebastian Silvestre Brian😄             EMAIL: bsebastian0@ucol.mx📲
-- NOMBRE: Serna Diaz Greco Alejandro😄            EMAIL: gserna@ucol.mx📲
-- NOMBRE: Vaca Cipres Valentin😄                  EMAIL: vvaca2@ucol.mx📲
+- NOMBRE: Diaz Hernandez Axl Enrique😄                    -EMAIL: adiaz106@ucol.mx📲
+- NOMBRE: Martinez Contreras Manuel Isahit😄              -EMAIL: mmartinez134@ucol.mx📲
+- NOMBRE: Sebastian Silvestre Brian😄                     -EMAIL: bsebastian0@ucol.mx📲
+- NOMBRE: Serna Diaz Greco Alejandro😄                    -EMAIL: gserna@ucol.mx📲
+- NOMBRE: Vaca Cipres Valentin😄                          -EMAIL: vvaca2@ucol.mx📲
 
 
 Desarrollado con mucho cariño para resaltar la belleza de Manzanillo. 🌊🌴
