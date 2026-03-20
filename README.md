@@ -34,7 +34,8 @@ Desarrollo de una plataforma web que les permita a miles de usuarios conocer Man
 - ✅ Guia: Acesso rápido a los mejores puntos turisticos emblemáticos que pueden encontrar de Manzanillo .
 
 ## 🛠 Tecnologías Utilizadas
-- *Lenguaje:* [HTML5, Javascript, CSS, Python]
+- *Lenguaje:* [HTML5, Javascript, CSS, Python]<img width="224" height="224" alt="image" src="https://github.com/user-attachments/assets/70e6bc5a-93ee-41eb-a768-0bf4c89324b2" /><img width="224" height="224" alt="image" src="https://github.com/user-attachments/assets/1ce113ef-9404-4726-995e-e7aaa8b1c387" />
+
 - *Framework/Librería:* [React, Django, Tailwind]
 - *Base de Datos:* [MySQL]
 - *Herramientas:* [Git]
@@ -42,13 +43,13 @@ Desarrollo de una plataforma web que les permita a miles de usuarios conocer Man
 ## 🚀 Instalación
 Sigue estos pasos para configurar el proyecto localmente:
 
-1. *Clonar el repositorio:*
+Paso 1️⃣. *Clonar el repositorio:*
    git clone [https://github.com/tu-usuario/tu-proyecto.git]([https://github.com/tu-usuario/tu-proyecto.git](https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git))
- * Instalar dependencias:
+Paso 2️⃣. * Instalar dependencias:
    npm install  # O el comando que use tu lenguaje (pip install, composer install, etc.)
- * Configurar variables de entorno:
+Paso 3️⃣. * Configurar variables de entorno:
    Crea un archivo .env basado en .env.example.
- * Ejecutar la aplicación:
+Paso 4️⃣. * Ejecutar la aplicación:
    nmp run dev  o npm start 
    
 ## 💻 Uso
@@ -57,12 +58,12 @@ Este blog está pensado para explorar y compartir ideas sobre cosas por hacer en
 
 Puedes navegar por las diferentes categorías del blog, descubrir nuevas actividades y leer experiencias o sugerencias que te ayuden a aprovechar mejor tu tiempo en la ciudad.
 
-## 📁 Estructura del Proyecto
+## 📂 Estructura del Proyecto
 Los archivos más importantes para entender la lógica:
- * src/: Contiene el código fuente.
- * docs/: Documentación adicional.
- * tests/: Pruebas unitarias y de integración.
- * config/: Archivos de configuración global.
+ * src/: Contiene el código fuente.📁
+ * docs/: Documentación adicional.📁
+ * tests/: Pruebas unitarias y de integración.📁
+ * config/: Archivos de configuración global.📁
 
 
 ## 🌊 ¡Explora Manzanillo!
@@ -73,11 +74,11 @@ Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con
 
 ## 📬 Contacto
 - *Desarrolladores:*
-- NOMBRE:Diaz Hernandez Axl Enrique😄            EMAIL:adiaz106@ucol.mx📲
-- NOMBRE:Martinez Contreras Manuel Isahit😄      EMAIL:mmartinez134@ucol.mx📲
-- NOMBRE:Sebastian Silvestre Brian😄             EMAIL:bsebastian0@ucol.mx📲
-- NOMBRE:Serna Diaz Greco Alejandro😄            EMAIL:gserna@ucol.mx📲
-- NOMBRE:Vaca Cipres Valentin😄                  EMAIL:vvaca2@ucol.mx📲
+- NOMBRE: Diaz Hernandez Axl Enrique😄            EMAIL: adiaz106@ucol.mx📲
+- NOMBRE: Martinez Contreras Manuel Isahit😄      EMAIL: mmartinez134@ucol.mx📲
+- NOMBRE: Sebastian Silvestre Brian😄             EMAIL: bsebastian0@ucol.mx📲
+- NOMBRE: Serna Diaz Greco Alejandro😄            EMAIL: gserna@ucol.mx📲
+- NOMBRE: Vaca Cipres Valentin😄                  EMAIL: vvaca2@ucol.mx📲
 
 
 Desarrollado con mucho cariño para resaltar la belleza de Manzanillo. 🌊🌴
