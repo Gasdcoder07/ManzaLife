@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { usePost } from "../../hooks/usePosts";
 import { formatDate } from "../../../utils/formatDate";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
+import CommentSection from "../../components/CommetsSection/CommentSection";
 
 const BlogPostDetail = () => {
     const { slug } = useParams();
@@ -36,6 +37,9 @@ const BlogPostDetail = () => {
 
                 <p className="whitespace-pre-line text-lg font-light tracking-wider">{post.content}</p>
             </div>
+        </div>
+        <div className="mt-8">
+                <CommentSection postId={post}/>
         </div>
     </div>
 );
