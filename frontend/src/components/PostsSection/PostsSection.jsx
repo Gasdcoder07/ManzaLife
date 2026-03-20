@@ -1,3 +1,4 @@
+import CommentSection from "../CommetsSection/CommentSection";
 import SectionTitle from "../SectionTitle";
 import PostsGrid from "./PostsGrid";
 
@@ -20,6 +21,10 @@ const PostsSection = () => {
             <PostsGrid/>
 
             <hr className="border border-neutral-900"/>
+            <div className="mt-8">
+                <h4 className="text-2xl font-bold mb-6">Comentarios</h4>
+                <CommentSection postId={postId}/>
+            </div>
         </div>
 
       </section>
