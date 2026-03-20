@@ -5,15 +5,18 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaArrowRight } from "react-icons/fa";
 import SideImage from "../../../imgs/RegisterResourcers/atardecer.png";
 import Logo from "../../../imgs/logomaxxing.svg";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Register() {
+    const { register } = useAuth();
+
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         username: "",
         email: "",
         password: "",
-        passwordConfirm: ""
+        password_confirm: ""
     });
 
     const handleChange = (e) => {
@@ -31,38 +34,25 @@ export default function Register() {
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        if (!formData.firstName) return toast.error("El nombre es obligatorio");
-        if (!formData.lastName) return toast.error("El apellido es obligatorio");
+        if (!formData.first_name) return toast.error("El nombre es obligatorio");
+        if (!formData.last_name) return toast.error("El apellido es obligatorio");
         if (!formData.username) return toast.error("El usuario es obligatorio");
         if (!formData.email) return toast.error("El correo electrónico es obligatorio");
         if (!formData.password) return toast.error("La contraseña es obligatoria");
-        if (!formData.passwordConfirm) return toast.error("Debes confirmar tu contraseña");
-        if (formData.password !== formData.passwordConfirm) return toast.error("Las contraseñas no coinciden");
-        
-        // if (password != confirmPassword) {
-        //     alert("Las contraseñas no coinciden :v");
-        //     return;
-        // }
+        if (!formData.password_confirm) return toast.error("Debes confirmar tu contraseña");
+        if (formData.password !== formData.password_confirm) return toast.error("Las contraseñas no coinciden");
 
-        // try {
-        //     const response = await axios.post(
-        //         "http://localhost:8000/api/register/",
-        //         {
-        //             username: username,
-        //             email: email,
-        //             password: password,
-        //             password_confirm: confirmPassword,
-        //             first_name: firstName,
-        //             last_name: lastName,
-        //         },
-        //     );
-
-        //     console.log(response.data);
-        //     alert("Usuario creado correctamente");
-        // } catch (err) {
-        //     console.error(err);
-        //     alert("Error al crear usuario");
-        // }
+        try {
+            setLoading(true);
+            const res = await register(formData);
+            if (res.success) {
+                toast.success("Cuenta creada");
+            } else {
+                toast.error(res.message || "Error al crear la cuenta");
+            }
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -194,7 +184,6 @@ export default function Register() {
                     <button
                         type="submit"
                         disabled={loading}
-                        
                         className="rounded-lg bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
                     >
                         Crear cuenta
