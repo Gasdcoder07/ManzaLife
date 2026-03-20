@@ -1,177 +1,215 @@
 import { useState } from "react";
-import { Link, useAsyncError } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Navbar } from "../../components/index";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash, FaArrowRight } from "react-icons/fa";
 import SideImage from "../../../imgs/RegisterResourcers/atardecer.png";
-import axios from "axios"
+import Logo from "../../../imgs/logomaxxing.svg";
 
 export default function Register() {
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        password: "",
+        passwordConfirm: ""
+    });
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-
-    const handleType = () => {
-        setType(prev => prev === "password" ? "text" : "password");
-    };
-
-    const handleRegister = async () => {
-        if (password != confirmPassword) {
-            alert("Las contraseñas no coinciden :v")
-            return 
-        }
-
-        try {
-            const response = await axios.post(
-                "http://localhost:8000/api/register/",
-                {
-                    username: username,
-                    email: email,
-                    password: password,
-                    password_confirm: confirmPassword,
-                    first_name: firstName,
-                    last_name: lastName
-                }
-            )
-
-            console.log(response.data)
-            alert("Usuario creado correctamente")
-
-        } catch (err) {
-            console.error(err)
-            alert("Error al crear usuario")
-        }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value}));
     }
 
+    const [type, setType] = useState("password");
+    const [loading, setLoading] = useState(false);
+
+    const handleType = () => {
+        setType((prev) => (prev === "password" ? "text" : "password"));
+    };
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
+        if (!formData.firstName) return toast.error("El nombre es obligatorio");
+        if (!formData.lastName) return toast.error("El apellido es obligatorio");
+        if (!formData.username) return toast.error("El usuario es obligatorio");
+        if (!formData.email) return toast.error("El correo electrónico es obligatorio");
+        if (!formData.password) return toast.error("La contraseña es obligatoria");
+        if (!formData.passwordConfirm) return toast.error("Debes confirmar tu contraseña");
+        if (formData.password !== formData.passwordConfirm) return toast.error("Las contraseñas no coinciden");
+        
+        // if (password != confirmPassword) {
+        //     alert("Las contraseñas no coinciden :v");
+        //     return;
+        // }
+
+        // try {
+        //     const response = await axios.post(
+        //         "http://localhost:8000/api/register/",
+        //         {
+        //             username: username,
+        //             email: email,
+        //             password: password,
+        //             password_confirm: confirmPassword,
+        //             first_name: firstName,
+        //             last_name: lastName,
+        //         },
+        //     );
+
+        //     console.log(response.data);
+        //     alert("Usuario creado correctamente");
+        // } catch (err) {
+        //     console.error(err);
+        //     alert("Error al crear usuario");
+        // }
+    };
+
     return (
-        <div className="relative h-screen flex justify-center items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-orange-950 overflow-hidden px-6 py-4 md:px-20 lg:px-32">
-            <Navbar />
+        <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 shadow-lg shadow-zinc-950/80 max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden p-2">
+            <div className="hidden md:flex relative w-full rounded-2xl md:w-1/2 overflow-hidden">
+                <img
+                    className="h-full w-full object-cover"
+                    src={SideImage}
+                    alt="Side Image"
+                />
 
-            <div className="size-52 bg-orange-500/30 absolute top-4 left-8 rounded-full blur-3xl animate-pulse duration-700" />
-            <div className="size-52 bg-amber-400/25 absolute bottom-4 left-8 rounded-full blur-3xl animate-pulse duration-700 delay-500" />
-            <div className="size-52 bg-rose-500/20 absolute top-4 right-8 rounded-full blur-3xl animate-pulse duration-700 delay-300" />
-            <div className="size-52 bg-orange-700/25 absolute bottom-4 right-8 rounded-full blur-3xl animate-pulse duration-700 delay-200" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/45 to-black/60" />
 
-            <div className="max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden min-h-1/2">
+                <div className="absolute inset-0 z-20 flex flex-col justify-between px-6 py-4">
+                    <div className="flex justify-between items-center">
+                        <img
+                            className="h-10 object-cover"
+                            src={Logo}
+                            alt="ManzaLife"
+                        />
 
-                <div className="relative w-full md:w-1/2">
-                    <img
-                        className="h-full w-full object-cover"
-                        src={SideImage}
-                        alt="Side Image"
-                    />
-                    <div className="absolute inset-0 bg-black/45" />
+                        <Link
+                            to={"/"}
+                            className="bg-zinc-950 px-3 py-1 rounded-xl flex gap-2 justify-center items-center hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all"
+                        >
+                            <span>Explorar el sitio</span>
+                            <FaArrowRight />
+                        </Link>
+                    </div>
+
+                    <div className="flex justify-center">
+                        <span className="px-2 py-1 text-white/90 text-sm sm:text-xl text-center w-56 tracking-wider font-light">
+                            Descubre lugares, explora sentimientos.
+                        </span>
+                    </div>
                 </div>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center">
+                <form
+                    onSubmit={handleRegister}
+                    className="text-white w-full px-4 md:px-8 lg:px-12 py-6 sm:py-10 flex flex-col gap-6 justify-center"
+                >
+                    <div className="space-y-2">
+                        <Link
+                            to={"/"}
+                            className="text-sm text-white/80 hover:text-white flex md:hidden items-center gap-2"
+                        >
+                            <FaArrowRight className="rotate-180" />
+                            <span>Volver al inicio</span>
+                        </Link>
 
-                <div className="w-full md:w-1/2 bg-linear-to-br from-yellow-500 via-amber-600 to-orange-700 flex justify-center">
-                    <form className="text-white px-4 md:px-8 lg:px-12 py-6 flex flex-col gap-8 items-center justify-center">
-
-                        <h3 className="text-3xl text-center font-bold tracking-wide">
-                            Crear cuenta
+                        <h3 className="text-2xl md:text-3xl text-center md:text-left font-semibold tracking-wide">
+                            Crea una cuenta
                         </h3>
+                    </div>
 
-                        <div className="flex flex-col gap-4 w-full">
-
+                    <div className="flex flex-col gap-4 text-white">
+                        <div className="w-full flex gap-2">
                             <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
+                                name="firstName"
+                                placeholder="Nombre"
+                                className="w-1/2 px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white/80"
                                 type="text"
-                                placeholder="Usuario"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={formData.firstName}
+                                onChange={handleChange}
                             />
-
                             <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
+                                name="lastName"
+                                placeholder="Apellidos"
+                                className="w-1/2 px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white/80"
                                 type="text"
-                                placeholder="First name"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                value={formData.lastName}
+                                onChange={handleChange}
                             />
-
-                            <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="text"
-                                placeholder="Last name"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-
-                            <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="email"
-                                placeholder="Correo electrónico"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-
-                            <div className="relative">
-                                <input
-                                    className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type="password"
-                                    placeholder="Contraseña"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-
-                                {/* {type === "password" ? (
-                                    <FaEye
-                                        onClick={handleType}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                ) : (
-                                    <FaEyeSlash
-                                        onClick={handleType}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                )} */}
-                            </div>
-
-                            <div className="relative">
-                                <input
-                                    className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type="password"
-                                    placeholder="Confirmar contraseña"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
-
-                                {/* {typeConfirm === "password" ? (
-                                    <FaEye
-                                        onClick={handleTypeConfirm}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                ) : (
-                                    <FaEyeSlash
-                                        onClick={handleTypeConfirm}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                )} */}
-                            </div>
-
-                            <button
-                                type="button"
-                                className="rounded-lg mt-6 bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
-                                onClick={handleRegister}
-                            >
-                                Crear cuenta
-                            </button>
-
-                            <p className="text-sm text-center tracking-wide">
-                                ¿Ya tienes cuenta?{" "}
-                                <Link
-                                    to={"/login"}
-                                    className="hover:text-zinc-950 hover:underline transition-colors duration-200"
-                                >
-                                    Inicia sesión
-                                </Link>
-                            </p>
-
                         </div>
-                    </form>
-                </div>
+
+                        <input
+                            name="username"
+                            className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white/80"
+                            type="text"
+                            placeholder="Usuario"
+                            value={formData.username}
+                            onChange={handleChange}
+                        />
+
+                        <input
+                            name="email"
+                            className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white/80"
+                            type="email"
+                            placeholder="Correo electrónico"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+
+                        <div className="relative">
+                            <input
+                                name="password"
+                                className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white/80 w-full"
+                                type={type}
+                                placeholder="Contraseña"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="relative">
+                            <input
+                                name="passwordConfirm"
+                                className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white/80 w-full"
+                                type={type}
+                                placeholder="Confirma tu contraseña"
+                                value={formData.passwordConfirm}
+                                onChange={handleChange}
+                            />
+
+                            {type === "password" ? (
+                                <FaEye
+                                    onClick={() => handleType()}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                                />
+                            ) : (
+                                <FaEyeSlash
+                                    onClick={() => handleType()}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer ease-in-out transition-colors duration-200"
+                                />
+                            )}
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        
+                        className="rounded-lg bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
+                    >
+                        Crear cuenta
+                    </button>
+
+                    <p className="text-sm text-center tracking-wider">
+                        ¿Ya tienes cuenta?{" "}
+                        <Link
+                            to={"/auth/login"}
+                            className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out"
+                        >
+                            Inicia sesión
+                        </Link>
+                    </p>
+                </form>
             </div>
         </div>
     );

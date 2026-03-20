@@ -47,7 +47,7 @@ export default function Login() {
 
     return (
         <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 shadow-lg shadow-zinc-950/80 max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden p-2">
-            <div className="hidden md:flex relative w-full md:w-1/2 rounded-2xl overflow-hidden">
+            <div className="hidden md:flex relative w-full rounded-2xl md:w-1/2 overflow-hidden">
                 <img
                     className="h-full w-full object-cover"
                     src={SideImage}
