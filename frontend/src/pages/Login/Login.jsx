@@ -1,36 +1,34 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Navbar } from "../../components/index"
+import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
-import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg"
+import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg";
+import { FaUser } from "react-icons/fa";
+import Logo from "../../../imgs/logomaxxing.svg";
 
 export default function Login() {
-
     const [type, setType] = useState("password");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false)
-
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
     const { login } = useAuth();
 
     const handleType = () => {
-        setType(prev => prev === "password" ? "text" : "password");
+        setType((prev) => (prev === "password" ? "text" : "password"));
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         if (!username.trim() || !password.trim()) {
             return setError("Ingresa usuario y contraseña");
         }
 
-        setLoading(true)
-        setError("")
+        setLoading(true);
+        setError("");
 
         try {
             const success = await login({ username, password });
@@ -38,96 +36,119 @@ export default function Login() {
             if (success) {
                 navigate("/blog");
             } else {
-                setError("Usuario o contraseña incorrectos")
+                setError("Usuario o contraseña incorrectos");
             }
         } catch (err) {
-            setError(err.message)
+            setError(err.message);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
     return (
-        <div className="relative h-screen flex justify-center items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-orange-950 overflow-hidden px-6 py-4 md:px-20 lg:px-32">
-            <Navbar />
+        <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 shadow-lg shadow-zinc-950/80 max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden p-2">
+            <div className="hidden md:flex relative w-full md:w-1/2 rounded-2xl overflow-hidden">
+                <img
+                    className="h-full w-full object-cover"
+                    src={SideImage}
+                    alt="Side Image"
+                />
 
-            <div className="size-52 bg-orange-500/30 absolute top-4 left-8 rounded-full blur-3xl animate-pulse duration-700 ease-in-out transition-all delay-150" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/45 to-black/60" />
 
-            <div className="size-52 bg-amber-400/25 absolute bottom-4 left-8 rounded-full blur-3xl animate-pulse duration-700 ease-in-out transition-all delay-500" />
+                <div className="absolute inset-0 z-20 flex flex-col justify-between px-6 py-4">
+                    <div className="flex justify-between items-center">
+                        <img
+                            className="h-10 object-cover"
+                            src={Logo}
+                            alt="ManzaLife"
+                        />
 
-            <div className="size-52 bg-rose-500/20 absolute top-4 right-8 rounded-full blur-3xl animate-pulse duration-700 ease-in-out transition-all delay-300" />
+                        <Link
+                            to={"/"}
+                            className="bg-zinc-950 px-3 py-1 rounded-xl flex gap-2 justify-center items-center hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all"
+                        >
+                            <span>Explorar el sitio</span>
+                            <FaArrowRight />
+                        </Link>
+                    </div>
 
-            <div className="size-52 bg-orange-700/25 absolute bottom-4 right-8 rounded-full blur-3xl animate-pulse duration-700 ease-in-out transition-all delay-200" />
-
-            <div className="max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden min-h-1/2">
-                <div className="relative w-full md:w-1/2">
-                    <img
-                        className="h-full w-full object-cover"
-                        src={SideImage}
-                        alt="Side Image"
-                    />
-
-                    <div className="absolute inset-0 bg-black/45" />
+                    <div className="flex justify-center">
+                        <span className="px-2 py-1 text-white/90 text-sm sm:text-xl text-center w-56 tracking-wider font-light">
+                            Descubre lugares, explora sentimientos.
+                        </span>
+                    </div>
                 </div>
-                <div className="w-full md:w-1/2 bg-linear-to-br from-yellow-500 via-amber-600 to-orange-700 flex justify-center">
-                    <form 
-                        onSubmit={handleSubmit}
-                        className="text-white px-4 md:px-8 lg:px-12 py-6 flex flex-col gap-8 items-center justify-center">
-                        <h3 className="text-3xl text-center font-bold tracking-wide">
-                            Inicia sesión
-                        </h3>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-center">
+                <form
+                    onSubmit={handleSubmit}
+                    className="text-white w-full px-4 md:px-8 lg:px-12 py-6 sm:py-10 flex flex-col gap-6 justify-center"
+                >
+                    <div className="space-y-2">
+                        <Link
+                            to={"/"}
+                            className="text-sm text-white/80 hover:text-white flex md:hidden items-center gap-2"
+                        >
+                            <FaArrowRight className="rotate-180" />
+                            <span>Volver al inicio</span>
+                        </Link>
 
-                        <div className="flex flex-col gap-4 text-white">
+                        <h3 className="text-2xl md:text-3xl text-center md:text-left font-semibold tracking-wide">
+                            Accede a tu cuenta
+                        </h3>
+                    </div>
+
+                    <div className="flex flex-col gap-4 text-white">
+                        <input
+                            className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white/80"
+                            type="text"
+                            placeholder="Usuario"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+
+                        <div className="relative">
                             <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="text"
-                                placeholder="Usuario"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white/80 w-full"
+                                type={type}
+                                placeholder="Contraseña"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
 
-                            <div className="relative">
-                                <input
-                                    className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type={type}
-                                    placeholder="Contraseña"
-                                    value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
+                            {type === "password" ? (
+                                <FaEye
+                                    onClick={() => handleType()}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                                 />
-
-                                {type === "password" ? (
-                                    <FaEye
-                                        onClick={() => handleType()}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                ) : (
-                                    <FaEyeSlash
-                                        onClick={() => handleType()}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-white ease-in-out transition-colors duration-200"
-                                    />
-                                )}
-                            </div>
-
-                            {error && (
-                                <p className="text-red-600 text-sm">{error}</p>
+                            ) : (
+                                <FaEyeSlash
+                                    onClick={() => handleType()}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer ease-in-out transition-colors duration-200"
+                                />
                             )}
-
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="rounded-lg mt-6 bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
-                            >
-                                {loading ? "Cargando..." : "Iniciar sesión"}
-                            </button>
-
-                            <p className="text-sm text-center tracking-wide">¿No tienes cuenta aún?{" "} 
-                                <Link to={"/register"} className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out">Registrate</Link>
-                            </p>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="rounded-lg bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
+                    >
+                        Ingresar
+                    </button>
+
+                    <p className="text-sm text-center tracking-wider">
+                        ¿No tienes cuenta aún?{" "}
+                        <Link
+                            to={"/auth/register"}
+                            className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out"
+                        >
+                            Registrate
+                        </Link>
+                    </p>
+                </form>
             </div>
         </div>
     );
