@@ -2,11 +2,13 @@ import { useParams } from "react-router";
 import { usePost } from "../../hooks/usePosts";
 import { formatDate } from "../../../utils/formatDate";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
+import CommentSection from "../../components/CommetsSection/CommentSection";
 
 const BlogPostDetail = () => {
     const { slug } = useParams();
     const { post, loading } = usePost(slug);
 
+    if (!post) return <p className="mt-4">No se pudo cargar la publicación</p>
     if (loading) return <p className="mt-4">Cargando publicación...</p>
 
     console.log(post);
@@ -16,8 +18,8 @@ const BlogPostDetail = () => {
         <div className="rounded-xl overflow-hidden h-64">
             <img
                 className="object-cover h-full w-full"
-                src={post.image}
-                alt={post.title} />
+                src={post?.image}
+                alt={post?.title} />
         </div>
         <div>
             <div className="flex flex-col gap-8">
@@ -36,6 +38,9 @@ const BlogPostDetail = () => {
 
                 <p className="whitespace-pre-line text-lg font-light tracking-wider">{post.content}</p>
             </div>
+        </div>
+        <div className="mt-8">
+                <CommentSection postId={post.id} comments={post.comments}/>
         </div>
     </div>
 );

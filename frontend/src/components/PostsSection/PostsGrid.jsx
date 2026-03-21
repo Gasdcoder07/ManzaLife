@@ -5,9 +5,7 @@ import { formatDate } from "../../../utils/formatDate"
 const PostsGrid = () => {
     const {posts, loading} = usePosts();
 
-    console.log(posts)
-
-  return (
+    return (
       <div className="overflow-x-auto scroll-smooth no-scrollbar">
           <div className="flex gap-8 w-max py-2">
             {

@@ -1,6 +1,6 @@
 # ManzaLife🚀
 
-Equipo 5
+Equipo 5️⃣
 
 <img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
 
@@ -15,18 +15,24 @@ Equipo 5
 Desarrollo de una plataforma web que les permita a miles de usuarios conocer Manzanillo. Desarrollado y programado en Django para el backend y React para el frontend.
 
 ## 📋 Tabla de Contenidos
-- [Vista Previa](#-vista-previa)
-- [Características Principales](#-características-principales)
-- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
-- [Instalación](#-instalación)
-- [Uso](#-uso)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Vista Previa📷](#-vista-previa)
+- [Características Principales🧾](#-características-principales)
+- [Tecnologías Utilizadas💻](#-tecnologías-utilizadas)
+- [Instalación🛠](#-instalación)
+- [Uso⚙️](#-uso)
+- [Estructura del Proyecto📁](#-estructura-del-proyecto)
 
 ## 📸 Vista Previa
 
-"Pantalla Principal"<img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
+"Pantalla Principal"
+<img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
 
-"Pantalla Login"<img width="1596" height="765" alt="Captura de pantalla 2026-03-06 110416" src="https://github.com/user-attachments/assets/ba37fb25-f63e-4063-b901-30eee17c616e" />
+"Pantalla Login"
+<img width="1596" height="765" alt="Captura de pantalla 2026-03-06 110416" src="https://github.com/user-attachments/assets/ba37fb25-f63e-4063-b901-30eee17c616e" />
+
+"Pantalla Blog"
+<img width="1574" height="757" alt="image" src="https://github.com/user-attachments/assets/6bdd282f-e0cf-49fa-aa41-aa19638595d8" />
+
 
 ## ✨ Características Principales
 - ✅ Interfaz reponsiva y amigable: Diseñada para que los usuarios puedan utilizarla fácilmente desde dispositivos moviles mientras los usuarios esten en movimiento.
@@ -34,21 +40,21 @@ Desarrollo de una plataforma web que les permita a miles de usuarios conocer Man
 - ✅ Guia: Acesso rápido a los mejores puntos turisticos emblemáticos que pueden encontrar de Manzanillo .
 
 ## 🛠 Tecnologías Utilizadas
-- *Lenguaje:* [HTML5, Javascript, CSS, Python]
-- *Framework/Librería:* [React, Django, Tailwind]
-- *Base de Datos:* [MySQL]
-- *Herramientas:* [Git]
+- *Lenguaje:* [HTML5, Javascript, CSS, Python]![Python 3.12+].   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"><img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"><img src="https://img.shields.io/badge/python%203.12+-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+">
+- *Framework/Librería:* [React, Django, Tailwind]![Hecho con Django].   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React"><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS"><img src="https://img.shields.io/badge/django-%23092e20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django">
+- *Base de Datos:* [PostgresSQL, Supabase].   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"><img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+- *Herramientas:* [Git].   <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git">
 
 ## 🚀 Instalación
 Sigue estos pasos para configurar el proyecto localmente:
 
-1. *Clonar el repositorio:*
+- Paso 1️⃣. *Clonar el repositorio:*
    git clone [https://github.com/tu-usuario/tu-proyecto.git]([https://github.com/tu-usuario/tu-proyecto.git](https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git))
- * Instalar dependencias:
+- Paso 2️⃣. * Instalar dependencias:
    npm install  # O el comando que use tu lenguaje (pip install, composer install, etc.)
- * Configurar variables de entorno:
+- Paso 3️⃣. * Configurar variables de entorno:
    Crea un archivo .env basado en .env.example.
- * Ejecutar la aplicación:
+- Paso 4️⃣. * Ejecutar la aplicación:
    nmp run dev  o npm start 
    
 ## 💻 Uso
@@ -57,12 +63,12 @@ Este blog está pensado para explorar y compartir ideas sobre cosas por hacer en
 
 Puedes navegar por las diferentes categorías del blog, descubrir nuevas actividades y leer experiencias o sugerencias que te ayuden a aprovechar mejor tu tiempo en la ciudad.
 
-## 📁 Estructura del Proyecto
+## 📂 Estructura del Proyecto
 Los archivos más importantes para entender la lógica:
- * src/: Contiene el código fuente.
- * docs/: Documentación adicional.
- * tests/: Pruebas unitarias y de integración.
- * config/: Archivos de configuración global.
+ * src/: Contiene el código fuente.📁
+ * docs/: Documentación adicional.📁
+ * tests/: Pruebas unitarias y de integración.📁
+ * config/: Archivos de configuración global.📁
 
 
 ## 🌊 ¡Explora Manzanillo!
@@ -73,14 +79,13 @@ Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con
 
 ## 📬 Contacto
 - *Desarrolladores:*
-- Diaz Hernandez Axl Enrique
-- Martinez Contreras Manuel Isahit
-- Sebastian Silvestre Brian
-- Serna Dias Greco Alejandro
-- Vaca Cipres Valentin
+- NOMBRE: Diaz Hernandez Axl Enrique😄                    -EMAIL: adiaz106@ucol.mx📲
+- NOMBRE: Martinez Contreras Manuel Isahit😄              -EMAIL: mmartinez134@ucol.mx📲
+- NOMBRE: Sebastian Silvestre Brian😄                     -EMAIL: bsebastian0@ucol.mx📲
+- NOMBRE: Serna Diaz Greco Alejandro😄                    -EMAIL: gserna@ucol.mx📲
+- NOMBRE: Vaca Cipres Valentin😄                          -EMAIL: vvaca2@ucol.mx📲
 
-- *Email:*
-- bsebastian0@ucol.mx
-           
 
 Desarrollado con mucho cariño para resaltar la belleza de Manzanillo. 🌊🌴
+
+A domir ggs nos fuimos💤
