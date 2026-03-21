@@ -9,20 +9,22 @@ from .serializers import PostSerializer, PostListSerializer, CategorySerializer,
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = [permissions.AllowAny]
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.filter(status="published").select_related(
-        "author",
-        "author__userprofile",
-        "category"
-    ).order_by("-created_at")
-
     lookup_field = "slug"
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly,
-        IsAuthorOrReadOnly
-    ]
+    def get_queryset(self):
+        queryset = Post.objects.filter(status="published")
+
+        if self.action == 'retrieve':
+            return queryset.prefetch_related(
+                'comments',
+                'comments__author',
+                'comments__author__userprofile'
+            )
+        return queryset.select_related("author", "author__userprofile", "category").order_by("-created_at")
 
     def get_serializer_class(self):
         if self.action == "list":
@@ -40,9 +42,14 @@ class PostViewSet(viewsets.ModelViewSet):
     #     serializer.save(author=self.request.user)
 
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.filter(parent__isnull=True).prefetch_related('replies')
+    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+
+    def get_queryset(self):
+        if self.action == 'list':
+            return Comment.objects.filter(parent__isnull=True).prefetch_related('replies')
+        return Comment.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

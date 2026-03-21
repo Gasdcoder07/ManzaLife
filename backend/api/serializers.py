@@ -18,9 +18,50 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'profile']
-        
+
+class CommentReplySerializer(serializers.ModelSerializer):
+    author_name = serializers.ReadOnlyField(source="author.username")
+    author_avatar = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = ['id', 'author_name', 'author_avatar', 'content', 'created_at']
+
+    def get_author_avatar(self, obj):
+        try:
+            if hasattr(obj.author, 'userprofile') and obj.author.userprofile.avatar:
+                return obj.author.userprofile.avatar.url
+        except:
+            pass
+        return None        
+class CommentSerializer(serializers.ModelSerializer):
+    author_name = serializers.ReadOnlyField(source="author.username")
+    author_avatar = serializers.SerializerMethodField()
+    author = UserSerializer(read_only = True)
+    replies = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = [
+            'id', 'post', 'author', 'author_name',
+            'author_avatar', 'content', 'created_at',
+            'parent', 'replies'
+        ]
+    
+    def get_author_avatar(self, obj):
+        try:
+            if hasattr(obj.author, 'userprofile') and obj.author.userprofile.avatar:
+                return obj.author.userprofile.avatar.url
+        except:
+            pass
+        return None
+
+    def get_replies(self, obj):
+        if obj.replies.exists():
+            return CommentReplySerializer(obj.replies.all(), many=True).data
+        return []
 class PostSerializer(serializers.ModelSerializer):
-    # -> Que añada categories y users dentro de posts
+    comments = CommentSerializer(many=True, read_only=True)
     category = CategorySerializer(read_only = True)
     author = UserSerializer(read_only = True)
 
@@ -32,8 +73,11 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = "__all__"
-
+        fields = [
+            'id', 'title', 'slug', 'content', 'image', 
+            'latitude', 'longitude', 'created_at', 
+            'category', 'category_id','author', 'comments'
+        ]
 class PostListSerializer(serializers.ModelSerializer):
     category_name = serializers.ReadOnlyField(source="category.name")
     author_name = serializers.ReadOnlyField(source="author.username")
@@ -70,21 +114,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         validated_data.pop('password_confirm')
         user = User.objects.create_user(**validated_data)
         return user
-    
-class CommentSerializer(serializers.ModelSerializer):
-    author_name = serializers.ReadOnlyField(source='author.username')
-    replies = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Comment
-        fields = ['id', 'post', 'author_name', 'content', 'created_at', 'parent', 'replies']
-        read_only_fields = ['author']
-        
-    def get_replies(self, obj):
-        if obj.replies.exists():
-            return CommentSerializer(obj.replies.all(), many=True).data
-        return []
-
 class ReviewSerializer(serializers.ModelSerializer):
     user_name = serializers.ReadOnlyField(source='user.username')
 

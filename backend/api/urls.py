@@ -4,9 +4,9 @@ from .views import PostViewSet, CategoryViewSet, RegisterView, PerfilView, Comme
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
 router = DefaultRouter()
-router.register(r'posts', PostViewSet)
+router.register(r'posts', PostViewSet, basename='post')
 router.register(r'categories', CategoryViewSet)
-router.register(r'comments', CommentViewSet)
+router.register(r'comments', CommentViewSet, basename='comment')
 router.register(r'reviews', ReviewViewSet)
 
 urlpatterns = [

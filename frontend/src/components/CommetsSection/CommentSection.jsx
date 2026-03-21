@@ -1,11 +1,20 @@
 import React, { useState } from "react"
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
+import axios from "axios"
 
 const Comment = ({ comment }) => {
+
+    const [content, setContent] = useState("")
+    const [isPrivate, setIsPrivate] = useState(false)
+
+    const avatarUrl = comment.author_avatar
+        ? `http://127.0.0.1:8000${comment.author_avatar}`
+        : DefaultAvatar
+
     return (
         <div className="flex gap-4 my-6 text-white align-top">
             <img 
-                src={comment.autor.profile?.avatar ? comment.author.profile.avatar : DefaultAvatar}
+                src={comment.author_avatar ? comment.author_avatar : DefaultAvatar}
                 alt={comment.author.name}
                 className="size-10 rounded-full object-cover mt-1"
             />
@@ -13,7 +22,7 @@ const Comment = ({ comment }) => {
             <div className="flex-1 flex flex-col gap-1">
                 <div className="flex items-center gap-3">
                     <span className="font-bold text-white text-sm">
-                        @{comment.author.username}
+                        @{comment.author_name}
                     </span>
                     <span className="text-zinc-500 text-xs">
                         {new Date(comment.created_at).toLocaleDateString()}
@@ -41,6 +50,34 @@ const Comment = ({ comment }) => {
 const CommentSection = ({postId, comments = []}) => {
     const [newComment, setNewComment] = useState("")
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (!newComment.trim()) return
+
+        const token = localStorage.getItem("token")
+
+        try {
+            const response = await axios.post(
+                "http://localhost:8000/api/comments/",
+                {
+                    post: postId,
+                    content: newComment,
+                },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                }
+            )
+            setNewComment("")
+        } catch (error) {
+            console.log("Error al publicar", error)
+        }
+    }
+
+    console.log(comments)
     return (
         <div className="w-full text-left mt-10">
             <h4 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
@@ -51,7 +88,7 @@ const CommentSection = ({postId, comments = []}) => {
             </h4>
             <form 
                 className="mb-12 flex gap-4 items-start"
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
             >
                 <img 
                     src={DefaultAvatar} 
