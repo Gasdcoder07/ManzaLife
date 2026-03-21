@@ -28,3 +28,12 @@
         @apply scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent scroll-smooth
     }
 }
+
+/* Quitar el fondo del autocompletado en los navegadores */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: white !important;
+    transition: background-color 9999s ease-in-out 0s;
+}

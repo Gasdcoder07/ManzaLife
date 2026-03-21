@@ -5,6 +5,7 @@ import { IoMenu, IoClose, IoLogOut } from "react-icons/io5"
 import { useEffect, useRef, useState } from "react";
 import { BlogSidebarItems } from "../BlogSidebar/BlogSidebarItems";
 import { useAuth } from "../../../context/AuthContext"
+import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +61,7 @@ const BlogNavbar = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-4 shrink-0">
-                    <Link to={user ? "/create-post" : "/login"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
+                    <Link to={user ? "/create-post" : "/auth/login"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
                         <span>Crear Post</span>
                     </Link>
                     {
@@ -68,7 +69,7 @@ const BlogNavbar = () => {
                             <div className="relative" ref={dropdownRef} onClick={() => setAvatarDropdownOpen(!avatarDropdownOpen)}>
                                 <div className="relative">
                                     <img
-                                        src={user.profile?.avatar}
+                                        src={user?.profile?.avatar || DefaultAvatar}
                                         alt={user.username}
                                         className="size-10 object-cover rounded-full cursor-pointer"/>
                                     <div className="absolute bottom-0 translate-x-1/2 size-2 rounded-full bg-green-600"/>

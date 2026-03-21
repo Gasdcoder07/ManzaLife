@@ -1,175 +1,202 @@
 import { useState } from "react";
-import { Link, useAsyncError } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Navbar } from "../../components/index";
-import SideImage from "../../../imgs/RegisterResourcers/atardecer.png";
-import axios from "axios"
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { FaChevronLeft, FaChevronRight, FaArrowRight } from "react-icons/fa";
+import { useAuth } from "../../context/AuthContext";
+import Logo from "../../../imgs/logomaxxing.svg";
+import { sliderContent } from "./sliderContent";
+import { StepOne, StepTwo } from "../../components/Register/index"
 
 export default function Register() {
+    const { register } = useAuth();
+    const navigate = useNavigate();
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
+    const [formData, setFormData] = useState({
+        first_name: "",
+        last_name: "",
+        username: "",
+        email: "",
+        password: "",
+        password_confirm: "",
+    });
 
-    const handleType = () => {
-        setType(prev => prev === "password" ? "text" : "password");
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleRegister = async () => {
-        if (password != confirmPassword) {
-            alert("Las contraseñas no coinciden :v")
-            return 
+    const [type, setType] = useState("password");
+    const [loading, setLoading] = useState(false);
+
+    // Slider Variables and functions
+    const [currentSlider, setCurrentSlider] = useState(0);
+
+    const handleCurrentSlider = (direction) => {
+        if (direction === "next") {
+            setCurrentSlider((prev) => prev >= sliderContent.length - 1 ? 0 : prev + 1)
+        } else {
+            setCurrentSlider((prev) => prev === 0 ? sliderContent.length - 1 : prev - 1)
         }
+    }
+    
+    // Form Step variables and functions
+    const [formStep, setFormStep] = useState(1);
 
-        try {
-            const response = await axios.post(
-                "http://localhost:8000/api/register/",
-                {
-                    username: username,
-                    email: email,
-                    password: password,
-                    password_confirm: confirmPassword,
-                    first_name: firstName,
-                    last_name: lastName
-                }
-            )
-
-            console.log(response.data)
-            alert("Usuario creado correctamente")
-
-        } catch (err) {
-            console.error(err)
-            alert("Error al crear usuario")
+    const handleFormStep = () => {
+        if (formStep === 1) {
+            if (!formData.first_name.trim()) return toast.error("El nombre es obligatorio");
+            if (!formData.last_name.trim()) return toast.error("El apellido es obligatorio");
+            if (!formData.username.trim()) return toast.error("El usuario es obligatorio");
+        
+            setFormStep(2);
         }
     }
 
+    const handleType = () => setType(type === "password" ? "text" : "password");
+
+    const handleRegister = async (e) => {
+        if (e) e.preventDefault();
+
+        if (!formData.email.trim()) return toast.error("El correo electrónico es obligatorio");
+        if (!formData.password) return toast.error("La contraseña es obligatoria");
+        if (!formData.password_confirm) return toast.error("Debes confirmar tu contraseña");
+        if (formData.password !== formData.password_confirm) return toast.error("Las contraseñas no coinciden");
+
+        const toastId = toast.loading("Creando cuenta...");
+
+        try {
+            setLoading(true);
+            const res = await register(formData);
+            if (res.success) {
+                toast.success("¡Cuenta creada exitosamente!", { id: toastId });
+                navigate("/auth/login");
+            } else {
+                toast.error(res.message || "Error al crear la cuenta");
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
-        <div className="relative h-screen flex justify-center items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-orange-950 overflow-hidden px-6 py-4 md:px-20 lg:px-32">
-            <Navbar />
+        <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 shadow-lg shadow-zinc-950/80 max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden p-2">
+            {/* Slider */}
+            <div className="relative hidden md:flex w-1/2 rounded-2xl overflow-hidden">
+                <img
+                    className="h-full w-full object-cover"
+                    src={sliderContent[currentSlider].Image}
+                    alt="Branding"
+                />
 
-            <div className="size-52 bg-orange-500/30 absolute top-4 left-8 rounded-full blur-3xl animate-pulse duration-700" />
-            <div className="size-52 bg-amber-400/25 absolute bottom-4 left-8 rounded-full blur-3xl animate-pulse duration-700 delay-500" />
-            <div className="size-52 bg-rose-500/20 absolute top-4 right-8 rounded-full blur-3xl animate-pulse duration-700 delay-300" />
-            <div className="size-52 bg-orange-700/25 absolute bottom-4 right-8 rounded-full blur-3xl animate-pulse duration-700 delay-200" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/20 to-black/50" />
 
-            <div className="max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden min-h-1/2">
-
-                <div className="relative w-full md:w-1/2">
-                    <img
-                        className="h-full w-full object-cover"
-                        src={SideImage}
-                        alt="Side Image"
-                    />
-                    <div className="absolute inset-0 bg-black/45" />
+                <div className="absolute inset-0 z-20 flex flex-col justify-between p-5">
+                    <div className="flex justify-between items-center">
+                        <img
+                            src={Logo}
+                            alt="Logo"
+                            className="h-10 object-cover"
+                        />
+                        <Link
+                            to={"/"}
+                            className="text-sm text-white/80 hover:text-white flex items-center gap-2">
+                            <span>Volver al inicio</span>
+                            <FaArrowRight/>
+                        </Link>
+                    </div>
+                    <div className="flex justify-end">
+                        <p className="text-white/80 text-xs italic leading-relaxed">
+                            {sliderContent[currentSlider].Quote}
+                        </p>
+                    </div>
                 </div>
 
-                <div className="w-full md:w-1/2 bg-linear-to-br from-yellow-500 via-amber-600 to-orange-700 flex justify-center">
-                    <form className="text-white px-4 md:px-8 lg:px-12 py-6 flex flex-col gap-8 items-center justify-center">
+                {/* Flechas Slider */}
+                <button
+                    onClick={() => handleCurrentSlider("prev")}
+                    className="absolute z-30 left-2 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all ease-in-out duration-200 cursor-pointer"
+                >
+                    <FaChevronLeft className="text-xl" />
+                </button>
+                <button
+                    onClick={() => handleCurrentSlider("next")}
+                    className="absolute z-30 right-2 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all ease-in-out duration-200 cursor-pointer"
+                >
+                    <FaChevronRight className="text-xl" />
+                </button>
+            </div>
 
-                        <h3 className="text-3xl text-center font-bold tracking-wide">
-                            Crear cuenta
-                        </h3>
+            <div className="w-full md:w-3/5 flex justify-center">
+                <div className="h-full w-full px-4 md:px-8 lg:px-12 py-6 sm:py-8 flex flex-col gap-6 justify-center">
+                    <div className="space-y-4">
+                        <Link
+                            to={"/"}
+                            className="md:hidden text-sm text-white/80 hover:text-white flex items-center gap-2">
+                            <FaArrowRight className="rotate-180" />
+                            <span>Volver al inicio</span>
+                        </Link>
 
-                        <div className="flex flex-col gap-4 w-full">
-
-                            <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="text"
-                                placeholder="Usuario"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-
-                            <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="text"
-                                placeholder="First name"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-
-                            <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="text"
-                                placeholder="Last name"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-
-                            <input
-                                className="px-3 py-1.5 border border-white outline-none rounded-lg placeholder-white"
-                                type="email"
-                                placeholder="Correo electrónico"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-
-                            <div className="relative">
-                                <input
-                                    className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type="password"
-                                    placeholder="Contraseña"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-
-                                {/* {type === "password" ? (
-                                    <FaEye
-                                        onClick={handleType}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                ) : (
-                                    <FaEyeSlash
-                                        onClick={handleType}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                )} */}
-                            </div>
-
-                            <div className="relative">
-                                <input
-                                    className="pl-3 pr-10 py-1.5 border border-white outline-none rounded-lg placeholder-white w-full"
-                                    type="password"
-                                    placeholder="Confirmar contraseña"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
-
-                                {/* {typeConfirm === "password" ? (
-                                    <FaEye
-                                        onClick={handleTypeConfirm}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                ) : (
-                                    <FaEyeSlash
-                                        onClick={handleTypeConfirm}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                    />
-                                )} */}
-                            </div>
-
-                            <button
-                                type="button"
-                                className="rounded-lg mt-6 bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
-                                onClick={handleRegister}
-                            >
-                                Crear cuenta
-                            </button>
-
-                            <p className="text-sm text-center tracking-wide">
-                                ¿Ya tienes cuenta?{" "}
-                                <Link
-                                    to={"/login"}
-                                    className="hover:text-zinc-950 hover:underline transition-colors duration-200"
-                                >
-                                    Inicia sesión
-                                </Link>
-                            </p>
-
+                        {/* Pasos */}
+                        <div className="flex items-center justify-center">
+                            {
+                                [1, 2].map((item) => {
+                                    return (
+                                        <div key={item} className="flex items-center">
+                                            <div
+                                                key={item}
+                                                className={`size-8 rounded-full flex items-center justify-center border border-white transition-all ${formStep == item ? 'bg-white text-orange-600 border-white font-medium' : 'border-white/20 text-white/30'}`}>
+                                                    <span className="text-sm">{item}</span>
+                                            </div>
+                                            {/* // Dibujamos linea */}
+                                            {
+                                                item < 2 && (
+                                                    <div className={`w-6 h-px ${formStep > item ? "bg-white/40" : "bg-white/10"}`}/>
+                                                )
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
+
+                        <h3 className="text-2xl md:text-3xl text-center md:text-left font-semibold tracking-wide">
+                            { formStep === 1 && 'Crear cuenta' }
+                            { formStep === 2 && '¡Casi listo!' }
+                        </h3>
+                    </div>
+
+                    <form onSubmit={handleRegister} className="h-full flex flex-col gap-6">
+                        { formStep === 1 && <StepOne formData={formData} handleChange={handleChange}/>}
+                        { formStep === 2 && <StepTwo formData={formData} handleChange={handleChange} type={type} handleType={handleType}/>}
+
+                        <div className="flex flex-col md:flex-row gap-2">
+                            {
+                                formStep === 2 && (
+                                    <button
+                                    disabled={loading}
+                                    type="button"
+                                    onClick={() => setFormStep(prev => prev - 1)}
+                                    className="w-full rounded-xl border border-white hover:text-zinc-950 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer">
+                                        <span>Regresar</span>
+                                    </button>
+                                )
+                            }
+                            <button
+                                disabled={loading}
+                                type="button"
+                                onClick={ formStep === 2 ? handleRegister : handleFormStep }
+                                className="w-full rounded-xl bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer">
+                                <span>{ formStep === 1 ? 'Siguiente' : 'Crear cuenta' }</span>
+                            </button>
+                        </div>
+
+                        <p className="text-sm text-center tracking-wider">¿Ya tienes cuenta?{" "}
+                            <Link
+                                to={"/auth/login"}
+                                className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out">
+                                <span>Inicia sesión</span>
+                            </Link>
+                        </p>
                     </form>
                 </div>
             </div>

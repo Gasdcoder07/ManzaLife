@@ -52,8 +52,25 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
+    const register = async (data) => {
+        try {
+            const res = await api.post("register/", data);
+            return {
+                success: true,
+                message: res.data.message
+            };
+        } catch (error) {
+            return {
+                success: false,
+                errors: error.response?.data?.errors || {
+                    general: "Error del servidor"
+                }
+            };
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ user, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, login, logout, loading, register }}>
             { !loading && children }
         </AuthContext.Provider>
     )
