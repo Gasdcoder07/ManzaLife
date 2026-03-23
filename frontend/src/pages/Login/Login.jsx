@@ -133,7 +133,7 @@ export default function Login() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="rounded-lg bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer"
+                        className={`rounded-lg bg-zinc-950 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer ${loading ? '' : 'hover:text-orange-600 hover:-translate-y-1'}`}
                     >
                         Ingresar
                     </button>

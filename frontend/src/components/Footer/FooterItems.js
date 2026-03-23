@@ -4,7 +4,7 @@ export const FooterIconsItems = [
     {
         id: 1,
         icono: FaGithub,
-        path: "https://github.com/Gasdcoder07/Proyecto-semestre-2-PI"
+        path: "https://github.com/Gasdcoder07/ManzaLife"
     },
     {
         id: 2,
@@ -23,10 +23,8 @@ export const FooterItems = [
         title: "Blog",
         subthemes: [
             {
-                title_theme: "El blog más grande de Manzanillo"
-            },
-            {
-                title_theme: "¿Cómo funciona?"
+                title_theme: "El blog más grande de Manzanillo",
+                path: "#blog"
             }
         ]
     },
@@ -34,7 +32,8 @@ export const FooterItems = [
         title: "Publicaciones",
         subthemes: [
             {
-                title_theme: "Publicaciones recientes"
+                title_theme: "Publicaciones recientes",
+                path: "#posts"
             }
         ]
     },
@@ -42,22 +41,8 @@ export const FooterItems = [
         title: "Categorías",
         subthemes: [
             {
-                title_theme: "Playas"
-            },
-            {
-                title_theme: "Restaurantes"
-            },
-            {
-                title_theme: "Actividades"
-            },
-            {
-                title_theme: "Hospedaje"
-            },
-            {
-                title_theme: "Lugares turísticos"
-            },
-            {
-                title_theme: "Vida nocturna"
+                title_theme: "Nuestras categorías",
+                path: "#categorias"
             }
         ]
     },
@@ -65,7 +50,8 @@ export const FooterItems = [
         title: "Nosotros",
         subthemes: [
             {
-                title_theme: "¿Por qué explorar con nosotros?"
+                title_theme: "¿Por qué explorar con nosotros?",
+                path: "#nosotros"
             }
         ]
     },
@@ -73,7 +59,8 @@ export const FooterItems = [
         title: "Testimonios",
         subthemes: [
             {
-                title_theme: "Testimonios de nuestros visitantes"
+                title_theme: "Testimonios de nuestros usuarios",
+                path: "#testimonios"
             }
         ]
     },
@@ -81,7 +68,8 @@ export const FooterItems = [
         title: "Únete",
         subthemes: [
             {
-                title_theme: "Únete a la comunidad"
+                title_theme: "Únete a la comunidad",
+                path: "#unete"
             }
         ]
     },

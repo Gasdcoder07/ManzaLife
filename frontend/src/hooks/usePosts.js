@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { getPosts, getPostBySlug } from "../services/postService";
 
 export const usePosts = () => {

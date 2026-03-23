@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BlogPostsGrid } from "../../components/Blog/index"
 import { usePosts } from "../../hooks/usePosts";
 import { MdArrowDropDown } from "react-icons/md";
+import BlogHomeSkeleton from "../../components/Blog/BlogPosts/BlogHomeSkeleton";
 
 export default function Blog() {
     const {posts, loading} = usePosts();
@@ -10,7 +11,7 @@ export default function Blog() {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const postsFinales = categoriaActivada === "Todas" ? posts : posts.filter(post => post.category_name === categoriaActivada);
 
-    if (loading) return <p className="mt-4">Cargando publicaciones...</p>
+    if (loading) return <BlogHomeSkeleton/>
 
     return (
         <>

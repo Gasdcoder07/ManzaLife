@@ -1,4 +1,10 @@
+import BlogCategoriesGrid from "../../components/Blog/BlogCategories/BlogCategoriesGrid";
+import { useCategories } from "../../hooks/useCategories";
+
 const BlogCategories = () => {
+    const categories = useCategories();
+    console.log(categories);
+
   return (
     <>
         <div className="mt-4 flex items-center justify-between">
@@ -8,6 +14,7 @@ const BlogCategories = () => {
                 </span>
             </h3>
         </div>
+        <BlogCategoriesGrid Categories={categories}/>
     </>
   );
 };

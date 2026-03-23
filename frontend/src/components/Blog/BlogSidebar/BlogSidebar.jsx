@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoMenu, IoArrowForwardOutline } from "react-icons/io5"
 import { BlogSidebarItems } from "./BlogSidebarItems";
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 const BlogSidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -24,10 +24,13 @@ const BlogSidebar = () => {
 
                         return (
                             <li key={index}>
-                                <Link onClick={() => setSelected(item.text)} to={item.path} className={`${selected == item.text ? 'text-orange-600' : ''} flex justify-center items-center gap-2 rounded-xl px-2 py-1 hover:bg-zinc-900 cursor-pointer transition-colors duration-200 ease-in-out`}>
+                                <NavLink
+                                    to={item.path}
+                                    end={item.path === "/blog"}
+                                    className={({ isActive }) => `flex justify-center items-center gap-2 rounded-xl px-2 py-1 hover:bg-zinc-900 cursor-pointer transition-colors duration-200 ease-in-out ${isActive ? 'text-orange-600' : ''}`}>
                                     <Icon/>
                                     <span>{item.text}</span>
-                                </Link>
+                                </NavLink>
                             </li>
                         )
                     })

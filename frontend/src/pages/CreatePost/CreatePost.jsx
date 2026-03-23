@@ -11,7 +11,8 @@ export default function CreatePost() {
         category_id: null,
         category_name: "Seleccionar categoría",
         image: null,
-        imagePreview: null
+        imagePreview: null,
+        status: ""
     })
 
     const fileInputRef = useRef(null);
@@ -49,7 +50,7 @@ export default function CreatePost() {
         const toastId = toast.loading("Creando publicación");
 
         try {
-            await postPost({ ...formData, status });
+            await postPost({ ...formData, status: status });
             toast.success("¡Post creado exitosamente!", { id: toastId })
 
             setFormData({

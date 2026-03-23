@@ -1,3 +1,4 @@
+import { HashLink } from 'react-router-hash-link';
 import logo from "../../../imgs/logomaxxing.svg";
 import { FooterItems, FooterIconsItems } from "./FooterItems";
 
@@ -38,9 +39,12 @@ const Footer = () => {
                                         {
                                             item.subthemes.map((item, index) => {
                                                 return (
-                                                    <li key={index}
-                                                        className="text-neutral-400 text-[15px] hover:text-neutral-500 duration-200 transition-all ease-in-out cursor-pointer">
-                                                        {item.title_theme}
+                                                    <li key={index}>
+                                                        <HashLink
+                                                            to={item.path}
+                                                            className='text-neutral-400 text-[15px] hover:text-neutral-500 duration-200 transition-all ease-in-out cursor-pointer'>
+                                                            <span>{item.title_theme}</span>
+                                                        </HashLink>
                                                     </li>
                                                 );
                                             })

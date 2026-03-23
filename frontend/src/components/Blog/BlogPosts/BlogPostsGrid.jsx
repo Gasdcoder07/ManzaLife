@@ -13,7 +13,7 @@ const BlogPostsGrid = ({posts}) => {
                             Image={item.image}
                             Category={item.category_name}
                             Title={item.title}
-                            Description={item.content}
+                            Description={item.summary}
                             Slug={item.slug}
                             AutorName={item.author_name}
                             AutorAvatar={item.author_avatar}

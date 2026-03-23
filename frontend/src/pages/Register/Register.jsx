@@ -185,7 +185,7 @@ export default function Register() {
                                 disabled={loading}
                                 type="button"
                                 onClick={ formStep === 2 ? handleRegister : handleFormStep }
-                                className="w-full rounded-xl bg-zinc-950 hover:text-orange-600 hover:-translate-y-1 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer">
+                                className={`w-full rounded-xl bg-zinc-950 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer ${loading ? '' : 'hover:text-orange-600 hover:-translate-y-1'}`}>
                                 <span>{ formStep === 1 ? 'Siguiente' : 'Crear cuenta' }</span>
                             </button>
                         </div>

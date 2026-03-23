@@ -18,7 +18,7 @@ const PostItem = ({Image, Category, Title, Description, Slug, AutorAvatar, Autor
                 </div>
             </div>
             <div className="flex flex-col px-8 py-3 gap-2">
-                <h3 className="text-xl font-bold tracking-wide">
+                <h3 className="text-xl font-bold tracking-wide truncate">
                     {Title}
                 </h3>
 

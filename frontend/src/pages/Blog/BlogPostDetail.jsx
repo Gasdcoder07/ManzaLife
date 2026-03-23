@@ -3,13 +3,14 @@ import { usePost } from "../../hooks/usePosts";
 import { formatDate } from "../../../utils/formatDate";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
 import CommentSection from "../../components/CommetsSection/CommentSection";
+import BlogPostDetailSkeleton from "../../components/Blog/BlogPosts/BlogPostDetailSkeleton";
 
 const BlogPostDetail = () => {
     const { slug } = useParams();
     const { post, loading } = usePost(slug);
 
-    if (!post) return <p className="mt-4">No se pudo cargar la publicación</p>
-    if (loading) return <p className="mt-4">Cargando publicación...</p>
+    // if (!post) return <p className="mt-4">No se pudo cargar la publicación</p>
+    if (loading) return <BlogPostDetailSkeleton/>
 
     console.log(post);
 
@@ -36,11 +37,11 @@ const BlogPostDetail = () => {
                     <span>{formatDate(post.created_at)}</span>
                 </div>
 
-                <p className="whitespace-pre-line text-lg font-light tracking-wider">{post.content}</p>
+                <p className="whitespace-pre-line text-lg font-light tracking-wider leading-relaxed">{post.content}</p>
             </div>
         </div>
-        <div className="mt-8">
-                <CommentSection postId={post.id} comments={post.comments}/>
+        <div className="my-8 max-w-xl">
+            <CommentSection postId={post.id} comments={post.comments}/>
         </div>
     </div>
 );

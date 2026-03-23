@@ -1,4 +1,4 @@
-import { Home, Login, Register, BlogHome, BlogCategories, BlogPostDetail, Pruebas, CreatePost} from "./pages/index.js"
+import { Home, Login, Register, BlogHome, BlogCategories, BlogPostDetail, Pruebas, CreatePost, BlogCommunity } from "./pages/index.js"
 import BlogLayout from "./layouts/BlogLayout.jsx";
 import { Routes, Route } from 'react-router-dom'
 import AuthLayout from "./layouts/AuthLayout.jsx";
@@ -11,13 +11,12 @@ function App() {
           <main>
               <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
 
                   <Route path="blog" element={<BlogLayout />}>
                         <Route index element={<BlogHome />} />
                         <Route path=":slug" element={<BlogPostDetail/>}/>
                         <Route path="categories" element={<BlogCategories/>} />
+                        <Route path="community" element={<BlogCommunity/>}/>
                   </Route>
 
                   <Route path="/pruebas" element={<Pruebas />} />

@@ -13,11 +13,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['bio', 'avatar', 'is_local_business']
 
 class UserSerializer(serializers.ModelSerializer):
-    profile = UserProfileSerializer(source='userprofile', read_only=True)
+    bio = serializers.CharField(source='userprofile.bio', read_only=True)
+    avatar = serializers.ImageField(source='userprofile.avatar', read_only=True)
+    # profile = UserProfileSerializer(source='userprofile', read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'profile']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar']
 
 class CommentReplySerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
@@ -60,6 +62,7 @@ class CommentSerializer(serializers.ModelSerializer):
         if obj.replies.exists():
             return CommentReplySerializer(obj.replies.all(), many=True).data
         return []
+    
 class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     category = CategorySerializer(read_only = True)
@@ -76,12 +79,14 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'slug', 'content', 'image', 
             'latitude', 'longitude', 'created_at', 
-            'category', 'category_id','author', 'comments'
+            'category', 'category_id','author', 'comments', 'status'
         ]
+
 class PostListSerializer(serializers.ModelSerializer):
     category_name = serializers.ReadOnlyField(source="category.name")
     author_name = serializers.ReadOnlyField(source="author.username")
     author_avatar = serializers.ImageField(source="author.userprofile.avatar", read_only=True)
+    summary = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -89,13 +94,20 @@ class PostListSerializer(serializers.ModelSerializer):
             "id",
             "slug",
             "title",
-            "content",
+            "summary",
             "image",
             "created_at",
             "category_name",
             "author_name",
-            "author_avatar"
+            "author_avatar",
+            "status"
         ]
+
+    def get_summary(self, obj):
+        if obj.content and len(obj.content) > 120:
+            return obj.content[:120] + "..."
+        
+        return obj.content
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)

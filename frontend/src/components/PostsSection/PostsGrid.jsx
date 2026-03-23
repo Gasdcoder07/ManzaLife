@@ -16,7 +16,7 @@ const PostsGrid = () => {
                             Image={post.image}
                             Category={post.category_name}
                             Title={post.title}
-                            Description={post.content}
+                            Description={post.summary}
                             Slug={post.slug}
                             AutorName={post.author_name}
                             AutorAvatar={post.author_avatar}
