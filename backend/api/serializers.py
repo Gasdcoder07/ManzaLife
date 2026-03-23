@@ -13,11 +13,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['bio', 'avatar', 'is_local_business']
 
 class UserSerializer(serializers.ModelSerializer):
-    profile = UserProfileSerializer(source='userprofile', read_only=True)
+    bio = serializers.CharField(source='userprofile.bio', read_only=True)
+    avatar = serializers.ImageField(source='userprofile.avatar', read_only=True)
+    # profile = UserProfileSerializer(source='userprofile', read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'profile']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar']
 
 class CommentReplySerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
