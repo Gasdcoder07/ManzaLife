@@ -1,6 +1,6 @@
-import Axlphoto from "../../../imgs/HomeResources/Testimonials/AxlTraje.jpeg"
-import Vaca from "../../../imgs/HomeResources/Testimonials/Valentinxd.jpeg"
-import Grequito from "../../../imgs/HomeResources/Testimonials/Greco.jpeg"
+import Axlphoto from "../../../imgs/HomeResources/Testimonials/AxlTraje.webp"
+import Vaca from "../../../imgs/HomeResources/Testimonials/ValentinTraje.webp"
+import Grequito from "../../../imgs/HomeResources/Testimonials/GrecoTraje.webp"
 export const TestimonialItems = [
    {       
       id: 1,

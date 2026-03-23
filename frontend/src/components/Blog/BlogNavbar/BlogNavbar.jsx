@@ -69,7 +69,7 @@ const BlogNavbar = () => {
                             <div className="relative" ref={dropdownRef} onClick={() => setAvatarDropdownOpen(!avatarDropdownOpen)}>
                                 <div className="relative">
                                     <img
-                                        src={user?.profile?.avatar || DefaultAvatar}
+                                        src={user?.avatar || DefaultAvatar}
                                         alt={user.username}
                                         className="size-10 object-cover rounded-full cursor-pointer"/>
                                     <div className="absolute bottom-0 translate-x-1/2 size-2 rounded-full bg-green-600"/>
