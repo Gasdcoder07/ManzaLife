@@ -39,13 +39,12 @@ class CommentReplySerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
     author_avatar = serializers.SerializerMethodField()
-    author = UserSerializer(read_only = True)
     replies = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = [
-            'id', 'post', 'author', 'author_name',
+            'id', 'post', 'author_name', 'author_name',
             'author_avatar', 'content', 'created_at',
             'parent', 'replies'
         ]

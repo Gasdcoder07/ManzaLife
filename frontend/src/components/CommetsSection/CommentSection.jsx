@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
-import axios from "axios"
 import { useAuth } from "../../context/AuthContext"
+import { postComment } from "../../services/commentService"
 
 const Comment = ({ comment, depth = 0 }) => {
-
     const [showReply, setShowReply] = useState(false);
+    const [showReplyForm, setShowReplyForm] = useState(false);
     const [content, setContent] = useState("")
     const [isPrivate, setIsPrivate] = useState(false)
 
@@ -40,10 +40,36 @@ const Comment = ({ comment, depth = 0 }) => {
 
                     {
                         depth === 0 && (
-                            <div className="flex justify-end">
-                                <button className="w-fit text-xs text-zinc-400 mt-2 hover:text-white transition-colors font-semibold uppercase tracking-wider cursor-pointer">
-                                    <span>Responder</span>
-                                </button>
+                            <div>
+                                {
+                                    showReplyForm ? (
+                                        <div className="flex flex-col gap-2">
+                                            <textarea
+                                                className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg p-2 text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar"
+                                                name=""
+                                                placeholder="Añade una respuesta..."
+                                                id=""
+                                                rows={1}/>
+                                            <div className="flex justify-end gap-4">
+                                                <button
+                                                    className="px-4 sm:px-6 py-2 text-zinc-400 hover:text-white rounded-full transition-all font-semibold text-sm uppercase tracking-wide cursor-pointer"
+                                                    onClick={() => setShowReplyForm(false)}>Cancelar</button>
+                                                <button
+                                                    className="px-4 sm:px-6 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-zinc-700 disabled:text-zinc-500 text-white rounded-full transition-all font-bold text-sm uppercase tracking-wide cursor-pointer disabled:cursor-not-allowed">
+                                                    Responder
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="flex justify-end">
+                                            <button
+                                                onClick={() => setShowReplyForm(true)}
+                                                className="w-fit text-xs text-zinc-400 mt-2 hover:text-white transition-colors font-semibold uppercase tracking-wider cursor-pointer">
+                                                <span>Responder</span>
+                                            </button>
+                                        </div>
+                                    )
+                                }
                             </div>
                         )
                     }
@@ -77,35 +103,23 @@ const CommentSection = ({postId, comments = []}) => {
     const [newComment, setNewComment] = useState("")
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        if (!newComment.trim()) return
-
-        const token = localStorage.getItem("token")
+        e.preventDefault();
+        if (!newComment.trim()) return;
 
         try {
-            const response = await axios.post(
-                "http://localhost:8000/api/comments/",
-                {
-                    post: postId,
-                    content: newComment,
-                },
-                {
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "Content-Type": "application/json"
-                    }
-                }
-            )
-            setNewComment("")
+            await postComment({
+                post: postId,
+                content: newComment, 
+            });
+            setNewComment("");
         } catch (error) {
             console.log("Error al publicar", error)
         }
     }
 
-    const userAvatar = user?.profile?.avatar || DefaultAvatar;
+    // console.log(user);
+    const userAvatar = user?.avatar || DefaultAvatar;
 
-    console.log(comments)
     return (
         <div className="w-full text-left space-y-8">
             <h4 className="text-xl tracking-wider text-white flex items-center gap-3">
