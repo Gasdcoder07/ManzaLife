@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { usePost } from "../../hooks/usePosts";
 import { formatDate } from "../../../utils/formatDate";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
-import CommentSection from "../../components/CommetsSection/CommentSection";
+import CommentSection from "../../components/CommentsSection/CommentSection";
 import BlogPostDetailSkeleton from "../../components/Blog/BlogPosts/BlogPostDetailSkeleton";
 
 const BlogPostDetail = () => {

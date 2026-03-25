@@ -35,7 +35,8 @@ class CommentReplySerializer(serializers.ModelSerializer):
                 return obj.author.userprofile.avatar.url
         except:
             pass
-        return None        
+        return None
+          
 class CommentSerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
     author_avatar = serializers.SerializerMethodField()
