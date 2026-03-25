@@ -28,14 +28,14 @@ function Navbar() {
                                         smooth
                                         to={item.path}
                                         onClick={() => setShowMobileMenu(false)}
-                                        className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 hover:scale-105 transition-all duration-200 ease-in-out inline-block`}>
+                                        className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 transition-all duration-200 ease-in-out inline-block`}>
                                         {item.title}
                                     </HashLink>
                                 ) : (
                                     <Link
                                         to={item.path}
                                         onClick={() => setShowMobileMenu(false)}
-                                        className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 hover:scale-105 transition-all duration-200 ease-in-out inline-block`}>
+                                        className={`${showMobileMenu && "text-2xl lg:text-3xl"} text-white tracking-wider px-3 py-1 hover:text-orange-500 transition-all duration-200 ease-in-out inline-block`}>
                                         {item.title}
                                     </Link>
                                 )

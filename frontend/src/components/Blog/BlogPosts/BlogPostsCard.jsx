@@ -1,9 +1,12 @@
 import PostActionButton from "../../PostsSection/PostActionButton"
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp"
+import { Link } from "react-router-dom";
 
 const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, AutorName, Date}) => {
   return (
-    <div className="w-full sm:h-56 border border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden">
+    <Link
+        to={`/blog/${Slug}`}
+        className="group hover:-translate-y-0.5 hover:border-neutral-700 transition-all duration-200 ease-in-out w-full sm:h-56 border border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden">
         <div className="relative h-56 w-full sm:h-full sm:w-1/3 shrink-0">
             <img
                 src={Image}
@@ -47,7 +50,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
                 </div>
             </div>
         </div>
-    </div>
+    </Link>
   );
 };
 
