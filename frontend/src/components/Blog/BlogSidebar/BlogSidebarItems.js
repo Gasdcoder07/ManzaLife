@@ -15,19 +15,19 @@ export const BlogSidebarItems = [
         text: "Categorias",
         path: "/blog/categories"
     },
-    {
-       icon: TbChartBarPopular,
-        text: "Popular",
-        path: "/blog/popular"
-    },
+    // {
+    //    icon: TbChartBarPopular,
+    //     text: "Popular",
+    //     path: "/blog/popular"
+    // },
     {
        icon: FaUsers,
         text: "Comunidad",
         path: "/blog/community"
     },
-    {
-       icon: FaRegUserCircle,
-        text: "Perfil",
-        path: "/blog/profile"
-    },
+    // {
+    //    icon: FaRegUserCircle,
+    //     text: "Perfil",
+    //     path: "/blog/profile"
+    // },
 ]
