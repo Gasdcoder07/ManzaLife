@@ -7,8 +7,8 @@ const BlogSidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <aside className={`relative hidden sm:flex border-r border-white ${isOpen ? 'w-56' : 'w-16'}`}>
-        <div className="absolute z-20 top-4 right-0 translate-x-1/2 border border-white rounded-full p-1 bg-zinc-950">
+    <aside className={`relative hidden sm:flex border-r border-neutral-700 ${isOpen ? 'w-56' : 'w-16'}`}>
+        <div className="absolute z-20 top-4 right-0 translate-x-1/2 border border-neutral-700 rounded-full p-1 bg-zinc-950">
             <IoMenu
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-2xl cursor-pointer hover:text-orange-600 transition-all duration-200 ease-in-out"/>

@@ -35,7 +35,7 @@ const BlogNavbar = () => {
     console.log(user)
 
     return (
-        <nav className="w-full border-b border-white flex justify-center items-center">
+        <nav className="w-full border-b border-neutral-700 flex justify-center items-center">
             <div className="container mx-auto flex justify-between items-center px-4 py-2 gap-6 md:px-8 lg:px-12">
                 <Link to={"/"} className="shrink-0 hidden sm:flex">
                     <img
@@ -53,7 +53,7 @@ const BlogNavbar = () => {
 
                 <div className="relative w-full max-w-2xl text-white mx-auto flex justify-center items-center">
                     <input
-                        className="bg-neutral-900 border border-white rounded-xl w-full py-3 pl-5 pr-10 outline-none placeholder-white/50"
+                        className="bg-neutral-900 border border-neutral-700 rounded-xl w-full py-3 pl-5 pr-10 outline-none placeholder-white/50"
                         type="text"
                         placeholder="Playas, plazas o restaurantes"
                     ></input>
