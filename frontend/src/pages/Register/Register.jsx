@@ -92,15 +92,17 @@ export default function Register() {
 
                 <div className="absolute inset-0 z-20 flex flex-col justify-between p-5">
                     <div className="flex justify-between items-center">
-                        <img
-                            src={Logo}
-                            alt="Logo"
-                            className="h-10 object-cover"
-                        />
+                        <Link to={"/"}>
+                            <img
+                                src={Logo}
+                                alt="Logo"
+                                className="h-10 object-cover"
+                            />
+                        </Link>
                         <Link
-                            to={"/"}
+                            to={"/blog"}
                             className="text-sm text-white/80 hover:text-white flex items-center gap-2">
-                            <span>Volver al inicio</span>
+                            <span>Ir al blog</span>
                             <FaArrowRight/>
                         </Link>
                     </div>
@@ -130,10 +132,10 @@ export default function Register() {
                 <div className="h-full w-full px-4 md:px-8 lg:px-12 py-6 sm:py-8 flex flex-col gap-6 justify-center">
                     <div className="space-y-4">
                         <Link
-                            to={"/"}
+                            to={"/blog"}
                             className="md:hidden text-sm text-white/80 hover:text-white flex items-center gap-2">
                             <FaArrowRight className="rotate-180" />
-                            <span>Volver al inicio</span>
+                            <span>Ir al inicio</span>
                         </Link>
 
                         {/* Pasos */}
