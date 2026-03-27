@@ -58,16 +58,18 @@ export default function Login() {
 
                 <div className="absolute inset-0 z-20 flex flex-col justify-between px-6 py-4">
                     <div className="flex justify-between items-center">
-                        <img
-                            className="h-10 object-cover"
-                            src={Logo}
-                            alt="ManzaLife"
-                        />
+                        <Link to={"/"}>
+                            <img
+                                className="h-10 object-cover"
+                                src={Logo}
+                                alt="ManzaLife"
+                            />
+                        </Link>
 
                         <Link
-                            to={"/"}
+                            to={"/blog"}
                             className="text-sm text-white/80 hover:text-white flex items-center gap-2">
-                            <span>Volver al inicio</span>
+                            <span>Ir al blog</span>
                             <FaArrowRight/>
                         </Link>
                     </div>
@@ -86,11 +88,11 @@ export default function Login() {
                 >
                     <div className="space-y-2">
                         <Link
-                            to={"/"}
+                            to={"/blog"}
                             className="text-sm text-white/80 hover:text-white flex md:hidden items-center gap-2"
                         >
                             <FaArrowRight className="rotate-180" />
-                            <span>Volver al inicio</span>
+                            <span>Ir al blog</span>
                         </Link>
 
                         <h3 className="text-2xl md:text-3xl text-center md:text-left font-semibold tracking-wide">
