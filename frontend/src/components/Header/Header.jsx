@@ -30,7 +30,7 @@ function Header () {
                   Un lugar paradisíaco en las costas de México
               </h3>
 
-              {/* <div className="relative w-full max-w-4xl text-white mt-2">
+              <div className="relative w-full max-w-4xl text-white mt-2">
                   <input
                       className="bg-white/20 border border-white rounded-xl w-full py-3 pl-5 pr-10 outline-none placeholder-white/50"
                       type="text"
@@ -38,7 +38,7 @@ function Header () {
                   ></input>
 
                   <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-orange-500 hover:rotate-45 transition-all ease-in-out duration-200" />
-              </div> */}
+              </div>
 
           </div>
       </section>

@@ -16,6 +16,11 @@ export const NavItems = [
     },
     {
         id: 4,
+        title: "ManzaDle",
+        path: "/manzadle"
+    },
+    {
+        id: 5,
         title: "Iniciar sesión",
         path: "/auth/login",
     },
