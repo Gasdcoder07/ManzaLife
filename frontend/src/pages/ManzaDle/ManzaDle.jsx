@@ -1,18 +1,30 @@
 import { useState, useEffect } from "react"
+import { DICTIONARY } from "../../../utils/manzadleWords"
 import { Navbar } from "../../components"
 import Header from "./HeaderManzaDle"
 import Board from "./Board"
 import Keyboard from "./Keyboard"
 import GameModal from "./GameModal"
 
+const getDailyWord = () => {
+    const today = new Date()
+    const dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()
+
+    const index = dateSeed % DICTIONARY.length
+    return DICTIONARY[index];
+}
+
 export default function ManzaDle() {
 
-    const [solution, setSolution] = useState("PUNTOBAHIA")
+    const [solutionData, setSolutionData] = useState(getDailyWord())
     const [guesses, setGuesses] = useState(Array(6).fill(null))
     const [currentGuess, setCurrentGuess] = useState("")
     const [turn, setTurn] = useState(0)
     const [isGameOver, setIsGameOver] = useState(false)
     const [isWin, setIsWin] = useState(false)
+
+    const solution = solutionData.word
+    const description = solutionData.desc
 
     const handleKeyPress = (key) => {
         if (isGameOver) return
@@ -68,7 +80,7 @@ export default function ManzaDle() {
                 </div>
                 {isGameOver && (
                     <div className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/80">
-                        <GameModal isWin={isWin} secretWord={solution} />
+                        <GameModal isWin={isWin} secretWord={solution} description={description}/>
                     </div>
                 )}
             </main>
