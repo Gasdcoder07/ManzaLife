@@ -25,9 +25,9 @@ export const BlogSidebarItems = [
         text: "Comunidad",
         path: "/blog/community"
     },
-    // {
-    //    icon: FaRegUserCircle,
-    //     text: "Perfil",
-    //     path: "/blog/profile"
-    // },
+    {
+       icon: FaRegUserCircle,
+        text: "Perfil",
+        path: "/blog/profile"
+    },
 ]
