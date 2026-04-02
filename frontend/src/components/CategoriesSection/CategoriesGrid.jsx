@@ -3,7 +3,7 @@ import CategoriesCard from "./CategoriesCard";
 import { CategoryIcons } from "./CategoriesItems";
 
 const CategoriesGrid = () => {
-    const categories = useCategories();
+    const {categories, loading} = useCategories();
     const limitedCategories = categories.slice(0, 6);
 
 return (
