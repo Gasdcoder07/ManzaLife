@@ -1,12 +1,15 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import EditProfileModal from "../../components/Modals/EditProfileModal";
+import { useState } from "react";
 
 const BlogProfile = () => {
-    const { user, logout } = useAuth();
+    const { user } = useAuth();
+    const [showModal, setShowModal] = useState(false);
 
     if (!user) return <Navigate to={"/auth/login"}/>;
 
-    console.log(user)
+    // console.log(user)
 
   return (
     <div className="py-4 flex flex-col gap-4">
@@ -35,7 +38,9 @@ const BlogProfile = () => {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
                             <p className="text-neutral-400 whitespace-pre-line">{user.bio}</p>
-                            <button className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">Editar perfil</button>
+                            <button
+                                onClick={() => setShowModal(true)}
+                                className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">Editar perfil</button>
                         </div>
                     </div>
                     
@@ -45,11 +50,18 @@ const BlogProfile = () => {
         </div>
 
         <div className="border border-neutral-700 rounded-xl px-6 py-4">
-            <div className="flex gap-4 border-b pb-2">
-                <button className="font-semibold">Posts</button>
-            </div>
+            <p className="font-semibold">Posts</p>
         </div>
 
+        {
+            showModal && 
+                <EditProfileModal
+                    setShowModal={setShowModal}
+                    first_name={user.first_name}
+                    last_name={user.last_name}
+                    username={user.username}
+                    bio={user.bio}/>
+        }
     </div>
   );
 };

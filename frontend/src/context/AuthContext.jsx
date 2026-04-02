@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../api/axios"
+import { getProfile } from "../services/profileService";
 
 const AuthContext = createContext();
 
@@ -9,10 +10,8 @@ export const AuthProvider = ({ children }) => {
 
     const getUserProfile = async (token) => {
         try {
-            const res = await api.get("perfil/", {
-                headers: {Authorization: `Bearer ${token}`}
-            });
-            setUser({ token: token, ...res.data })
+            const data = await getProfile();
+            setUser({ token: token, ...data });
         } catch (e) {
             console.error("Error al obtener el perfil de usuario: ", e);
         } finally {
@@ -70,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, loading, register }}>
+        <AuthContext.Provider value={{ user, setUser, login, logout, loading, register }}>
             { !loading && children }
         </AuthContext.Provider>
     )
