@@ -1,13 +1,14 @@
 import { useAuth } from "../../context/AuthContext";
-import EditProfileModal from "../../components/Modals/EditProfileModal";
-import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { getUserByUsername } from "../../services/userService";
+import EditProfileModal from "../../components/Modals/EditProfileModal";
+import ImageProfileModal from "../../components/Modals/ImageProfileModal";
+import BlogProfileSkeleton from "../../components/Blog/BlogProfile/BlogProfileSkeleton";
+import BlogProfileError from "../../components/Blog/BlogProfile/BlogProfileError";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import Banner from "../../../imgs/LoginResources/Login_bg.png";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
-import ImageProfileModal from "../../components/Modals/ImageProfileModal";
-import { useParams } from "react-router";
-import { getUserByUsername } from "../../services/userService";
-import BlogProfileSkeleton from "../../components/Blog/BlogProfile/BlogProfileSkeleton";
 
 const BlogProfile = () => {
     const { username } = useParams()
@@ -48,6 +49,10 @@ const BlogProfile = () => {
         return <BlogProfileSkeleton/>
     }
     
+    if (!profileData) {
+        return <BlogProfileError/>
+    }
+
     // console.log(user)
 
   return (
