@@ -2,6 +2,7 @@ import { useAuth } from "../../context/AuthContext";
 import { TbPhotoEdit } from "react-icons/tb";
 import ModalLayout from "../../layouts/ModalLayout";
 import { useRef, useState } from "react";
+import { toast } from 'react-hot-toast';
 import { updateProfile } from "../../services/profileService";
 
 const ImageProfileModal = ({ setShowImageModal }) => {
@@ -25,8 +26,10 @@ const ImageProfileModal = ({ setShowImageModal }) => {
                 ...updated
             }));
 
+            toast.success("¡Imagen actualizada!")
             setShowImageModal(false)
         } catch (e) {
+            toast.error("Error al actualizar la imagen...");
             console.error(e);
         } finally {
             setLoading(false);

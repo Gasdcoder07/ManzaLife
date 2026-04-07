@@ -17,7 +17,7 @@ function App() {
                         <Route path=":slug" element={<BlogPostDetail/>}/>
                         <Route path="categories" element={<BlogCategories/>} />
                         <Route path="community" element={<BlogCommunity/>}/>
-                        <Route path="profile" element={<BlogProfile/>}/>
+                        <Route path="profile/:username" element={<BlogProfile/>}/>
                   </Route>
 
                   <Route path="/pruebas" element={<Pruebas />} />

@@ -2,9 +2,11 @@ import { useState } from "react";
 import { IoMenu, IoArrowForwardOutline } from "react-icons/io5"
 import { BlogSidebarItems } from "./BlogSidebarItems";
 import { Link, NavLink } from "react-router-dom"
+import { useBlogSidebarItems } from "../../../hooks/useBlogSidebarItems";
 
 const BlogSidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
+    const items = useBlogSidebarItems()
 
   return (
     <aside className={`relative hidden sm:flex border-r border-neutral-700 ${isOpen ? 'w-56' : 'w-16'}`}>
@@ -17,7 +19,7 @@ const BlogSidebar = () => {
         <div className={`${isOpen ? 'flex' : 'hidden'} h-full w-full px-6 py-4`}>
             <ul className="w-full flex flex-col gap-4">
                 {
-                    BlogSidebarItems.map((item, index) => {
+                    items.map((item, index) => {
                         const Icon = item.icon;
 
                         return (

@@ -1,25 +1,58 @@
-import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import EditProfileModal from "../../components/Modals/EditProfileModal";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Banner from "../../../imgs/LoginResources/Login_bg.png";
 import ImageProfileModal from "../../components/Modals/ImageProfileModal";
+import { useParams } from "react-router";
+import { getUserByUsername } from "../../services/userService";
 
 const BlogProfile = () => {
-    const { user } = useAuth();
+    const { username } = useParams()
+    const { user: currentUser } = useAuth();
+    const Authorized = currentUser?.username === username;
+
     const [showModal, setShowModal] = useState(false);
     const [showImageModal, setShowImageModal] = useState(false);
 
-    if (!user) return <Navigate to={"/auth/login"}/>;
-
     // console.log(user)
+    const [profileData, setProfileData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProfileData = async () => {
+            setLoading(true);
+
+            if (Authorized) {
+                setProfileData(currentUser);
+                setLoading(false);
+            } else {
+                try {
+                    const data = await getUserByUsername(username);
+                    setProfileData(data);
+                } catch (e) {
+                    console.error("Error al cargar el perfil: ", e);
+                    setProfileData(null);
+                } finally {
+                    setLoading(false);
+                }
+            }
+        }
+
+        fetchProfileData();
+
+    }, [username, currentUser, Authorized]);
+
+    if (loading) {
+        return <div>Nel</div>
+    }
 
   return (
     <div className="py-4 flex flex-col gap-4">
         <div className="border border-neutral-700 rounded-xl overflow-hidden">
             <img
                 className="w-full h-56 sm:h-72 object-cover"
-                src="https://mondoshop.com/cdn/shop/articles/silent_hill_banner.jpg?v=1589212688"
+                src={Banner}
                 alt="Banner" 
             />
 
@@ -28,15 +61,18 @@ const BlogProfile = () => {
                     <div className="relative size-32 sm:size-40">
                         <img
                             className="border-4 border-zinc-950 rounded-full size-32 sm:size-40 object-cover"
-                            src={user.avatar}
-                            alt={user.username}
+                            src={profileData.avatar}
+                            alt={profileData.username}
                         />
-                        
-                        <button
-                            onClick={() => setShowImageModal(true)}
-                            className="absolute bottom-0 right-0 -translate-x-full bg-white/10 p-2 rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-200 ease-in-out">
-                            <MdOutlineAddPhotoAlternate/>
-                        </button>
+                        {
+                            Authorized && (
+                                <button
+                                    onClick={() => setShowImageModal(true)}
+                                    className="absolute bottom-0 right-0 -translate-x-full bg-white/10 p-2 rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-200 ease-in-out">
+                                    <MdOutlineAddPhotoAlternate/>
+                                </button>
+                            )
+                        }
                     </div>
 
                 </div>
@@ -44,15 +80,19 @@ const BlogProfile = () => {
                 <div className="flex flex-col gap-4">
                     <div className="space-y-4">
                         <div className="space-y-1">
-                            <h3 className="italic tracking-wide font-light">{user.first_name} {user.last_name}</h3>
-                            <h2 className="text-2xl font-semibold tracking-widest">@{user.username}</h2>
+                            <h3 className="italic tracking-wide font-light">{profileData.first_name} {profileData.last_name}</h3>
+                            <h2 className="text-2xl font-semibold tracking-widest">@{profileData.username}</h2>
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
-                            <p className="text-neutral-400 whitespace-pre-line">{user.bio}</p>
-                            <button
-                                onClick={() => setShowModal(true)}
-                                className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">Editar perfil</button>
+                            <p className="text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
+                            {
+                                Authorized && (
+                                    <button
+                                        onClick={() => setShowModal(true)}
+                                        className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">Editar perfil</button>
+                                )
+                            }
                         </div>
                     </div>
                     
@@ -68,11 +108,7 @@ const BlogProfile = () => {
         {
             showModal && 
                 <EditProfileModal
-                    setShowModal={setShowModal}
-                    first_name={user.first_name}
-                    last_name={user.last_name}
-                    username={user.username}
-                    bio={user.bio}/>
+                    setShowModal={setShowModal}/>
         }
         {
             showImageModal &&
