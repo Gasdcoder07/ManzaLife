@@ -46,7 +46,7 @@ const UsSection = () => {
                   <ActionButton Path={"/blog"} Text={"Explorar lugares"}/>
               </div>
 
-              <hr className="border border-neutral-900" />
+              {/* <hr className="border border-neutral-900" /> */}
           </div>
       </section>
   );

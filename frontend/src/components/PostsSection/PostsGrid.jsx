@@ -1,9 +1,12 @@
 import PostItem from "./PostItem";
 import { usePosts } from "../../hooks/usePosts"
 import { formatDate } from "../../../utils/formatDate"
+import PostGridSkeleton from "./PostGridSkeleton";
 
 const PostsGrid = () => {
     const {posts, loading} = usePosts();
+
+    if (loading) return <PostGridSkeleton/>
 
     return (
       <div className="overflow-x-auto scroll-smooth no-scrollbar">

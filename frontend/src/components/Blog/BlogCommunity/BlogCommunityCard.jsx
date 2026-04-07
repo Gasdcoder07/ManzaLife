@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const BlogCommunityCard = ({ Avatar, FirstName, LastName, Username, Bio }) => {
   return (
-    <div className="group h-32 rounded-xl border border-neutral-800 p-4 flex gap-6 w-full hover:border-neutral-700 hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out">
+    <Link to={`/blog/profile/${Username}`} className="group h-32 rounded-xl border border-neutral-800 p-4 flex gap-6 w-full hover:border-neutral-700 hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out">
         <img
             className="shrink-0 size-16 object-cover rounded-full"
             src={Avatar}
@@ -13,7 +15,7 @@ const BlogCommunityCard = ({ Avatar, FirstName, LastName, Username, Bio }) => {
             </div>
             <p className="text-neutral-500 line-clamp-1 whitespace-pre-line">{Bio ? Bio : 'En ManzaLife Papus'}</p>
         </div>
-    </div>
+    </Link>
   );
 };
 

@@ -3,10 +3,17 @@ import { getCategories } from "../services/categoryService";
 
 export const useCategories = () => {
     const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getCategories().then(setCategories).catch(console.error);
+        const loadCategories = async () => {
+            const data = await getCategories();
+            setCategories(data);
+            setLoading(false);
+        }
+        
+        loadCategories();
     }, []);
 
-    return categories;
+    return {categories, loading};
 };

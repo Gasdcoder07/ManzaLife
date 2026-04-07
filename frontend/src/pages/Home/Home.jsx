@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Header, BlogSection, PostsSection, CategoriesSection, UsSection,TestimonialsSection, CTASection, Footer } from "../../components/index"
 
 export default function Home() {

@@ -1,4 +1,5 @@
-import { Home, Login, Register, BlogHome, BlogCategories, BlogPostDetail, Pruebas, CreatePost, BlogCommunity, ManzaDle } from "./pages/index.js"
+import { Home, Login, Register, BlogHome, BlogCategories, BlogPostDetail, Pruebas, CreatePost, BlogCommunity, BlogProfile, ManzaDle } from "./pages/index.js"
+// import { Home, Login, Register, BlogHome, BlogCategories, BlogPostDetail, Pruebas, CreatePost, BlogCommunity, ManzaDle } from "./pages/index.js"
 import BlogLayout from "./layouts/BlogLayout.jsx";
 import { Routes, Route } from 'react-router-dom'
 import AuthLayout from "./layouts/AuthLayout.jsx";
@@ -17,6 +18,7 @@ function App() {
                         <Route path=":slug" element={<BlogPostDetail/>}/>
                         <Route path="categories" element={<BlogCategories/>} />
                         <Route path="community" element={<BlogCommunity/>}/>
+                        <Route path="profile/:username" element={<BlogProfile/>}/>
                   </Route>
 
                   <Route path="/manzadle" element={<ManzaDle />}/>

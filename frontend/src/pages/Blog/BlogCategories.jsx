@@ -1,8 +1,12 @@
 import BlogCategoriesGrid from "../../components/Blog/BlogCategories/BlogCategoriesGrid";
+import BlogCategoriesSkeleton from "../../components/Blog/BlogCategories/BlogCategoriesSkeleton";
 import { useCategories } from "../../hooks/useCategories";
 
 const BlogCategories = () => {
-    const categories = useCategories();
+    const {categories, loading} = useCategories();
+
+    if (loading) return <BlogCategoriesSkeleton/>
+
     console.log(categories);
 
   return (

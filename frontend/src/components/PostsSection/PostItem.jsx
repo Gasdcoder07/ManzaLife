@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import PostActionButton from "./PostActionButton";
 import { MdOutlineDateRange } from "react-icons/md";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
 
 const PostItem = ({Image, Category, Title, Description, Slug, AutorAvatar, AutorName, Date}) => {
     return (
-        <div className="bg-linear-to-b w-sm from-orange-500 via-orange-600 to-orange-700 rounded-xl overflow-hidden max-w-sm hover:-translate-y-1 transition-all duration-200 ease-in-out">
+        <Link to={`/blog/${Slug}`} className="bg-linear-to-b w-sm from-orange-500 via-orange-600 to-orange-700 rounded-xl overflow-hidden max-w-sm hover:-translate-y-1 transition-all duration-200 ease-in-out">
             <div className="relative">
                 <img
                     src={Image}
@@ -48,7 +49,7 @@ const PostItem = ({Image, Category, Title, Description, Slug, AutorAvatar, Autor
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

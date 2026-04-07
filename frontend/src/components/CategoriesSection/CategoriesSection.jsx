@@ -22,7 +22,7 @@ const CategoriesSection = () => {
                     <ActionButton Path={"/blog/categories"} Text={"Explorar categorías"}/>
                 </div>
 
-              <hr className="border border-neutral-900"/>
+              {/* <hr className="border border-neutral-900"/> */}
 
           </div>
       </section>

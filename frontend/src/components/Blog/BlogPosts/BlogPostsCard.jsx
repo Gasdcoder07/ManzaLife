@@ -31,7 +31,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
             </div>
 
             <div className="flex justify-end my-2">
-                <PostActionButton Slug={Slug}/>
+                <PostActionButton/>
             </div>
 
             <hr className="border border-neutral-800 my-2" />

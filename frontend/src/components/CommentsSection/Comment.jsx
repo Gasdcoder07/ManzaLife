@@ -2,6 +2,7 @@ import { useState } from "react";
 import Reply from "./Reply";
 import toast from "react-hot-toast";
 import { postComment } from "../../services/commentService";
+import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 
 const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, CreatedDate, Replies = [] }) => {
     const [showReplyForm, setShowReplyForm] = useState(false);
@@ -121,7 +122,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                                 <Reply
                                     key={r.id}
                                     AuthorUsername={r.author_name}
-                                    AuthorAvatar={r.author_avatar}
+                                    AuthorAvatar={r?.author_avatar || DefaultAvatar}
                                     Content={r.content}
                                     CreatedDate={r.created_at}/>
                             )

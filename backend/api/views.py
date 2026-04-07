@@ -68,11 +68,30 @@ class PerfilView(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+    def patch(self, request):
+        user = request.user
+        profile = user.userprofile
+
+        user.first_name = request.data.get("first_name", user.first_name)
+        user.last_name = request.data.get("last_name", user.last_name)
+        user.username = request.data.get("username", user.username)
+        profile.bio = request.data.get("bio", profile.bio)
+
+        if 'avatar' in request.FILES:
+            profile.avatar = request.FILES['avatar']
+
+        user.save()
+        profile.save()
+
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
     
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+    lookup_field = 'username'
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()

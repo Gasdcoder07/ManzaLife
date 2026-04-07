@@ -57,7 +57,7 @@ const BlogSection = () => {
 
               <HowItWorksGrid/>
 
-              <hr className="border border-neutral-900" />
+              {/* <hr className="border border-neutral-900" /> */}
           </div>
       </section>
   );

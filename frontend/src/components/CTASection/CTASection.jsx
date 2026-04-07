@@ -23,7 +23,7 @@ const CTASection = () => {
                   <ActionButton Path={"/auth/register"} Text={"Crea tu cuenta"} />
               </div>
 
-              <hr className="border border-neutral-900" />
+              {/* <hr className="border border-neutral-900" /> */}
           </div>
       </section>
   );

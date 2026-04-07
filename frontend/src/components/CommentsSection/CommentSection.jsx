@@ -43,7 +43,7 @@ const CommentSection = ({ postId, comments = [] }) => {
         }
     }
 
-    // console.log(comments);
+    console.log(comments);
     const userAvatar = user?.avatar || DefaultAvatar;
 
     return (
@@ -103,7 +103,7 @@ const CommentSection = ({ postId, comments = [] }) => {
                                     key={comment.id}
                                     CommentId={comment.id}
                                     PostId={postId}
-                                    AuthorAvatar={comment.author_avatar}
+                                    AuthorAvatar={comment?.author_avatar || DefaultAvatar}
                                     AuthorUsername={comment.author_name}
                                     Content={comment.content}
                                     CreatedDate={comment.created_at}
