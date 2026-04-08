@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoMenu, IoArrowForwardOutline } from "react-icons/io5"
 import { BlogSidebarItems } from "./BlogSidebarItems";
 import { Link, NavLink } from "react-router-dom"
 import { useBlogSidebarItems } from "../../../hooks/useBlogSidebarItems";
 
 const BlogSidebar = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(() => {
+        const saved = localStorage.getItem("sidebar-open");
+        return saved !== null ? JSON.parse(saved) : true;
+    });
+
     const items = useBlogSidebarItems()
+
+    useEffect(() => {
+        localStorage.setItem("sidebar-open", JSON.stringify(isOpen));
+    }, [isOpen]);
 
   return (
     <aside className={`relative hidden sm:flex border-r border-neutral-700 ${isOpen ? 'w-56' : 'w-16'}`}>
