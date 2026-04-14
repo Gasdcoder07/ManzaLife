@@ -18,6 +18,11 @@ class PostViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Post.objects.filter(status="published")
 
+        author = self.request.query_params.get("author")
+
+        if author:
+            queryset = queryset.filter(author__username__iexact=author)
+
         if self.action == 'retrieve':
             return queryset.prefetch_related(
                 'comments',

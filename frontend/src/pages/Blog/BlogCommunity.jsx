@@ -4,7 +4,7 @@ import { useUsers } from "../../hooks/useUsers";
 
 const BlogCommunity = () => {
     const { users, loading } = useUsers();
-    console.log(users);
+    // console.log(users);
 
     if (loading) return <BlogCommunitySkeleton/>;
 

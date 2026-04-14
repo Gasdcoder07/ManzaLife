@@ -1,5 +1,5 @@
 import { useAuth } from "../../context/AuthContext";
-import { useParams } from "react-router";
+import { data, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getUserByUsername } from "../../services/userService";
 import EditProfileModal from "../../components/Modals/EditProfileModal";
@@ -9,6 +9,8 @@ import BlogProfileError from "../../components/Blog/BlogProfile/BlogProfileError
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import Banner from "../../../imgs/LoginResources/Login_bg.png";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
+import BlogProfilePost from "../../components/Blog/BlogProfile/BlogProfilePost";
+import { getPostsByUsername } from "../../services/postService";
 
 const BlogProfile = () => {
     const { username } = useParams()
@@ -20,6 +22,7 @@ const BlogProfile = () => {
 
     const [profileData, setProfileData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [posts, setPosts] = useState([]);
     
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -45,6 +48,22 @@ const BlogProfile = () => {
         
     }, [username, currentUser, Authorized]);
     
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const data = await getPostsByUsername(username);
+                setPosts(data);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+
+        if (username) {
+            fetchPosts();
+        }
+
+    }, [username]);
+
     if (loading) {
         return <BlogProfileSkeleton/>
     }
@@ -53,7 +72,8 @@ const BlogProfile = () => {
         return <BlogProfileError/>
     }
 
-    // console.log(user)
+    console.log(username)
+    console.log(posts);
 
   return (
     <div className="py-4 flex flex-col gap-4">
@@ -111,6 +131,17 @@ const BlogProfile = () => {
 
         <div className="border border-neutral-700 rounded-xl px-6 py-4">
             <p className="font-semibold">Posts</p>
+{/* 
+            <div className="flex flex-col gap-4">
+                {
+                    [1, 2, 3, 4, 5].map((i) => {
+                        return (
+                            <BlogProfilePost/>
+                        )
+                    })
+                }
+            </div> */}
+
         </div>
 
         {

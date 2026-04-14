@@ -30,3 +30,8 @@ export const postPost = async (data) => {
 
     return res.data;
 }
+
+export const getPostsByUsername = async (UserName) => {
+    const res = await api.get(`posts/?author=${UserName}`);
+    return res.data;
+}

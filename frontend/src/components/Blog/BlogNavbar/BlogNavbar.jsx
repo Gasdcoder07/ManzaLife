@@ -32,7 +32,7 @@ const BlogNavbar = () => {
         navigate("/");
     }
 
-    console.log(user)
+    // console.log(user)
 
     return (
         <nav className="w-full border-b border-neutral-700 flex justify-center items-center">
