@@ -6,6 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 import Logo from "../../../imgs/logomaxxing.svg";
 import { sliderContent } from "./sliderContent";
 import { StepOne, StepTwo } from "../../components/Register/index"
+import validatePassword from "../../../utils/validatePassword.js"
 
 export default function Register() {
     const { register } = useAuth();
@@ -61,6 +62,7 @@ export default function Register() {
         if (!formData.password) return toast.error("La contraseña es obligatoria");
         if (!formData.password_confirm) return toast.error("Debes confirmar tu contraseña");
         if (formData.password !== formData.password_confirm) return toast.error("Las contraseñas no coinciden");
+        if (!validatePassword(formData.password)) return toast.error("Contraseña insegura: debe contener 8 caracteres, al menos un símbolo y un número")
 
         const toastId = toast.loading("Creando cuenta...");
 
