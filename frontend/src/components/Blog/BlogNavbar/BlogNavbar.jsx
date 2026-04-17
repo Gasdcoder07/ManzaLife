@@ -7,6 +7,7 @@ import { BlogSidebarItems } from "../BlogSidebar/BlogSidebarItems";
 import { useAuth } from "../../../context/AuthContext"
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
 import UserProfile from "../../UserProfile";
+import ToggleThemeButton from "../../ToggleThemeButton";
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -40,10 +41,12 @@ const BlogNavbar = () => {
                     <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-orange-500 hover:rotate-45 transition-all ease-in-out duration-200" />
                 </div>
 
+                <ToggleThemeButton/>
                 <div className="flex justify-center items-center gap-4 shrink-0">
                     <Link to={user ? "/create-post" : "/auth/login"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
                         <span>Crear Post</span>
                     </Link>
+
                     {
                         user && (
                             <UserProfile

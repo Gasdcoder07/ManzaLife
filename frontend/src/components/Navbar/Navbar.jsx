@@ -6,6 +6,7 @@ import { useState } from "react";
 import logo from "../../../imgs/logomaxxing.svg"
 import { useAuth } from "../../context/AuthContext";
 import UserProfile from "../UserProfile";
+import ToggleThemeButton from "../ToggleThemeButton";
 
 function Navbar() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -38,6 +39,8 @@ function Navbar() {
                         )
                     })
                 }
+
+                <ToggleThemeButton/>
 
                 {
                     user ? (
