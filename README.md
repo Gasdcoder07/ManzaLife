@@ -72,35 +72,20 @@ ManzaLife/
 
 
 ├── 📂 backend/ # Lógica de servidor y API
-
 │   ├── 📁 core/ # Configuración de Django
-
 │   ├── 📁 api/ # Endpoints y Serializers
-
 │   ├── 📁 blog/ # Modelos de artículos
-
 │   └── 📄 manage.py
-
 │
-
 ├── 📂 frontend/ # Interfaz de usuario (React)
-
 │   ├── 📁 src/
-
 │   │   ├── 📁 components/ # Navbar, Footer, etc.
-
 │   │   ├── 📁 pages/ # Home, Login, Blog
-
 │   │   └── 📁 api/ # Configuración Axios
-
 │   ├── 📁 public/
-
 │   └── 📄 tailwind.config.js
-
 │
-
 ├── 📂 docs/ # Documentación y diagramas
-
 └── 📄 .env.example # Variables de entorno
 
 ## 🌊 ¡Explora Manzanillo!
