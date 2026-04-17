@@ -69,7 +69,6 @@ Sigue estos pasos para configurar el proyecto localmente:
 
 ## 📁 Estructura del Proyecto
 
-```text
 ManzaLife/
 ├── 📂 backend/               # Lógica del servidor y API (Django)
 │   ├── 📁 core/              # Configuración principal (settings, urls, wsgi)
@@ -87,8 +86,6 @@ ManzaLife/
 │
 ├── 📂 docs/                  # Documentación técnica, manuales y diagramas
 └── 📄 .env.example           # Plantilla para variables de entorno (DB, Keys)
-
-
 
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
@@ -108,3 +105,5 @@ Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con
 Desarrollado con mucho cariño para resaltar la belleza de Manzanillo. 🌊🌴
 
 A domir ggs nos fuimos💤
+
+
