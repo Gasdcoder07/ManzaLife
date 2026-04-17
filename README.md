@@ -59,16 +59,30 @@ Sigue estos pasos para configurar el proyecto localmente:
    
 ## 💻 Uso
 
-Este blog está pensado para explorar y compartir ideas sobre cosas por hacer en Manzanillo. Aquí encontrarás recomendaciones de lugares, actividades, eventos y pequeños planes que puedes disfrutar en la zona.
+1.Explorar: Navega por la página de inicio para ver los lugares destacados del día.
 
-Puedes navegar por las diferentes categorías del blog, descubrir nuevas actividades y leer experiencias o sugerencias que te ayuden a aprovechar mejor tu tiempo en la ciudad.
+2.Filtrar: Utiliza las categorías para encontrar específicamente "Playas" o "Gastronomía".
+
+3.Leer: Entra al blog para conocer la historia detrás de lugares como "El Faro" o "La Boquita".
+
+4.Admin: Accede a /admin para gestionar el contenido (solo personal autorizado).
 
 ## 📂 Estructura del Proyecto
-Los archivos más importantes para entender la lógica:
- * src/: Contiene el código fuente.📁
- * docs/: Documentación adicional.📁
- * tests/: Pruebas unitarias y de integración.📁
- * config/: Archivos de configuración global.📁
+ManzaLife/
+├── backend/                # Lógica de servidor y API
+│   ├── core/               # Configuración de Django (settings, wsgi)
+│   ├── api/                # Endpoints y Serializers
+│   ├── blog/               # Modelo de datos para artículos
+│   └── manage.py
+├── frontend/               # Interfaz de usuario
+│   ├── src/
+│   │   ├── components/     # Componentes reutilizables (Navbar, Footer)
+│   │   ├── pages/          # Vistas (Home, Login, Blog)
+│   │   └── api/            # Configuración de Axios
+│   ├── public/
+│   └── tailwind.config.js
+├── docs/                   # Documentación técnica y diagramas
+└── .env.example            # Plantilla de variables de entorno
 
 
 ## 🌊 ¡Explora Manzanillo!
