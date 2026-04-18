@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../../../imgs/logomaxxing.svg";
 import { FaSearch } from "react-icons/fa";
-import { IoMenu } from "react-icons/io5"
+import { IoClose, IoMenu } from "react-icons/io5"
 import { useRef, useState } from "react";
 import { BlogSidebarItems } from "../BlogSidebar/BlogSidebarItems";
 import { useAuth } from "../../../context/AuthContext"
@@ -41,8 +41,9 @@ const BlogNavbar = () => {
                     <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-orange-500 hover:rotate-45 transition-all ease-in-out duration-200" />
                 </div> */}
 
-                <ToggleThemeButton/>
-                <div className="flex justify-center items-center gap-4 shrink-0">
+                <div className="flex justify-center items-center gap-6 shrink-0">
+                    <ToggleThemeButton/>
+
                     <Link to={user ? "/create-post" : "/auth/login"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
                         <span>Crear Post</span>
                     </Link>

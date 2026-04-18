@@ -1,5 +1,6 @@
 import BlogCommunityCard from "./BlogCommunityCard";
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
+import PaginationControls from "../PaginationControls";
 
 const BlogCommunityGrid = ({ Users }) => {
   return (
@@ -19,6 +20,8 @@ const BlogCommunityGrid = ({ Users }) => {
                 })
             }
         </div>
+
+        <PaginationControls/>
     </div>
   );
 };

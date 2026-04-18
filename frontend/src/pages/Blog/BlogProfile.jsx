@@ -86,11 +86,21 @@ const BlogProfile = () => {
   return (
     <div className="py-4 flex flex-col gap-4">
         <div className="border border-neutral-700 rounded-xl overflow-hidden">
-            <img
-                className="w-full h-56 sm:h-72 object-cover"
-                src={Banner}
-                alt="Banner" 
-            />
+            <div className="relative h-56 sm:h-72">
+                <img
+                    className="w-full h-full object-cover"
+                    src={Banner}
+                    alt="Banner" 
+                />
+
+                {
+                    Authorized && (
+                        <button className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-full hover:bg-white/30 cursor-pointer transition-colors duration-200 ease-in-out">
+                            <MdOutlineAddPhotoAlternate className="text-white"/>
+                        </button>
+                    )
+                }
+            </div>
 
             <div className="px-6 pb-6 space-y-4">
                 <div className="flex justify-center sm:justify-between -mt-20">

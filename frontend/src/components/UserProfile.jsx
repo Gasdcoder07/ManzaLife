@@ -3,6 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const UserProfile = ({ UserAvatar, Username }) => {
     const navigate = useNavigate();
@@ -47,10 +48,12 @@ const UserProfile = ({ UserAvatar, Username }) => {
                     <div className="absolute rounded-xl bg-zinc-800 border-neutral-800 shadow-lg top-full right-0 mt-2 w-48 max-h-52 z-20 overflow-y-auto custom-scrollbar">
                         <div className="w-full h-full px-6 py-3">
                             <div className="flex flex-col gap-2">
-                                <div className="flex gap-2 items-center px-2 py-1">
+                                <Link
+                                    to={`/blog/profile/${Username}`}
+                                    className="flex gap-2 items-center px-2 py-1 hover:bg-zinc-700 rounded-lg">
                                     <FaUser className="text-lg"/>
                                     <span>Perfil</span>
-                                </div>
+                                </Link>
 
                                 <hr className="text-neutral-600"/>
 
