@@ -7,7 +7,7 @@ const ToggleThemeButton = () => {
     return (
     <button 
         onClick={toggleTheme}
-        className="p-2 rounded-full text-white hover:text-orange-500 hover:scale-110 transition-all duration-200 ease-in-out cursor-pointer"
+        className="p-2 rounded-full text-black md:text-white dark:text-white hover:text-orange-500 hover:scale-110 transition-all duration-200 ease-in-out cursor-pointer"
     >
         {isDark ? <IoSunny size={24} /> : <IoMoon size={24} />}
     </button>
