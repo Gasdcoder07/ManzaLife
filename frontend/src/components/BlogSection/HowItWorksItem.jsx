@@ -1,7 +1,7 @@
 const HowItWorksItem = ({Icon, IconStyle, Title, Description}) => {
   return (
     <div className="w-full flex justify-center items-start gap-4">
-        <div className="bg-zinc-200 dark:bg-neutral-800 py-2 px-3 rounded-xl flex justify-center items-center shadow-xl">
+        <div className="bg-neutral-100 dark:bg-neutral-800 py-2 px-3 rounded-xl flex justify-center items-center shadow-xl">
             <Icon className={IconStyle}/>
         </div>
         <div className="flex flex-col gap-2">

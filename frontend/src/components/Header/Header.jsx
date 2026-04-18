@@ -15,8 +15,8 @@ function Header () {
               />
           </div>
 
-          <div className="absolute inset-0 dark:bg-black/60 -z-20" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/40 dark:from-transparent to-black/60 dark:to-zinc-950 -z-10" />
+          <div className="absolute inset-0  dark:bg-black/60 -z-20" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/40 to-zinc-50/30 dark:from-transparent dark:to-zinc-950 -z-10" />
 
           <div className=" flex flex-col items-center gap-4 px-4">
               <h1 className="text-white text-4xl sm:text-6xl lg:text-8xl text-center tracking-wide">

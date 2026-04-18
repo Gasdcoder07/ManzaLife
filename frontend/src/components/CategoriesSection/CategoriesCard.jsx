@@ -1,6 +1,6 @@
 const CategoriesCard = ({ CategorieImage, CategorieIcon, CategorieTitle }) => {
     return (
-        <div className="rounded-xl overflow-hidden max-w-xs w-full bg-linear-to-b from-orange-500 via-orange-600 to-orange-700 transition-all ease-in-out duration-200 hover:-translate-y-1 cursor-pointer">
+        <div className="rounded-xl overflow-hidden max-w-xs w-full bg-linear-to-b from-orange-500 via-orange-600 to-orange-700 transition-all ease-in-out duration-200 hover:-translate-y-1 cursor-pointer shadow-md shadow-zinc-950/60">
             <div className="h-48">
                 <img
                     src={CategorieImage}
