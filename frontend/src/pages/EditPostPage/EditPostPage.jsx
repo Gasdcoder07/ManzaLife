@@ -1,12 +1,16 @@
+import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { getPostBySlug } from "../../services/postService";
 import PostForm from "../PostForm/PostForm";
-import PostFormSkeleton from "../PostForm/PostFormSkeleton";
+import PostFormSkeleton from "../../components/Blog/PostForm/PostFormSkeleton";
+import PostFormError from "../../components/Blog/PostForm/PostFormError";
 
 const EditPostPage = () => {
+    const { user } = useAuth();
     const { slug } = useParams();
     const [post, setPost] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -21,7 +25,16 @@ const EditPostPage = () => {
         fetchPost();
     }, [slug]);
 
+    useEffect(() => {
+        if (!user) {
+            navigate("/auth/login");
+        }
+
+    }, [user]);
+
     if (!post) return <PostFormSkeleton/>
+    if (!user) return null;
+    if (user.username != post.author.username) return <PostFormError/>
 
   return <PostForm mode={"edit"} PostData={post}/>
 };

@@ -80,8 +80,8 @@ const BlogProfile = () => {
         return <BlogProfileError/>
     }
 
-    console.log(username)
-    console.log(posts);
+    // console.log(username)
+    // console.log(posts);
 
   return (
     <div className="py-4 flex flex-col gap-4">
