@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const API_URL = "https://manzalife.onrender.com/api" 
+// const API_URL = "http://localhost:8000/api/" 
+
 const api = axios.create({
-    baseURL: "https://manzalife.onrender.com/api"
+    baseURL: API_URL
     // headers: {
     //     "Content-Type": "application/json"
     // }
@@ -37,7 +40,7 @@ api.interceptors.response.use(
             try {
 
                 const res = await axios.post(
-                    "http://127.0.0.1:8000/api/token/refresh/",
+                    `"${API_URL}/token/refresh/"`,
                     { refresh: refreshToken }
                 );
 

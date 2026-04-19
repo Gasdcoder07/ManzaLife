@@ -7,7 +7,7 @@ const UsSection = () => {
   const { textos } = useLanguage();
 
   return (
-      <section id="nosotros" className="bg-zinc-950 text-white py-4 md:py-10 lg:py-12">
+      <section id="nosotros" className="bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-white py-4 md:py-10 lg:py-12">
           <div className="container mx-auto flex flex-col px-6 md:px-20 lg:px-32 gap-8 md:gap-10 lg:gap-12">
               <SectionTitle Title={textos.nosotros.titulo} />
 
@@ -19,7 +19,7 @@ const UsSection = () => {
                 {textos.nosotros.descripcion}
               </p>
 
-              <div className="border border-neutral-800 shadow-2xl shadow-orange-600/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-content-center rounded-md px-8 py-6 gap-12">
+              <div className="border border-neutral-200 dark:border-neutral-800 shadow-2xl shadow-zinc-950/40 dark:shadow-orange-600/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-content-center rounded-md px-8 py-6 gap-12">
                     {
                         UsSectionItems.map((item, index) => {
                             const Icon = item.icon;
@@ -28,7 +28,7 @@ const UsSection = () => {
                             return (
                                 <div key={index} className="flex flex-col gap-4">
                                     <div className="flex justify-start">
-                                        <div className="bg-neutral-800 px-3 py-2 rounded-full">
+                                        <div className="bg-neutral-100 dark:bg-neutral-800 px-3 py-2 rounded-full shadow-xl">
                                             <Icon className="text-xl text-orange-500"/>
                                         </div>
                                     </div>

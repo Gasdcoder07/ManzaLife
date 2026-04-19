@@ -6,22 +6,12 @@ export const NavItems = [
     },
     {
         id: 2,
-        title: "Categorias",
-        path: "/#categorias",
-    },
-    {
-        id: 3,
-        title: "Testimonios",
-        path: "/#testimonios",
-    },
-    {
-        id: 4,
         title: "ManzaDle",
         path: "/manzadle"
     },
-    {
-        id: 5,
-        title: "Iniciar sesión",
-        path: "/auth/login",
-    },
+    // {
+    //     id: 3,
+    //     title: "Iniciar sesión",
+    //     path: "/auth/login",
+    // },
 ];

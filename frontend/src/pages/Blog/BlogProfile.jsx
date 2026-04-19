@@ -22,7 +22,9 @@ const BlogProfile = () => {
 
     const [profileData, setProfileData] = useState(null);
     const [loading, setLoading] = useState(true);
+
     const [posts, setPosts] = useState([]);
+    const [loadingPosts, setLoadingPosts] = useState(true);
     
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -50,15 +52,21 @@ const BlogProfile = () => {
     
     useEffect(() => {
         const fetchPosts = async () => {
+            setLoadingPosts(true);
+
             try {
                 const data = await getPostsByUsername(username);
                 setPosts(data);
+                setLoadingPosts(false);
             } catch (e) {
                 console.error(e);
+            } finally {
+                setLoadingPosts(false);
             }
         };
 
         if (username) {
+            setPosts([]);
             fetchPosts();
         }
 
@@ -148,7 +156,13 @@ const BlogProfile = () => {
                 }
 
                 {
-                    posts.length === 0 && (
+                    loadingPosts && (
+                        <p className="text-neutral-300 italic">Cargando publicaciones...</p>
+                    )
+                }
+
+                {
+                    !loadingPosts && posts.length === 0 && (
                         <p className="text-neutral-300 italic">Este usuario no tiene publicaciones disponibles!</p>
                     )
                 }

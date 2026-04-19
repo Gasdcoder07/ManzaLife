@@ -102,3 +102,32 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+
+class UpdatePasswordView(APIView):
+    permission_classes = [AllowAny]
+
+    def patch(self, request):
+        email = request.data.get('email')
+        nueva_password = request.data.get("nueva_password")
+
+        if not email or not nueva_password:
+            return Response(
+                    {"error": "Faltan datos de email o contraseña"},
+                    status=status.HTTP_400_BAD_REQUEST
+                    )
+        try:
+            usuario = User.objects.get(email=email)
+
+            usuario.set_password(nueva_password)
+            usuario.save()
+
+            return Response(
+                    {"mensaje": "¡Contraseña sincronizada con éxito en Django!"},
+                    status=status.HTTP_200_OK
+                )
+
+        except User.DoesNotExist:
+            return Response(
+                    {"error": "Usuario no encontrado en la base de datos"},
+                    status=status.HTTP_400_BAD_REQUEST
+                    )

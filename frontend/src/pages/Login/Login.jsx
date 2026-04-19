@@ -139,7 +139,15 @@ export default function Login() {
                     >
                         Ingresar
                     </button>
-
+                    <p className="text-sm text-center tracking-wider">
+                        ¿Olvidaste tu contraseña?{" "} <br />
+                        <Link
+                            to={"/auth/forgotpassword"}
+                            className="text-orange-200 hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out"
+                        >
+                           Reestablecer contraseña 
+                        </Link>
+                    </p>
                     <p className="text-sm text-center tracking-wider">
                         ¿No tienes cuenta aún?{" "}
                         <Link

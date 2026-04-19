@@ -1,34 +1,9 @@
-import { Names } from "./Names.js"
-
-const specialChars = [
-    '!',
-    '"',
-    '#',
-    '$',
-    '%',
-    '&',
-    '/',
-    '(',
-    ')',
-    '=',
-    '?',
-    '¿',
-    '¡',
-    '*',
-    '+',
-    '-',
-    '_'
-]
-
-export function validatePassword(pass) {
-    if (pass.length < 8 || pass.length > 15 || pass.includes(" "))
-        return false 
-
-    const existeName = Names.some(p => pass.includes(p))
-    const existeChar = specialChars.some(p => pass.includes(p))
-
-    if (existeName) return false
-    if (!existeChar) return false
-
-    return false
+const validatePassword = (pass) => {
+  const minLength = (pass.length >= 8)
+  const hasUpper = /[A-Z]/.test(pass)
+  const hasNumber = /[0-9]/.test(pass)
+  const hasSymbol = /[^A-Za-z0-9]/.test(pass)
+  return minLength && hasUpper && hasNumber && hasSymbol
 }
+
+export default validatePassword

@@ -7,7 +7,7 @@ export const BlogItems = [
     {
         id: 1,
         icon: FaCamera,
-        color: "text-gray-300",
+        color: "text-slate-600",
         text: "Comparte lugares hermosos."
     },
     {
@@ -19,7 +19,7 @@ export const BlogItems = [
     {
         id: 3,
         icon: IoIosBusiness,
-        color: "text-stone-300",
+        color: "text-stone-600",
         text: "Promociona tu negocio local."
     },
     {

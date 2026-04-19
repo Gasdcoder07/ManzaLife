@@ -59,17 +59,46 @@ Sigue estos pasos para configurar el proyecto localmente:
    
 ## 💻 Uso
 
-Este blog está pensado para explorar y compartir ideas sobre cosas por hacer en Manzanillo. Aquí encontrarás recomendaciones de lugares, actividades, eventos y pequeños planes que puedes disfrutar en la zona.
+1.Explorar: Navega por la página de inicio para ver los lugares destacados del día.
 
-Puedes navegar por las diferentes categorías del blog, descubrir nuevas actividades y leer experiencias o sugerencias que te ayuden a aprovechar mejor tu tiempo en la ciudad.
+2.Filtrar: Utiliza las categorías para encontrar específicamente "Playas" o "Gastronomía".
 
-## 📂 Estructura del Proyecto
-Los archivos más importantes para entender la lógica:
- * src/: Contiene el código fuente.📁
- * docs/: Documentación adicional.📁
- * tests/: Pruebas unitarias y de integración.📁
- * config/: Archivos de configuración global.📁
+3.Leer: Entra al blog para conocer la historia detrás de lugares como "El Faro" o "La Boquita".
 
+4.Admin: Accede a /admin para gestionar el contenido (solo personal autorizado).
+
+## 📁 Estructura del Proyecto
+ManzaLife/
+
+
+├── 📂 backend/ # Lógica de servidor y API
+
+│   ├── 📁 core/ # Configuración de Django
+
+│   ├── 📁 api/ # Endpoints y Serializers
+
+│   ├── 📁 blog/ # Modelos de artículos
+
+│   └── 📄 manage.py
+
+│
+├── 📂 frontend/ # Interfaz de usuario (React)
+
+│   ├── 📁 src/
+
+│   │   ├── 📁 components/ # Navbar, Footer, etc.
+
+│   │   ├── 📁 pages/ # Home, Login, Blog
+
+│   │   └── 📁 api/ # Configuración Axios
+
+│   ├── 📁 public/
+
+│   └── 📄 tailwind.config.js
+
+├── 📂 docs/ # Documentación y diagramas
+
+└── 📄 .env.example # Variables de entorno
 
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
@@ -89,3 +118,5 @@ Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con
 Desarrollado con mucho cariño para resaltar la belleza de Manzanillo. 🌊🌴
 
 A domir ggs nos fuimos💤
+
+

@@ -1,7 +1,7 @@
 import { FaStar } from "react-icons/fa";
 const TestimonialCard = ({ img, nombre, ocupacion, testimonio, className }) => {
   return (  
-        <div className={`bg-linear-to-b from-orange-500 via-orange-600 to-orange-700 w-full max-w-xs px-8 py-6 rounded-2xl flex flex-col items-center gap-6 ${className}`}>
+        <div className={`bg-linear-to-b from-orange-500 via-orange-600 to-orange-700 w-full max-w-xs px-8 py-6 rounded-2xl flex flex-col items-center gap-6 ${className} shadow-md shadow-zinc-950/60`}>
 
             <div className="flex justify-center">
                 <img

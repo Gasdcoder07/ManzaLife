@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { Link } from 'react-router-dom';
 import { usePost } from "../../hooks/usePosts";
 import { formatDate } from "../../../utils/formatDate";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
@@ -31,7 +32,13 @@ const BlogPostDetail = () => {
                             className="rounded-full size-10 object-cover"
                             src={post.author.avatar ? post.author.avatar : DefaultAvatar}
                             alt={post.author.username} />
-                        <span>{post.author.username}</span>
+                        
+                        <Link to={`/blog/profile/${post.author.username}`}
+                            className="transition-all duration-200 ease-in-out hover:text-orange-600">
+                            <span>
+                                @{post.author.username}
+                            </span>
+                        </Link>
                     </div>
 
                     <span>{formatDate(post.created_at)}</span>

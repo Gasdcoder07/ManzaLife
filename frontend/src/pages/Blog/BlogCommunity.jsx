@@ -1,10 +1,19 @@
+import { useMemo } from "react";
 import BlogCommunityGrid from "../../components/Blog/BlogCommunity/BlogCommunityGrid";
 import BlogCommunitySkeleton from "../../components/Blog/BlogCommunity/BlogCommunitySkeleton";
+import { useAuth } from "../../context/AuthContext";
 import { useUsers } from "../../hooks/useUsers";
 
 const BlogCommunity = () => {
+    const { user  } = useAuth()
     const { users, loading } = useUsers();
-    // console.log(users);
+    const finalUsers = useMemo(() => {
+        if (!user) return users;
+
+        return users.filter(u => u.id !== user.id);
+    }, [user, users])
+
+    // console.log(finalUsers);
 
     if (loading) return <BlogCommunitySkeleton/>;
 
@@ -18,7 +27,7 @@ const BlogCommunity = () => {
                     </span>
                 </h3>
         </div>
-        <BlogCommunityGrid Users={users}/>
+        <BlogCommunityGrid Users={finalUsers}/>
     </>
   );
 };
