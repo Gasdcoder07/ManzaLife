@@ -12,6 +12,20 @@
   },
   "blog": {
     "titulo_principal": "El blog más grande de Manzanillo",
+    "blog_items": [
+        {
+            "text" : "Comparte lugares hermosos."
+        },
+        {
+            "text" : "Encuentra rincones únicos."
+        },
+        {
+            "text" : "Promociona tu negocio local."
+        },
+        {
+            "text" : "Ayuda a otros a descubrir la ciudad."
+        }
+    ],
     "frase1": "Comparte lugares hermosos.",
     "frase2": "Encuentra rincones únicos.",
     "frase3": "Promociona tu negocio local.",
@@ -59,11 +73,29 @@
     "titulo": "Nosotros",
     "subtitulo": "¿Por qué explorar con nosotros?",
     "descripcion": "En ManzaLife te ayudamos a descubrir lo mejor de Manzanillo. Compartimos recomendaciones reales, lugares imperdibles y experiencias para que disfrutes al máximo tu visita.",
+    "items" : [
+        {
+            "title" : "Lugares reales",
+            "description": "Recomendaciones basadas en lugares populares y experiencias reales en Manzanillo."
+        },
+        {
+            "title" : "Experiencias locales",
+            "description": "Desde playas tranquilas hasta vida nocturna y gastronomía local."
+        },
+        {
+            "title" : "Guías para viajeros",
+            "description": "Contenido pensado para ayudarte a descubrir qué hacer, dónde ir y qué visitar."
+        },
+        {
+            "title" : "Lugares imperdibles",
+            "description": "Descubre sitios populares y rincones especiales que hacen único a Manzanillo."
+        }
+    ],
     "boton": "Explorar lugares"
   },
   "testimonials": {
     "titulo": "Testimonios",
-    "subtitulo": "Testimonios de nuestros usuarios"
+    "subtitulo": "de nuestros usuarios"
   },
     "cta": {
   "titulo": "Únete",

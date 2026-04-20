@@ -5,13 +5,14 @@ import { useLanguage } from "../../context/LanguageContext";
 
 const UsSection = () => {
   const { textos } = useLanguage();
+  const UsSectionItemsText = textos.nosotros.items || [];
 
   return (
       <section id="nosotros" className="bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-white py-4 md:py-10 lg:py-12">
           <div className="container mx-auto flex flex-col px-6 md:px-20 lg:px-32 gap-8 md:gap-10 lg:gap-12">
               <SectionTitle Title={textos.nosotros.titulo} />
 
-              <h3 className="text-white text-4xl text-center">
+              <h3 className="text-zinc-950 dark:text-white text-4xl text-center">
                   {textos.nosotros.subtitulo}
               </h3>
 
@@ -23,7 +24,7 @@ const UsSection = () => {
                     {
                         UsSectionItems.map((item, index) => {
                             const Icon = item.icon;
-                            const data = textos.nosotros[item.key] || {};
+                            const data = UsSectionItemsText[index];
 
                             return (
                                 <div key={index} className="flex flex-col gap-4">
@@ -33,8 +34,8 @@ const UsSection = () => {
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-2">
-                                        <h5 className="text-lg tracking-wider">{data.titulo}</h5>
-                                        <p className="text-sm text-neutral-400 tracking-wide">{data.descripcion}</p>
+                                        <h5 className="text-lg tracking-wider">{data?.title}</h5>
+                                        <p className="text-sm text-neutral-400 tracking-wide">{data?.description}</p>
                                     </div>
                                 </div>
                             )
