@@ -43,7 +43,7 @@ const Footer = () => {
                                                 <li key={i}>
                                                     <HashLink
                                                         to={sub.path}
-                                                        className='text-neutral-400 text-[15px] hover:text-neutral-500 duration-200 transition-all ease-in-out cursor-pointer'
+                                                        className='text-neutral-200 text-[15px] hover:text-neutral-300 duration-200 transition-all ease-in-out cursor-pointer'
                                                     >
                                                         <span>
                                                             {textos.footer[item.key]?.items[i] || sub.title_theme}

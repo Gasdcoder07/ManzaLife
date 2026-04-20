@@ -12,24 +12,19 @@ const CategoriesSection = () => {
           <div className="container mx-auto flex flex-col px-6 md:px-20 lg:px-32 gap-8 md:gap-10 lg:gap-12">
 
             <SectionTitle Title={textos.categorias.titulo}/>
+            <h3 className="text-zinc-950 dark:text-white text-4xl text-center">
+                {textos.categorias.subtitulo.split(" ")[0]}{" "}
 
- manuel
-          <h3 className="text-white text-4xl text-center">
-  {textos.categorias.subtitulo.split(" ")[0]}{" "}
-  <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
-    {textos.categorias.subtitulo.split(" ")[1]}
-  </span>
-</h3>
- main
-               
-                <CategoriesGrid/>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
+                    {textos.categorias.subtitulo.split(" ")[1]}
+                </span>
+            </h3>
 
-                <div className="flex justify-center items-center">
-                    <ActionButton Path={"/blog/categories"} Text={textos.categorias.boton}/>
-                </div>
+            <CategoriesGrid/>
 
-              {/* <hr className="border border-neutral-900"/> */}
-
+            <div className="flex justify-center items-center">
+                <ActionButton Path={"/blog/categories"} Text={textos.categorias.boton}/>
+            </div>
           </div>
       </section>
   );

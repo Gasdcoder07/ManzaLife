@@ -8,6 +8,7 @@ import { useLanguage } from "../../context/LanguageContext";
 
 const BlogSection = () => {
     const { textos } = useLanguage();
+    const BlogItemsText = textos.blog?.blog_items || null
 
     return (
         <section
@@ -21,29 +22,31 @@ const BlogSection = () => {
                     {textos.blog.titulo_principal}
                 </h3>
 
-                {/* Mapeo de items del blog corregido */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {BlogItems.map((item) => {
-                        const Icon = item.icono;
-                        return (
-                            <BlogItem
-                                key={item.id}
-                                Icon={Icon}
-                                color={item.color}
-                                text={item.text}
-                            />
-                        );
-                    })}
-                </div>
+                <div className="w-full flex flex-col-reverse lg:flex-row justify-center items-center gap-6">
+                    <div className="w-full flex flex-col gap-4">
+                        {BlogItems.map((item, index) => {
+                            const Icon = item.icon;
+                            const text = BlogItemsText?.[index]?.text || "";
 
-                {/* Imagen con overlay corregida */}
-                <div className="relative w-full">
-                    <img
-                        className="h-full w-full object-cover rounded-2xl shadow-xl shadow-zinc-950/40"
-                        src={SideImage}
-                        alt={textos.blog.categoria}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/70 via-zinc-950/30 to-zinc-950/70 rounded-2xl" />
+                            return (
+                                <BlogItem
+                                    key={item.id}
+                                    Icon={Icon}
+                                    color={item.color}
+                                    text={text}
+                                />
+                            );
+                        })}
+                    </div>
+
+                    <div className="relative w-full">
+                        <img
+                            className="h-full w-full object-cover rounded-2xl shadow-xl shadow-zinc-950/40"
+                            src={SideImage}
+                            alt={textos.blog.categoria}
+                        />
+                        <div className="absolute inset-0 bg-linear-to-r from-zinc-950/70 via-zinc-950/30 to-zinc-950/70 rounded-2xl" />
+                    </div>
                 </div>
 
                 <div className="flex justify-center items-center my-6">

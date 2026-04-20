@@ -12,6 +12,20 @@
   },
   "blog": {
     "titulo_principal": "The biggest blog in Manzanillo",
+    "blog_items": [
+        {
+            "text": "Share beautiful places."
+        },
+        {
+            "text": "Discover unique spots."
+        },
+        {
+            "text": "Promote your local business."
+        },
+        {
+            "text": "Help others explore the city."
+        }
+    ],
     "frase1": "Share beautiful places.",
     "frase2": "Discover unique spots.",
     "frase3": "Promote your local business.",
@@ -59,11 +73,29 @@
     "titulo": "About us",
     "subtitulo": "Why explore with us?",
     "descripcion": "At ManzaLife we help you discover the best of Manzanillo. We share real recommendations, must-visit places and experiences so you can enjoy your visit to the fullest.",
+    "items" : [
+        {
+            "title": "Real Places",
+            "description": "Recommendations based on popular spots and real experiences in Manzanillo."
+        },
+        {
+            "title": "Local Experiences",
+            "description": "From peaceful beaches to nightlife and local cuisine."
+        },
+        {
+            "title": "Traveler Guides",
+            "description": "Content designed to help you discover what to do, where to go, and what to visit."
+        },
+        {
+            "title": "Must-Visit Spots",
+            "description": "Discover popular places and hidden gems that make Manzanillo unique."
+        }
+    ],
     "boton": "Explore places"
   },
   "testimonials": {
     "titulo": "Testimonials",
-    "subtitulo": "What our users say"
+    "subtitulo": "from our users"
   },
   "cta": {
   "titulo": "Join",
@@ -88,7 +120,7 @@
     "titulo": "About us",
     "items": ["Why explore with us?"]
   },
-  "testimonials": {
+  "testimonios": {
     "titulo": "Testimonials",
     "items": ["What our users say"]
   },
