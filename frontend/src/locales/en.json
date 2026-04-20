@@ -128,7 +128,27 @@
     "titulo": "Join",
     "items": ["Join the community"]
   },
-  "derechos": "© 2026 ManzaLife. All rights reserved."
-}
+  "derechos": "ManzaLife. All rights reserved."
+},
+    "main_blog" : {
+        "sidebar_elements" : {
+            "home" : "Home",
+            "categories" : "Categories",
+            "community" : "Community",
+            "profile" : "Profile"
+        },
+        "home" : {
+            "title" : "posts",
+            "subtitle" : "Latest"
+        },
+        "categories" : {
+            "subtitle" : "Our",
+            "title" : "categories"
+        },
+        "community" : {
+            "subtitle" : "Explore our",
+            "title" : "community"
+        }
+    }
 }
 

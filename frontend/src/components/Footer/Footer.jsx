@@ -61,7 +61,7 @@ const Footer = () => {
                     <hr className="border border-white/10 dark:border-neutral-900" />
 
                     <p className="text-center text-sm">
-                        {textos.footer.derechos}
+                        © {new Date().getFullYear()}{" "}{textos.footer.derechos}
                     </p>
                 </div>
             </footer>

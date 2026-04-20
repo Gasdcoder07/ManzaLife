@@ -4,19 +4,21 @@ import { IoHome } from "react-icons/io5";
 import { BiSolidCategory } from "react-icons/bi";
 // import { TbChartBarPopular } from "react-icons/tb";
 import { FaUsers } from "react-icons/fa6";
+import { useLanguage } from "../context/LanguageContext";
 
 export const useBlogSidebarItems = () => {
+    const { textos } = useLanguage();
     const { user } = useAuth();
 
     return [
         {
             icon: IoHome,
-            text: "Home",
+            text: textos.main_blog.sidebar_elements.home,
             path: "/blog",
         },
         {
         icon: BiSolidCategory,
-            text: "Categorias",
+            text: textos.main_blog.sidebar_elements.categories,
             path: "/blog/categories"
         },
         // {
@@ -26,12 +28,12 @@ export const useBlogSidebarItems = () => {
         // },
         {
         icon: FaUsers,
-            text: "Comunidad",
+            text: textos.main_blog.sidebar_elements.community,
             path: "/blog/community"
         },
         {
         icon: FaRegUserCircle,
-            text: "Perfil",
+            text: textos.main_blog.sidebar_elements.profile,
             path: user ? `/blog/profile/${user.username}` : "/auth/login"
         },
     ]

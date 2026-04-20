@@ -128,8 +128,28 @@
     "titulo": "Únete",
     "items": ["Únete a la comunidad"]
   },
-  "derechos": "© 2026 ManzaLife. Todos los derechos reservados."
-}
+  "derechos": "ManzaLife. Todos los derechos reservados."
+},
+    "main_blog" : {
+        "sidebar_elements" : {
+            "home" : "Inicio",
+            "categories" : "Categorías",
+            "community" : "Comunidad",
+            "profile" : "Perfil"
+        },
+        "home" : {
+            "title" : "Publicaciones",
+            "subtitle" : "recientes"
+        },
+        "categories" : {
+            "subtitle" : "Nuestras",
+            "title" : "categorias"
+        },
+        "community" : {
+            "subtitle" : "Explora nuestra",
+            "title" : "comunidad"
+        }
+    }
 }
 
 

@@ -11,9 +11,11 @@ import Banner from "../../../imgs/LoginResources/Login_bg.png";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 import BlogProfilePost from "../../components/Blog/BlogProfile/BlogProfilePost";
 import { getPostsByUsername } from "../../services/postService";
+import { useLanguage } from "../../context/LanguageContext";
 
 const BlogProfile = () => {
     const { username } = useParams()
+    const { idioma } = useLanguage();
     const { user: currentUser } = useAuth();
     const Authorized = currentUser?.username === username;
 
@@ -136,19 +138,23 @@ const BlogProfile = () => {
                                 Authorized && (
                                     <button
                                         onClick={() => setShowModal(true)}
-                                        className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">Editar perfil</button>
+                                        className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
+                                        {idioma === "en" ? "Edit profile" : "Editar perfil"}
+                                    </button>
                                 )
                             }
                         </div>
                     </div>
                     
-                    <p className="text-neutral-300"><span className="font-bold text-white">{posts.length}</span> Posts</p>
+                    <p className="text-neutral-300"><span className="font-bold text-white">{posts.length}</span> {idioma === "en" ? "Posts" : "Publicaciones"}</p>
                 </div>
             </div>
         </div>
 
         <div className="border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4">
-            <p className="font-semibold">Posts</p>
+            <p className="font-semibold">
+                {idioma === "en" ? "Posts" : "Publicaciones"}
+            </p>
 
             <div className="flex flex-col gap-4">
                 {

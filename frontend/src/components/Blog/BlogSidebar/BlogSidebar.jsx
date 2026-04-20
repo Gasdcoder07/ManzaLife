@@ -3,6 +3,7 @@ import { IoMenu, IoArrowForwardOutline, IoKeypad } from "react-icons/io5"
 import { BlogSidebarItems } from "./BlogSidebarItems";
 import { Link, NavLink } from "react-router-dom"
 import { useBlogSidebarItems } from "../../../hooks/useBlogSidebarItems";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const BlogSidebar = () => {
     const [isOpen, setIsOpen] = useState(() => {
@@ -10,6 +11,7 @@ const BlogSidebar = () => {
         return saved !== null ? JSON.parse(saved) : true;
     });
 
+    const { textos, idioma } = useLanguage();
     const items = useBlogSidebarItems()
 
     useEffect(() => {
@@ -48,7 +50,11 @@ const BlogSidebar = () => {
             <div className="bg-neutral-900 h-px"/>
 
             <div className="space-y-4">
-                <h3 className="text-center text-neutral-500">Juegos</h3>
+                <h3 className="text-center text-neutral-500">
+                    {
+                        idioma === "en" ? "Games" : "Juegos"
+                    }
+                </h3>
 
                 <Link
                     to={"/manzadle"}
@@ -63,8 +69,7 @@ const BlogSidebar = () => {
         </div>
         <div className={`${!isOpen && 'hidden'} px-6 py-4`}>
             <p className="text-xs w-3/5 text-neutral-500">
-                © {new Date().getFullYear()} ManzaLife. Todos los
-                derechos reservados.
+                © {new Date().getFullYear()}{" "}{textos.footer.derechos}
             </p>
         </div>
     </aside>

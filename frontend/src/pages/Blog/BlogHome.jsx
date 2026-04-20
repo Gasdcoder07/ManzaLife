@@ -3,8 +3,10 @@ import { BlogPostsGrid } from "../../components/Blog/index"
 import { usePosts } from "../../hooks/usePosts";
 import { MdArrowDropDown } from "react-icons/md";
 import BlogHomeSkeleton from "../../components/Blog/BlogPosts/BlogHomeSkeleton";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Blog() {
+    const { textos, idioma } = useLanguage();
     const {posts, loading} = usePosts();
     const [categoriaActivada, setCategoriaActivada] = useState("Todas");
     const categorias = ["Todas", ...new Set(posts.map(post => post.category_name).filter(Boolean))];
@@ -17,10 +19,23 @@ export default function Blog() {
         <>
             <div className="mt-4 flex items-center justify-between">
                 <h3 className="text-2xl font-light">
-                    <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
-                        Publicaciones
-                    </span>{" "}
-                    recientes
+                    {
+                        idioma === "en" ? (
+                            <>
+                                {textos.main_blog.home.subtitle}{" "}
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
+                                    {textos.main_blog.home.title}
+                                </span>
+                            </>
+                        ) : (
+                            <>
+                                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
+                                    {textos.main_blog.home.title}
+                                </span>{" "}
+                                {textos.main_blog.home.subtitle}
+                            </>
+                        )
+                    }
                 </h3>
 
                 {/* Dropdown */}

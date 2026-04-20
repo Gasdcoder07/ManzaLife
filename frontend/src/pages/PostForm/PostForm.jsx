@@ -25,7 +25,7 @@ export default function PostForm({ mode, PostData = null }) {
                 title: PostData.title || "",
                 content: PostData.content || "",
                 category_id: PostData.category?.id || null,
-                category_name: PostData.category_name || "Seleccionar categoría",
+                category_name: PostData.category?.name || "Seleccionar categoría",
                 image: null,
                 imagePreview: PostData.image || null,
                 imageDeleted : false

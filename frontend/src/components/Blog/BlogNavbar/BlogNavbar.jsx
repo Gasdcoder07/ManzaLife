@@ -8,10 +8,16 @@ import { useAuth } from "../../../context/AuthContext"
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
 import UserProfile from "../../UserProfile";
 import ToggleThemeButton from "../../ToggleThemeButton";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { textos, idioma, setIdioma } = useLanguage();
     const { user } = useAuth();
+
+    const handleLanguageChange = () => {
+        setIdioma((prev) => (prev === "es" ? "en" : "es"));
+    };
 
     // console.log(user)
 
@@ -41,11 +47,17 @@ const BlogNavbar = () => {
                     <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-orange-500 hover:rotate-45 transition-all ease-in-out duration-200" />
                 </div> */}
 
-                <div className="flex justify-center items-center gap-6 shrink-0">
+                <div className="flex justify-center items-center gap-4 sm:gap-6 shrink-0">
+                    <button
+                        className={"text-black dark:text-white cursor-pointer hover:text-orange-400 transition-colors ease-in-out duration-200 px-3 py-1"}
+                        onClick={handleLanguageChange}>
+                        {idioma === "en" ? "EN" : "ES"}
+                    </button>
+
                     <ToggleThemeButton/>
 
                     <Link to={user ? "/create-post" : "/auth/login"} className="hover:text-orange-600 transition-colors duration-200 ease-in-out">
-                        <span>Crear Post</span>
+                        <span>{idioma === "en" ? "Create Post" : "Crear Post"}</span>
                     </Link>
 
                     {
