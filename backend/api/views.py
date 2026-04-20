@@ -85,6 +85,9 @@ class PerfilView(APIView):
 
         if 'avatar' in request.FILES:
             profile.avatar = request.FILES['avatar']
+        
+        if 'banner' in request.FILES:
+            profile.banner = request.FILES['banner']
 
         user.save()
         profile.save()

@@ -10,16 +10,17 @@ class CategorySerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['bio', 'avatar', 'is_local_business']
+        fields = ['bio', 'avatar', 'banner', 'is_local_business']
 
 class UserSerializer(serializers.ModelSerializer):
     bio = serializers.CharField(source='userprofile.bio', read_only=True)
     avatar = serializers.ImageField(source='userprofile.avatar', read_only=True)
+    banner = serializers.ImageField(source='userprofile.banner', read_only=True)
     # profile = UserProfileSerializer(source='userprofile', read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner']
 
 class CommentReplySerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
