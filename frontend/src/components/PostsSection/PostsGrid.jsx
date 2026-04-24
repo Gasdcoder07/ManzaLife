@@ -6,7 +6,7 @@ import PostGridSkeleton from "./PostGridSkeleton";
 const PostsGrid = () => {
     const {posts, loading} = usePosts();
 
-    if (loading) return <PostGridSkeleton/>
+    if (loading) return <PostGridSkeleton />
 
     return (
       <div className="overflow-x-auto scroll-smooth no-scrollbar">

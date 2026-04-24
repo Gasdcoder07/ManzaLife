@@ -5,7 +5,7 @@ const PostGridSkeleton = () => {
             {
                 [1, 2, 3].map((i) => {
                     return (
-                        <div className="w-sm rounded-xl bg-white/10 h-124 animate-pulse ease-in-out"/>
+                        <div key={i} className="w-sm rounded-xl bg-white/10 h-124 animate-pulse ease-in-out"/>
                     )
                 })
             }
