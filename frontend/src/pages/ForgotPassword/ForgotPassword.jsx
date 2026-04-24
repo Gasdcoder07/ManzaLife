@@ -38,10 +38,8 @@ export default function ForgotPassword() {
     };
 
     return (
-        /* Borde exterior oscuro - Tamaño ajustado a max-w-xl */
         <div className="bg-zinc-950 shadow-2xl shadow-orange-600/20 max-w-xl w-full rounded-3xl p-[2px] mx-auto">
             
-            {/* EL RECTÁNGULO NARANJA: Padding equilibrado (py-12 px-8 a sm:py-20 sm:px-14) */}
             <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 rounded-[22px] px-8 py-12 sm:px-14 sm:py-20 flex flex-col items-center">
                 
                 <Link to={"/"} className="mb-10 focus:outline-none hover:scale-105 transition-transform duration-300">
