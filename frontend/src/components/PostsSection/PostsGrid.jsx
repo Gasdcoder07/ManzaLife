@@ -4,7 +4,7 @@ import { formatDate } from "../../../utils/formatDate"
 import PostGridSkeleton from "./PostGridSkeleton";
 
 const PostsGrid = () => {
-    const {posts, loading} = usePosts();
+const {posts, loading} = usePosts();
 
     if (loading) return <PostGridSkeleton />
 
