@@ -6,3 +6,10 @@ export const getCategories = async (page = 1) => {
     });
     return res.data;
 }
+
+export const getAllCategories = async () => {
+    const res = await api.get("categories/", {
+        params: { pagination : 'false' }
+    });
+    return res.data;
+}

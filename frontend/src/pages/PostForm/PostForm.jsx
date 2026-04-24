@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useCategories } from "../../hooks/useCategories.js";
+import { useAllCategories, useCategories } from "../../hooks/useCategories.js";
 import { postPost, updatePost } from "../../services/postService.js";
 import toast from "react-hot-toast";
 import { MdArrowDropDown, MdAdd, MdOutlineImage, MdShortText, MdClose, MdPublish, MdSave } from "react-icons/md";
@@ -35,7 +35,8 @@ export default function PostForm({ mode, PostData = null }) {
 
     const fileInputRef = useRef(null);
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const {categories, loading} = useCategories();
+    const {categories, loading} = useAllCategories();
+    console.log(categories);
 
     const handleChange = (e) => {
         const { name, value } = e.target;

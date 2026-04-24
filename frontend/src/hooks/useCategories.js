@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getCategories } from "../services/categoryService";
+import { getAllCategories, getCategories } from "../services/categoryService";
 
 export const useCategories = (page = 1) => {
     const [categories, setCategories] = useState([]);
@@ -26,3 +26,27 @@ export const useCategories = (page = 1) => {
 
     return {categories, loading};
 };
+
+export const useAllCategories = () => {
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const loadAllCategories = async () => {
+            setLoading(true);
+
+            try {
+                const data = await getAllCategories();
+                setCategories(data);
+            } catch (e) {
+                console.error("Error al obtener todas las categorias: ", e);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        loadAllCategories();
+    }, []);
+
+    return { categories, loading }
+}
