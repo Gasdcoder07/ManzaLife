@@ -23,7 +23,34 @@
       { "text": "Help others explore the city." }
     ],
     "categoria": "Historic center",
-    "boton": "View now"
+    "boton": "View now",
+    "como_funciona": "How does it work?",
+    "como_funciona_items": [
+        {
+            "titulo": "Explore",
+            "descripcion": "Discover articles and content about Manzanillo."
+        },
+        {
+            "titulo": "Create",
+            "descripcion": "Sign up for free and join the community."
+        },
+        {
+            "titulo": "Share",
+            "descripcion": "Post and promote local businesses or places."
+        },
+        {
+            "titulo": "Interact",
+            "descripcion": "Comment and connect with other users."
+        },
+        {
+            "titulo": "Support",
+            "descripcion": "Help boost local businesses and places."
+        },
+        {
+            "titulo": "Grow",
+            "descripcion": "Grow your local business or project."
+        }
+    ]
   },
   "categorias": {
     "titulo": "Categories",

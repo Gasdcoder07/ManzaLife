@@ -1,6 +1,6 @@
 import { useAuth } from "../context/AuthContext"
 import { FaRegUserCircle } from "react-icons/fa";
-import { IoHome } from "react-icons/io5";
+import { IoHome, IoKeypad } from "react-icons/io5";
 import { BiSolidCategory } from "react-icons/bi";
 // import { TbChartBarPopular } from "react-icons/tb";
 import { FaUsers } from "react-icons/fa6";
@@ -17,24 +17,24 @@ export const useBlogSidebarItems = () => {
             path: "/blog",
         },
         {
-        icon: BiSolidCategory,
+            icon: BiSolidCategory,
             text: textos.main_blog.sidebar_elements.categories,
             path: "/blog/categories"
         },
-        // {
-        //    icon: TbChartBarPopular,
-        //     text: "Popular",
-        //     path: "/blog/popular"
-        // },
         {
-        icon: FaUsers,
+            icon: FaUsers,
             text: textos.main_blog.sidebar_elements.community,
             path: "/blog/community"
         },
         {
-        icon: FaRegUserCircle,
+            icon: FaRegUserCircle,
             text: textos.main_blog.sidebar_elements.profile,
             path: user ? `/blog/profile/${user.username}` : "/auth/login"
         },
+        {
+            icon: IoKeypad,
+            text: "ManzaDle",
+            path: "/manzadle"
+        }
     ]
 }

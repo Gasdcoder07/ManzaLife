@@ -19,8 +19,8 @@ const BlogSidebar = () => {
     }, [isOpen]);
 
   return (
-    <aside className={`bg-[#eeeeef] shadow-xl shadow-black/40 dark:bg-transparent relative hidden sm:flex sm:flex-col sm:justify-between border-r border-neutral-700 ${isOpen ? 'w-56' : 'w-16'}`}>
-        <div className="absolute z-20 top-4 right-0 translate-x-1/2 border border-neutral-700 rounded-full p-1 bg-[#eeeeef] dark:bg-zinc-950 text-zinc-950 dark:text-white">
+    <aside className={`bg-[#eeeeef] shadow-xl shadow-black/40 dark:bg-[#0d0d0f] relative hidden sm:flex sm:flex-col sm:justify-between border-r border-neutral-800 ${isOpen ? 'w-56' : 'w-16'}`}>
+        <div className="absolute z-20 top-4 right-0 translate-x-1/2 border border-neutral-800 rounded-full p-1 bg-[#eeeeef] dark:bg-[#0d0d0f] text-zinc-950 dark:text-white">
             <IoMenu
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-2xl cursor-pointer hover:text-orange-600 transition-all duration-200 ease-in-out"/>
@@ -46,24 +46,6 @@ const BlogSidebar = () => {
                     })
                 }
             </ul>
-
-            <div className="bg-neutral-900 h-px"/>
-
-            <div className="space-y-4">
-                <h3 className="text-center text-neutral-700 dark:text-neutral-500 inline-block px-6">
-                    {
-                        idioma === "en" ? "Games" : "Juegos"
-                    }
-                </h3>
-
-                <Link
-                    to={"/manzadle"}
-                    className="flex justify-start items-center gap-2 rounded-xl px-6 py-2 text-zinc-950 dark:text-white hover:bg-black/5 dark:hover:bg-white/5">
-                    <IoKeypad/>
-                    <span>ManzaDle</span>
-                </Link>
-
-            </div>
         </div>
         <div className={`${!isOpen && 'hidden'} px-6 py-4`}>
             <p className="text-xs w-3/5 text-zinc-950 dark:text-neutral-500">

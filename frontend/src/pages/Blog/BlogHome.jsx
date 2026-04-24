@@ -63,10 +63,10 @@ export default function Blog() {
                         </>
                     ) : (
                         <>
+                            {textos?.main_blog?.home?.subtitle}{" "}
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
                                 {textos?.main_blog?.home?.title}
                             </span>{" "}
-                            {textos?.main_blog?.home?.subtitle}
                         </>
                     )}
                 </h3>
@@ -75,7 +75,7 @@ export default function Blog() {
                 <div
                     ref={dropdownRef}
                     onClick={() => setDropdownVisible(!dropdownVisible)}
-                    className="bg-zinc-50 dark:bg-transparent relative w-fit"
+                    className="bg-zinc-50 dark:bg-[#0d0d0f] relative w-fit"
                 >
                     <button className="flex items-center justify-center gap-2 py-2 px-4 rounded-xl border-b border-neutral-800 cursor-pointer">
                         <span>{categoriaActivada}</span>
