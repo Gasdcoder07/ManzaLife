@@ -1,82 +1,117 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../../../utils/supabaseClient.js";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Logo from "../../../imgs/logomaxxing.svg";
 import toast from "react-hot-toast";
-import validatePassword from "../../../utils/validatePassword.js";
-import api from "../../api/axios.js";
+import { supabase } from "../../../utils/supabaseClient.js";
 
-const ResetPassword = () => {
-  const [newPassword, setNewPassword] = useState("");
+export default function ResetPassword(){
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [type, setType] = useState("password");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleUpdate = async (e) => {
+  const handleType = () => {
+    setType((prev) => (prev === "password" ? "text" : "password"));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const errorValidacion = validatePassword(newPassword);
-
-    if (errorValidacion) {
-      return toast.error(errorValidacion);
+    if (password.length < 6){
+      return toast.error("La contraseña debe tener al menos 6 caracteres");
     }
 
-    const loadingToast = toast.loading("Actualizando contraseña..");
-    
-    const { data: userData, error: userError } = await supabase.auth.getUser();
-    
-    if (userError || !userData?.user) {
-        toast.dismiss(loadingToast);
-        return toast.error("Error de sesión. Por favor, solicita un nuevo enlace.");
+    if (password !== confirmPassword){
+      return toast.error("Las contraseñas no coinciden")
     }
-    
-    const userEmail = userData.user.email;
-    
-    const { error: updateError } = await supabase.auth.updateUser({
-      password: newPassword
-    });
 
-    if (updateError) {
-      toast.dismiss(loadingToast);
-      return toast.error("Error al actualizar la seguridad: " + updateError.message);
-    }
+    const toastId = toast.loading("Actualizando contraseña...");
 
     try {
-    
-      await api.patch('/usuarios/update-password/', {
-        email: userEmail,
-        nueva_password: newPassword
+      setLoading(true);
+
+      const { error } = await supabase.auth.updateUser({
+         password: password
       });
 
-      toast.dismiss(loadingToast);
-      toast.success("¡Contraseña actualizada con éxito!");
-      
-      setTimeout(() => {
-        navigate("/auth/login"); 
-      }, 2000);
-
-    } catch (backendError) {
-      toast.dismiss(loadingToast);
-      console.error(backendError);
-      toast.error("Clave actualizada, pero hubo un error al sincronizar con el servidor.");
+      if (error){
+        toast.error("Error: " + error.message, { id: toastId});
+      } else{
+        toast.success("¡Contraseña actualizada con éxito!", { id: toastId});
+        setTimeout(() => navigate("/auth/login"), 2000);
+      }
+    } catch (err) {
+      console.log(err.message);
+      toast.error("Ocurrió un error inesperado", { id: toastId });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white">
-        <form onSubmit={handleUpdate} className="bg-zinc-800 p-8 rounded-xl shadow-lg w-full max-w-md">
-            <h1 className="text-xl font-bold mb-4 text-center">Ingresa tu nueva contraseña</h1>
-            <input 
-                type="password" 
-                placeholder="Nueva contraseña"
-                className="w-full p-2 mb-4 rounded text-black outline-none focus:ring-2 focus:ring-orange-500"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                required
+    <div className="bg-zinc-950 shadow-2xl shadow-orange-600/20 max-w-xl w-full rounded-3xl p-[2px] mx-auto">
+
+       <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 rounded-[22px] px-8 py-12 sm:px-14 sm:py-20 flex flex-col items-center">
+         <div className="mb-10">
+            <img 
+              className="h-14 object-cover drop-shadow-lg"
+              src={Logo}
+              alt="ManzaLife"
             />
-            <button type="submit" className="w-full bg-orange-600 hover:bg-orange-700 transition-colors p-2 rounded font-bold cursor-pointer">
-                Guardar cambios
-            </button>
-        </form>
+         </div>
+
+         <form 
+            onSubmit={handleSubmit}
+            className="text-white w-full flex flex-col gap-6"
+         >
+            <div className="space-y-3 text-center">
+                <h3 className="text-3xl md:text-4xl font-bold tracking-wide drop-shadow-sm">
+                    Nueva contraseña
+                </h3>
+                <p className="text-base md:text-lg text-white/90 font-light max-w-sm mx-auto">
+                    Ya casi terminas. Escribe tu nueva contraseña para volver a ManzaLife.
+                </p>
+            </div>
+
+            <div className="flex flex-col gap-4 text-white mt-4">
+               <div className="relative">
+                 <input 
+                   className="w-full px-6 py-4 bg-white/20 border border-white/40 outline-none rounded-2xl placeholder-white/70 text-lg font-light focus:border-white focus:bg-white/30 transition-all duration-200"
+                   type={type}
+                   placeholder="Nueva contraseña"
+                   value={password}
+                   onChange={(e) => setPassword(e.target.value)}
+                   required
+                />
+                <div
+                   onClick={handleType}
+                   className="absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer text-white/80 hover:text-white"
+                   >
+                    {type === "password" ? <FaEye size={20} /> : <FaEyeSlash size={20} />}
+                   </div>
+               </div>
+
+               <input 
+                  className="w-full px-6 py-4 bg-white/20 border border-white/40 outline-none rounded-2xl placeholder-white/70 text-lg font-light focus:border-white focus:bg-white/30 transition-all duration-200"
+                  type={type}
+                  placeholder="Confirmar contraseña"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+            </div>
+
+            <button 
+               type="submit"
+               disabled={loading}
+               className={`mt-4 rounded-2xl bg-zinc-950 text-white text-lg duration-200 ease-in-out transition-all px-8 py-4 tracking-wider font-bold border border-transparent shadow-xl ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-black hover:shadow-2xl hover:-translate-1 active:scale-95'}`}
+               >
+                {loading ? "Guardando..." : "Actualizar contraseña"}
+               </button>
+          </form>  
+       </div>
     </div>
   );
 }
-
-export default ResetPassword;

@@ -2,18 +2,25 @@ from rest_framework import viewsets, generics, status, permissions
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
 from .models import Post, Category, User, Comment, Review
 from .permissions import IsAuthorOrReadOnly
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
+
+class CustomPagination(PageNumberPagination):
+    page_size = 8
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.AllowAny]
+    pagination_class = CustomPagination
 
 class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         queryset = Post.objects.filter(status="published")
@@ -100,6 +107,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     lookup_field = 'username'
+    pagination_class = CustomPagination
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
