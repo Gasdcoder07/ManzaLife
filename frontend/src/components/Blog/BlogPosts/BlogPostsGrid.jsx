@@ -1,7 +1,8 @@
 import { formatDate } from "../../../../utils/formatDate";
+import PaginationControls from "../PaginationControls";
 import BlogPostsCard from "./BlogPostsCard";
 
-const BlogPostsGrid = ({posts}) => {
+const BlogPostsGrid = ({posts, currentPage, totalPages, onPageChange}) => {
   return (
     <div className="h-full">
         <div className="flex flex-col py-4 gap-4 w-full">
@@ -22,6 +23,11 @@ const BlogPostsGrid = ({posts}) => {
                 })
             }
         </div>
+
+        <PaginationControls
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={onPageChange}/>
     </div>
   );
 };

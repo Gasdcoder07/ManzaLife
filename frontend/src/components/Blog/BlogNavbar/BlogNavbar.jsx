@@ -22,7 +22,7 @@ const BlogNavbar = () => {
     // console.log(user)
 
     return (
-        <nav className="w-full border-b border-neutral-700 flex justify-center items-center">
+        <nav className="bg-orange-600 dark:bg-transparent w-full border-b border-neutral-700 flex justify-center items-center">
             <div className="container mx-auto flex justify-between items-center px-4 py-2 gap-6 md:px-8 lg:px-12">
                 <Link to={"/"} className="shrink-0 hidden sm:flex">
                     <img

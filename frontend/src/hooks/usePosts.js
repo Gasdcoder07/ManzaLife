@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
 import { getPosts, getPostBySlug } from "../services/postService";
 
-export const usePosts = () => {
+export const usePosts = (page = 1) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadPosts = async () => {
-            const data = await getPosts();
-            setPosts(data);
-            setLoading(false);
+            setLoading(true);
+            try {
+                const data = await getPosts(page);
+                setPosts(data);
+            }
+            catch (e) {
+                console.error("Error ", e);
+            }
+            finally {
+                setLoading(false)
+            }
         }
         
         loadPosts();
-    }, []);
+    }, [page]);
 
     return { posts, loading};
 };

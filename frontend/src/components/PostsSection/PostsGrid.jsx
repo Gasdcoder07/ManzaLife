@@ -4,7 +4,7 @@ import { formatDate } from "../../../utils/formatDate"
 import PostGridSkeleton from "./PostGridSkeleton";
 
 const PostsGrid = () => {
-const {posts, loading} = usePosts();
+    const {posts, loading} = usePosts(1);
 
     if (loading) return <PostGridSkeleton />
 
@@ -12,7 +12,7 @@ const {posts, loading} = usePosts();
       <div className="overflow-x-auto scroll-smooth no-scrollbar">
           <div className="flex gap-8 w-max py-2">
             {
-                posts.map((post) => {
+                posts.results.map((post) => {
                     return (
                         <PostItem
                             key={post.id}

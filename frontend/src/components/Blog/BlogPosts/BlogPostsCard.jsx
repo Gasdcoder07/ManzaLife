@@ -6,7 +6,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
   return (
     <Link
         to={`/blog/${Slug}`}
-        className="group hover:-translate-y-0.5 hover:border-neutral-700 transition-all duration-200 ease-in-out w-full sm:h-56 border border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden">
+        className="bg-zinc-50 dark:bg-transparent group hover:-translate-y-0.5 hover:border-neutral-700 transition-all duration-200 ease-in-out w-full sm:h-56 border border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden shadow-xl">
         <div className="relative h-56 w-full sm:h-full sm:w-1/3 shrink-0">
             <img
                 src={Image}

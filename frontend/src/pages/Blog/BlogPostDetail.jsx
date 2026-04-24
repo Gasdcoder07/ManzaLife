@@ -17,7 +17,7 @@ const BlogPostDetail = () => {
 
   return (
     <div className="mt-4 flex flex-col gap-4 py-4">
-        <div className="rounded-xl overflow-hidden h-64">
+        <div className="rounded-xl overflow-hidden h-64 shadow-xl">
             <img
                 className="object-cover h-full w-full"
                 src={post?.image}

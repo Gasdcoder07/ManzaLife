@@ -2,7 +2,7 @@ import BlogCommunityCard from "./BlogCommunityCard";
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
 import PaginationControls from "../PaginationControls";
 
-const BlogCommunityGrid = ({ Users }) => {
+const BlogCommunityGrid = ({ Users, CurrentPage, TotalPages, OnPageChange }) => {
   return (
     <div className="h-full">
         <div className="w-full py-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -21,7 +21,10 @@ const BlogCommunityGrid = ({ Users }) => {
             }
         </div>
 
-        <PaginationControls/>
+        <PaginationControls
+            currentPage={CurrentPage}
+            totalPages={TotalPages}
+            onPageChange={OnPageChange}/>
     </div>
   );
 };

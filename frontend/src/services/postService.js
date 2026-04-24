@@ -1,7 +1,9 @@
 import api from "../api/axios";
 
-export const getPosts = async () => {
-    const res = await api.get("posts/");
+export const getPosts = async (page = 1) => {
+    const res = await api.get("posts/", {
+        params: { page : page }
+    });
     return res.data;
 };
 

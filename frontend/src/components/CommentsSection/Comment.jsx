@@ -44,7 +44,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
     }
 
   return (
-    <div className="flex flex-col gap-2 text-white w-full">
+    <div className="flex flex-col gap-2 w-full">
         <div className="w-full flex gap-4">
             <img
                 className="shrink-0 size-10 rounded-full object-cover"
@@ -55,17 +55,17 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                 <div className="flex items-center gap-4">
                     <Link
                         to={`/blog/profile/${AuthorUsername}`}
-                        className="truncate font-bold text-white text-sm hover:text-orange-500 transition-all duration-200 ease-in-out cursor-pointer tracking-wider">
+                        className="truncate font-bold text-sm hover:text-orange-500 transition-all duration-200 ease-in-out cursor-pointer tracking-wider">
                         @{AuthorUsername}
                     </Link>
-                    <span className="shrink-0 text-zinc-50 text-xs">
+                    <span className="shrink-0 text-zinc-950 dark:text-zinc-50 text-xs">
                         {new Date(CreatedDate).toLocaleDateString()}
                     </span>
                 </div>
 
                 {/* Texto del comentario */}
                 <div className="w-full max-h-32 overflow-y-auto custom-scrollbar">
-                    <p className="text-zinc-100 text-sm leading-relaxed whitespace-pre-line wrap-break-word">
+                    <p className="text-zinc-900 dark:text-zinc-100 text-sm leading-relaxed whitespace-pre-line wrap-break-word">
                         {Content}
                     </p>
                 </div>
@@ -76,7 +76,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                             <textarea
                                 value={reply}
                                 onChange={(e) => setReply(e.target.value)}
-                                className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg p-2 placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar"
+                                className="w-full dark:bg-zinc-900/50 border border-zinc-800 rounded-lg p-2 placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar shadow-xl"
                                 placeholder="Añade una respuesta..."
                                 rows={1}/>
 
@@ -99,7 +99,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                         <div className="flex justify-end">
                             <button
                                 onClick={() => setShowReplyForm(true)}
-                                className="w-fit text-xs text-zinc-400 mt-2 hover:text-white transition-colors font-semibold uppercase tracking-wider cursor-pointer">
+                                className="w-fit text-xs text-zinc-400 mt-2 hover:text-zinc-500 dark:hover:text-white transition-colors font-semibold uppercase tracking-wider cursor-pointer">
                                 <span>Responder</span>
                             </button>
                         </div>
@@ -113,7 +113,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                 <div className="flex flex-col gap-6 pl-12 border-l border-zinc-800">
                     <span
                         onClick={() => setShowReply(!showReply)}
-                        className="text-zinc-400 text-sm hover:text-white cursor-pointer transition-all duration-200 ease-in-out">
+                        className="text-zinc-400 text-sm hover:text-zinc-500 dark:hover:text-white cursor-pointer transition-all duration-200 ease-in-out">
                         { showReply ? 'Ocultar respuestas' : 'Ver respuestas' }
                     </span>
 

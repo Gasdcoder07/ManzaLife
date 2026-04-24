@@ -23,7 +23,9 @@ const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, 
                 {
                     IsAuthorized && (
                         <div className="shrink-0 flex justify-end gap-4">
-                            <Link to={`/edit-post/${PostSlug}`}>
+                            <Link
+                                className="flex justify-center"
+                                to={`/edit-post/${PostSlug}`}>
                                 <button className="cursor-pointer transition-all duration-200 ease-in-out hover:text-yellow-600">
                                     <MdModeEdit/>
                                 </button>
@@ -38,7 +40,7 @@ const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, 
 
             </div>
             <div className="flex justify-end">
-                <span className="text-xs italic tracking-wide text-neutral-300">{formatDate(PostCreationDate)}</span>
+                <span className="text-xs italic tracking-wide text-neutral-400 dark:text-neutral-300">{formatDate(PostCreationDate)}</span>
             </div>
         </div>
     </div>

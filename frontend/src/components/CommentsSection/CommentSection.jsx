@@ -48,7 +48,7 @@ const CommentSection = ({ postId, comments = [] }) => {
 
     return (
         <div className="w-full text-left space-y-8">
-            <h4 className="text-xl tracking-wider text-white flex items-center gap-3">
+            <h4 className="text-xl tracking-wider text-zinc-950 dark:text-white flex items-center gap-3">
                 <span className="text-orange-500">
                     {localComments.length}
                 </span>
@@ -67,7 +67,7 @@ const CommentSection = ({ postId, comments = [] }) => {
 
                 <div className="flex-1 min-w-0 flex flex-col gap-4">
                     <textarea 
-                        className="w-full bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar" 
+                        className="w-full dark:bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 text-zinc-950 dark:text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar shadow-xl" 
                         placeholder="Añade un comentario..."
                         rows="3"
                         value={newComment}
@@ -77,7 +77,7 @@ const CommentSection = ({ postId, comments = [] }) => {
                         <button
                             type="button"
                             onClick={() => setNewComment("")}
-                            className="px-4 sm:px-6 py-2 text-zinc-400 hover:text-white rounded-full transition-all font-semibold text-sm uppercase tracking-wide cursor-pointer"
+                            className="px-4 sm:px-6 py-2 text-zinc-400 hover:text-zinc-500 dark:hover:text-white rounded-full transition-all font-semibold text-sm uppercase tracking-wide cursor-pointer"
                         >
                             Cancelar
                         </button>
