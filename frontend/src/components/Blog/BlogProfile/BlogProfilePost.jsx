@@ -40,7 +40,7 @@ const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, 
 
             </div>
             <div className="flex justify-end">
-                <span className="text-xs italic tracking-wide text-neutral-300">{formatDate(PostCreationDate)}</span>
+                <span className="text-xs italic tracking-wide text-neutral-400 dark:text-neutral-300">{formatDate(PostCreationDate)}</span>
             </div>
         </div>
     </div>

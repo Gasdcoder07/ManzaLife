@@ -1,7 +1,9 @@
 import api from "../api/axios";
 
-export const getUsers = async () => {
-    const res = await api.get("usuarios/");
+export const getUsers = async (page = 1) => {
+    const res = await api.get("usuarios/", {
+        params: { page : page }
+    });
     return res.data;
 };
 

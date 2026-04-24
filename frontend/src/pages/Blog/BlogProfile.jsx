@@ -58,7 +58,7 @@ const BlogProfile = () => {
 
             try {
                 const data = await getPostsByUsername(username);
-                setPosts(data);
+                setPosts(data.results);
                 setLoadingPosts(false);
             } catch (e) {
                 console.error(e);
@@ -87,7 +87,7 @@ const BlogProfile = () => {
 
   return (
     <div className="py-4 flex flex-col gap-4">
-        <div className="border border-neutral-700 rounded-xl overflow-hidden">
+        <div className="bg-zinc-50 dark:bg-transparent border border-neutral-700 rounded-xl overflow-hidden shadow-xl">
             <div className="relative h-56 sm:h-72">
                 <img
                     className="w-full h-full object-cover"
@@ -116,8 +116,8 @@ const BlogProfile = () => {
                             Authorized && (
                                 <button
                                     onClick={() => setShowImageModal(true)}
-                                    className="absolute bottom-0 right-0 -translate-x-full bg-white/10 p-2 rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-200 ease-in-out">
-                                    <MdOutlineAddPhotoAlternate/>
+                                    className="absolute bottom-0 right-0 -translate-x-full bg-black/10 dark:bg-white/10 p-2 rounded-full cursor-pointer hover:bg-black/20 dark:hover:bg-white/20 transition-colors duration-200 ease-in-out">
+                                    <MdOutlineAddPhotoAlternate className="text-white"/>
                                 </button>
                             )
                         }
@@ -133,7 +133,7 @@ const BlogProfile = () => {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
-                            <p className="text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
+                            <p className="text-neutral-500 dark:text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
                             {
                                 Authorized && (
                                     <button
@@ -146,7 +146,7 @@ const BlogProfile = () => {
                         </div>
                     </div>
                     
-                    <p className="text-neutral-300"><span className="font-bold text-white">{posts.length}</span> {idioma === "en" ? "Posts" : "Publicaciones"}</p>
+                    <p className="text-neutral-400 dark:text-neutral-300"><span className="font-bold text-zinc-950 dark:text-white">{posts.length}</span> {idioma === "en" ? "Posts" : "Publicaciones"}</p>
                 </div>
             </div>
         </div>
