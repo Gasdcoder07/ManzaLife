@@ -1,8 +1,9 @@
 import { IoClose } from "react-icons/io5"
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 export default function GameModal({ isWin, secretWord, description }) {
-
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(true)
 
     return (
@@ -28,7 +29,7 @@ export default function GameModal({ isWin, secretWord, description }) {
                         {secretWord}
                     </span>
                 </div>
-                <button className="bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg hover:-trnslate-y-0.5 translate-all duration-300 w-full tracking-wide">
+                <button onClick={() => navigate("/")} className="bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 translate-all duration-300 w-full tracking-wide">
                   Volver al Home
                 </button>
             </div>
