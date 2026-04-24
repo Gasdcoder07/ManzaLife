@@ -79,9 +79,7 @@ export default function ManzaDle() {
                     <Keyboard onKeyPress={handleKeyPress} />
                 </div>
                 {isGameOver && (
-                    <div className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-950/80">
-                        <GameModal isWin={isWin} secretWord={solution} description={description}/>
-                    </div>
+                  <GameModal isWin={isWin} secretWord={solution} description={description}/>
                 )}
             </main>
         </div>
