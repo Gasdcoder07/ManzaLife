@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import SideImage from "../../../imgs/LoginResources/Login_hadas.jpeg";
 import Logo from "../../../imgs/logomaxxing.svg";
 import toast from "react-hot-toast";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Login() {
+    const { textos } = useLanguage();
+
     const [type, setType] = useState("password");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -23,20 +25,20 @@ export default function Login() {
         e.preventDefault();
 
         if (!username.trim() || !password.trim()) {
-            return toast.error("Ingresa usuario y contraseña");
+            return toast.error(textos.auth.login_error);
         }
-        
-        const toastId = toast.loading("Iniciando sesión");
+
+        const toastId = toast.loading(textos.auth.login_loading);
 
         try {
             setLoading(true);
             const success = await login({ username, password });
 
             if (success) {
-                toast.success("¡Sesión iniciada correctamente!", { id: toastId })
+                toast.success(textos.auth.login_success, { id: toastId });
                 navigate("/blog");
             } else {
-                toast.error("Usuario o contraseña incorrectos", { id: toastId});
+                toast.error(textos.auth.login_error, { id: toastId });
             }
         } catch (err) {
             console.log(err.message);
@@ -48,55 +50,41 @@ export default function Login() {
     return (
         <div className="bg-linear-to-br from-yellow-500 via-amber-600 to-orange-600 shadow-lg shadow-zinc-950/80 max-w-3xl flex flex-col md:flex-row rounded-2xl overflow-hidden p-2">
             <div className="hidden md:flex relative w-full rounded-2xl md:w-1/2 overflow-hidden">
-                <img
-                    className="h-full w-full object-cover"
-                    src={SideImage}
-                    alt="Side Image"
-                />
+                <img className="h-full w-full object-cover" src={SideImage} alt="Side Image" />
 
                 <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/45 to-black/60" />
 
                 <div className="absolute inset-0 z-20 flex flex-col justify-between px-6 py-4">
                     <div className="flex justify-between items-center">
                         <Link to={"/"}>
-                            <img
-                                className="h-10 object-cover"
-                                src={Logo}
-                                alt="ManzaLife"
-                            />
+                            <img className="h-10 object-cover" src={Logo} alt="ManzaLife" />
                         </Link>
 
-                        <Link
-                            to={"/blog"}
-                            className="text-sm text-white/80 hover:text-white flex items-center gap-2">
-                            <span>Ir al blog</span>
-                            <FaArrowRight/>
+                        <Link to={"/blog"} className="text-sm text-white/80 hover:text-white flex items-center gap-2">
+                            
+                            <FaArrowRight />
                         </Link>
                     </div>
 
                     <div className="flex justify-center">
                         <span className="px-2 py-1 text-white/90 text-sm sm:text-xl text-center w-56 tracking-wider font-light">
-                            Descubre lugares, explora sentimientos.
+                            {textos.auth.frase_lateral}
                         </span>
                     </div>
                 </div>
             </div>
+
             <div className="w-full md:w-1/2 flex justify-center">
-                <form
-                    onSubmit={handleSubmit}
-                    className="text-white w-full px-4 md:px-8 lg:px-12 py-6 sm:py-10 flex flex-col gap-4 justify-center"
-                >
+                <form onSubmit={handleSubmit} className="text-white w-full px-4 md:px-8 lg:px-12 py-6 sm:py-10 flex flex-col gap-4 justify-center">
+                    
                     <div className="space-y-2">
-                        <Link
-                            to={"/blog"}
-                            className="text-sm text-white/80 hover:text-white flex md:hidden items-center gap-2"
-                        >
+                        <Link to={"/blog"} className="text-sm text-white/80 hover:text-white flex md:hidden items-center gap-2">
                             <FaArrowRight className="rotate-180" />
-                            <span>Ir al blog</span>
+                            <span>{textos.auth.ir_blog}</span>
                         </Link>
 
                         <h3 className="text-2xl md:text-3xl text-center md:text-left font-semibold tracking-wide">
-                            Accede a tu cuenta
+                            {textos.auth.titulo}
                         </h3>
                     </div>
 
@@ -104,7 +92,7 @@ export default function Login() {
                         <input
                             className="w-full px-3 py-2 border border-white/40 outline-none rounded-xl placeholder-white/60 font-light"
                             type="text"
-                            placeholder="Usuario"
+                            placeholder={textos.auth.usuario}
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -113,21 +101,15 @@ export default function Login() {
                             <input
                                 className="pl-3 pr-10 py-2 border border-white/40 outline-none rounded-xl placeholder-white/60 w-full font-light"
                                 type={type}
-                                placeholder="Contraseña"
+                                placeholder={textos.auth.password}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
 
                             {type === "password" ? (
-                                <FaEye
-                                    onClick={() => handleType()}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                                />
+                                <FaEye onClick={handleType} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" />
                             ) : (
-                                <FaEyeSlash
-                                    onClick={() => handleType()}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer ease-in-out transition-colors duration-200"
-                                />
+                                <FaEyeSlash onClick={handleType} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" />
                             )}
                         </div>
                     </div>
@@ -137,24 +119,20 @@ export default function Login() {
                         disabled={loading}
                         className={`rounded-lg bg-zinc-950 duration-200 ease-in-out transition-all px-6 py-2 tracking-wide cursor-pointer ${loading ? '' : 'hover:text-orange-600 hover:-translate-y-1'}`}
                     >
-                        Ingresar
+                        {textos.auth.ingresar}
                     </button>
+
                     <p className="text-sm text-center tracking-wider">
-                        ¿Olvidaste tu contraseña?{" "} <br />
-                        <Link
-                            to={"/auth/forgotpassword"}
-                            className="text-orange-200 hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out"
-                        >
-                           Reestablecer contraseña 
+                        {textos.auth.olvide} <br />
+                        <Link to={"/auth/forgotpassword"} className="text-orange-200 hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out">
+                            {textos.auth.reset}
                         </Link>
                     </p>
+
                     <p className="text-sm text-center tracking-wider">
-                        ¿No tienes cuenta aún?{" "}
-                        <Link
-                            to={"/auth/register"}
-                            className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out"
-                        >
-                            Registrate
+                        {textos.auth.no_cuenta}{" "}
+                        <Link to={"/auth/register"} className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out">
+                            {textos.auth.registro}
                         </Link>
                     </p>
                 </form>

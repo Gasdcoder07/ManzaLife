@@ -6,103 +6,67 @@
     "manzadle": "ManzaDle",
     "login": "Login"
   },
+
   "landing": {
     "subtitulo": "A paradise on the coasts of Mexico",
     "placeholder_busqueda": "Beaches, plazas or restaurants"
   },
+  "posts": {
+  "titulo": "Posts",
+  "subtitulo": "Recent posts"
+},
+
   "blog": {
     "titulo_principal": "The biggest blog in Manzanillo",
     "blog_items": [
-        {
-            "text": "Share beautiful places."
-        },
-        {
-            "text": "Discover unique spots."
-        },
-        {
-            "text": "Promote your local business."
-        },
-        {
-            "text": "Help others explore the city."
-        }
+      { "text": "Share beautiful places." },
+      { "text": "Discover unique spots." },
+      { "text": "Promote your local business." },
+      { "text": "Help others explore the city." }
     ],
-    "frase1": "Share beautiful places.",
-    "frase2": "Discover unique spots.",
-    "frase3": "Promote your local business.",
-    "frase4": "Help others discover the city.",
     "categoria": "Historic center",
-    "boton": "View now",
-    "como_funciona": "How does it work?",
-    "como_funciona_items": [
-      {
-        "titulo": "Explore",
-        "descripcion": "Discover articles and content about Manzanillo."
-      },
-      {
-        "titulo": "Create",
-        "descripcion": "Sign up for free and join the community."
-      },
-      {
-        "titulo": "Share",
-        "descripcion": "Post and promote local businesses or places."
-      },
-      {
-        "titulo": "Interact",
-        "descripcion": "Comment and connect with other users."
-      },
-      {
-        "titulo": "Support",
-        "descripcion": "Help boost local businesses and places."
-      },
-      {
-        "titulo": "Grow",
-        "descripcion": "Grow your local business or project."
-      }
-    ]
-  },
-  "posts": {
-    "titulo": "Posts",
-    "subtitulo": "Recent"
+    "boton": "View now"
   },
   "categorias": {
-    "titulo": "Categories",
-    "subtitulo": "Our categories",
-    "boton": "Explore categories"
-  },
-  "nosotros": {
-    "titulo": "About us",
-    "subtitulo": "Why explore with us?",
-    "descripcion": "At ManzaLife we help you discover the best of Manzanillo. We share real recommendations, must-visit places and experiences so you can enjoy your visit to the fullest.",
-    "items" : [
-        {
-            "title": "Real Places",
-            "description": "Recommendations based on popular spots and real experiences in Manzanillo."
-        },
-        {
-            "title": "Local Experiences",
-            "description": "From peaceful beaches to nightlife and local cuisine."
-        },
-        {
-            "title": "Traveler Guides",
-            "description": "Content designed to help you discover what to do, where to go, and what to visit."
-        },
-        {
-            "title": "Must-Visit Spots",
-            "description": "Discover popular places and hidden gems that make Manzanillo unique."
-        }
-    ],
-    "boton": "Explore places"
-  },
-  "testimonials": {
-    "titulo": "Testimonials",
-    "subtitulo": "from our users"
-  },
-  "cta": {
+  "titulo": "Categories",
+  "subtitulo": "Our categories",
+  "boton": "Explore categories"
+},
+"nosotros": {
+  "titulo": "About us",
+  "subtitulo": "Why explore with us?",
+  "descripcion": "At ManzaLife we help you discover the best of Manzanillo. We share real recommendations, must-visit places and experiences so you can enjoy your visit to the fullest.",
+  "items": [
+    {
+      "title": "Real places",
+      "description": "Recommendations based on popular spots and real experiences in Manzanillo."
+    },
+    {
+      "title": "Local experiences",
+      "description": "From peaceful beaches to nightlife and local cuisine."
+    },
+    {
+      "title": "Traveler guides",
+      "description": "Content designed to help you discover what to do, where to go, and what to visit."
+    },
+    {
+      "title": "Must-visit places",
+      "description": "Discover popular places and hidden gems that make Manzanillo unique."
+    }
+  ],
+  "boton": "Explore places"
+},
+"testimonials": {
+  "titulo": "Testimonials",
+  "subtitulo": "from our users"
+},
+"cta": {
   "titulo": "Join",
   "subtitulo": "our community",
   "descripcion": "Be part of ManzaLife and share your experiences in Manzanillo.",
   "boton": "Sign up"
 },
+
 "footer": {
   "blog": {
     "titulo": "Blog",
@@ -130,25 +94,55 @@
   },
   "derechos": "ManzaLife. All rights reserved."
 },
-    "main_blog" : {
-        "sidebar_elements" : {
-            "home" : "Home",
-            "categories" : "Categories",
-            "community" : "Community",
-            "profile" : "Profile"
-        },
-        "home" : {
-            "title" : "posts",
-            "subtitle" : "Latest"
-        },
-        "categories" : {
-            "subtitle" : "Our",
-            "title" : "categories"
-        },
-        "community" : {
-            "subtitle" : "Explore our",
-            "title" : "community"
-        }
-    }
-}
 
+  "auth": {
+    "titulo": "Login to your account",
+    "usuario": "Username",
+    "password": "Password",
+    "ingresar": "Login",
+    "olvide": "Forgot your password?",
+    "reset": "Reset password",
+    "registro": "Sign up",
+    "login_success": "Login successful!",
+    "login_error": "Incorrect username or password",
+    "login_loading": "Logging in...",
+    "ir_al_blog": "Go to blog",
+    "frase_lateral": "Discover places, explore feelings",
+    "no_cuenta": "Don't have an account?"
+  },
+
+  "register": {
+    "titulo": "Create account",
+    "casi_listo": "Almost done!",
+    "nombre": "First name",
+    "apellidos": "Last name",
+    "usuario": "Username",
+    "siguiente": "Next",
+    "crear_cuenta": "Create account",
+    "regresar": "Back",
+    "ya_tienes": "Already have an account?",
+    "inicia_sesion": "Login",
+
+    "nombre_required": "First name is required",
+    "apellido_required": "Last name is required",
+    "usuario_required": "Username is required",
+    "email_required": "Email is required",
+    "password_required": "Password is required",
+    "password_confirm_required": "You must confirm your password",
+    "password_match": "Passwords do not match",
+    "password_secure": "Weak password",
+
+    "loading": "Creating account...",
+    "success": "Account created successfully!",
+    "error": "Error creating account"
+  },
+
+  "main_blog": {
+    "sidebar_elements": {
+      "home": "Home",
+      "categories": "Categories",
+      "community": "Community",
+      "profile": "Profile"
+    }
+  }
+}

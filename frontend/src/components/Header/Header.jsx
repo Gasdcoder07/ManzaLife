@@ -6,7 +6,7 @@ import { useLanguage } from "../../context/LanguageContext";
 
 function Header() {
   const { textos } = useLanguage();
-
+  console.log(textos);
   return (
     <section className="relative h-screen flex justify-center items-center">
       <Navbar />

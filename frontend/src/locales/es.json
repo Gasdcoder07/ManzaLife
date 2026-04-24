@@ -6,152 +6,148 @@
     "manzadle": "ManzaDle",
     "login": "Iniciar sesión"
   },
+
   "landing": {
     "subtitulo": "Un lugar paradisíaco en las costas de México",
     "placeholder_busqueda": "Playas, plazas o restaurantes"
   },
-  "blog": {
-    "titulo_principal": "El blog más grande de Manzanillo",
-    "blog_items": [
-        {
-            "text" : "Comparte lugares hermosos."
-        },
-        {
-            "text" : "Encuentra rincones únicos."
-        },
-        {
-            "text" : "Promociona tu negocio local."
-        },
-        {
-            "text" : "Ayuda a otros a descubrir la ciudad."
-        }
-    ],
-    "frase1": "Comparte lugares hermosos.",
-    "frase2": "Encuentra rincones únicos.",
-    "frase3": "Promociona tu negocio local.",
-    "frase4": "Ayuda a otros a descubrir la ciudad.",
-    "categoria": "Centro histórico",
-    "boton": "Ver ahora",
-    "como_funciona": "¿Cómo funciona?",
-    "como_funciona_items": [
-      {
-        "titulo": "Explora",
-        "descripcion": "Descubre artículos y contenido sobre Manzanillo."
-      },
-      {
-        "titulo": "Crea",
-        "descripcion": "Regístrate gratis y forma parte de la comunidad."
-      },
-      {
-        "titulo": "Comparte",
-        "descripcion": "Publica y promociona negocios o lugares locales."
-      },
-      {
-        "titulo": "Interactúa",
-        "descripcion": "Comenta, opina y conecta con otros usuarios."
-      },
-      {
-        "titulo": "Apoya",
-        "descripcion": "Ayuda a impulsar los negocios y lugares locales."
-      },
-      {
-        "titulo": "Crece",
-        "descripcion": "Haz crecer tu negocio o proyecto local."
-      }
-    ]
-  },
+
   "posts": {
     "titulo": "Publicaciones",
     "subtitulo": "Publicaciones recientes"
   },
+
+  "blog": {
+    "titulo_principal": "El blog más grande de Manzanillo",
+    "blog_items": [
+      { "text": "Comparte lugares hermosos." },
+      { "text": "Encuentra rincones únicos." },
+      { "text": "Promociona tu negocio local." },
+      { "text": "Ayuda a otros a descubrir la ciudad." }
+    ],
+    "categoria": "Centro histórico",
+    "boton": "Ver ahora"
+  },
+
   "categorias": {
     "titulo": "Categorías",
     "subtitulo": "Nuestras categorías",
     "boton": "Explorar categorías"
   },
+
   "nosotros": {
     "titulo": "Nosotros",
     "subtitulo": "¿Por qué explorar con nosotros?",
     "descripcion": "En ManzaLife te ayudamos a descubrir lo mejor de Manzanillo. Compartimos recomendaciones reales, lugares imperdibles y experiencias para que disfrutes al máximo tu visita.",
-    "items" : [
-        {
-            "title" : "Lugares reales",
-            "description": "Recomendaciones basadas en lugares populares y experiencias reales en Manzanillo."
-        },
-        {
-            "title" : "Experiencias locales",
-            "description": "Desde playas tranquilas hasta vida nocturna y gastronomía local."
-        },
-        {
-            "title" : "Guías para viajeros",
-            "description": "Contenido pensado para ayudarte a descubrir qué hacer, dónde ir y qué visitar."
-        },
-        {
-            "title" : "Lugares imperdibles",
-            "description": "Descubre sitios populares y rincones especiales que hacen único a Manzanillo."
-        }
+    "items": [
+      {
+        "title": "Lugares reales",
+        "description": "Recomendaciones basadas en lugares populares y experiencias reales en Manzanillo."
+      },
+      {
+        "title": "Experiencias locales",
+        "description": "Desde playas tranquilas hasta vida nocturna y gastronomía local."
+      },
+      {
+        "title": "Guías para viajeros",
+        "description": "Contenido pensado para ayudarte a descubrir qué hacer, dónde ir y qué visitar."
+      },
+      {
+        "title": "Lugares imperdibles",
+        "description": "Descubre sitios populares y rincones especiales que hacen único a Manzanillo."
+      }
     ],
     "boton": "Explorar lugares"
   },
+
   "testimonials": {
     "titulo": "Testimonios",
     "subtitulo": "de nuestros usuarios"
   },
-    "cta": {
-  "titulo": "Únete",
-  "subtitulo": "a nuestra comunidad",
-  "descripcion": "Forma parte de ManzaLife y comparte tus experiencias en Manzanillo.",
-  "boton": "Registrarse"
-},
-"footer": {
-  "blog": {
-    "titulo": "Blog",
-    "items": ["El blog más grande de Manzanillo"]
-  },
-  "posts": {
-    "titulo": "Publicaciones",
-    "items": ["Publicaciones recientes"]
-  },
-  "categorias": {
-    "titulo": "Categorías",
-    "items": ["Nuestras categorías"]
-  },
-  "nosotros": {
-    "titulo": "Nosotros",
-    "items": ["¿Por qué explorar con nosotros?"]
-  },
-  "testimonios": {
-    "titulo": "Testimonios",
-    "items": ["Testimonios de nuestros usuarios"]
-  },
+
   "cta": {
     "titulo": "Únete",
-    "items": ["Únete a la comunidad"]
+    "subtitulo": "a nuestra comunidad",
+    "descripcion": "Forma parte de ManzaLife y comparte tus experiencias en Manzanillo.",
+    "boton": "Registrarse"
   },
-  "derechos": "ManzaLife. Todos los derechos reservados."
-},
-    "main_blog" : {
-        "sidebar_elements" : {
-            "home" : "Inicio",
-            "categories" : "Categorías",
-            "community" : "Comunidad",
-            "profile" : "Perfil"
-        },
-        "home" : {
-            "title" : "Publicaciones",
-            "subtitle" : "recientes"
-        },
-        "categories" : {
-            "subtitle" : "Nuestras",
-            "title" : "categorias"
-        },
-        "community" : {
-            "subtitle" : "Explora nuestra",
-            "title" : "comunidad"
-        }
+
+  "footer": {
+    "blog": {
+      "titulo": "Blog",
+      "items": ["El blog más grande de Manzanillo"]
+    },
+    "posts": {
+      "titulo": "Publicaciones",
+      "items": ["Publicaciones recientes"]
+    },
+    "categorias": {
+      "titulo": "Categorías",
+      "items": ["Nuestras categorías"]
+    },
+    "nosotros": {
+      "titulo": "Nosotros",
+      "items": ["¿Por qué explorar con nosotros?"]
+    },
+    "testimonios": {
+      "titulo": "Testimonios",
+      "items": ["Testimonios de nuestros usuarios"]
+    },
+    "cta": {
+      "titulo": "Únete",
+      "items": ["Únete a la comunidad"]
+    },
+    "derechos": "ManzaLife. Todos los derechos reservados."
+  },
+
+  "auth": {
+    "titulo": "Accede a tu cuenta",
+    "usuario": "Usuario",
+    "password": "Contraseña",
+    "ingresar": "Ingresar",
+    "olvide": "¿Olvidaste tu contraseña?",
+    "reset": "Reestablecer contraseña",
+    "registro": "Regístrate",
+    "login_success": "¡Inicio de sesión exitoso!",
+    "login_error": "Usuario o contraseña incorrectos.",
+    "login_loading": "Iniciando sesión...",
+    "ir_al_blog": "Ir al blog",
+    "frase_lateral": "Descubre lugares, explora sentimientos",
+    "no_cuenta": "¿No tienes cuenta aún?"
+  },
+
+  "register": {
+    "titulo": "Crear cuenta",
+    "casi_listo": "¡Casi listo!",
+    "nombre": "Nombre",
+    "apellidos": "Apellidos",
+    "usuario": "Usuario",
+    "siguiente": "Siguiente",
+    "crear_cuenta": "Crear cuenta",
+    "regresar": "Regresar",
+    "ya_tienes": "¿Ya tienes cuenta?",
+    "inicia_sesion": "Inicia sesión",
+
+    "nombre_required": "El nombre es obligatorio",
+    "apellido_required": "El apellido es obligatorio",
+    "usuario_required": "El usuario es obligatorio",
+    "email_required": "El correo electrónico es obligatorio",
+    "password_required": "La contraseña es obligatoria",
+    "password_confirm_required": "Debes confirmar tu contraseña",
+    "password_match": "Las contraseñas no coinciden",
+    "password_secure": "Contraseña insegura",
+
+    "loading": "Creando cuenta...",
+    "success": "¡Cuenta creada exitosamente!",
+    "error": "Error al crear la cuenta"
+  },
+
+  "main_blog": {
+    "sidebar_elements": {
+      "home": "Inicio",
+      "categories": "Categorías",
+      "community": "Comunidad",
+      "profile": "Perfil"
     }
+  }
 }
-
-
-
-
