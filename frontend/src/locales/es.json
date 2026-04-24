@@ -6,17 +6,14 @@
     "manzadle": "ManzaDle",
     "login": "Iniciar sesión"
   },
-
   "landing": {
     "subtitulo": "Un lugar paradisíaco en las costas de México",
     "placeholder_busqueda": "Playas, plazas o restaurantes"
   },
-
   "posts": {
     "titulo": "Publicaciones",
     "subtitulo": "Publicaciones recientes"
   },
-
   "blog": {
     "titulo_principal": "El blog más grande de Manzanillo",
     "blog_items": [
@@ -28,50 +25,33 @@
     "categoria": "Centro histórico",
     "boton": "Ver ahora"
   },
-
   "categorias": {
     "titulo": "Categorías",
     "subtitulo": "Nuestras categorías",
     "boton": "Explorar categorías"
   },
-
   "nosotros": {
     "titulo": "Nosotros",
     "subtitulo": "¿Por qué explorar con nosotros?",
-    "descripcion": "En ManzaLife te ayudamos a descubrir lo mejor de Manzanillo. Compartimos recomendaciones reales, lugares imperdibles y experiencias para que disfrutes al máximo tu visita.",
+    "descripcion": "En ManzaLife te ayudamos a descubrir lo mejor de Manzanillo.",
     "items": [
-      {
-        "title": "Lugares reales",
-        "description": "Recomendaciones basadas en lugares populares y experiencias reales en Manzanillo."
-      },
-      {
-        "title": "Experiencias locales",
-        "description": "Desde playas tranquilas hasta vida nocturna y gastronomía local."
-      },
-      {
-        "title": "Guías para viajeros",
-        "description": "Contenido pensado para ayudarte a descubrir qué hacer, dónde ir y qué visitar."
-      },
-      {
-        "title": "Lugares imperdibles",
-        "description": "Descubre sitios populares y rincones especiales que hacen único a Manzanillo."
-      }
+      { "title": "Lugares reales", "description": "Recomendaciones reales." },
+      { "title": "Experiencias locales", "description": "Playas, comida y vida nocturna." },
+      { "title": "Guías", "description": "Qué hacer y dónde ir." },
+      { "title": "Imperdibles", "description": "Lugares únicos." }
     ],
     "boton": "Explorar lugares"
   },
-
   "testimonials": {
     "titulo": "Testimonios",
     "subtitulo": "de nuestros usuarios"
   },
-
   "cta": {
     "titulo": "Únete",
     "subtitulo": "a nuestra comunidad",
-    "descripcion": "Forma parte de ManzaLife y comparte tus experiencias en Manzanillo.",
+    "descripcion": "Comparte experiencias en Manzanillo.",
     "boton": "Registrarse"
   },
-
   "footer": {
     "blog": {
       "titulo": "Blog",
@@ -91,7 +71,7 @@
     },
     "testimonios": {
       "titulo": "Testimonios",
-      "items": ["Testimonios de nuestros usuarios"]
+      "items": ["Opiniones de usuarios"]
     },
     "cta": {
       "titulo": "Únete",
@@ -99,55 +79,34 @@
     },
     "derechos": "ManzaLife. Todos los derechos reservados."
   },
-
   "auth": {
     "titulo": "Accede a tu cuenta",
     "usuario": "Usuario",
     "password": "Contraseña",
     "ingresar": "Ingresar",
-    "olvide": "¿Olvidaste tu contraseña?",
-    "reset": "Reestablecer contraseña",
-    "registro": "Regístrate",
-    "login_success": "¡Inicio de sesión exitoso!",
-    "login_error": "Usuario o contraseña incorrectos.",
-    "login_loading": "Iniciando sesión...",
-    "ir_al_blog": "Ir al blog",
-    "frase_lateral": "Descubre lugares, explora sentimientos",
-    "no_cuenta": "¿No tienes cuenta aún?"
+    "frase_lateral": "Descubre lugares, explora sentimientos"
   },
-
   "register": {
-    "titulo": "Crear cuenta",
-    "casi_listo": "¡Casi listo!",
-    "nombre": "Nombre",
-    "apellidos": "Apellidos",
-    "usuario": "Usuario",
-    "siguiente": "Siguiente",
-    "crear_cuenta": "Crear cuenta",
-    "regresar": "Regresar",
-    "ya_tienes": "¿Ya tienes cuenta?",
-    "inicia_sesion": "Inicia sesión",
-
-    "nombre_required": "El nombre es obligatorio",
-    "apellido_required": "El apellido es obligatorio",
-    "usuario_required": "El usuario es obligatorio",
-    "email_required": "El correo electrónico es obligatorio",
-    "password_required": "La contraseña es obligatoria",
-    "password_confirm_required": "Debes confirmar tu contraseña",
-    "password_match": "Las contraseñas no coinciden",
-    "password_secure": "Contraseña insegura",
-
-    "loading": "Creando cuenta...",
-    "success": "¡Cuenta creada exitosamente!",
-    "error": "Error al crear la cuenta"
+    "titulo": "Crear cuenta"
   },
-
   "main_blog": {
     "sidebar_elements": {
       "home": "Inicio",
       "categories": "Categorías",
       "community": "Comunidad",
       "profile": "Perfil"
+    },
+    "home": {
+      "title": "Publicaciones",
+      "subtitle": "Últimas"
+    },
+    "categories": {
+      "title": "Categorías",
+      "subtitle": "Nuestras"
+    },
+      "community": {
+      "title": "Comunidad",
+      "subtitle": "Explora nuestra"
+}
     }
   }
-}
