@@ -2,7 +2,7 @@ const BlogCategoriesSkeleton = () => {
   return (
     <>
         <div className="mt-4 ease-in-out animate-pulse">
-            <div className="rounded bg-white/10 w-1/2 h-8"/>
+            <div className="rounded bg-black/10 dark:bg-white/10 w-1/2 h-8"/>
         </div>
         <div className="py-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {
@@ -10,7 +10,7 @@ const BlogCategoriesSkeleton = () => {
                     return (
                         <div
                             key={i}
-                            className="h-32 rounded-xl bg-white/10 ease-in-out animate-pulse"/>
+                            className="h-32 rounded-xl bg-black/10 dark:bg-white/10 ease-in-out animate-pulse"/>
                     )
                 })
             }
