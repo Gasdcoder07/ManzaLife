@@ -13,6 +13,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import DefaultBanner from "../../../imgs/LoginResources/Login_bg.png";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 import DeletePostModal from "../../components/Modals/DeletePostModal";
+import BannerProfileModal from "../../components/Modals/BannerProfileModal";
 
 const BlogProfile = () => {
     const { username } = useParams()
@@ -22,6 +23,7 @@ const BlogProfile = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [showImageModal, setShowImageModal] = useState(false);
+    const [showBannerModal, setShowBannerModal] = useState(false);
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteSelectedPost, setDeleteSelectedPost] = useState(null);
@@ -113,7 +115,7 @@ const BlogProfile = () => {
 
                 {
                     Authorized && (
-                        <button className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-full hover:bg-white/30 cursor-pointer transition-colors duration-200 ease-in-out">
+                        <button onClick={() => setShowBannerModal(true)} className="absolute bottom-4 right-4 bg-white/20 p-2 rounded-full hover:bg-white/30 cursor-pointer transition-colors duration-200 ease-in-out">
                             <MdOutlineAddPhotoAlternate className="text-white"/>
                         </button>
                     )
@@ -221,9 +223,12 @@ const BlogProfile = () => {
                     deleteConfirm={handleDeleteConfirm}/>
             )
         }
-
-
-
+        {
+            showBannerModal && (
+                <BannerProfileModal
+                    setShowBannerModal={setShowBannerModal}/>
+            )
+        }
     </div>
   );
 };
