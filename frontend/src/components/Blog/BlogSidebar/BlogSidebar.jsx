@@ -37,7 +37,7 @@ const BlogSidebar = () => {
                                 <NavLink
                                     to={item.path}
                                     end={item.path === "/blog"}
-                                    className={({ isActive }) => `flex justify-start items-center gap-2 rounded-xl px-6 py-2 hover:bg-orange-500 hover:text-zinc-50 dark:hover:text-orange-600 dark:hover:bg-white/5 cursor-pointer transition-colors duration-200 ease-in-out ${isActive ? 'bg-linear-to-b from-orange-600 dark:from-transparent via-orange-500 dark:via-transparent to-orange-600 dark:to-transparent text-zinc-50 dark:text-orange-600' : ''}`}>
+                                    className={({ isActive }) => `flex justify-start items-center gap-2 rounded-xl px-6 py-2 hover:bg-black/5 dark:hover:text-orange-600 dark:hover:bg-white/5 cursor-pointer transition-colors duration-200 ease-in-out ${isActive && 'text-orange-600'}`}>
                                     <Icon/>
                                     <span>{item.text}</span>
                                 </NavLink>

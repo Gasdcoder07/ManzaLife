@@ -16,7 +16,7 @@ const BlogPostDetail = () => {
     console.log(post);
 
   return (
-    <div className="mt-4 flex flex-col gap-4 py-4">
+    <div className="m-4 flex flex-col gap-4 p-4 bg-[#fffbf8] border border-neutral-300 dark:bg-[#0d0d0f] dark:border-neutral-800 rounded-lg shadow-md">
         <div className="rounded-xl overflow-hidden h-64 shadow-xl">
             <img
                 className="object-cover h-full w-full"
@@ -24,7 +24,7 @@ const BlogPostDetail = () => {
                 alt={post?.title} />
         </div>
         <div>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 p-4">
                 <h3 className="font-bold text-2xl sm:text-3xl tracking-wide">{post.title}</h3>
                 <div className="w-fit flex justify-between items-center gap-4 text-sm">
                     <div className="flex gap-4 justify-center items-center">
@@ -47,7 +47,7 @@ const BlogPostDetail = () => {
                 <p className="whitespace-pre-line text-lg font-light tracking-wider leading-relaxed">{post.content}</p>
             </div>
         </div>
-        <div className="my-8 max-w-xl">
+        <div className="my-8 max-w-xl p-4">
             <CommentSection postId={post.id} comments={post.comments}/>
         </div>
     </div>

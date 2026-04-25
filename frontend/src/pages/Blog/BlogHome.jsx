@@ -53,7 +53,7 @@ export default function Blog() {
             <div className="mt-4 flex items-center justify-between">
                 
                
-                <h3 className="text-2xl font-light">
+                <h3 className="text-2xl">
                     {idioma === "en" ? (
                         <>
                             {textos?.main_blog?.home?.subtitle}{" "}

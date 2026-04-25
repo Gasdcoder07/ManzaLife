@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
-import logo from "../../../../imgs/logomaxxing.svg";
+import logoLight from "../../../../imgs/LogoLight.svg";
+import logoDark from "../../../../imgs/logomaxxing.svg";
 import { FaSearch } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5"
 import { useRef, useState } from "react";
@@ -9,10 +10,12 @@ import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
 import UserProfile from "../../UserProfile";
 import ToggleThemeButton from "../../ToggleThemeButton";
 import { useLanguage } from "../../../context/LanguageContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { textos, idioma, setIdioma } = useLanguage();
+    const { isDark } = useTheme();
     const { user } = useAuth();
 
     const handleLanguageChange = () => {
@@ -22,11 +25,11 @@ const BlogNavbar = () => {
     // console.log(user)
 
     return (
-        <nav className="bg-linear-to-b from-orange-600 dark:from-transparent via-orange-500 dark:via-transparent to-orange-600 dark:to-transparent dark:bg-[#0d0d0f] w-full border-b border-neutral-800/20 dark:border-neutral-800 flex justify-center items-center">
+        <nav className="bg-[#fffbf8] dark:bg-[#0d0d0f] w-full border-b border-neutral-800/20 dark:border-neutral-800 flex justify-center items-center">
             <div className="container mx-auto flex justify-between items-center px-4 py-2 gap-6 md:px-8 lg:px-12">
                 <Link to={"/"} className="shrink-0 hidden sm:flex">
                     <img
-                        src={logo}
+                        src={isDark ? logoDark : logoLight}
                         alt="ManzaLife"
                         className="h-10 object-cover select-none"
                     />
@@ -51,7 +54,7 @@ const BlogNavbar = () => {
                 <div className="flex justify-center items-center gap-4 sm:gap-6 shrink-0">
                     <Link
                         to={user ? "/create-post" : "/auth/login"}
-                        className="text-white hover:text-zinc-950 dark:hover:text-orange-600 transition-colors duration-200 ease-in-out"
+                        className="hover:text-orange-600 transition-colors duration-200 ease-in-out"
                     >
                         <span>
                             {idioma === "en" ? "Create Post" : "Crear Post"}
@@ -61,7 +64,7 @@ const BlogNavbar = () => {
                     <div className="flex justify-center items-center gap-2">
                         <button
                             className={
-                                "text-white cursor-pointer hover:text-zinc-950 dark:hover:text-orange-600 transition-colors ease-in-out duration-200 px-3 py-1"
+                                "cursor-pointer hover:text-orange-600 transition-colors ease-in-out duration-200 px-3 py-1"
                             }
                             onClick={handleLanguageChange}
                         >
