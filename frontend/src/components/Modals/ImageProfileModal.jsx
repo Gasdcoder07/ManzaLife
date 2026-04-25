@@ -38,7 +38,7 @@ const ImageProfileModal = ({ setShowImageModal }) => {
 
   return (
     <ModalLayout>
-        <div className="bg-zinc-950 border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
+        <div className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 text-zinc-950 dark:text-neutral-300">
             <div className="space-y-2">
                 <h2 className="text-center tracking-wider italic">Imagen de perfil</h2>
                 <hr className="text-white/10"/>
@@ -61,7 +61,7 @@ const ImageProfileModal = ({ setShowImageModal }) => {
                     
                     <button
                         onClick={() => fileInputRef.current.click()}
-                        className="absolute bottom-0 right-0 -translate-x-full bg-white/10 p-2 rounded-full cursor-pointer hover:bg-white/20 transition-colors duration-200 ease-in-out">
+                        className="absolute bottom-0 right-0 -translate-x-full bg-black/10 hover:bg-black/20 dark:bg-white/10 p-2 rounded-full cursor-pointer dark:hover:bg-white/20 transition-colors duration-200 ease-in-out">
                         <TbPhotoEdit/>
                     </button>
                 </div>
@@ -70,7 +70,7 @@ const ImageProfileModal = ({ setShowImageModal }) => {
             <div className="mt-2 flex justify-end items-center gap-4">
                 <button
                     onClick={() => setShowImageModal(false)}
-                    className="text-white border border-neutral-700 px-4 py-2 rounded hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
+                    className="text-zinc-950 dark:text-white border border-neutral-700 px-4 py-2 rounded hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
                     Cancelar
                 </button>
 

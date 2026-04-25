@@ -5,7 +5,7 @@ import { MdDelete, MdModeEdit } from "react-icons/md";
 const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, PostCreationDate, handleDelete }) => {
   return (
     <div
-        className="h-20 flex gap-4 rounded-xl overflow-hidden border border-neutral-400 dark:border-neutral-800"
+        className="h-20 flex gap-4 rounded-xl overflow-hidden border border-neutral-400 dark:border-neutral-800 shadow-md"
     >
         <img
             className="w-20 sm:w-36 h-full object-cover"
