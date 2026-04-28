@@ -45,7 +45,7 @@ const UserProfile = ({ UserAvatar, Username }) => {
 
             {
                 avatarDropdownOpen && (
-                    <div className="text-zinc-950 dark:text-zinc-50 absolute rounded-xl bg-[#fffbf8] dark:bg-zinc-800 border-neutral-800 shadow-lg top-full right-0 mt-2 w-48 max-h-52 z-20 overflow-y-auto custom-scrollbar">
+                    <div className="text-zinc-950 dark:text-zinc-50 absolute rounded-xl bg-[#fffbf8] dark:bg-zinc-800 border border-neutral-300 dark:border-neutral-700 shadow-lg top-full right-0 mt-2 w-48 max-h-52 z-20 overflow-y-auto custom-scrollbar">
                         <div className="w-full h-full px-6 py-3">
                             <div className="flex flex-col gap-2">
                                 <Link

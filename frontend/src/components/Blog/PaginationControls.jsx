@@ -10,7 +10,7 @@ const PaginationControls = ({ currentPage, totalPages, onPageChange }) => {
         <button
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className={`p-2 rounded-full flex items-center justify-center transition-all ${currentPage === 1 ? 'bg-white/5 cursor-not-allowed' : 'bg-white/5 hover:bg-white/10 cursor-pointer'}`}>
+            className={`p-2 rounded-full flex items-center justify-center transition-all ${currentPage === 1 ? 'bg-black/5 dark:bg-white/5 cursor-not-allowed' : 'bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 cursor-pointer'}`}>
             <FaArrowLeft/>
         </button>
 
@@ -32,7 +32,7 @@ const PaginationControls = ({ currentPage, totalPages, onPageChange }) => {
         <button
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className={`p-2 rounded-full flex items-center justify-center transition-all ${currentPage === totalPages ? 'bg-white/5 cursor-not-allowed' : 'bg-white/5 hover:bg-white/10 cursor-pointer'}`}>
+            className={`p-2 rounded-full flex items-center justify-center transition-all ${currentPage === totalPages ? 'bg-black/5 dark:bg-white/5 cursor-not-allowed' : 'bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 cursor-pointer'}`}>
             <FaArrowRight/>
         </button>
     </div>

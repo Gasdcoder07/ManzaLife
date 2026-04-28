@@ -11,10 +11,13 @@ import UserProfile from "../../UserProfile";
 import ToggleThemeButton from "../../ToggleThemeButton";
 import { useLanguage } from "../../../context/LanguageContext";
 import { useTheme } from "../../../context/ThemeContext";
+import { useBlogSidebarItems } from "../../../hooks/useBlogSidebarItems";
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { textos, idioma, setIdioma } = useLanguage();
+    const items = useBlogSidebarItems();
+
     const { isDark } = useTheme();
     const { user } = useAuth();
 
@@ -93,7 +96,7 @@ const BlogNavbar = () => {
                         />
                     </div>
                     <ul className="w-full h-full flex flex-col justify-center items-center gap-4">
-                        {BlogSidebarItems.map((item, index) => {
+                        {items.map((item, index) => {
                             return (
                                 <li key={index}>
                                     <Link

@@ -12,7 +12,7 @@ const BlogSidebar = () => {
     });
 
     const { textos, idioma } = useLanguage();
-    const items = useBlogSidebarItems()
+    const SideBar = useBlogSidebarItems()
 
     useEffect(() => {
         localStorage.setItem("sidebar-open", JSON.stringify(isOpen));
@@ -27,25 +27,38 @@ const BlogSidebar = () => {
         </div>
 
         <div className={`${isOpen ? 'flex flex-col gap-4' : 'hidden'} h-full w-full px-6 py-4 custom-scrollbar`}>
-            <ul className="w-full flex flex-col gap-4 text-zinc-950 dark:text-white">
-                {
-                    items.map((item, index) => {
-                        const Icon = item.icon;
+            {
+                SideBar.map((section, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className="flex flex-col gap-2">
+                                <p className="italic tracking-wider text-zinc-950 dark:text-white">{section.section}</p>
 
-                        return (
-                            <li key={index}>
-                                <NavLink
-                                    to={item.path}
-                                    end={item.path === "/blog"}
-                                    className={({ isActive }) => `flex justify-start items-center gap-2 rounded-xl px-6 py-2 hover:bg-black/5 dark:hover:text-orange-600 dark:hover:bg-white/5 cursor-pointer transition-colors duration-200 ease-in-out ${isActive && 'text-orange-600'}`}>
-                                    <Icon/>
-                                    <span>{item.text}</span>
-                                </NavLink>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+                                <ul className="w-full flex flex-col gap-4 text-zinc-950 dark:text-white">
+                                    {
+                                        section.items.map((item, index) => {
+                                            const Icon = item.icon;
+
+                                            return (
+                                                <li key={index}>
+                                                    <NavLink
+                                                        to={item.path}
+                                                        end={item.path === "/blog"}
+                                                        className={({ isActive }) => `flex justify-start items-center gap-2 rounded-xl px-6 py-2 hover:bg-black/5 dark:hover:text-orange-600 dark:hover:bg-white/5 cursor-pointer transition-colors duration-200 ease-in-out ${isActive && 'text-orange-600'}`}>
+                                                        <Icon/>
+                                                        <span>{item.text}</span>
+                                                    </NavLink>
+                                                </li>
+                                            )
+                                        })
+                                    }
+                                </ul>
+                        </div>
+                    )
+                })
+            }
+
         </div>
         <div className={`${!isOpen && 'hidden'} px-6 py-4`}>
             <p className="text-xs w-3/5 text-zinc-950 dark:text-neutral-500">
