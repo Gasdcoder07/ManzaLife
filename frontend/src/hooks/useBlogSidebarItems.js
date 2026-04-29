@@ -27,12 +27,14 @@ export const useBlogSidebarItems = () => {
         }
     ];
 
-    sections.push({
-        section: "Administración",
-        items: [
-            { text: "Keti", path: "/ahi", icon: IoKeypad }
-        ]
-    })
+    if (true) {
+        sections.push({
+            section: "Administración",
+            items: [
+                { text: "Panel", path: "/dashboard", icon: IoKeypad }
+            ]
+        })
+    }
 
     return sections;
 }

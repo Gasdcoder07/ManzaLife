@@ -33,7 +33,13 @@ const BlogSidebar = () => {
                         <div
                             key={index}
                             className="flex flex-col gap-2">
-                                <p className="italic tracking-wider text-zinc-950 dark:text-white">{section.section}</p>
+
+
+                                {
+                                    SideBar.length > 1 && (
+                                        <p className="italic tracking-wider text-zinc-950 dark:text-white">{section.section}</p>
+                                    )
+                                }
 
                                 <ul className="w-full flex flex-col gap-4 text-zinc-950 dark:text-white">
                                     {
