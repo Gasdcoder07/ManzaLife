@@ -11,9 +11,9 @@ const DashboardGrid = ({ DashboardStats, LatestPosts, LatestUsers }) => {
         <div className="flex flex-col py-4 gap-4">
             {/* StatsCards */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-                <StatsCard Icon={MdArticle} Description={"Publicaciones totales"} Number={20} />
-                <StatsCard Icon={BiSolidCategory} Description={"Categorias totales"} Number={8} />
-                <StatsCard Icon={FaUsers} Description={"Usuarios registrados"} Number={15} />
+                <StatsCard Icon={MdArticle} Description={"Publicaciones totales"} Number={DashboardStats.posts} />
+                <StatsCard Icon={BiSolidCategory} Description={"Categorias totales"} Number={DashboardStats.categories} />
+                <StatsCard Icon={FaUsers} Description={"Usuarios registrados"} Number={DashboardStats.users} />
                 <StatsCard Icon={IoMailUnread} Description={"Solicitudes pendientes"} Number={6} />
             </div>
 
