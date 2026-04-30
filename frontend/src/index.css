@@ -27,7 +27,7 @@
 
 @layer utilities {
     .custom-scrollbar {
-        @apply scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent scroll-smooth
+        @apply scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-800 scrollbar-track-transparent scroll-smooth
     }
 }
 
