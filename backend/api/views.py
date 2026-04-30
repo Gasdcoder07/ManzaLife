@@ -7,6 +7,15 @@ from .models import Post, Category, User, Comment, Review
 from .permissions import IsAuthorOrReadOnly
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
 
+class DashboardStatsView(viewsets.ModelViewSets):
+    def get(self, request):
+        data = {
+            "posts": Post.objects.count(),
+            "categories": Category.objects.count(),
+            "users": User.objects.count(),
+        }
+        return Response(data)
+
 class CustomPagination(PageNumberPagination):
     page_size = 8
 
