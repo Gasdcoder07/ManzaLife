@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import PostViewSet, CategoryViewSet, RegisterView, PerfilView, CommentViewSet, ReviewViewSet, UpdatePasswordView, UserViewSet
+from .views import PostViewSet, CategoryViewSet, RegisterView, PerfilView, CommentViewSet, ReviewViewSet, UpdatePasswordView, UserViewSet, DashboardStatsView
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
 router = DefaultRouter()
@@ -11,6 +11,7 @@ router.register(r'reviews', ReviewViewSet)
 router.register(r'usuarios', UserViewSet, basename='usuario')
 
 urlpatterns = [
+    path('dashboard/stats/', DashboardStatsView.as_view(), name='dashboard-stats'),
     path('usuarios/update-password/', UpdatePasswordView.as_view(), name='actualizar_password'),
     path('', include(router.urls)),
     path('register/', RegisterView.as_view(), name='auth_register'),

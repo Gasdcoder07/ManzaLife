@@ -7,7 +7,7 @@ from .models import Post, Category, User, Comment, Review
 from .permissions import IsAuthorOrReadOnly
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
 
-class DashboardStatsView(viewsets.ModelViewSets):
+class DashboardStatsView(APIView):
     def get(self, request):
         data = {
             "posts": Post.objects.count(),
