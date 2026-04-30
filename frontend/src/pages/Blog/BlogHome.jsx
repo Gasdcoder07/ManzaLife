@@ -51,7 +51,6 @@ export default function Blog() {
     return (
         <div ref={topRef} className="scroll-mt-32">
             <div className="mt-4 flex items-center justify-between">
-                
                
                 <h3 className="text-2xl">
                     {idioma === "en" ? (
