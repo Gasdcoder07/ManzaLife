@@ -5,7 +5,7 @@ import { IoMailUnread } from "react-icons/io5";
 import StatsCard from "./StatsCard";
 import RecentListCard from "./RecentListCard";
 
-const DashboardGrid = ({ LatestPosts, LatestUsers }) => {
+const DashboardGrid = ({ DashboardStats, LatestPosts, LatestUsers }) => {
   return (
     <div className="h-full flex flex-col gap-4">
         <div className="flex flex-col py-4 gap-4">
