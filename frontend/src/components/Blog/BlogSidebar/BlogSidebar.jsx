@@ -50,7 +50,7 @@ const BlogSidebar = () => {
                                                 <li key={index}>
                                                     <NavLink
                                                         to={item.path}
-                                                        end={item.path === "/blog"}
+                                                        end={item.path === "/blog" || item.path === "/dashboard"}
                                                         className={({ isActive }) => `flex justify-start items-center gap-2 rounded-xl px-6 py-2 hover:bg-black/5 dark:hover:text-orange-600 dark:hover:bg-white/5 cursor-pointer transition-colors duration-200 ease-in-out ${isActive && 'text-orange-600'}`}>
                                                         <Icon/>
                                                         <span>{item.text}</span>
