@@ -118,10 +118,22 @@
   },
   "main_blog": {
     "sidebar_elements": {
-      "home": "Inicio",
-      "categories": "Categorías",
-      "community": "Comunidad",
-      "profile": "Perfil"
+        "explore_section": {
+            "title" : "Blog",
+            "items" : {
+                "home": "Inicio",
+                "categories": "Categorías",
+                "community": "Comunidad",
+                "profile": "Perfil"
+            }
+        },
+        "admin_section": {
+            "title" : "Administración",
+            "items" : {
+                "dashboard" : "Panel",
+                "requests" : "Solicitudes"
+            }
+        }
     },
     "home": {
       "title": "Publicaciones",

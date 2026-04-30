@@ -118,10 +118,22 @@
   },
   "main_blog": {
     "sidebar_elements": {
-      "home": "Home",
-      "categories": "Categories",
-      "community": "Community",
-      "profile": "Profile"
+        "explore_section" : {
+            "title": "Blog",
+            "items": {
+                "home": "Home",
+                "categories": "Categories",
+                "community": "Community",
+                "profile": "Profile"
+            }
+        },
+        "admin_section" : {
+            "title": "Admin",
+            "items": {
+                "dashboard": "Dashboard",
+                "requests": "Requests"
+            }
+        }
     },
     "home": {
       "title": "Posts",
