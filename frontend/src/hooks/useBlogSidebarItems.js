@@ -1,8 +1,8 @@
 import { useAuth } from "../context/AuthContext"
 import { FaRegUserCircle } from "react-icons/fa";
-import { IoHome, IoKeypad } from "react-icons/io5";
+import { IoHome, IoKeypad, IoMailUnread } from "react-icons/io5";
 import { BiSolidCategory } from "react-icons/bi";
-// import { TbChartBarPopular } from "react-icons/tb";
+import { MdDashboard } from "react-icons/md";
 import { FaUsers } from "react-icons/fa6";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -31,7 +31,8 @@ export const useBlogSidebarItems = () => {
         sections.push({
             section: "Administración",
             items: [
-                { text: "Panel", path: "/dashboard", icon: IoKeypad }
+                { text: "Panel", path: "/dashboard", icon: MdDashboard },
+                { text: "Solicitudes", path: "/dashboard/requests", icon: IoMailUnread }
             ]
         })
     }

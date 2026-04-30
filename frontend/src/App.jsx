@@ -1,4 +1,4 @@
-import { Home, Login, Register, ForgotPassword, ResetPassword, BlogHome, BlogCategories, BlogPostDetail, Pruebas, PostForm, EditPostPage, BlogCommunity, BlogProfile, ManzaDle } from "./pages/index.js"
+import { Home, Login, Register, ForgotPassword, ResetPassword, BlogHome, BlogCategories, BlogPostDetail, Pruebas, PostForm, EditPostPage, BlogCommunity, BlogProfile, ManzaDle, Dashboard } from "./pages/index.js"
 // import { Home, Login, Register, BlogHome, BlogCategories, BlogPostDetail, Pruebas, CreatePost, BlogCommunity, ManzaDle } from "./pages/index.js"
 import BlogLayout from "./layouts/BlogLayout.jsx";
 import { Routes, Route } from 'react-router-dom'
@@ -33,6 +33,10 @@ function App() {
 
                     <Route path="edit-post/:slug" element={<BlogLayout/>}>
                         <Route index element={<EditPostPage/>}/>
+                    </Route>
+
+                    <Route path="/dashboard" element={<BlogLayout/>}>
+                        <Route index element={<Dashboard/>}/>
                     </Route>
 
                   <Route path="/auth" element={<AuthLayout/>}>
