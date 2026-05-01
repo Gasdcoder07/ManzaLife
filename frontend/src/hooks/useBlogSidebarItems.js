@@ -27,7 +27,7 @@ export const useBlogSidebarItems = () => {
         }
     ];
 
-    if (true) {
+    if (user && user.isAdmin) {
         sections.push({
             section: textos.main_blog.sidebar_elements.admin_section.title,
             items: [
