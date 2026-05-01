@@ -16,7 +16,7 @@ export default function Blog() {
     const topRef = useRef(null);
     const dropdownRef = useRef(null);
 
-    const { posts, loading } = usePosts(currentPage);
+    const { posts, loading } = usePosts(currentPage, categoriaActivada === "Todas" ? null : categoriaActivada);
     const postsArray = posts?.results || [];
     const totalPages = posts?.count ? Math.ceil(posts.count / 8) : 1;
 
@@ -24,11 +24,6 @@ export default function Blog() {
         "Todas",
         ...new Set(postsArray.map(post => post.category_name).filter(Boolean))
     ];
-
-    const postsFinales =
-        categoriaActivada === "Todas"
-            ? postsArray
-            : postsArray.filter(post => post.category_name === categoriaActivada);
 
     const handlePageChange = (newPage) => {
         topRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -103,7 +98,7 @@ export default function Blog() {
             </div>
 
             <BlogPostsGrid
-                posts={postsFinales}
+                posts={postsArray}
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={handlePageChange}

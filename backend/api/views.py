@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from .models import Post, Category, User, Comment, Review
 from .permissions import IsAuthorOrReadOnly
-from .serializers import PostSerializer, PostListSerializer, CategorySerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
+from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
 
 class DashboardStatsView(APIView):
     def get(self, request):
@@ -27,11 +27,14 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         if request.query_params.get('pagination') == 'false':
-            queryset = self.filter_queryset(self.get_queryset())
-            serializer = self.get_serializer(queryset, many=True)
-            return Response(serializer.data)
-        
+            self.pagination_class = None
+
         return super().list(request, *args, **kwargs)
+    
+    def get_serializer_class(self):
+        if self.request.query_params.get('pagination') == 'false':
+            return CategoryDropdownSerializer
+        return CategorySerializer
 
 class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
