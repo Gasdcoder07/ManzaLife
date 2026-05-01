@@ -4,6 +4,7 @@ import { usePosts } from "../../hooks/usePosts";
 import { MdArrowDropDown } from "react-icons/md";
 import BlogHomeSkeleton from "../../components/Blog/BlogPosts/BlogHomeSkeleton";
 import { useLanguage } from "../../context/LanguageContext";
+import { getAllCategories } from "../../services/categoryService";
 import PaginationControls from "../../components/Blog/PaginationControls";
 
 export default function Blog() {
@@ -11,24 +12,31 @@ export default function Blog() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [categoriaActivada, setCategoriaActivada] = useState("Todas");
+    const [categories, setCategories] = useState([]);
+    const [categoriaActivada, setCategoriaActivada] = useState(null);
 
     const topRef = useRef(null);
     const dropdownRef = useRef(null);
 
-    const { posts, loading } = usePosts(currentPage, categoriaActivada === "Todas" ? null : categoriaActivada);
+    const { posts, loading } = usePosts(currentPage, categoriaActivada);
     const postsArray = posts?.results || [];
     const totalPages = posts?.count ? Math.ceil(posts.count / 8) : 1;
-
-    const categorias = [
-        "Todas",
-        ...new Set(postsArray.map(post => post.category_name).filter(Boolean))
-    ];
-
+    
     const handlePageChange = (newPage) => {
         topRef.current?.scrollIntoView({ behavior: "smooth" });
         setCurrentPage(newPage);
     };
+
+    useEffect(() => {
+        getAllCategories().then(data => setCategories(data));
+    }, [])
+    
+    const categorias = [
+        { name: "Todas", slug: null },
+        ...categories
+    ];
+
+    const categoriaActual = categorias.find(cat => cat.slug === categoriaActivada);
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -72,7 +80,7 @@ export default function Blog() {
                     className="relative w-fit"
                 >
                     <button className="bg-[#fffbf8] dark:bg-[#0d0d0f] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-neutral-300 dark:border-neutral-800 cursor-pointer">
-                        <span>{categoriaActivada}</span>
+                        <span>{categoriaActual?.name || "Todas"}</span>
                         <MdArrowDropDown
                             className={`text-xl ${dropdownVisible ? "rotate-180" : ""}`}
                         />
@@ -82,13 +90,17 @@ export default function Blog() {
                     {dropdownVisible && (
                         <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg shadow-orange-600/10 border border-neutral-300 dark:border-neutral-800 bg-zinc-50 dark:bg-zinc-900 custom-scrollbar">
                             <ul className="flex flex-col px-4 py-2 gap-2">
-                                {categorias.map((item, index) => (
+                                {
+                                    categorias.map((item, index) => (
                                     <li
                                         key={index}
                                         className="block rounded-lg hover:bg-black/5 dark:hover:bg-zinc-800 px-2 py-1 cursor-pointer"
-                                        onClick={() => setCategoriaActivada(item)}
+                                        onClick={() => {
+                                            setCategoriaActivada(item.slug)
+                                            setCurrentPage(1);
+                                        }}
                                     >
-                                        <span className="text-sm">{item}</span>
+                                        <span className="text-sm">{item.name}</span>
                                     </li>
                                 ))}
                             </ul>
