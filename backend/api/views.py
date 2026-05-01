@@ -120,7 +120,7 @@ class PerfilView(APIView):
         return Response(serializer.data)
     
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
+    queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     lookup_field = 'username'
