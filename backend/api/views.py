@@ -43,9 +43,13 @@ class PostViewSet(viewsets.ModelViewSet):
         queryset = Post.objects.filter(status="published")
 
         author = self.request.query_params.get("author")
+        category = self.request.query_params.get("category")
 
         if author:
             queryset = queryset.filter(author__username__iexact=author)
+
+        if category:
+            queryset = queryset.filter(category__slug__iexact=category)
 
         if self.action == 'retrieve':
             return queryset.prefetch_related(
