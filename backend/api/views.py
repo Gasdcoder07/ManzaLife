@@ -124,6 +124,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     lookup_field = 'username'
+    lookup_value_regex = '[^/]+'
     pagination_class = CustomPagination
 
 class RegisterView(generics.CreateAPIView):
