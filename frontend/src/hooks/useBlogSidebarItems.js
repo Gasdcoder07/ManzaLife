@@ -11,10 +11,10 @@ export const useBlogSidebarItems = () => {
     const { user } = useAuth();
 
     const generalItems = [
-        { icon: IoHome, text: textos.main_blog.sidebar_elements.home, path: "/blog"},
-        { icon: BiSolidCategory, text: textos.main_blog.sidebar_elements.categories, path: "/blog/categories" },
-        { icon: FaUsers, text: textos.main_blog.sidebar_elements.community, path: "/blog/community" },
-        { icon: FaRegUserCircle, text: textos.main_blog.sidebar_elements.profile, 
+        { icon: IoHome, text: textos.main_blog.sidebar_elements.explore_section.items.home, path: "/blog"},
+        { icon: BiSolidCategory, text: textos.main_blog.sidebar_elements.explore_section.items.categories, path: "/blog/categories" },
+        { icon: FaUsers, text: textos.main_blog.sidebar_elements.explore_section.items.community, path: "/blog/community" },
+        { icon: FaRegUserCircle, text: textos.main_blog.sidebar_elements.explore_section.items.profile, 
             path: user ? `/blog/profile/${user.username}` : "/auth/login"
         },
         { icon: IoKeypad, text: "ManzaDle", path: "/manzadle" }
@@ -22,17 +22,17 @@ export const useBlogSidebarItems = () => {
 
     const sections = [
         {
-            section: "General",
+            section: textos.main_blog.sidebar_elements.explore_section.title,
             items: generalItems
         }
     ];
 
-    if (true) {
+    if (user && user.isAdmin) {
         sections.push({
-            section: "Administración",
+            section: textos.main_blog.sidebar_elements.admin_section.title,
             items: [
-                { text: "Panel", path: "/dashboard", icon: MdDashboard },
-                { text: "Solicitudes", path: "/dashboard/requests", icon: IoMailUnread }
+                { text: textos.main_blog.sidebar_elements.admin_section.items.dashboard, path: "/dashboard", icon: MdDashboard },
+                { text: textos.main_blog.sidebar_elements.admin_section.items.requests, path: "/dashboard/requests", icon: IoMailUnread }
             ]
         })
     }
