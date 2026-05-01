@@ -7,6 +7,11 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
+class CategoryDropdownSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name', 'slug']
+
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
