@@ -4,6 +4,7 @@ import BlogLayout from "./layouts/BlogLayout.jsx";
 import { Routes, Route } from 'react-router-dom'
 import AuthLayout from "./layouts/AuthLayout.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
+import AdminRoute from "./routes/AdminRoute.jsx";
 
 function App() {
 
@@ -35,9 +36,11 @@ function App() {
                         <Route index element={<EditPostPage/>}/>
                     </Route>
 
-                    <Route path="/dashboard" element={<BlogLayout/>}>
-                        <Route index element={<Dashboard/>}/>
-                        <Route path="requests" element={<Requests/>}/>
+                    <Route element={<AdminRoute/>}>
+                        <Route path="/dashboard" element={<BlogLayout/>}>
+                            <Route index element={<Dashboard/>}/>
+                            <Route path="requests" element={<Requests/>}/>
+                        </Route>
                     </Route>
 
                   <Route path="/auth" element={<AuthLayout/>}>
