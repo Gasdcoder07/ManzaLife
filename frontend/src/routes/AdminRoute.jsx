@@ -5,7 +5,7 @@ const AdminRoute = () => {
     const { user } = useAuth();
 
     if (!user) return <Navigate to={"/auth/login"}/>
-    if (!user.isAdmin) return <Navigate to={"/"} />;
+    if (!user.isAdmin) return <Navigate to={"/403"} />;
 
     return <Outlet/>;
 };
