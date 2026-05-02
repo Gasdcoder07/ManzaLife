@@ -37,17 +37,19 @@ const RecentUsersCard = ({ Classname, Users }) => {
                                     <tr key={index}>
                                         <td className="px-3 py-1.5 truncate">{item.username}</td>
                                         <td className="px-3 py-1.5 truncate">{item.email}</td>
-                                        <td className="shrink-0 px-3 py-1.5 flex gap-4">
-                                            <Link
-                                                to={`/blog/profile/${item.username}`}
-                                                className='flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200'>
-                                                <FaEye/>
-                                            </Link>
+                                        <td className="shrink-0 px-3 py-1.5">
+                                            <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
+                                                <Link
+                                                    to={`/blog/profile/${item.username}`}
+                                                    className='flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200'>
+                                                    <FaEye/>
+                                                </Link>
 
-                                            <button
-                                                className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
-                                                <FaBan/>
-                                            </button>
+                                                <button
+                                                    className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
+                                                    <FaBan/>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 )

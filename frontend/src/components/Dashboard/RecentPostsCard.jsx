@@ -41,25 +41,27 @@ const RecentPostsCard = ({ Classname, Posts }) => {
                                         <td className="px-3 py-1.5 truncate">{item.title}</td>
                                         <td className="px-3 py-1.5 truncate">{item.author_name}</td>
                                         <td className="px-3 py-1.5 text-green-500 dark:text-green-700 truncate">{item.status}</td>
-                                        <td className="shrink-0 px-3 py-1.5 flex gap-4">
-                                            <Link
-                                                to={`/blog/${item.slug}`}
-                                                className='flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200'>
-                                                <FaEye/>
-                                            </Link>
-
-                                            <div className="flex justify-center items-center gap-4">
+                                        <td className="px-3 py-1.5">
+                                            <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
                                                 <Link
-                                                    className="flex justify-center"
-                                                    to={`/edit-post/${item.slug}`}>
-                                                    <button className="cursor-pointer transition-all duration-200 ease-in-out hover:text-yellow-600">
-                                                        <MdModeEdit/>
-                                                    </button>
+                                                    to={`/blog/${item.slug}`}
+                                                    className='flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200'>
+                                                    <FaEye/>
                                                 </Link>
-                                                <button
-                                                    className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
-                                                    <MdDelete/>
-                                                </button>
+
+                                                <div className="flex justify-center items-center gap-4">
+                                                    <Link
+                                                        className="flex justify-center"
+                                                        to={`/edit-post/${item.slug}`}>
+                                                        <button className="cursor-pointer transition-all duration-200 ease-in-out hover:text-yellow-600">
+                                                            <MdModeEdit/>
+                                                        </button>
+                                                    </Link>
+                                                    <button
+                                                        className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
+                                                        <MdDelete/>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
