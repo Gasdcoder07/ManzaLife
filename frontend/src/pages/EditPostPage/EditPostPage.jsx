@@ -12,6 +12,11 @@ const EditPostPage = () => {
     const [post, setPost] = useState(null);
     const navigate = useNavigate();
 
+    // console.log(user)
+    console.log(post)
+    const isAuthor = user?.username === post?.author?.username;
+    const isAdmin = user?.isAdmin || false;
+
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -34,7 +39,7 @@ const EditPostPage = () => {
 
     if (!post) return <PostFormSkeleton/>
     if (!user) return null;
-    if (user.username != post.author.username) return <PostFormError/>
+    if (!isAuthor && !isAdmin) return <PostFormError/>
 
   return <PostForm mode={"edit"} PostData={post}/>
 };

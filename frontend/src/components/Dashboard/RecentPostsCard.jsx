@@ -1,11 +1,24 @@
 import { useLanguage } from "../../context/LanguageContext";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { MdDelete, MdModeEdit } from "react-icons/md";
+import DeletePostModal from "../Modals/DeletePostModal";
+import { deletePost } from "../../services/postService";
 
-const RecentPostsCard = ({ Classname, Posts }) => {
+const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
+
+    // Modal
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    const [deleteSelectedPost, setDeleteSelectedPost] = useState(null);
+
+    const handleDeleteConfirm = async (slug) => {
+        await deletePost(slug);
+        setPosts(prev => prev.filter(p => p.slug !== slug));
+    }
 
     return (
         <div className={`${Classname} h-64 bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
@@ -58,6 +71,10 @@ const RecentPostsCard = ({ Classname, Posts }) => {
                                                         </button>
                                                     </Link>
                                                     <button
+                                                        onClick={() => {
+                                                            setDeleteSelectedPost(item.slug)
+                                                            setShowDeleteModal(true)
+                                                        }}
                                                         className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
                                                         <MdDelete/>
                                                     </button>
@@ -71,6 +88,15 @@ const RecentPostsCard = ({ Classname, Posts }) => {
                     </tbody>
                 </table>
             </div>
+
+            {
+                showDeleteModal && (
+                    <DeletePostModal
+                        postSlug={deleteSelectedPost}
+                        setShowDeleteModal={setShowDeleteModal}
+                        deleteConfirm={handleDeleteConfirm}/>
+                )
+            }
         </div>
     );
 };

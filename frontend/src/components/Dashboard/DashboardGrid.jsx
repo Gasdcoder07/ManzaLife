@@ -6,7 +6,7 @@ import { BiSolidCategory } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa6";
 import { IoMailUnread } from "react-icons/io5";
 
-const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, LatestUsers, LoadingStats }) => {
+const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts, LatestUsers, LoadingStats }) => {
   return (
     <div className="h-full flex flex-col gap-4">
         <div className="flex flex-col py-4 gap-4">
@@ -41,7 +41,8 @@ const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, LatestUsers, Lo
             <div className="grid grid-cols-1 xl:grid-cols-5 gap-4 w-full">
                 <RecentPostsCard
                     Classname={"xl:col-span-3"}
-                    Posts={LatestPosts}/>
+                    Posts={LatestPosts}
+                    setPosts={setLatestPosts}/>
 
                 <RecentUsersCard
                     Classname={"xl:col-span-2"}
