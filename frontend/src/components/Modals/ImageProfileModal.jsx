@@ -1,11 +1,15 @@
-import { useAuth } from "../../context/AuthContext";
-import { TbPhotoEdit } from "react-icons/tb";
-import ModalLayout from "../../layouts/ModalLayout";
 import { useRef, useState } from "react";
 import { toast } from 'react-hot-toast';
+import { useAuth } from "../../context/AuthContext";
+import { useLanguage } from "../../context/LanguageContext";
 import { updateProfile } from "../../services/profileService";
+import ModalLayout from "../../layouts/ModalLayout";
+import { TbPhotoEdit } from "react-icons/tb";
 
 const ImageProfileModal = ({ setShowImageModal }) => {
+    const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const { user, setUser } = useAuth();
     const [loading, setLoading] = useState(false);
     const fileInputRef = useRef(null);
@@ -40,7 +44,9 @@ const ImageProfileModal = ({ setShowImageModal }) => {
     <ModalLayout>
         <div className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 text-zinc-950 dark:text-neutral-300">
             <div className="space-y-2">
-                <h2 className="text-center tracking-wider italic">Imagen de perfil</h2>
+                <h2 className="text-center tracking-wider italic">
+                    {isEnglish ? "Profile Image" : "Imagen de perfil"}
+                </h2>
                 <hr className="text-white/10"/>
             </div>
 
@@ -71,13 +77,13 @@ const ImageProfileModal = ({ setShowImageModal }) => {
                 <button
                     onClick={() => setShowImageModal(false)}
                     className="text-zinc-950 dark:text-white border border-neutral-700 px-4 py-2 rounded hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
-                    Cancelar
+                    {isEnglish ? "Cancel" : "Cancelar"}
                 </button>
 
                 <button
                     onClick={handleUpdate}
                     className={`${loading ? 'bg-zinc-700 text-zinc-500' : 'text-white bg-orange-600 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer'} px-4 py-2 rounded`}>
-                    Actualizar
+                    {isEnglish ? "Update" : "Actualizar"}
                 </button>
             </div>
         </div>
