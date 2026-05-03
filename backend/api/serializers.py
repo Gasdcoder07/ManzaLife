@@ -21,11 +21,12 @@ class UserSerializer(serializers.ModelSerializer):
     bio = serializers.CharField(source='userprofile.bio', read_only=True)
     avatar = serializers.ImageField(source='userprofile.avatar', read_only=True)
     banner = serializers.ImageField(source='userprofile.banner', read_only=True)
+    isAdmin = serializers.BooleanField(source='is_staff', read_only=True)
     # profile = UserProfileSerializer(source='userprofile', read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner', 'isAdmin']
 
 class CommentReplySerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
