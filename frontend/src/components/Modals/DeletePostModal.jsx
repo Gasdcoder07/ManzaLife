@@ -2,7 +2,7 @@ import { useState } from "react";
 import ModalLayout from "../../layouts/ModalLayout";
 import toast from "react-hot-toast";
 
-const DeletePostModal = ({ postSlug, setShowDeleteModal, deleteConfirm }) => {
+const DeletePostModal = ({ postName, postSlug, setShowDeleteModal, deleteConfirm }) => {
     const [loading, setLoading] = useState(false);
 
     const handleConfirmDelete = async () => {
@@ -25,7 +25,7 @@ const DeletePostModal = ({ postSlug, setShowDeleteModal, deleteConfirm }) => {
             <div className="flex flex-col gap-4 text-center">
                 <h2 className='tracking-wider italic text-2xl text-zinc-950 dark:text-white font-semibold'>Borrar publicación</h2>
 
-                <span className="tracking-widest leading-relaxed">Esta publicación será <strong className="text-red-600">eliminada</strong> permanentemente.</span>
+                <span className="tracking-widest leading-relaxed">La publicación "{postName}" será <strong className="text-red-600">eliminada</strong> permanentemente.</span>
             </div>
             
             <hr className='text-black/20 dark:text-white/10'/>

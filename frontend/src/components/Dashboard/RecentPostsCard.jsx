@@ -12,7 +12,7 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
 
     // Modal
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+    const [deleteSelectedPostName, setDeleteSelectedPostName] = useState(null);
     const [deleteSelectedPost, setDeleteSelectedPost] = useState(null);
 
     const handleDeleteConfirm = async (slug) => {
@@ -72,7 +72,8 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
                                                     </Link>
                                                     <button
                                                         onClick={() => {
-                                                            setDeleteSelectedPost(item.slug)
+                                                            setDeleteSelectedPost(item?.slug)
+                                                            setDeleteSelectedPostName(item?.title)
                                                             setShowDeleteModal(true)
                                                         }}
                                                         className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
@@ -92,6 +93,7 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
             {
                 showDeleteModal && (
                     <DeletePostModal
+                        postName={deleteSelectedPostName}
                         postSlug={deleteSelectedPost}
                         setShowDeleteModal={setShowDeleteModal}
                         deleteConfirm={handleDeleteConfirm}/>

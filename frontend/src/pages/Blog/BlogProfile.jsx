@@ -26,6 +26,7 @@ const BlogProfile = () => {
     const [showBannerModal, setShowBannerModal] = useState(false);
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [deleteSelectedPostName, setDeleteSelectedPostName] = useState(null);
     const [deleteSelectedPost, setDeleteSelectedPost] = useState(null);
 
     const [profileData, setProfileData] = useState(null);
@@ -185,7 +186,8 @@ const BlogProfile = () => {
                                 PostImage={post.image}
                                 PostName={post.title}
                                 PostCreationDate={post.created_at}
-                                handleDelete={handleDelete}/>
+                                handleDelete={handleDelete}
+                                setPostName={setDeleteSelectedPostName}/>
                         )
                     })
                 }
@@ -218,6 +220,7 @@ const BlogProfile = () => {
         {
             showDeleteModal && (
                 <DeletePostModal
+                    postName={deleteSelectedPostName}
                     postSlug={deleteSelectedPost}
                     setShowDeleteModal={setShowDeleteModal}
                     deleteConfirm={handleDeleteConfirm}/>
