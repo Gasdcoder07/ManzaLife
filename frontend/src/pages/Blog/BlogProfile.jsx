@@ -170,7 +170,7 @@ const BlogProfile = () => {
             </div>
         </div>
 
-        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4">
+        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 shadow-xl">
             <p className="font-semibold">
                 {idioma === "en" ? "Posts" : "Publicaciones"}
             </p>
