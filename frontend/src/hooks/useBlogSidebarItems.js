@@ -18,7 +18,7 @@ export const useBlogSidebarItems = () => {
         { icon: FaRegUserCircle, text: textos.main_blog.sidebar_elements.explore_section.items.profile, 
             path: user ? `/blog/profile/${user.username}` : "/auth/login"
         },
-        { icon: IoIosSend, text: textos.main_blog.sidebar_elements.explore_section.items.requests, path: "/blog/my-requests" },
+        { icon: IoIosSend, text: textos.main_blog.sidebar_elements.explore_section.items.requests, path: "/blog/requests" },
         { icon: IoKeypad, text: "ManzaDle", path: "/manzadle" }
     ];
 
@@ -34,7 +34,7 @@ export const useBlogSidebarItems = () => {
             section: textos.main_blog.sidebar_elements.admin_section.title,
             items: [
                 { text: textos.main_blog.sidebar_elements.admin_section.items.dashboard, path: "/dashboard", icon: MdDashboard },
-                { text: textos.main_blog.sidebar_elements.admin_section.items.review, path: "/dashboard/requests", icon: IoMailUnread }
+                { text: textos.main_blog.sidebar_elements.admin_section.items.review, path: "/dashboard/review", icon: IoMailUnread }
             ]
         })
     }
