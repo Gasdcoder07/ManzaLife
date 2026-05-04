@@ -8,6 +8,8 @@ const Requests = () => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
 
+    const [requests, setRequests] = useState([]);
+
     const [showRequestModal, setShowRequestModal] = useState(false);
 
   return (
@@ -27,12 +29,14 @@ const Requests = () => {
             </button>
         </div>
 
-        <RequestsGrid/>
+        <RequestsGrid
+            Requests={requests}/>
 
         {
             showRequestModal && (
                 <RequestModal
-                    setShowModal={setShowRequestModal}/>
+                    setShowModal={setShowRequestModal}
+                    setRequests={setRequests}/>
             )
         }
     </div>
