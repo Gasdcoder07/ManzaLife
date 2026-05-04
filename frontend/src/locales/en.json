@@ -124,14 +124,15 @@
                 "home": "Home",
                 "categories": "Categories",
                 "community": "Community",
-                "profile": "Profile"
+                "profile": "Profile",
+                "requests": "Requests"
             }
         },
         "admin_section" : {
             "title": "Admin",
             "items": {
                 "dashboard": "Dashboard",
-                "requests": "Requests"
+                "review": "Review"
             }
         }
     },
