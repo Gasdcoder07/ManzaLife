@@ -20,7 +20,7 @@ const BlogProfilePost = ({ idioma, IsAuthorized = false, PostSlug, PostImage, Po
             alt={PostName}/>
         
         <div className="min-w-0 flex-1 flex flex-col justify-between p-4">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                 <Link
                     to={`/blog/${PostSlug}`}
                     className="truncate italic tracking-wide hover:-translate-y-1 hover:text-orange-600 transition-all duration-200 ease-in-out">
