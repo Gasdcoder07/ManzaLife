@@ -7,6 +7,40 @@ from .models import Post, Category, User, Comment, Review, SystemRequest
 from .permissions import IsAuthorOrReadOnly
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer, SystemRequestSerializer
 
+class BanUserView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminRole]
+
+    def patch(self, request, id):
+        profile = get_object_or_404(UserProfile, user__id=id)
+
+        if profile.user == request.user:
+            return Response(
+                {
+                    "error": "No puedes banear tu propia cuenta"
+                }, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        profile.is_banned =  True
+        profile.save()
+
+        profile.user.is_active = not profile.is_banned
+        profile.user.save()
+
+        return Response({ "message": f"Usuario {'baneado' if profile.is_banned else 'desbaneado'} exitosamente" })
+
+class UnbanUserView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminRole]
+
+    def patch(self, request, id):
+        profile = get_object_or_404(UserProfile, user__id=id)
+            
+        profile.is_banned = False
+        profile.save()
+
+        profile.user.is_active = True
+        profile.user.save()
+
+        return Response({ "message": "Usuario desbaneado exitosamente" })
 class DashboardStatsView(APIView):
     def get(self, request):
         data = {
@@ -38,7 +72,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly, IsNotBanned]
 
     pagination_class = CustomPagination
 
@@ -80,7 +114,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly, IsNotBanned]
 
     def get_queryset(self):
         if self.action == 'list':
@@ -93,7 +127,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly, IsNotBanned]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
