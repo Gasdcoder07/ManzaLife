@@ -3,8 +3,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
-from .models import Post, Category, User, Comment, Review, SystemRequest
-from .permissions import IsAuthorOrReadOnly
+from .models import Post, Category, User, Comment, Review, SystemRequest, UserProfile
+from django.shortcuts import get_object_or_404
+from .permissions import IsAuthorOrReadOnly, IsAdminRole, IsNotBanned
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer, SystemRequestSerializer
 
 class BanUserView(APIView):
