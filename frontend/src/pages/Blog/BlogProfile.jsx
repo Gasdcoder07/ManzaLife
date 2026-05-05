@@ -101,7 +101,7 @@ const BlogProfile = () => {
     }
 
     // console.log(username)
-    // console.log(posts);
+    console.log(posts);
     console.log(profileData)
 
   return (
@@ -181,10 +181,12 @@ const BlogProfile = () => {
                         return (
                             <BlogProfilePost
                                 key={index}
+                                idioma={idioma}
                                 IsAuthorized={Authorized}
                                 PostSlug={post.slug}
                                 PostImage={post.image}
                                 PostName={post.title}
+                                PostStatus={post.status}
                                 PostCreationDate={post.created_at}
                                 handleDelete={handleDelete}
                                 setPostName={setDeleteSelectedPostName}/>
