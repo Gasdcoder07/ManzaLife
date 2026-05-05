@@ -24,6 +24,7 @@ class UserProfile(models.Model):
     avatar = models.ImageField(upload_to="avatars/", null=True, blank=True)
     banner = models.ImageField(upload_to="banners/", null=True, blank=True)
     is_local_business = models.BooleanField(default=False)
+    is_banned = models.BooleanField(default=False)
     user_type = models.CharField(
         max_length=20,
         choices=USER_TYPES,
