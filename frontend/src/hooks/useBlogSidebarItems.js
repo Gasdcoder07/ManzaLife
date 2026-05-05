@@ -4,6 +4,7 @@ import { IoHome, IoKeypad, IoMailUnread } from "react-icons/io5";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
 import { FaUsers } from "react-icons/fa6";
+import { IoIosSend } from "react-icons/io";
 import { useLanguage } from "../context/LanguageContext";
 
 export const useBlogSidebarItems = () => {
@@ -17,6 +18,7 @@ export const useBlogSidebarItems = () => {
         { icon: FaRegUserCircle, text: textos.main_blog.sidebar_elements.explore_section.items.profile, 
             path: user ? `/blog/profile/${user.username}` : "/auth/login"
         },
+        { icon: IoIosSend, text: textos.main_blog.sidebar_elements.explore_section.items.requests, path: "/blog/requests" },
         { icon: IoKeypad, text: "ManzaDle", path: "/manzadle" }
     ];
 
@@ -32,7 +34,7 @@ export const useBlogSidebarItems = () => {
             section: textos.main_blog.sidebar_elements.admin_section.title,
             items: [
                 { text: textos.main_blog.sidebar_elements.admin_section.items.dashboard, path: "/dashboard", icon: MdDashboard },
-                { text: textos.main_blog.sidebar_elements.admin_section.items.requests, path: "/dashboard/requests", icon: IoMailUnread }
+                { text: textos.main_blog.sidebar_elements.admin_section.items.review, path: "/dashboard/review", icon: IoMailUnread }
             ]
         })
     }

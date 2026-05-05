@@ -1,12 +1,16 @@
-import { TbPhotoEdit } from "react-icons/tb";
-import ModalLayout from "../../layouts/ModalLayout";
-import { useAuth } from "../../context/AuthContext";
-import DefaultBanner from "../../../imgs/LoginResources/Login_bg.png"
 import { useRef, useState } from "react";
-import { updateProfile } from "../../services/profileService";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
+import { useLanguage } from "../../context/LanguageContext";
+import { updateProfile } from "../../services/profileService";
+import ModalLayout from "../../layouts/ModalLayout";
+import { TbPhotoEdit } from "react-icons/tb";
+import DefaultBanner from "../../../imgs/LoginResources/Login_bg.png"
 
 const BannerProfileModal = ({ setShowBannerModal }) => {
+    const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const { user, setUser } = useAuth();
 
     const [loading, setLoading] = useState(false);
@@ -45,7 +49,9 @@ const BannerProfileModal = ({ setShowBannerModal }) => {
     <ModalLayout>
         <div className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 text-zinc-950 dark:text-neutral-300">
             <div className="space-y-2">
-                <h2 className="text-center tracking-wider italic">Imagen de fondo</h2>
+                <h2 className="text-center tracking-wider italic">
+                    {isEnglish ? "Banner Image" : "Imagen de fondo"}
+                </h2>
                 <hr className="text-black/20 dark:text-white/10"/>
             </div>
 
@@ -75,13 +81,13 @@ const BannerProfileModal = ({ setShowBannerModal }) => {
                 <button
                     onClick={() => setShowBannerModal(false)}
                     className="text-zinc-950 dark:text-white border border-neutral-700 px-4 py-2 rounded hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
-                    Cancelar
+                    {isEnglish ? "Cancel" : "Cancelar"}
                 </button>
 
                 <button
                     onClick={handleUpdate}
                     className={`${loading ? 'bg-zinc-700 text-zinc-500' : 'text-white bg-orange-600 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer'} px-4 py-2 rounded`}>
-                    Actualizar
+                    {isEnglish ? "Update" : "Actualizar"}
                 </button>
             </div>
         </div>

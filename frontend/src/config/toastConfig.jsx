@@ -6,7 +6,7 @@ export const toastContainerStyle = {
     right: 40,
 };
 
-const ToastDefaultStyles = "!bg-zinc-950 !border !border-neutral-800 !rounded-xl !shadow-lg !font-medium !tracking-wide";
+const ToastDefaultStyles = "!bg-[#fffbf8] dark:!bg-[#0d0d0f] !border !border-neutral-800/20 dark:!border-neutral-800 !rounded-xl !shadow-lg !font-medium !tracking-wide";
 
 export const toastOptionsConfig = {
     className: ToastDefaultStyles,

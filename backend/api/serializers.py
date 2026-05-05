@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Category, UserProfile, Comment, Review
+from .models import Post, Category, UserProfile, Comment, Review, SystemRequest
 from django.contrib.auth.models import User
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -140,3 +140,11 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = ['id', 'post', 'user_name', 'rating', 'comment', 'created_at']
         read_only_fields = ['user']
+
+class SystemRequestSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
+    
+    class Meta:
+        model = SystemRequest
+        fields = ['id', 'user', 'username', 'request_type', 'status', 'details', 'created_at']
+        read_only_fields = ['user', 'status']

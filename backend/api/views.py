@@ -3,10 +3,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
-from .models import Post, Category, User, Comment, Review, UserProfile
-from .permissions import IsAuthorOrReadOnly, IsAdminRole, IsNotBanned
-from django.shortcuts import get_object_or_404
-from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer
+from .models import Post, Category, User, Comment, Review, SystemRequest
+from .permissions import IsAuthorOrReadOnly
+from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer, SystemRequestSerializer
 
 class BanUserView(APIView):
     permission_classes = [IsAuthenticated, IsAdminRole]
@@ -202,3 +201,22 @@ class UpdatePasswordView(APIView):
                     {"error": "Usuario no encontrado en la base de datos"},
                     status=status.HTTP_400_BAD_REQUEST
                     )
+
+class SystemRequestViewSet(viewsets.ModelViewSet):
+    serializer_class = SystemRequestSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        queryset = SystemRequest.objects.all()
+        status_param = self.request.query_params.get('status')
+        type_param = self.request.query_params.get('type')
+        
+        if status_param:
+            queryset = queryset.filter(status=status_param)
+        if type_param:
+            queryset = queryset.filter(request_type=type_param)
+            
+        return queryset.order_by('-created_at')
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

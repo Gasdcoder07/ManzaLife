@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { formatDate } from "../../../../utils/formatDate";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 
-const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, PostCreationDate, handleDelete }) => {
+const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, PostCreationDate, handleDelete, setPostName }) => {
   return (
     <div
         className="h-20 flex gap-4 rounded-xl overflow-hidden border border-neutral-400 dark:border-neutral-800 shadow-md"
@@ -32,7 +32,10 @@ const BlogProfilePost = ({ IsAuthorized = false, PostSlug, PostImage, PostName, 
                             </Link>
 
                             <button
-                                onClick={() => handleDelete(PostSlug)}
+                                onClick={() => {
+                                    setPostName(PostName)
+                                    handleDelete(PostSlug)
+                                }}
                                 className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
                                 <MdDelete/>
                             </button>

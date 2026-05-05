@@ -124,14 +124,15 @@
                 "home": "Inicio",
                 "categories": "Categorías",
                 "community": "Comunidad",
-                "profile": "Perfil"
+                "profile": "Perfil",
+                "requests": "Solicitudes"
             }
         },
         "admin_section": {
             "title" : "Administración",
             "items" : {
                 "dashboard" : "Panel",
-                "requests" : "Solicitudes"
+                "review" : "Revisar"
             }
         }
     },
