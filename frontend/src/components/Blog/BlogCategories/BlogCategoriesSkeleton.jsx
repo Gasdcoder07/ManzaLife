@@ -6,7 +6,7 @@ const BlogCategoriesSkeleton = () => {
         </div>
         <div className="py-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {
-                [1, 2, 3, 4, 5, 6].map((i) => {
+                [1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
                     return (
                         <div
                             key={i}
