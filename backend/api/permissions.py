@@ -10,7 +10,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 class IsAdminRole(permissions.BasePermission):
     message = "Acceso denegado, solo administradores peuden accdeder"
 
-    def hasPermission(self, request, view):
+    def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
         
