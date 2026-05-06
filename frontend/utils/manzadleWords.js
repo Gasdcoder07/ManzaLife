@@ -25,5 +25,6 @@ export const DICTIONARY = [
     { word: "VALENTIN", desc: "Haz encontrado el EasterEgg, soy un dev de ManzaLife" },
     { word: "AXL", desc: "Haz encontrado el EasterEgg, soy un dev ManzaLife" },
     { word: "BRIAN", desc: "Haz encontrado el EasterEgg, soy un dev de ManzaLife" },
-    { word: "GRECO", desc: "Haz encontrado el EasterEgg, soy un dev de ManzaLife" }
+    { word: "GRECO", desc: "Haz encontrado el EasterEgg, soy un dev de ManzaLife" },
+    { word: "CERRODELTORO", desc: "Super cerro del toro aca chingon aca bien toron" }
 ]
