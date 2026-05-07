@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import ModalLayout from "../../layouts/ModalLayout";
 import toast from "react-hot-toast";
+import { postRequest } from "../../services/requestService";
 import { MdArrowDropDown } from "react-icons/md";
 
 const RequestModal = ({ setShowModal, setRequests }) => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
 
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         request_type: '',
         details: ''
@@ -36,7 +38,7 @@ const RequestModal = ({ setShowModal, setRequests }) => {
         setFormData(prev => ({ ...prev, [name] : value }));
     }
 
-    const handleClick = () => {
+    const handleClick = async () => {
         const requestExits = RequestTypes.some(
             (request) => request.value === formData.request_type
         );
@@ -57,8 +59,29 @@ const RequestModal = ({ setShowModal, setRequests }) => {
             );
         };
 
-        console.log(formData);
-        setShowModal(false);
+        setLoading(true);
+
+        try {
+            const response = await postRequest(formData);
+
+            toast.success(
+                isEnglish
+                    ? 'Request succesfull'
+                    : 'Exito mi pa'
+            )
+            setShowModal(false);
+        }
+        catch (e) {
+            toast.error(
+                isEnglish
+                    ? 'Error'
+                    : 'Error'
+            )
+            console.error("Error al crear solicitud: ", e);
+        }
+        finally {
+            setLoading(false);
+        }
     }
 
   return (
@@ -123,8 +146,9 @@ const RequestModal = ({ setShowModal, setRequests }) => {
                 </button>
 
                 <button
+                    disabled={loading}
                     onClick={handleClick}
-                    className={`text-white bg-orange-600 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer px-4 py-2 rounded`}>
+                    className={`${loading && 'bg-zinc-700 text-zinc-500'}text-white bg-orange-600 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer px-4 py-2 rounded`}>
                     {isEnglish ? "Send" : "Enviar"}
                 </button>
             </div>
