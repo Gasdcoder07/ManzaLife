@@ -88,13 +88,13 @@ export default function Blog() {
 
                     {/* Lista */}
                     {dropdownVisible && (
-                        <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg shadow-orange-600/10 border border-neutral-300 dark:border-neutral-800 bg-zinc-50 dark:bg-zinc-900 custom-scrollbar">
+                        <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg border border-neutral-300 dark:border-neutral-800 bg-[#fffbf8] dark:bg-[#0d0d0f] custom-scrollbar">
                             <ul className="flex flex-col px-4 py-2 gap-2">
                                 {
                                     categorias.map((item, index) => (
                                     <li
                                         key={index}
-                                        className="block rounded-lg hover:bg-black/5 dark:hover:bg-zinc-800 px-2 py-1 cursor-pointer"
+                                        className="block rounded-lg hover:bg-black/5 dark:hover:bg-white/5 px-2 py-1 cursor-pointer"
                                         onClick={() => {
                                             setCategoriaActivada(item.slug)
                                             setCurrentPage(1);
