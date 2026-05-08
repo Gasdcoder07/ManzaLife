@@ -214,28 +214,34 @@ python manage.py migrate.
 - 📍 Geolocalización de lugares.
 - ❤️ Sistema de favoritos.
 - 📱 Aplicación móvil.
-      
-            
-⭐ Apoya el Proyecto
+
+## 🌴 Objetivo del Proyecto
+El objetivo principal de ManzaLife es impulsar el turismo local mediante una plataforma moderna, intuitiva y accesible para cualquier visitante que quiera conocer Manzanillo.
+                  
+## ⭐ Apoya el Proyecto
 Si te gustó el proyecto puedes:
-⭐ Darle una estrella al repositorio
-🍴 Hacer un fork
-🛠 Contribuir al desarrollo
-📢 Compartirlo
+- ⭐ Darle una estrella al repositorio.
+- 📢 Compartirlo.
 
 *Hecho con corazón ❤️ en Manzanillo, Colima.*
 
-## 📬 Contacto
-- *Desarrolladores:*
-- NOMBRE: Diaz Hernandez Axl Enrique😄                    -EMAIL: adiaz106@ucol.mx📲
-- NOMBRE: Martinez Contreras Manuel Isahit😄              -EMAIL: mmartinez134@ucol.mx📲
-- NOMBRE: Sebastian Silvestre Brian😄                     -EMAIL: bsebastian0@ucol.mx📲
-- NOMBRE: Serna Diaz Greco Alejandro😄                    -EMAIL: gserna@ucol.mx📲
-- NOMBRE: Vaca Cipres Valentin😄                          -EMAIL: vvaca2@ucol.mx📲
+## 👨‍💻 Equipo de Desarrollo
+Diaz Hernandez Axl Enrique	
+Martinez Contreras Manuel 
+Sebastian Silvestre Brian	
+Serna Diaz Greco Alejandro	
+Vaca Cipres Valentin
 
+## 📬 Contacto
+📧 adiaz106@ucol.mx
+📧 mmartinez134@ucol.mx
+📧 bsebastian0@ucol.mx
+📧 gserna@ucol.mx
+📧 vvaca2@ucol.mx
+
+## 📜 Licencia
+Este proyecto es únicamente con fines educativos y académicos.
 
 Desarrollado con mucho cariño para resaltar la belleza de Manzanillo. 🌊🌴
-
-A domir ggs nos fuimos💤
 
 
