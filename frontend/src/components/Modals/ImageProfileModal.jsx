@@ -5,6 +5,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { updateProfile } from "../../services/profileService";
 import ModalLayout from "../../layouts/ModalLayout";
 import { TbPhotoEdit } from "react-icons/tb";
+import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 
 const ImageProfileModal = ({ setShowImageModal }) => {
     const { idioma } = useLanguage();
@@ -62,7 +63,7 @@ const ImageProfileModal = ({ setShowImageModal }) => {
 
                     <img
                         className="object-cover rounded-full size-56"
-                        src={selectedImage ? URL.createObjectURL(selectedImage) : user.avatar}
+                        src={selectedImage ? URL.createObjectURL(selectedImage) : user?.avatar ? user.avatar : DefaultAvatar}
                         alt={user.username} />
                     
                     <button
