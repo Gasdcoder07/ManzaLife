@@ -1,7 +1,7 @@
 ## ManzaLife🚀 Equipo 5️⃣
 Plataforma web turistica para enfocada en mostrar los mejores lugares, experiencias y actividades de Manzanillo 
 
-##📖 Descripción del Proyecto
+## 📖 Descripción del Proyecto
 Manzalife es una plataforma web desarrollada para turistas y residentes a descubrir los mejores lugares de Manzanillo.
 El sistema permite explorar:
 - 🌴Playas y zonas turisticas.
@@ -11,7 +11,7 @@ El sistema permite explorar:
 - 📰 Blogs y recomendaciones.
 - 📁Itinerarios turísticos
 
-##📸 Vista Previa
+## 📸 Vista Previa
 🏠 Página Principal
 <img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
 🔐 Pantalla de Inicio de Sesión
