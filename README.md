@@ -188,19 +188,19 @@ python manage.py migrate.
 
 ## 📡 API REST
 
-- Método	      |      Endpoint	        |  Descripción
-
-- GET	          |     /api/posts/	      |  Obtener publicaciones
+Método	      |      Endpoint	        |  Descripción
+----------------------------------------------------------------
+GET	          |     /api/posts/	      |  Obtener publicaciones
   
-- POST	        |     /api/posts/	      |  Crear publicación
+POST	        |     /api/posts/	      |  Crear publicación
   
-- GET	          |  /api/categories/	    |  Obtener categorías
+GET	          |  /api/categories/	    |  Obtener categorías
   
-- POST	        |    /api/login/	      |  Iniciar sesión
+POST	        |    /api/login/	      |  Iniciar sesión
   
-- POST	        |   /api/register/	    |  Registrar usuario
+POST	        |   /api/register/	    |  Registrar usuario
   
-- GET	          |    /api/comments/     |  Obtener comentarios 
+GET	          |    /api/comments/     |  Obtener comentarios 
 
 
 ## 📌 Funcionalidades Implementadas
