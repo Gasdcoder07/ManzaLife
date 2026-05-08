@@ -10,6 +10,7 @@ const BlogCategoriesGrid = ({ Categories, CurrentPage, TotalPages, OnPageChange 
                     return (
                         <BlogCategoriesCard
                             key={Index}
+                            slug={Category.slug}
                             nombre={Category.name}
                             imagen={Category.image}/>
                     )

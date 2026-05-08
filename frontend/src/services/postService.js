@@ -3,7 +3,7 @@ import api from "../api/axios";
 export const getPosts = async ({page = 1, category = null}) => {
     const params = { page: page };
 
-    if (category && category !== "Todas") {
+    if (category) {
         params.category = category;
     }
 

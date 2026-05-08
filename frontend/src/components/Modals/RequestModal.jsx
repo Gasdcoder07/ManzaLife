@@ -109,7 +109,7 @@ const RequestModal = ({ setShowModal, setRequests }) => {
             <div className="flex flex-col gap-4 text-zinc-950 dark:text-white">
                 {/* Dropdown */}
                 <div className="relative w-full flex justify-end">
-                    <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center justify-center gap-2 px-3 py-2 border border-black/40 dark:border-white/10 shadow-md rounded-sm">
+                    <button onClick={() => setShowDropdown(!showDropdown)} className="cursor-pointer flex items-center justify-center gap-2 px-3 py-2 border border-black/40 dark:border-white/10 shadow-md rounded-sm">
                         <span>{requestTypeVisual}</span>
                         <MdArrowDropDown className={`text-xl ${showDropdown && 'rotate-180'}`}/>
                     </button>
