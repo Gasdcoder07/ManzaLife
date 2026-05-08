@@ -68,18 +68,6 @@ El proyecto está construido utilizando una arquitectura moderna con:
 - *Base de Datos:* [PostgresSQL, Supabase].   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"><img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
 - *Herramientas:* [Git].   <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git">
 
-## 🚀 Instalación
-Sigue estos pasos para configurar el proyecto localmente:
-
-- Paso 1️⃣. *Clonar el repositorio:*
-   git clone [https://github.com/tu-usuario/tu-proyecto.git]([https://github.com/tu-usuario/tu-proyecto.git](https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git))
-- Paso 2️⃣. * Instalar dependencias:
-   npm install  # O el comando que use tu lenguaje (pip install, composer install, etc.)
-- Paso 3️⃣. * Configurar variables de entorno:
-   Crea un archivo .env basado en .env.example.
-- Paso 4️⃣. * Ejecutar la aplicación:
-   nmp run dev  o npm start 
-   
 ## 💻 Uso
 
 1.Explorar: Navega por la página de inicio para ver los lugares destacados del día.
@@ -94,68 +82,97 @@ Sigue estos pasos para configurar el proyecto localmente:
 ManzaLife/
 │
 
-├   ── backend/
+├── backend/
 
-│   ├   ── api/
+│   ├── api/
 
-│   │   ├   ── migrations/
+│   │   ├── migrations/
 
-│   │   ├   ── models.py
+│   │   ├── models.py
 
-│   │   ├   ── serializers.py
+│   │   ├── serializers.py
 
-│   │   ├   ── views.py
+│   │   ├── views.py
 
-│   │   ├   ── urls.py
+│   │   ├── urls.py
 
-│   │   └   ── permissions.py
-
-│   │
-
-│   ├   ── config/
-
-│   │   ├   ── settings.py
-
-│   │   ├   ── urls.py
-
-│   │   └   ── wsgi.py
+│   │   └── permissions.py
 
 │   │
 
-│   ├   ── manage.py
+│   ├── config/
 
-│   └   ── requirements.txt
+│   │   ├── settings.py
+
+│   │   ├── urls.py
+
+│   │   └── wsgi.py
+
+│   │
+
+│   ├── manage.py
+
+│   └── requirements.txt
 
 │
 
-├   ── frontend/
+├── frontend/
 
-│   ├   ── public/
+│   ├── public/
 
-│   ├   ── src/
+│   ├── src/
 
-│   │   ├   ── components/
+│   │   ├── components/
 
-│   │   ├   ── pages/
+│   │   ├── pages/
 
-│   │   ├   ── hooks/
+│   │   ├── hooks/
 
-│   │   ├   ── services/
+│   │   ├── services/
 
-│   │   └   ── assets/
+│   │   └── assets/
 
 │   │
 
-│   ├   ── package.json
+│   ├── package.json
 
-│   └   ── vite.config.js
+│   └── vite.config.js
 
 │
 
-├   ── docs/
+├── docs/
 
-└   ── README.md
+└── README.md
 
+## 🚀 Instalación
+1️⃣ Clonar el repositorio
+-git clone https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git
+-cd Proyecto-semestre-2-PI
+⚙ Configuración del Backend
+2️⃣ Entrar a la carpeta backend
+-cd backend
+3️⃣ Crear entorno virtual
+-Windows
+-python -m venv venv
+-venv\Scripts\activate
+-Linux / Mac
+-python3 -m venv venv
+-source venv/bin/activate
+4️⃣ Instalar dependencias
+-pip install -r requirements.txt
+5️⃣ Ejecutar migraciones
+-python manage.py migrate
+6️⃣ Iniciar servidor Django
+-python manage.py runserver
+-Servidor disponible en: http://127.0.0.1:8000/
+🎨 Configuración del Frontend
+7️⃣ Abrir otra terminal y entrar al frontend
+-cd frontend
+8️⃣ Instalar dependencias
+-npm install
+9️⃣ Ejecutar proyecto React
+-npm run dev
+-http://localhost:5173/
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
 Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con alguien que planeé visitar Manzanillo pronto y pueda planificar muy bien su viaje.
