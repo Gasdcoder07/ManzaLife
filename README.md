@@ -186,22 +186,16 @@ python manage.py migrate.
 - npm run dev.
 - http://localhost:5173/.
 
-## 📡 API REST
+## 📡 API Endpoints
 
-Método	      |      Endpoint	        |  Descripción
-________________________________________________________________
-GET	          |     /api/posts/	      |  Obtener publicaciones
-________________________________________________________________
-POST	        |     /api/posts/	      |  Crear publicación
-________________________________________________________________
-GET	          |  /api/categories/	    |  Obtener categorías
-________________________________________________________________
-POST	        |    /api/login/	      |  Iniciar sesión
-________________________________________________________________
-POST	        |   /api/register/	    |  Registrar usuario
-________________________________________________________________
-GET	          |    /api/comments/     |  Obtener comentarios 
-________________________________________________________________
+| Método | Endpoint | Descripción |
+|---------|-----------|--------------|
+| GET | `/api/posts/` | Obtener publicaciones |
+| POST | `/api/posts/` | Crear publicación |
+| GET | `/api/categories/` | Obtener categorías |
+| POST | `/api/login/` | Iniciar sesión |
+| POST | `/api/register/` | Registrar usuario |
+| GET | `/api/comments/` | Obtener comentarios |
 
 ## 📌 Funcionalidades Implementadas
 - ✅ Sistema de autenticación.
