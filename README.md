@@ -93,37 +93,69 @@ Sigue estos pasos para configurar el proyecto localmente:
 ## 📁 Estructura del Proyecto
 ManzaLife/
 │
+
 ├── backend/
+
 │   ├── api/
+
 │   │   ├── migrations/
+
 │   │   ├── models.py
+
 │   │   ├── serializers.py
+
 │   │   ├── views.py
+
 │   │   ├── urls.py
+
 │   │   └── permissions.py
+
 │   │
+
 │   ├── config/
+
 │   │   ├── settings.py
+
 │   │   ├── urls.py
+
 │   │   └── wsgi.py
+
 │   │
+
 │   ├── manage.py
+
 │   └── requirements.txt
+
 │
+
 ├── frontend/
+
 │   ├── public/
+
 │   ├── src/
+
 │   │   ├── components/
+
 │   │   ├── pages/
+
 │   │   ├── hooks/
+
 │   │   ├── services/
+
 │   │   └── assets/
+
 │   │
+
 │   ├── package.json
+
 │   └── vite.config.js
+
 │
+
 ├── docs/
+
 └── README.md
+
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
 Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con alguien que planeé visitar Manzanillo pronto y pueda planificar muy bien su viaje.
