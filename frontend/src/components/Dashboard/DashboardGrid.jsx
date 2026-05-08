@@ -33,7 +33,7 @@ const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts,
                 <StatsCard
                     Icon={IoMailUnread}
                     Description={isEnglish ? "Pending requests" : "Solicitudes pendientes"}
-                    Number={6}
+                    Number={DashboardStats.requests}
                     Loading={LoadingStats} />
             </div>
 

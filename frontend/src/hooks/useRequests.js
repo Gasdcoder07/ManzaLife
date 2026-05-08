@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { getRequests } from "../services/requestService";
+import { getAllRequests, getMyRequests } from "../services/requestService";
 
-export const useRequests = () => {
+export const useRequests = ({ all = false } = {}) => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -10,7 +10,14 @@ export const useRequests = () => {
             setLoading(true);
 
             try {
-                const data = await getRequests();
+                let data;
+
+                if (all) {
+                    data = await getAllRequests();
+                } else {
+                    data = await getMyRequests();
+                }
+
                 setRequests(data);
             }
             catch (e) {

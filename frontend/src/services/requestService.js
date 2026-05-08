@@ -1,7 +1,12 @@
 import api from "../api/axios"
 
-export const getRequests = async () => {
+export const getMyRequests = async () => {
     const res = await api.get("requests/");
+    return res.data;
+}
+
+export const getAllRequests = async () => {
+    const res = await api.get("requests/all_requests/");
     return res.data;
 }
 

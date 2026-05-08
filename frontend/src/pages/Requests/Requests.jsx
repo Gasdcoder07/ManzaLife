@@ -3,14 +3,17 @@ import RequestsGrid from "../../components/Blog/BlogRequests/RequestsGrid";
 import { useLanguage } from "../../context/LanguageContext";
 import RequestModal from "../../components/Modals/RequestModal";
 import { FaPlus } from "react-icons/fa";
+import { useRequests } from "../../hooks/useRequests";
 
 const Requests = () => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
 
-    const [requests, setRequests] = useState([]);
+    const { requests, loading } = useRequests();
 
     const [showRequestModal, setShowRequestModal] = useState(false);
+
+    console.log("Solicitudes", requests);
 
   return (
     <div className="mt-4">
