@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RequestsGrid from "../../components/Blog/BlogRequests/RequestsGrid";
 import { useLanguage } from "../../context/LanguageContext";
 import RequestModal from "../../components/Modals/RequestModal";
+import { useRequests } from "../../hooks/useRequests";
 import { FaPlus } from "react-icons/fa";
+import RequestsSkeleton from "../../components/Blog/BlogRequests/RequestsSkeleton";
 
 const Requests = () => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
 
-    const [requests, setRequests] = useState([]);
+    const { requests, loading } = useRequests();
+    const [Requests, setRequests] = useState([]);
+
+    useEffect(() => {
+        setRequests(requests);
+    }, [requests]);
 
     const [showRequestModal, setShowRequestModal] = useState(false);
+
+    if (loading) return <RequestsSkeleton/>
 
   return (
     <div className="mt-4">
@@ -33,7 +42,8 @@ const Requests = () => {
         </div>
 
         <RequestsGrid
-            Requests={requests}/>
+            isEnglish={isEnglish}
+            Requests={Requests}/>
 
         {
             showRequestModal && (

@@ -79,6 +79,8 @@ const RequestModal = ({ setShowModal, setRequests }) => {
                 }
             );
 
+            setRequests((prev) => [response, ...prev]);
+            
             setShowModal(false);
         }
         catch (e) {
@@ -116,7 +118,7 @@ const RequestModal = ({ setShowModal, setRequests }) => {
 
                     {
                         showDropdown && (
-                            <div className="bg-[#fffbf8] absolute top-full z-10 right-0 mt-2 w-48 max-h-24 overflow-y-auto border border-black/40 dark:border-white/10 shadow-md rounded-sm custom-scrollbar">
+                            <div className="bg-[#fffbf8] dark:bg-zinc-950 absolute top-full z-10 right-0 mt-2 w-48 max-h-24 overflow-y-auto border border-black/40 dark:border-white/10 shadow-md rounded-sm custom-scrollbar">
                                 <ul className="flex flex-col px-4 py-2 gap-2">
                                     {
                                         RequestTypes.map((request, index) => {

@@ -1,19 +1,26 @@
 import RequestItem from "./RequestItem";
 
-const RequestsGrid = ({ Requests }) => {
+const RequestsGrid = ({ isEnglish, Requests }) => {
   return (
     <div className="h-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 py-4 gap-4">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 py-4 gap-4">
             {
-                Requests?.map((request, index) => {
+                Requests?.map((request) => {
                     return (
                         <RequestItem
-                            key={index}
+                            key={request.id}
+                            isEnglish={isEnglish}
                             type={request.request_type}
-                            title={request.title}
-                            description={request.description}/>
+                            description={request.details}
+                            status={request.status}/>
                     )
                 })
+            }
+
+            {
+                Requests?.length === 0 && (
+                    <h3 className="text-xl font-medium">No tienes solicitudes.</h3>
+                )
             }
         </div>
     </div>

@@ -8,7 +8,7 @@ const Review = () => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
 
-    const { requests, loading } = useRequests();
+    const { requests, loading } = useRequests({ all: true });
 
     if (loading) return <ReviewSkeleton/>
 
