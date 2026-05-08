@@ -106,7 +106,7 @@ class SystemRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='requests')
     request_type = models.CharField(max_length=20, choices=TYPE_CHOICES)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
-    details = models.JSONField(blank=True, null=True)
+    details = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
