@@ -189,7 +189,7 @@ python manage.py migrate.
 ## 📡 API REST
 
 Método	      |      Endpoint	        |  Descripción
-----------------------------------------------------------------
+________________________________________________________________
 GET	          |     /api/posts/	      |  Obtener publicaciones
   
 POST	        |     /api/posts/	      |  Crear publicación
