@@ -2,23 +2,31 @@ export default function Board({ guesses, currentGuess, turn, solution }) {
     const wordLength = solution.length
     const rows = Array.from({length: 6})
 
+    const styles = {
+        empty: "bg-transparent border-zinc-200 dark:border-zinc-700",
+        filled: "bg-zinc-200 border-zinc-200 dark:bg-zinc-800 dark:border-zinc-800",
+        correct: "bg-green-500 border-green-500 dark:bg-green-600 dark:border-green-600",
+        present: "bg-yellow-400 border-yellow-400 dark:bg-yellow-500 dark:border-yellow-500"
+    }
+
     const getColors = (guess) => {
-        if (!guess) return Array(wordLength).fill("bg-transparent border-zinc-800")
+        if (!guess) return Array(wordLength).fill(styles.empty)
         
-        const result = Array(wordLength).fill("bg-zinc-800 border-zinc-800")
+        const result = Array(wordLength).fill(styles.filled)
+
         const solutionChars = solution.split("")
         const guessChars = guess.split("")
 
         guessChars.forEach((char, i) => {
             if (char === solutionChars[i]) {
-                result[i] = "bg-green-600 border-emerald-600"
+                result[i] = styles.correct
                 solutionChars[i] = null
                 guessChars[i] = null
         }})
 
         guessChars.forEach((char, i) => {
             if (char !== null && solutionChars.includes(char)) {
-                result[i] = "bg-yellow-500 border-yellow-500"
+                result[i] = styles.present
                 solutionChars[solutionChars.indexOf(char)] = null
             }
         })
@@ -37,7 +45,7 @@ export default function Board({ guesses, currentGuess, turn, solution }) {
                 else if (isCurrent) word = currentGuess
 
                 const letters = word.padEnd(wordLength, " ").split("")
-                const colors = isSubmitted ? getColors(word) : Array(wordLength).fill("")
+                const colors = isSubmitted ? getColors(word) : Array(wordLength).fill(styles.empty)
                 return (
                     <div 
                         key={rowIndex} 
@@ -46,16 +54,17 @@ export default function Board({ guesses, currentGuess, turn, solution }) {
                     >
                         {letters.map((char, colIndex) => {
                             const hasLetter = char !== " "
-
-                            let baseStyle = "min-w-[3rem] aspect-square border-2 flex items-center justify-center text-2xl sm:text-3xl font-bold text-white uppercase select-none transition-all duration-500"
+                            
+                            // dark:bg-zinc-700 bg-zinc-200 
+                            let baseStyle = "min-w-[3rem] border aspect-square flex items-center justify-center text-2xl sm:text-3xl font-bold text-black dark:text-white uppercase select-none transition-all duration-500"
 
                             let colorStyle = ""
                             if (isSubmitted) {
                                 colorStyle = colors[colIndex]
                             } else if(isCurrent && hasLetter) {
-                                colorStyle = "border-zinc-500 bg-transparent text-white" 
+                                colorStyle = "bg-transparent border-zinc-400 dark:border-zinc-600 text-black dark:text-white" 
                             } else {
-                                colorStyle = "border-zinc-500 bg-transparent"
+                                colorStyle = styles.empty
                             }
                             return (
                                 <div key={colIndex} className={`${baseStyle} ${colorStyle}`}>

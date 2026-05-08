@@ -10,10 +10,10 @@ export default function HeaderManzaDle({ onOpenInfo }) {
                 aria-label="Reglas del juego"
                 onClick={onOpenInfo}
             >
-                <IoHelpCircleOutline size={28} />
+                <IoHelpCircleOutline size={28} className="dark:text-white text-zinc-500"/>
             </button>
             <div className="text-center select-none">
-                <h1 className="text-3xl md:text-4xl font-bold tracking-widest">
+                <h1 className="dark:text-white text-zinc-900 text-3xl md:text-4xl font-bold tracking-widest">
                     Manza<span className="text-orange-500">Dle</span>
                 </h1>
             </div>
