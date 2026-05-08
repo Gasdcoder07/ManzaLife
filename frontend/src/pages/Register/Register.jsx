@@ -206,7 +206,7 @@ export default function Register() {
                         <p className="text-sm text-center">
                             {textos.register.ya_tienes}{" "}
                             <Link to={"/auth/login"}>
-                                {textos.register.inicia_sesion}
+                                {textos.register.abajoInicio}
                             </Link>
                         </p>
                     </form>

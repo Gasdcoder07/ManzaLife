@@ -130,9 +130,9 @@ export default function Login() {
                     </p>
 
                     <p className="text-sm text-center tracking-wider">
-                        {textos.auth.no_cuenta}{" "}
+                        {textos.auth.no_tienes_cuenta}{" "}
                         <Link to={"/auth/register"} className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out">
-                            {textos.auth.registro}
+                            {textos.auth.link}
                         </Link>
                     </p>
                 </form>

@@ -111,10 +111,32 @@
     "usuario": "Username",
     "password": "Password",
     "ingresar": "Login",
-    "frase_lateral": "Discover places, explore feelings"
+    "frase_lateral": "Discover places, explore feelings",
+    "no_tienes_cuenta": "Don't have an account?",
+    "link": "Create one now",
+    "ir_blog": "Go to blog",
+    "ir_al_blog": "Back to blog"
   },
   "register": {
-    "titulo": "Create account"
+    "titulo": "Create account",
+    "casi_listo": "Almost done",
+    "nombre_required": "First name is required",
+    "apellido_required": "Last name is required",
+    "usuario_required": "Username is required",
+    "email_required": "Email is required",
+    "password_required": "Password is required",
+    "password_confirm_required": "Please confirm your password",
+    "password_match": "Passwords do not match",
+    "password_secure": "Password must have at least 8 characters, including uppercase, lowercase and numbers",
+    "loading": "Registering...",
+    "success": "Registration successful! Redirecting...",
+    "error": "Error registering. Try again.",
+    "regresar": "Back",
+    "siguiente": "Next",
+    "crear_cuenta": "Create account",
+    "ya_tienes": "Already have an account?",
+    "abajoInicio": "Sign in here",
+    "abajo": "Already have an account? Login"
   },
   "main_blog": {
     "sidebar_elements": {
