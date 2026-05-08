@@ -12,11 +12,14 @@ import ToggleThemeButton from "../../ToggleThemeButton";
 import { useLanguage } from "../../../context/LanguageContext";
 import { useTheme } from "../../../context/ThemeContext";
 import { useBlogSidebarItems } from "../../../hooks/useBlogSidebarItems";
+import LoginBtn from "../../LoginBtn/LoginBtn";
 
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { textos, idioma, setIdioma } = useLanguage();
+    const { idioma, setIdioma } = useLanguage();
     const items = useBlogSidebarItems();
+    const LoginBtnStyles = "bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 hover:bg-[position:right_center] text-white tracking-wider px-3 py-1 rounded-md font-semibold transition-all duration-500 ease-in-out inline-block shadow-md hover:shadow-lg hover:-translate-y-0.5";
+
 
     const { isDark } = useTheme();
     const { user } = useAuth();
@@ -77,11 +80,13 @@ const BlogNavbar = () => {
                         <ToggleThemeButton isUsedInNavbar={true} />
                     </div>
 
-                    {user && (
+                    {user ? (
                         <UserProfile
                             UserAvatar={user?.avatar || DefaultAvatar}
                             Username={user.username}
                         />
+                    ) : (
+                        <LoginBtn />
                     )}
                 </div>
             </div>

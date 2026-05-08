@@ -7,6 +7,7 @@ import { HashLink } from "react-router-hash-link";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { useState } from "react";
 import logo from "../../../imgs/logomaxxing.svg";
+import LoginBtn from "../LoginBtn/LoginBtn"
 
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -69,11 +70,7 @@ function Navbar() {
                         UserAvatar={user.avatar}
                         Username={user.username}/>
                 ) : (
-                    <Link
-                        to={"/auth/login"}
-                        className={`${LoginBtnStyles}`}>
-                        {textos.navbar?.login}
-                    </Link>
+                    <LoginBtn />
                 )
             }
         </div>
