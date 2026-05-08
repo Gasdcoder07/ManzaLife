@@ -44,12 +44,14 @@ class UnbanUserView(APIView):
         profile.user.save()
 
         return Response({ "message": "Usuario desbaneado exitosamente" })
+    
 class DashboardStatsView(APIView):
     def get(self, request):
         data = {
             "posts": Post.objects.count(),
             "categories": Category.objects.count(),
             "users": User.objects.count(),
+            "requests": SystemRequest.objects.count(),
         }
         return Response(data)
 
