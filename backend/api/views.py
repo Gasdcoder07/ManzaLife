@@ -3,6 +3,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import action
+from rest_framework.exceptions import PermissionDenied
 from .models import Post, Category, User, Comment, Review, SystemRequest, UserProfile
 from django.shortcuts import get_object_or_404
 from .permissions import IsAuthorOrReadOnly, IsAdminRole, IsNotBanned
@@ -208,7 +210,7 @@ class SystemRequestViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        queryset = SystemRequest.objects.all()
+        queryset = SystemRequest.objects.filter(user=self.request.user)
         status_param = self.request.query_params.get('status')
         type_param = self.request.query_params.get('type')
         
@@ -221,3 +223,20 @@ class SystemRequestViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+    
+    @action(detail=False, methods=['get'])
+    def all_requests(self, request):
+        if not request.user.is_staff:
+            raise PermissionDenied("No tienes permiso para ver esto.")
+        queryset = SystemRequest.objects.all()
+        status_param = request.query_params.get('status')
+        type_param = request.query_params.get('type')
+
+        if status_param:
+            queryset = queryset.filter(status=status_param)
+        if type_param:
+            queryset = queryset.filter(request_type=type_param)
+        
+        queryset = queryset.order_by('-created_at')
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
