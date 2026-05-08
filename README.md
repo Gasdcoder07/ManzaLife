@@ -94,67 +94,67 @@ Sigue estos pasos para configurar el proyecto localmente:
 ManzaLife/
 │
 
-├── backend/
+├   ── backend/
 
-│   ├── api/
+│   ├   ── api/
 
-│   │   ├── migrations/
+│   │   ├   ── migrations/
 
-│   │   ├── models.py
+│   │   ├   ── models.py
 
-│   │   ├── serializers.py
+│   │   ├   ── serializers.py
 
-│   │   ├── views.py
+│   │   ├   ── views.py
 
-│   │   ├── urls.py
+│   │   ├   ── urls.py
 
-│   │   └── permissions.py
-
-│   │
-
-│   ├── config/
-
-│   │   ├── settings.py
-
-│   │   ├── urls.py
-
-│   │   └── wsgi.py
+│   │   └   ── permissions.py
 
 │   │
 
-│   ├── manage.py
+│   ├   ── config/
 
-│   └── requirements.txt
+│   │   ├   ── settings.py
+
+│   │   ├   ── urls.py
+
+│   │   └   ── wsgi.py
+
+│   │
+
+│   ├   ── manage.py
+
+│   └   ── requirements.txt
 
 │
 
-├── frontend/
+├   ── frontend/
 
-│   ├── public/
+│   ├   ── public/
 
-│   ├── src/
+│   ├   ── src/
 
-│   │   ├── components/
+│   │   ├   ── components/
 
-│   │   ├── pages/
+│   │   ├   ── pages/
 
-│   │   ├── hooks/
+│   │   ├   ── hooks/
 
-│   │   ├── services/
+│   │   ├   ── services/
 
-│   │   └── assets/
+│   │   └   ── assets/
 
 │   │
 
-│   ├── package.json
+│   ├   ── package.json
 
-│   └── vite.config.js
+│   └   ── vite.config.js
 
 │
 
-├── docs/
+├   ── docs/
 
-└── README.md
+└   ── README.md
 
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
