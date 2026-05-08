@@ -152,6 +152,7 @@ ManzaLife/
 - cd Proyecto-semestre-2-PI.
 
 ⚙ Configuración del Backend
+
 2️⃣ Entrar a la carpeta backend
 - cd backend.
 
@@ -174,6 +175,7 @@ python manage.py migrate.
 - Servidor disponible en: http://127.0.0.1:8000/.
 
 🎨 Configuración del Frontend
+
 7️⃣ Abrir otra terminal y entrar al frontend
 - cd frontend.
   
@@ -186,13 +188,19 @@ python manage.py migrate.
 
 ## 📡 API REST
 
-- Método	      |      Endpoint	      |  Descripción
-- GET	            |     /api/posts/	      |  Obtener publicaciones
-- POST	      |     /api/posts/	      |  Crear publicación
-- GET	            |  /api/categories/	|  Obtener categorías
-- POST	      |    /api/login/	      |  Iniciar sesión
-- POST	      |   /api/register/	|  Registrar usuario
-- GET	            |    /api/comments/     |  Obtener comentarios 
+- Método	      |      Endpoint	        |  Descripción
+
+- GET	          |     /api/posts/	      |  Obtener publicaciones
+  
+- POST	        |     /api/posts/	      |  Crear publicación
+  
+- GET	          |  /api/categories/	    |  Obtener categorías
+  
+- POST	        |    /api/login/	      |  Iniciar sesión
+  
+- POST	        |   /api/register/	    |  Registrar usuario
+  
+- GET	          |    /api/comments/     |  Obtener comentarios 
 
 
 ## 📌 Funcionalidades Implementadas
