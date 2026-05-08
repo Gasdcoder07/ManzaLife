@@ -1,6 +1,7 @@
 ## ManzaLife🚀 Equipo 5️⃣
 Plataforma web turistica para enfocada en mostrar los mejores lugares, experiencias y actividades de Manzanillo 
 
+
 ## 📖 Descripción del Proyecto
 Manzalife es una plataforma web desarrollada para turistas y residentes a descubrir los mejores lugares de Manzanillo.
 El sistema permite explorar:
@@ -9,11 +10,12 @@ El sistema permite explorar:
 - 🏨Hospedajes.
 - 📍Lugares emblematicos.
 - 📰Blogs y recomendaciones.
-- 📁Itinerarios turísticos
+- 📁Itinerarios turísticos.
 El proyecto está construido utilizando una arquitectura moderna con:
 - Frontend: React + Tailwind CSS + Vite
 - Backend: Django + Django REST Framework
 - Base de Datos: PostgreSQL + Supabase
+
 
 ## 📸 Vista Previa
 🏠 Página Principal
@@ -34,7 +36,6 @@ El proyecto está construido utilizando una arquitectura moderna con:
 ![Hecho con Tailwind](https://img.shields.io/badge/Hecho%20con-Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Status](https://img.shields.io/badge/Estado-En%20Curso-yellow?style=for-the-badge)
 
----
 
 ## 📋 Tabla de Contenidos
 - [Vista Previa📷](#-vista-previa)
@@ -43,6 +44,7 @@ El proyecto está construido utilizando una arquitectura moderna con:
 - [Instalación🛠](#-instalación)
 - [Uso⚙️](#-uso)
 - [Estructura del Proyecto📁](#-estructura-del-proyecto)
+
 
 ## ✨ Características Principales
 📰 Blog Turístico
@@ -63,6 +65,7 @@ El proyecto está construido utilizando una arquitectura moderna con:
 - Gestión de usuarios.
 - Moderación de comentarios.
 - Administración de categorías.
+  
 
 ## 🛠 Tecnologías Utilizadas
 - *Lenguaje:* [HTML5, Javascript, CSS, Python]![Python 3.12+].   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"><img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"><img src="https://img.shields.io/badge/python%203.12+-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+">
@@ -70,8 +73,8 @@ El proyecto está construido utilizando una arquitectura moderna con:
 - *Base de Datos:* [PostgresSQL, Supabase].   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"><img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
 - *Herramientas:* [Git].   <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git">
 
-## 💻 Uso
 
+## 💻 Uso
 1.Explorar: Navega por la página de inicio para ver los lugares destacados del día.
 
 2.Filtrar: Utiliza las categorías para encontrar específicamente "Playas" o "Gastronomía".
@@ -79,6 +82,7 @@ El proyecto está construido utilizando una arquitectura moderna con:
 3.Leer: Entra al blog para conocer la historia detrás de lugares como "El Faro" o "La Boquita".
 
 4.Admin: Accede a /admin para gestionar el contenido (solo personal autorizado).
+
 
 ## 📁 Estructura del Proyecto
 ManzaLife/
@@ -146,6 +150,7 @@ ManzaLife/
 
 └── README.md
 
+
 ## 🚀 Instalación
 1️⃣ Clonar el repositorio
 - git clone https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git.
@@ -186,6 +191,7 @@ python manage.py migrate.
 - npm run dev.
 - http://localhost:5173/.
 
+
 ## 📡 API Endpoints
 
 | Método | Endpoint | Descripción |
@@ -196,6 +202,7 @@ python manage.py migrate.
 | POST | `/api/login/` | Iniciar sesión |
 | POST | `/api/register/` | Registrar usuario |
 | GET | `/api/comments/` | Obtener comentarios |
+
 
 ## 📌 Funcionalidades Implementadas
 - ✅ Sistema de autenticación.
@@ -208,15 +215,18 @@ python manage.py migrate.
 - ✅ Integración con Supabase.
 - ✅ Sistema de reseñas.
 - ✅ Gestión de perfiles.
+  
 
 ## 🔮 Funcionalidades Futuras
 - 🌐 Integración con Google Maps.
 - 📍 Geolocalización de lugares.
 - ❤️ Sistema de favoritos.
 - 📱 Aplicación móvil.
+  
 
 ## 🌴 Objetivo del Proyecto
 El objetivo principal de ManzaLife es impulsar el turismo local mediante una plataforma moderna, intuitiva y accesible para cualquier visitante que quiera conocer Manzanillo.
+
                   
 ## ⭐ Apoya el Proyecto
 Si te gustó el proyecto puedes:
@@ -225,19 +235,22 @@ Si te gustó el proyecto puedes:
 
 *Hecho con corazón ❤️ en Manzanillo, Colima.*
 
+
 ## 👨‍💻 Equipo de Desarrollo
-Diaz Hernandez Axl Enrique	
-Martinez Contreras Manuel 
-Sebastian Silvestre Brian	
-Serna Diaz Greco Alejandro	
-Vaca Cipres Valentin
+- Diaz Hernandez Axl Enrique	
+- Martinez Contreras Manuel 
+- Sebastian Silvestre Brian	
+- Serna Diaz Greco Alejandro	
+- Vaca Cipres Valentin
+
 
 ## 📬 Contacto
-📧 adiaz106@ucol.mx
-📧 mmartinez134@ucol.mx
-📧 bsebastian0@ucol.mx
-📧 gserna@ucol.mx
-📧 vvaca2@ucol.mx
+- 📧 adiaz106@ucol.mx
+- 📧 mmartinez134@ucol.mx
+- 📧 bsebastian0@ucol.mx
+- 📧 gserna@ucol.mx
+- 📧 vvaca2@ucol.mx
+
 
 ## 📜 Licencia
 Este proyecto es únicamente con fines educativos y académicos.
