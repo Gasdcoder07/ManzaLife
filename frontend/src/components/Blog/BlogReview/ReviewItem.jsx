@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../../utils/formatDate";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaCheck,  } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
-import { IoTime } from "react-icons/io5";
+import { IoTime, IoClose, IoCheckmarkSharp } from "react-icons/io5";
 import { FaMessage } from "react-icons/fa6";
 
 const statusMap = {
@@ -39,7 +39,7 @@ const ReviewItem = ({ isEnglish, username, type, date, details, status }) => {
     const lang = isEnglish ? 'en' : 'es';
 
     return (
-        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 px-6 py-4 flex flex-col gap-6 w-full shadow-xl">
+        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col gap-6 w-full shadow-xl">
             <div className="flex flex-col gap-2">
                 <div>
                     <Link
@@ -71,13 +71,13 @@ const ReviewItem = ({ isEnglish, username, type, date, details, status }) => {
                 <span className="text-yellow-500 dark:text-yellow-600">{statusMap[status]?.[lang]}</span>
             </div>
 
-            <div className="text-white w-full flex items-center justify-between">
-                <button className="bg-green-600 dark:bg-green-700 rounded-md px-4 py-2 cursor-pointer">
-                    {isEnglish ? 'Approve' : 'Aprobar'}
+            <div className="text-white w-full flex items-center justify-between gap-4">
+                <button className="flex justify-center items-center bg-green-600 dark:bg-green-700 hover:bg-green-500 dark:hover:bg-green-600 rounded-md px-6 py-3 cursor-pointer">
+                    <IoCheckmarkSharp className="text-lg"/>
                 </button>
 
-                <button className="bg-red-600 dark:bg-red-700 rounded-md px-4 py-2 cursor-pointer">
-                    {isEnglish ? 'Reject' : 'Rechazar'}
+                <button className="flex justify-center items-center bg-red-600 dark:bg-red-700 hover:bg-red-500 dark:hover:bg-red-600 rounded-md px-6 py-3 cursor-pointer">
+                    <IoClose className="text-lg"/>
                 </button>
             </div>
         </div>

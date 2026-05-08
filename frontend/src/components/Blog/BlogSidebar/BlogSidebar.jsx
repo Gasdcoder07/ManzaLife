@@ -20,7 +20,7 @@ const BlogSidebar = () => {
 
   return (
     <aside className={`bg-[#fffbf8] shadow-xl shadow-black/40 dark:bg-[#0d0d0f] relative hidden sm:flex sm:flex-col sm:justify-between border-r border-neutral-800/20 dark:border-neutral-800 ${isOpen ? 'w-56' : 'w-16'}`}>
-        <div className="absolute z-20 top-4 right-0 translate-x-1/2 border border-neutral-800/30 dark:border-neutral-800 rounded-full p-1 bg-[#fffbf8] dark:bg-[#0d0d0f] text-zinc-950 dark:text-white">
+        <div className="absolute z-20 top-4 right-0 translate-x-1/2 border border-neutral-800/20 dark:border-neutral-800 rounded-full p-1 bg-[#fffbf8] dark:bg-[#0d0d0f] text-zinc-950 dark:text-white">
             <IoMenu
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-2xl cursor-pointer hover:text-orange-600 transition-all duration-200 ease-in-out"/>
@@ -37,7 +37,7 @@ const BlogSidebar = () => {
 
                                 {
                                     SideBar.length > 1 && (
-                                        <p className="italic tracking-wider text-zinc-950 dark:text-white">{section.section}</p>
+                                        <p className="px-4 py-2 italic tracking-wider text-zinc-950 dark:text-white">{section.section}</p>
                                     )
                                 }
 

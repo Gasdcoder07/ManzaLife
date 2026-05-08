@@ -6,14 +6,16 @@ import BlogHomeSkeleton from "../../components/Blog/BlogPosts/BlogHomeSkeleton";
 import { useLanguage } from "../../context/LanguageContext";
 import { getAllCategories } from "../../services/categoryService";
 import PaginationControls from "../../components/Blog/PaginationControls";
+import { useSearchParams } from "react-router-dom";
 
 export default function Blog() {
     const { textos, idioma } = useLanguage();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [currentPage, setCurrentPage] = useState(1);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [categories, setCategories] = useState([]);
-    const [categoriaActivada, setCategoriaActivada] = useState(null);
+    const categoriaActivada = searchParams.get("category");
 
     const topRef = useRef(null);
     const dropdownRef = useRef(null);
@@ -96,7 +98,12 @@ export default function Blog() {
                                         key={index}
                                         className="block rounded-lg hover:bg-black/5 dark:hover:bg-white/5 px-2 py-1 cursor-pointer"
                                         onClick={() => {
-                                            setCategoriaActivada(item.slug)
+                                            if (item.slug) {
+                                                setSearchParams({ category: item.slug })
+                                            } else {
+                                                setSearchParams({});
+                                            }
+                                            
                                             setCurrentPage(1);
                                         }}
                                     >

@@ -16,7 +16,10 @@ const Requests = () => {
     <div className="mt-4">
         <div className="flex items-center justify-between">
             <h3 className="text-2xl">
-                {isEnglish ? 'Requests center' : 'Centro de solicitudes'}
+                {isEnglish ? 'My' : 'Mis'}{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
+                    {isEnglish ? 'requests' : 'solicitudes'}
+                </span>
             </h3>
 
             <button
