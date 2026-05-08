@@ -1,8 +1,24 @@
-# ManzaLife🚀
+## ManzaLife🚀 Equipo 5️⃣
+Plataforma web turistica para enfocada en mostrar los mejores lugares, experiencias y actividades de Manzanillo 
 
-Equipo 5️⃣
+##📖 Descripción del Proyecto
+Manzalife es una plataforma web desarrollada para turistas y residentes a descubrir los mejores lugares de Manzanillo.
+El sistema permite explorar:
+- 🌴Playas y zonas turisticas.
+- 🍽️Restaurantes y gastronomia.
+- 🏨Hospedajes.
+- 📍Lugares emblematicos.
+- 📰 Blogs y recomendaciones.
+- 📁Itinerarios turísticos
 
+##📸 Vista Previa
+🏠 Página Principal
 <img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
+🔐 Pantalla de Inicio de Sesión
+<img width="1547" height="813" alt="Captura de pantalla 2026-05-08 073215" src="https://github.com/user-attachments/assets/2c89ca37-1334-4a06-b16b-1f2102e30fef" />
+<img width="1540" height="761" alt="Opera Captura de pantalla_2026-05-08_073141_localhost" src="https://github.com/user-attachments/assets/d1561f2a-784d-43da-b5ca-9356a2d3e192" />
+📰 Pantalla Blog
+<img width="1574" height="757" alt="image" src="https://github.com/user-attachments/assets/6bdd282f-e0cf-49fa-aa41-aa19638595d8" />
 
 ![Python 3.12+](https://img.shields.io/badge/Python-3.13%2B-blue?style=for-the-badge&logo=python)
 ![Hecho con Django](https://img.shields.io/badge/Hecho%20con-Django-purple?style=for-the-badge&logo=Django)
@@ -12,8 +28,6 @@ Equipo 5️⃣
 
 ---
 
-Desarrollo de una plataforma web que les permita a miles de usuarios conocer Manzanillo. Desarrollado y programado en Django para el backend y React para el frontend.
-
 ## 📋 Tabla de Contenidos
 - [Vista Previa📷](#-vista-previa)
 - [Características Principales🧾](#-características-principales)
@@ -21,18 +35,6 @@ Desarrollo de una plataforma web que les permita a miles de usuarios conocer Man
 - [Instalación🛠](#-instalación)
 - [Uso⚙️](#-uso)
 - [Estructura del Proyecto📁](#-estructura-del-proyecto)
-
-## 📸 Vista Previa
-
-"Pantalla Principal"
-<img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
-
-"Pantalla Login"
-<img width="1596" height="765" alt="Captura de pantalla 2026-03-06 110416" src="https://github.com/user-attachments/assets/ba37fb25-f63e-4063-b901-30eee17c616e" />
-
-"Pantalla Blog"
-<img width="1574" height="757" alt="image" src="https://github.com/user-attachments/assets/6bdd282f-e0cf-49fa-aa41-aa19638595d8" />
-
 
 ## ✨ Características Principales
 - ✅ Interfaz reponsiva y amigable: Diseñada para que los usuarios puedan utilizarla fácilmente desde dispositivos moviles mientras los usuarios esten en movimiento.
