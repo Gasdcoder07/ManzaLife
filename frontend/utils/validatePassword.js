@@ -4,6 +4,7 @@ const validatePassword = (pass) => {
   const hasNumber = /[0-9]/.test(pass)
   const hasSymbol = /[^A-Za-z0-9]/.test(pass)
   return minLength && hasUpper && hasNumber && hasSymbol
+  console.log("Validating password:", { minLength, hasUpper, hasNumber, hasSymbol })
 }
 
 export default validatePassword

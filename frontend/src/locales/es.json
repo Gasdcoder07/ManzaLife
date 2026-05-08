@@ -111,10 +111,31 @@
     "usuario": "Usuario",
     "password": "Contraseña",
     "ingresar": "Ingresar",
-    "frase_lateral": "Descubre lugares, explora sentimientos"
+    "frase_lateral": "Descubre lugares, explora sentimientos",
+    "no_tienes_cuenta": "¿No tienes cuenta? crea una ahora",
+    "ir_blog": "Ir al blog",
+    "ir_al_blog": "Volver al blog"
   },
   "register": {
-    "titulo": "Crear cuenta"
+    "titulo": "Crear cuenta",
+    "casi_listo": "Casi listo",
+    "nombre_required": "El nombre es requerido",
+    "apellido_required": "El apellido es requerido",
+    "usuario_required": "El usuario es requerido",
+    "email_required": "El email es requerido",
+    "password_required": "La contraseña es requerida",
+    "password_confirm_required": "Confirma tu contraseña",
+    "password_match": "Las contraseñas no coinciden",
+    "password_secure": "La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas y números",
+    "loading": "Registrando...",
+    "success": "¡Registro exitoso! Redirigiendo...",
+    "error": "Error al registrar. Intenta de nuevo.",
+    "regresar": "Regresar",
+    "siguiente": "Siguiente",
+    "crear_cuenta": "Crear cuenta",
+    "ya_tienes": "¿Ya tienes cuenta?",
+    "abajoInicio": "Inicia sesión aquí",
+    "abajo": "¿Ya tienes cuenta? Inicia sesión"
   },
   "main_blog": {
     "sidebar_elements": {
