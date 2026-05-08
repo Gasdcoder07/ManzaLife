@@ -11,6 +11,7 @@ El sistema permite explorar:
 - 📍Lugares emblematicos.
 - 📰Blogs y recomendaciones.
 - 📁Itinerarios turísticos.
+  
 El proyecto está construido utilizando una arquitectura moderna con:
 - Frontend: React + Tailwind CSS + Vite
 - Backend: Django + Django REST Framework
