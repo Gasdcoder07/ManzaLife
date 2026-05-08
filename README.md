@@ -10,15 +10,23 @@ El sistema permite explorar:
 - 📍Lugares emblematicos.
 - 📰 Blogs y recomendaciones.
 - 📁Itinerarios turísticos
+El proyecto está construido utilizando una arquitectura moderna con:
+- Frontend: React + Tailwind CSS + Vite
+- Backend: Django + Django REST Framework
+- Base de Datos: PostgreSQL + Supabase
 
 ## 📸 Vista Previa
 🏠 Página Principal
 <img width="1582" height="765" alt="Captura de pantalla 2026-03-06 105606" src="https://github.com/user-attachments/assets/35c67902-7719-4302-b253-94bab04a3956" />
+
 🔐 Pantalla de Inicio de Sesión
 <img width="1547" height="813" alt="Captura de pantalla 2026-05-08 073215" src="https://github.com/user-attachments/assets/2c89ca37-1334-4a06-b16b-1f2102e30fef" />
 <img width="1540" height="761" alt="Opera Captura de pantalla_2026-05-08_073141_localhost" src="https://github.com/user-attachments/assets/d1561f2a-784d-43da-b5ca-9356a2d3e192" />
+
 📰 Pantalla Blog
 <img width="1574" height="757" alt="image" src="https://github.com/user-attachments/assets/6bdd282f-e0cf-49fa-aa41-aa19638595d8" />
+<img width="1532" height="766" alt="image" src="https://github.com/user-attachments/assets/4c2dc3ec-022f-41bc-8ed3-9677e80341cd" />
+
 
 ![Python 3.12+](https://img.shields.io/badge/Python-3.13%2B-blue?style=for-the-badge&logo=python)
 ![Hecho con Django](https://img.shields.io/badge/Hecho%20con-Django-purple?style=for-the-badge&logo=Django)
@@ -37,9 +45,22 @@ El sistema permite explorar:
 - [Estructura del Proyecto📁](#-estructura-del-proyecto)
 
 ## ✨ Características Principales
-- ✅ Interfaz reponsiva y amigable: Diseñada para que los usuarios puedan utilizarla fácilmente desde dispositivos moviles mientras los usuarios esten en movimiento.
-- ✅ Diseño: Una experiencia fluida que ayuda a los turistas a planificar su itineriario sin complicaciones.
-- ✅ Guia: Acesso rápido a los mejores puntos turisticos emblemáticos que pueden encontrar de Manzanillo .
+📰 Blog Turístico
+-Publicación de artículos
+-Categorías dinámicas
+-Slugs automáticos
+-Comentarios anidados
+-Imágenes para publicaciones
+🗺️ Turismo
+-Exploración de lugares turísticos
+-Información detallada de sitios
+-Organización por categorías
+-Experiencia responsive para móviles
+⚙ Panel Administrativo
+-Administración de publicaciones
+-Gestión de usuarios
+-Moderación de comentarios
+-Administración de categorías
 
 ## 🛠 Tecnologías Utilizadas
 - *Lenguaje:* [HTML5, Javascript, CSS, Python]![Python 3.12+].   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"><img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"><img src="https://img.shields.io/badge/python%203.12+-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+">
@@ -71,37 +92,38 @@ Sigue estos pasos para configurar el proyecto localmente:
 
 ## 📁 Estructura del Proyecto
 ManzaLife/
-
-
-├── 📂 backend/ # Lógica de servidor y API
-
-│   ├── 📁 core/ # Configuración de Django
-
-│   ├── 📁 api/ # Endpoints y Serializers
-
-│   ├── 📁 blog/ # Modelos de artículos
-
-│   └── 📄 manage.py
-
 │
-├── 📂 frontend/ # Interfaz de usuario (React)
-
-│   ├── 📁 src/
-
-│   │   ├── 📁 components/ # Navbar, Footer, etc.
-
-│   │   ├── 📁 pages/ # Home, Login, Blog
-
-│   │   └── 📁 api/ # Configuración Axios
-
-│   ├── 📁 public/
-
-│   └── 📄 tailwind.config.js
-
-├── 📂 docs/ # Documentación y diagramas
-
-└── 📄 .env.example # Variables de entorno
-
+├── backend/
+│   ├── api/
+│   │   ├── migrations/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── permissions.py
+│   │
+│   ├── config/
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   │
+│   ├── manage.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   └── assets/
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── docs/
+└── README.md
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
 Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con alguien que planeé visitar Manzanillo pronto y pueda planificar muy bien su viaje.
