@@ -20,8 +20,8 @@ export default function Keyboard({ onKeyPress }) {
                                 onClick={() => onKeyPress(key)}
                                 className={`
                                     flex items-center justify-center rounded-md font-bold cursor-pointer transition-colors duration-200
-                                    bg-orange-800/70 text-white hover:bg-orange-600 h-12 sm:h-14
-                                    ${isActionKey} ? 'px-3 sm:px-5 text-xs sm:text-sm' : 'flex-1 text-sm sm_text-lg'}       
+                                    dark:bg-orange-800/70 bg-zinc-100 text-zinc-900 hover:bg-orange-600 h-12 sm:h-14
+                                    ${isActionKey} ? 'px-3 sm:px-5 text-lg sm:text-sm' : 'flex-1 text-sm sm_text-lg'}       
                                 `}
                             >
                             {key === 'DELETE' ? (

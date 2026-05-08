@@ -2,9 +2,9 @@ import { IoClose } from "react-icons/io5"
 
 const InfoModal = ( { onClose } ) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center dark:bg-zinc-950/80 bg-zinc-100 backdrop-blur-sm">
       
-      <div className="relative bg-zinc-900 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <div className="relative dark:bg-zinc-900 bg-zinc-50 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
         
         {/* Botón cerrar */}
         <button
@@ -16,7 +16,7 @@ const InfoModal = ( { onClose } ) => {
         </button>
 
         {/* Título */}
-        <h2 className="text-2xl font-bold text-white mb-4 text-center tracking-wide">
+        <h2 className="text-2xl font-bold dark:text-white text-orange-600 mb-4 text-center tracking-wide">
           ¿Cómo jugar?
         </h2>
 

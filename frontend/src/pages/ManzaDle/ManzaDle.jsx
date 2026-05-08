@@ -6,6 +6,7 @@ import Board from "./Board"
 import Keyboard from "./Keyboard"
 import GameModal from "./GameModal"
 import InfoModal from "./InfoModal"
+import ManzaDleNavBar from "./ManzaDleNavBar"
 
 const getDailyWord = () => {
     const today = new Date()
@@ -69,9 +70,9 @@ export default function ManzaDle() {
     }, [currentGuess, turn, isGameOver])
 
     return (
-        <div className="min-h-screen bg-linear-to-b from-zinc-950 to-orange-950 text-white flex flex-col font-sans">
-            <Navbar />
-            <main className="grow flex flex-col items-center pt-28 pb-8 px-4 w-full max-w-lg mx-auto relative">
+        <div className="min-h-screen bg-linear-to-b to-white from-zinc-100 dark:from-zinc-950 dark:to-orange-950 text-white flex flex-col font-sans">
+            <ManzaDleNavBar />
+            <main className="grow flex flex-col items-center pt-20 pb-8 px-4 w-full max-w-lg mx-auto relative">
                 <Header onOpenInfo={() => setShowInfo(true)}/>
                 {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
                 <div className="w-full grow flex flex-col justify-center items-center mb-6">
