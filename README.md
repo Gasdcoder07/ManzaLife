@@ -151,30 +151,30 @@ ManzaLife/
 - git clone https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git.
 - cd Proyecto-semestre-2-PI.
   
-⚙ Configuración del Backend.
- 2️⃣ Entrar a la carpeta backend
+⚙ Configuración del Backend
+2️⃣ Entrar a la carpeta backend
 - cd backend.
- 3️⃣ Crear entorno virtual
+3️⃣ Crear entorno virtual
 - Windows.
 - python -m venv venv.
 - venv\Scripts\activate.
 - Linux / Mac.
 - python3 -m venv venv.
 - source venv/bin/activate.
- 4️⃣ Instalar dependencias
+4️⃣ Instalar dependencias
 - pip install -r requirements.txt.
- 5️⃣ Ejecutar migraciones
+5️⃣ Ejecutar migraciones
 - python manage.py migrate.
- 6️⃣ Iniciar servidor Django
+6️⃣ Iniciar servidor Django
 - python manage.py runserver.
 - Servidor disponible en: http://127.0.0.1:8000/.
   
 🎨 Configuración del Frontend
- 7️⃣ Abrir otra terminal y entrar al frontend
+7️⃣ Abrir otra terminal y entrar al frontend
 - cd frontend.
- 8️⃣ Instalar dependencias
+8️⃣ Instalar dependencias
 - npm install.
- 9️⃣ Ejecutar proyecto React
+9️⃣ Ejecutar proyecto React
 - npm run dev.
 - http://localhost:5173/.
 
