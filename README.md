@@ -191,17 +191,17 @@ python manage.py migrate.
 Método	      |      Endpoint	        |  Descripción
 ________________________________________________________________
 GET	          |     /api/posts/	      |  Obtener publicaciones
-  
+________________________________________________________________
 POST	        |     /api/posts/	      |  Crear publicación
-  
+________________________________________________________________
 GET	          |  /api/categories/	    |  Obtener categorías
-  
+________________________________________________________________
 POST	        |    /api/login/	      |  Iniciar sesión
-  
+________________________________________________________________
 POST	        |   /api/register/	    |  Registrar usuario
-  
+________________________________________________________________
 GET	          |    /api/comments/     |  Obtener comentarios 
-
+________________________________________________________________
 
 ## 📌 Funcionalidades Implementadas
 - ✅ Sistema de autenticación.
