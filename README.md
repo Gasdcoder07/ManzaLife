@@ -46,21 +46,21 @@ El proyecto está construido utilizando una arquitectura moderna con:
 
 ## ✨ Características Principales
 📰 Blog Turístico
--Publicación de artículos
--Categorías dinámicas
--Slugs automáticos
--Comentarios anidados
--Imágenes para publicaciones
+-Publicación de artículos.
+-Categorías dinámicas.
+-Slugs automáticos.
+-Comentarios anidados.
+-Imágenes para publicaciones.
 🗺️ Turismo
--Exploración de lugares turísticos
--Información detallada de sitios
--Organización por categorías
--Experiencia responsive para móviles
+-Exploración de lugares turísticos.
+-Información detallada de sitios.
+-Organización por categorías.
+-Experiencia responsive para móviles.
 ⚙ Panel Administrativo
--Administración de publicaciones
--Gestión de usuarios
--Moderación de comentarios
--Administración de categorías
+-Administración de publicaciones.
+-Gestión de usuarios.
+-Moderación de comentarios.
+-Administración de categorías.
 
 ## 🛠 Tecnologías Utilizadas
 - *Lenguaje:* [HTML5, Javascript, CSS, Python]![Python 3.12+].   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"><img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"><img src="https://img.shields.io/badge/python%203.12+-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+">
@@ -146,33 +146,65 @@ ManzaLife/
 
 ## 🚀 Instalación
 1️⃣ Clonar el repositorio
--git clone https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git
--cd Proyecto-semestre-2-PI
-⚙ Configuración del Backend
+-git clone https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git.
+-cd Proyecto-semestre-2-PI.
+⚙ Configuración del Backend.
 2️⃣ Entrar a la carpeta backend
--cd backend
+-cd backend.
 3️⃣ Crear entorno virtual
--Windows
--python -m venv venv
--venv\Scripts\activate
--Linux / Mac
--python3 -m venv venv
--source venv/bin/activate
+-Windows.
+-python -m venv venv.
+-venv\Scripts\activate.
+-Linux / Mac.
+-python3 -m venv venv.
+-source venv/bin/activate.
 4️⃣ Instalar dependencias
--pip install -r requirements.txt
+-pip install -r requirements.txt.
 5️⃣ Ejecutar migraciones
--python manage.py migrate
+-python manage.py migrate.
 6️⃣ Iniciar servidor Django
--python manage.py runserver
--Servidor disponible en: http://127.0.0.1:8000/
+-python manage.py runserver.
+-Servidor disponible en: http://127.0.0.1:8000/.
 🎨 Configuración del Frontend
 7️⃣ Abrir otra terminal y entrar al frontend
--cd frontend
+-cd frontend.
 8️⃣ Instalar dependencias
--npm install
+-npm install.
 9️⃣ Ejecutar proyecto React
--npm run dev
--http://localhost:5173/
+-npm run dev.
+-http://localhost:5173/.
+
+## 📡 API REST
+
+Método	    |      Endpoint	      |  Descripción
+------------------------------------------------------------
+GET	        |     /api/posts/	    |  Obtener publicaciones
+POST	      |     /api/posts/	    |  Crear publicación
+GET	        |  /api/categories/	  |  Obtener categorías
+POST	      |    /api/login/	    |  Iniciar sesión
+POST	      |   /api/register/	  |  Registrar usuario
+GET	        |    /api/comments/   |  Obtener comentarios 
+
+
+## 📌 Funcionalidades Implementadas
+-✅ Sistema de autenticación.
+-✅ API REST.
+-✅ Gestión de publicaciones.
+-✅ Categorías dinámicas.
+-✅ Comentarios anidados.
+-✅ Diseño responsive.
+-✅ Panel administrativo Django.
+-✅ Integración con Supabase.
+-✅ Sistema de reseñas.
+-✅ Gestión de perfiles.
+
+## 🔮 Funcionalidades Futuras
+-🌐 Integración con Google Maps.
+-📍 Geolocalización de lugares.
+-❤️ Sistema de favoritos.
+-📱 Aplicación móvil.
+      
+            
 ## 🌊 ¡Explora Manzanillo!
 Este proyecto fue creado con el objetivo de facilitar la experiencia de los turistas y locales en nuestro hermoso puerto de Manzanillo.
 Si te gustó el proyecto, considera dejarle una estrellita ⭐ y compartirlo con alguien que planeé visitar Manzanillo pronto y pueda planificar muy bien su viaje.
