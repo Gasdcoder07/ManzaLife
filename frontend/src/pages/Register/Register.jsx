@@ -145,7 +145,7 @@ export default function Register() {
 
                 <button
                     onClick={() => handleCurrentSlider("next")}
-                    className="absolute z-30 right-2 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white"
+                    className="cursor-pointer absolute z-30 right-2 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white"
                 >
                     <FaChevronRight />
                 </button>
@@ -186,7 +186,7 @@ export default function Register() {
                                 <button
                                     type="button"
                                     onClick={() => setFormStep(1)}
-                                    className="w-full border border-white rounded-xl py-2"
+                                    className="w-full border border-white rounded-xl py-2 cursor-pointer"
                                 >
                                     {textos.register.regresar}
                                 </button>
@@ -195,7 +195,7 @@ export default function Register() {
                             <button
                                 type="button"
                                 onClick={formStep === 2 ? handleRegister : handleFormStep}
-                                className="w-full bg-zinc-950 rounded-xl py-2"
+                                className="w-full bg-zinc-950 rounded-xl py-2 cursor-pointer"
                             >
                                 {formStep === 1
                                     ? textos.register.siguiente
@@ -205,7 +205,7 @@ export default function Register() {
 
                         <p className="text-sm text-center">
                             {textos.register.ya_tienes}{" "}
-                            <Link to={"/auth/login"}>
+                            <Link to={"/auth/login"} className="hover:text-zinc-950 hover:underline transition-colors duration-200 ease-in-out">
                                 {textos.register.abajoInicio}
                             </Link>
                         </p>

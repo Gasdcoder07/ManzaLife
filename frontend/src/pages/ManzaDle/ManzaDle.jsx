@@ -83,11 +83,11 @@ export default function ManzaDle() {
                     {!isGameOver ? (
                         <Keyboard onKeyPress={handleKeyPress} />
                     ) : (
-                        <div className="flex flex-col items-center justify-center p-6 bg-zinc-900/50 rounded-2xl border border-white/10 text-center animate-fade-in backdrop-blur-md">
+                        <div className="flex flex-col items-center justify-center p-6 dark:bg-zinc-900/50 rounded-2xl border border-white/10 text-center animate-fade-in">
                             {isWin ? (
                                 <>
                                   <h2 className="text-3xl font-bold text-green-400 mb-2 drop-shadow-md">¡Adivinaste!</h2>
-                                  <p className="text-zinc-300">Eres un máster, mañana habrá una nueva palabra</p>
+                                  <p className="dark:text-zinc-300 text-zinc-400">Eres un máster, mañana habrá una nueva palabra</p>
                                 </>
                             ) : (
                                 <>

@@ -112,9 +112,10 @@
     "password": "Contraseña",
     "ingresar": "Ingresar",
     "frase_lateral": "Descubre lugares, explora sentimientos",
-    "no_tienes_cuenta": "¿No tienes cuenta? crea una ahora",
+    "no_tienes_cuenta": "¿No tienes cuenta?",
     "ir_blog": "Ir al blog",
-    "ir_al_blog": "Volver al blog"
+    "ir_al_blog": "Volver al blog",
+    "link": "crea una ahora"
   },
   "register": {
     "titulo": "Crear cuenta",
@@ -135,7 +136,8 @@
     "crear_cuenta": "Crear cuenta",
     "ya_tienes": "¿Ya tienes cuenta?",
     "abajoInicio": "Inicia sesión aquí",
-    "abajo": "¿Ya tienes cuenta? Inicia sesión"
+    "abajo": "¿Ya tienes cuenta?",
+    "link": "Inicia sesión"
   },
   "main_blog": {
     "sidebar_elements": {
