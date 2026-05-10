@@ -77,7 +77,7 @@ const BlogNavbar = () => {
                             {idioma === "en" ? "En" : "Es"}
                         </button>
 
-                        <ToggleThemeButton isUsedInNavbar={true} />
+                        <ToggleThemeButton isUsedInNavbar={true} isBlog={true}/>
                     </div>
 
                     {user ? (

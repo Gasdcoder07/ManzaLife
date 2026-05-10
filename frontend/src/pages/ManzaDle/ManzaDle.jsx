@@ -8,6 +8,8 @@ import GameModal from "./GameModal"
 import InfoModal from "./InfoModal"
 import ManzaDleNavBar from "./ManzaDleNavBar"
 
+const STORAGE_KEY = "manzadle-status"
+
 const getDailyWord = () => {
     const today = new Date()
     const dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()
@@ -22,8 +24,27 @@ export default function ManzaDle() {
     const [guesses, setGuesses] = useState(Array(6).fill(null))
     const [currentGuess, setCurrentGuess] = useState("")
     const [turn, setTurn] = useState(0)
-    const [isGameOver, setIsGameOver] = useState(false)
-    const [isWin, setIsWin] = useState(false)
+
+    const [isGameOver, setIsGameOver] = useState(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            const { completed, date } = JSON.parse(saved);
+            const today = new Date().toLocaleDateString('en-CA');
+            return date === today && completed;
+        }
+        return false;
+    });
+
+    const [isWin, setIsWin] = useState(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            const { status, date } = JSON.parse(saved);
+            const today = new Date().toLocaleDateString('en-CA');
+            return date === today && status === "win";
+        }
+        return false;
+    });
+
     const [showInfo, setShowInfo] = useState(false)
 
     const solution = solutionData.word
@@ -69,6 +90,17 @@ export default function ManzaDle() {
         return () => window.removeEventListener('keydown', handleKeyDown)
     }, [currentGuess, turn, isGameOver])
 
+    useEffect(() => {
+        if (isWin || isGameOver) {
+            const gameStatus = {
+                completed: true,
+                date: new Date().toLocaleDateString('en-CA'),
+                status: isWin ? "win" : "loss"
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(gameStatus))
+        }
+    }, [isWin, isGameOver])
+
     return (
         <div className="min-h-screen bg-linear-to-b to-white from-zinc-100 dark:from-zinc-950 dark:to-orange-950 text-white flex flex-col font-sans">
             <ManzaDleNavBar />
@@ -76,18 +108,19 @@ export default function ManzaDle() {
                 <Header onOpenInfo={() => setShowInfo(true)}/>
                 {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
                 <div className="w-full grow flex flex-col justify-center items-center mb-6">
-                    <Board guesses={guesses} currentGuess={currentGuess} turn={turn} solution={solution} />
+                    {!isGameOver && !isWin && (
+                        <Board guesses={guesses} currentGuess={currentGuess} turn={turn} solution={solution} />
+                    )}
                 </div>
-                
                 <div className="w-full min-h-[200px] flex flex-col justify-center">
                     {!isGameOver ? (
                         <Keyboard onKeyPress={handleKeyPress} />
                     ) : (
-                        <div className="flex flex-col items-center justify-center p-6 bg-zinc-900/50 rounded-2xl border border-white/10 text-center animate-fade-in backdrop-blur-md">
+                        <div className="flex flex-col items-center justify-center p-6 dark:bg-zinc-900/50 rounded-2xl border border-white/10 text-center animate-fade-in">
                             {isWin ? (
                                 <>
                                   <h2 className="text-3xl font-bold text-green-400 mb-2 drop-shadow-md">¡Adivinaste!</h2>
-                                  <p className="text-zinc-300">Eres un máster, mañana habrá una nueva palabra</p>
+                                  <p className="dark:text-zinc-300 text-zinc-400">Eres un máster, mañana habrá una nueva palabra</p>
                                 </>
                             ) : (
                                 <>
