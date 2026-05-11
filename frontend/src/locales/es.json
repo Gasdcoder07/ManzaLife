@@ -170,6 +170,14 @@
       "community": {
       "title": "Comunidad",
       "subtitle": "Explora nuestra"
-}
     }
+  },
+  "manzadle": {
+    "how": "¿Cómo jugar?",
+    "desc": "Intenta adivinar la palabra secreta en un número limitado de intentos. Cada vez que ingreses una palabra, recibirás pistas que te indicarán qué letras son correctas y si están en la posición adecuada. Usa esta información para acercarte a la solución antes de quedarte sin intentos.",
+    "green": "🟩 Letra correcta en la posición correcta.",
+    "yellow": "🟨 Letra correcta en posición incorrecta.",
+    "black": "⬛ Letra que no está en la palabra.",
+    "btn": "Entendido !"
   }
+}

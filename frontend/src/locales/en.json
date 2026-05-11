@@ -166,9 +166,17 @@
       "title": "Categories",
       "subtitle": "Our"
     },
-      "community": {
+    "community": {
       "title": "Community",
       "subtitle": "Explore our"
+    }
+  },
+  "manzadle": {
+    "how": "¿How to play?",
+    "desc": "Try to guess the secret word within a limited number of attempts. Each time you enter a word, you'll receive clues telling you which letters are correct and whether they're in the right position. Use this information to get closer to the solution before you run out of attempts.",
+    "green": "🟩 The right word in the right place.",
+    "yellow": "🟨 The right word in the wrong place",
+    "black": "⬛ Wrong word.",
+    "btn": "Got it!"
   }
-}
 }
