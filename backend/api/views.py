@@ -166,12 +166,16 @@ class PerfilView(APIView):
         return Response(serializer.data)
     
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     lookup_field = 'username'
     lookup_value_regex = '[^/]+'
     pagination_class = CustomPagination
+    
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            return User.objects.exclude(id=self.request.user.id).order_by('-date_joined')
+        return User.objects.all().order_by('-date_joined')
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
