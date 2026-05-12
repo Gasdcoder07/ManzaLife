@@ -115,7 +115,9 @@
     "no_tienes_cuenta": "Don't have an account?",
     "link": "Create one now",
     "ir_blog": "Go to blog",
-    "ir_al_blog": "Back to blog"
+    "ir_al_blog": "Back to blog",
+    "olvide": "Forgot your password?",
+    "reset": "Recover password"
   },
   "register": {
     "titulo": "Create account",
