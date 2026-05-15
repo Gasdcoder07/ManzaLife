@@ -19,7 +19,9 @@ const RequestsGrid = ({ isEnglish, Requests }) => {
 
             {
                 Requests?.length === 0 && (
-                    <h3 className="text-xl font-medium">No tienes solicitudes.</h3>
+                    <h3 className="text-xl font-medium">
+                        {isEnglish ? "You don't have requests." : "No tienes solicitudes."}
+                    </h3>
                 )
             }
         </div>

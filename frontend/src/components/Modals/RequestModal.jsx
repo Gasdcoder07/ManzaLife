@@ -5,10 +5,7 @@ import toast from "react-hot-toast";
 import { postRequest } from "../../services/requestService";
 import { MdArrowDropDown } from "react-icons/md";
 
-const RequestModal = ({ setShowModal, setRequests }) => {
-    const { idioma } = useLanguage();
-    const isEnglish = idioma === "en";
-
+const RequestModal = ({ isEnglish, setShowModal, setRequests }) => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         request_type: '',
