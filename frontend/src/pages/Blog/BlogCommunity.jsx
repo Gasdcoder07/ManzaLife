@@ -4,12 +4,16 @@ import BlogCommunitySkeleton from "../../components/Blog/BlogCommunity/BlogCommu
 import { useAuth } from "../../context/AuthContext";
 import { useUsers } from "../../hooks/useUsers";
 import { useLanguage } from "../../context/LanguageContext";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const BlogCommunity = () => {
     const { textos } = useLanguage();
     const { user  } = useAuth()
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+
+    const currentPage = Number(searchParams.get("page")) || 1;
 
     const topRef = useRef(null);
 
@@ -19,7 +23,12 @@ const BlogCommunity = () => {
 
     const handlePageChange = (newPage) => {
         topRef.current?.scrollIntoView({ behavior : "smooth" });
-        setCurrentPage(newPage);
+
+        if (newPage <= 1) {
+            navigate("/blog/community");
+        } else {
+            navigate(`/blog/community?page=${newPage}`);
+        }
     }
 
     const finalUsers = useMemo(() => {

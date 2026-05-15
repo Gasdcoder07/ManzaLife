@@ -12,10 +12,11 @@ export default function Blog() {
     const { textos, idioma } = useLanguage();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [currentPage, setCurrentPage] = useState(1);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [categories, setCategories] = useState([]);
     const categoriaActivada = searchParams.get("category");
+
+    const currentPage = Number(searchParams.get("page")) || 1;
 
     const topRef = useRef(null);
     const dropdownRef = useRef(null);
@@ -26,7 +27,16 @@ export default function Blog() {
     
     const handlePageChange = (newPage) => {
         topRef.current?.scrollIntoView({ behavior: "smooth" });
-        setCurrentPage(newPage);
+        
+        const params = new URLSearchParams(searchParams);
+
+        if (newPage <= 1) {
+            params.delete("page");
+        } else {
+            params.set("page", newPage);
+        }
+
+        setSearchParams(params);
     };
 
     useEffect(() => {
@@ -98,13 +108,16 @@ export default function Blog() {
                                         key={index}
                                         className="block rounded-lg hover:bg-black/5 dark:hover:bg-white/5 px-2 py-1 cursor-pointer"
                                         onClick={() => {
+                                            const params = new URLSearchParams(searchParams);
+
                                             if (item.slug) {
-                                                setSearchParams({ category: item.slug })
+                                                params.set("category", item.slug);
                                             } else {
-                                                setSearchParams({});
+                                                params.delete("category");
                                             }
-                                            
-                                            setCurrentPage(1);
+
+                                            params.delete("page");
+                                            setSearchParams(params);
                                         }}
                                     >
                                         <span className="text-sm">{item.name}</span>
