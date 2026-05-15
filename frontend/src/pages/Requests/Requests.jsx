@@ -48,6 +48,7 @@ const Requests = () => {
         {
             showRequestModal && (
                 <RequestModal
+                    isEnglish={isEnglish}
                     setShowModal={setShowRequestModal}
                     setRequests={setRequests}/>
             )

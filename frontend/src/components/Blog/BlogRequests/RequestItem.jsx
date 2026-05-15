@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { TiPin } from "react-icons/ti";
+import EditRequestModal from "../../Modals/EditRequestModal";
 
 const RequestItem = ({ isEnglish, type, description, status }) => {
     const lang = isEnglish ? 'en' : 'es';
@@ -33,8 +35,12 @@ const RequestItem = ({ isEnglish, type, description, status }) => {
         },
     };
 
+    const [showEditRequestModal, setShowEditRequestModal] = useState(false);
+
     return (
-        <div className="cursor-pointer group bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full hover:border-neutral-400 dark:hover:border-neutral-700">
+        <div
+            onClick={() => setShowEditRequestModal(true)}
+            className="cursor-pointer group bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full hover:border-neutral-400 dark:hover:border-neutral-700">
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 group-hover:text-orange-600 transition-colors duration-200 ease-in-out">
                     <TiPin/>
@@ -50,6 +56,16 @@ const RequestItem = ({ isEnglish, type, description, status }) => {
                 <div className="bg-yellow-500 size-4 rounded-full"/>
                 <span className="text-yellow-500 text-center">{statusMap[status]?.[lang]}</span>
             </div>
+
+            {
+                showEditRequestModal && (
+                    <EditRequestModal
+                        isEnglish={isEnglish}
+                        setShowModal={setShowEditRequestModal}
+                        requestDescription={description}
+                        requestType={type}/>
+                )
+            }
         </div>
     );
 };
