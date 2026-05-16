@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TiPin } from "react-icons/ti";
+import { MdEdit, MdDelete } from "react-icons/md";
 import EditRequestModal from "../../Modals/EditRequestModal";
 
 const RequestItem = ({ isEnglish, id, type, description, status }) => {
@@ -44,11 +45,25 @@ const RequestItem = ({ isEnglish, id, type, description, status }) => {
     return (
         <div
             onClick={() => setShowEditRequestModal(true)}
-            className="cursor-pointer group bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full hover:border-neutral-400 dark:hover:border-neutral-700">
+            className="bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full">
             <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 group-hover:text-orange-600 transition-colors duration-200 ease-in-out">
-                    <TiPin/>
-                    <span className="italic">{typeMap[request.type]?.[lang]}</span>
+                <div className="flex justify-between items-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <TiPin/>
+                        <span className="italic">{typeMap[request.type]?.[lang]}</span>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={() => setShowEditRequestModal(true)}
+                            className="cursor-pointer hover:text-orange-600 transition-colors ease-in-out duration-200">
+                            <MdEdit/>
+                        </button>
+
+                        <button>
+                            <MdDelete/>
+                        </button>
+                    </div>
                 </div>
 
                 <div className="w-full h-36 overflow-y-auto custom-scrollbar">
