@@ -5,6 +5,7 @@ import { MdArticle } from "react-icons/md";
 import { BiSolidCategory } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa6";
 import { IoMailUnread } from "react-icons/io5";
+import RecentRequests from "./RecentRequests";
 
 const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts, LatestUsers, LoadingStats }) => {
   return (
@@ -48,6 +49,10 @@ const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts,
                     Classname={"xl:col-span-2"}
                     Users={LatestUsers}/>
             </div>
+
+            {/* RecentRequests */}
+            <RecentRequests/>
+            
         </div>
     </div>
   );

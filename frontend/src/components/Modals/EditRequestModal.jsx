@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ModalLayout from "../../layouts/ModalLayout";
+import { updateRequest } from "../../services/requestService";
+import toast from "react-hot-toast";
 import { MdArrowDropDown } from "react-icons/md";
 
-const EditRequestModal = ({ isEnglish, setShowModal, requestDescription, requestType }) => {
+const EditRequestModal = ({ isEnglish, setRequest, setShowModal, requestId, requestDescription, requestType }) => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         request_type: requestType,
@@ -31,6 +33,50 @@ const EditRequestModal = ({ isEnglish, setShowModal, requestDescription, request
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleClick = async (id) => {
+        setLoading(true);
+
+        const toastId = toast.loading(
+            isEnglish
+            ? 'Updating request...'
+            : 'Actualizando solicitud...'
+        );
+
+        try {
+            const res = await updateRequest(id, formData);
+
+            setRequest({
+                type: formData.request_type,
+                description: formData.details
+            });
+
+            toast.success(
+                isEnglish
+                ? 'Request updated succesfully'
+                : 'Solicitud actualizada correctamente',
+                {
+                    id: toastId
+                }
+            );
+        } catch (e) {
+            console.error(e);
+
+            toast.error(
+                isEnglish
+                    ? "Error updating request"
+                    : "Error al actualizar la solicitud",
+                {
+                    id: toastId,
+                },
+            );
+
+        } finally {
+            setLoading(false);
+        }
+
+        setShowModal(false);
     };
 
     return (
@@ -101,6 +147,7 @@ const EditRequestModal = ({ isEnglish, setShowModal, requestDescription, request
                     </button>
 
                     <button
+                        onClick={() => handleClick(requestId)}
                         disabled={loading}
                         className={`${loading ? 'bg-zinc-700 text-zinc-500 cursor-not-allowed' : 'text-white bg-orange-600 hover:-translate-y-1 cursor-pointer'} transition-all duration-200 ease-in-out px-4 py-2 rounded`}>
                         {isEnglish ? "Update" : "Actualizar"}

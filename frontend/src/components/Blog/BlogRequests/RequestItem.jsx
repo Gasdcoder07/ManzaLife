@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TiPin } from "react-icons/ti";
 import EditRequestModal from "../../Modals/EditRequestModal";
 
-const RequestItem = ({ isEnglish, type, description, status }) => {
+const RequestItem = ({ isEnglish, id, type, description, status }) => {
     const lang = isEnglish ? 'en' : 'es';
 
     const statusMap = {
@@ -36,6 +36,10 @@ const RequestItem = ({ isEnglish, type, description, status }) => {
     };
 
     const [showEditRequestModal, setShowEditRequestModal] = useState(false);
+    const [request, setRequest] = useState({
+        type: type,
+        description: description,
+    });
 
     return (
         <div
@@ -44,11 +48,11 @@ const RequestItem = ({ isEnglish, type, description, status }) => {
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 group-hover:text-orange-600 transition-colors duration-200 ease-in-out">
                     <TiPin/>
-                    <span className="italic">{typeMap[type]?.[lang]}</span>
+                    <span className="italic">{typeMap[request.type]?.[lang]}</span>
                 </div>
 
                 <div className="w-full h-36 overflow-y-auto custom-scrollbar">
-                    <p className="leading-relaxed whitespace-pre-line wrap-break-word">{description}</p>
+                    <p className="leading-relaxed whitespace-pre-line wrap-break-word">{request.description}</p>
                 </div>
             </div>
 
@@ -61,9 +65,11 @@ const RequestItem = ({ isEnglish, type, description, status }) => {
                 showEditRequestModal && (
                     <EditRequestModal
                         isEnglish={isEnglish}
+                        setRequest={setRequest}
                         setShowModal={setShowEditRequestModal}
-                        requestDescription={description}
-                        requestType={type}/>
+                        requestId={id}
+                        requestDescription={request.description}
+                        requestType={request.type}/>
                 )
             }
         </div>
