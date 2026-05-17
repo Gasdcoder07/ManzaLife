@@ -62,7 +62,7 @@ function Navbar() {
                 {idioma === "en" ? "EN" : "ES"}
             </button>
 
-            <ToggleThemeButton/>
+            <ToggleThemeButton isNavbar={true}/>
 
             {
                 user ? (

@@ -99,7 +99,7 @@ const RequestModal = ({ isEnglish, setShowModal, setRequests }) => {
 
   return (
     <ModalLayout>
-        <div className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
+        <div className="bg-[#fcfcfc] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
             <div className="space-y-2">
                 <h2 className='text-center tracking-wider italic text-zinc-950 dark:text-white'>{isEnglish ? 'New request' : 'Solicitud nueva'}</h2>
                 <hr className='text-black/40 dark:text-white/10'/>
@@ -115,7 +115,7 @@ const RequestModal = ({ isEnglish, setShowModal, setRequests }) => {
 
                     {
                         showDropdown && (
-                            <div className="bg-[#fffbf8] dark:bg-zinc-950 absolute top-full z-10 right-0 mt-2 w-48 max-h-24 overflow-y-auto border border-black/40 dark:border-white/10 shadow-md rounded-sm custom-scrollbar">
+                            <div className="bg-[#fcfcfc] dark:bg-zinc-950 absolute top-full z-10 right-0 mt-2 w-48 max-h-24 overflow-y-auto border border-black/40 dark:border-white/10 shadow-md rounded-sm custom-scrollbar">
                                 <ul className="flex flex-col px-4 py-2 gap-2">
                                     {
                                         RequestTypes.map((request, index) => {

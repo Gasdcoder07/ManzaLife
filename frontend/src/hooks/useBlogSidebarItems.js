@@ -18,7 +18,8 @@ export const useBlogSidebarItems = () => {
         { icon: FaRegUserCircle, text: textos.main_blog.sidebar_elements.explore_section.items.profile, 
             path: user ? `/blog/profile/${user.username}` : "/auth/login"
         },
-        { icon: IoIosSend, text: textos.main_blog.sidebar_elements.explore_section.items.requests, path: "/blog/requests" },
+        { icon: IoIosSend, text: textos.main_blog.sidebar_elements.explore_section.items.requests, 
+            path: user ? "/blog/requests" : "/auth/login" },
         { icon: IoKeypad, text: "ManzaDle", path: "/manzadle" }
     ];
 

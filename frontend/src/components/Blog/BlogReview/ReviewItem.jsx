@@ -39,7 +39,7 @@ const ReviewItem = ({ isEnglish, username, type, date, details, status }) => {
     const lang = isEnglish ? 'en' : 'es';
 
     return (
-        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col gap-6 w-full shadow-xl">
+        <div className="bg-[#fcfcfc] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col gap-6 w-full shadow-xl">
             <div className="flex flex-col gap-2">
                 <div>
                     <Link

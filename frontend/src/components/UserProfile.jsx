@@ -50,7 +50,7 @@ const UserProfile = ({ UserAvatar, Username }) => {
                             <div className="flex flex-col gap-2">
                                 <Link
                                     to={`/blog/profile/${Username}`}
-                                    className="flex gap-2 items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-zinc-700 rounded-lg">
+                                    className="flex gap-2 items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg">
                                     <FaUser className="text-lg"/>
                                     <span>Perfil</span>
                                 </Link>
@@ -59,7 +59,7 @@ const UserProfile = ({ UserAvatar, Username }) => {
 
                                 <button
                                     onClick={(handleLogout)}
-                                    className="cursor-pointer rounded-lg flex gap-2 justify-center items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-zinc-700">
+                                    className="cursor-pointer rounded-lg flex gap-2 justify-center items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-white/5">
                                     <IoLogOut className="text-lg"/>
                                     <span>Cerrar sesión</span>
                                 </button>

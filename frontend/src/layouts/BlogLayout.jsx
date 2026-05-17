@@ -3,7 +3,7 @@ import { BlogNavbar, BlogSidebar } from "../components/Blog/index"
 
 const BlogLayout = () => {
   return (
-    <div className="relative dark:bg-zinc-950 dark:text-white h-screen w-full flex flex-col">
+    <div className="relative bg-[#f5f5f7] dark:bg-zinc-950 dark:text-white h-screen w-full flex flex-col">
         <BlogNavbar/>
 
         <section className="flex-1 flex w-full overflow-hidden">

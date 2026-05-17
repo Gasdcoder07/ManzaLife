@@ -14,3 +14,8 @@ export const postRequest = async (data) => {
     const res = await api.post("requests/", data);
     return res.data;
 }
+
+export const updateRequest = async (idRequest, data) => {
+    const res = await api.patch(`requests/${idRequest}/`, data);
+    return res.data;
+}

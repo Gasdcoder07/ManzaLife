@@ -106,7 +106,7 @@ const BlogProfile = () => {
 
   return (
     <div className="py-4 flex flex-col gap-4">
-        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl overflow-hidden shadow-xl">
+        <div className="bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl overflow-hidden shadow-xl">
             <div className="relative h-56 sm:h-72">
                 <img
                     className="w-full h-full object-cover"
@@ -170,7 +170,7 @@ const BlogProfile = () => {
             </div>
         </div>
 
-        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 shadow-xl">
+        <div className="bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 shadow-xl">
             <p className="font-semibold">
                 {idioma === "en" ? "Posts" : "Publicaciones"}
             </p>
@@ -196,13 +196,17 @@ const BlogProfile = () => {
 
                 {
                     loadingPosts && (
-                        <p className="text-neutral-300 italic">Cargando publicaciones...</p>
+                        <p className="text-neutral-300 italic">
+                            {idioma === "en" ? "Loading posts..." : "Cargando publicaciones..."}
+                        </p>
                     )
                 }
 
                 {
                     !loadingPosts && posts.length === 0 && (
-                        <p className="text-neutral-300 italic">Este usuario no tiene publicaciones disponibles!</p>
+                        <p className="text-neutral-300 italic">
+                            {idioma === "en" ? "This user has no posts available." : "Este usuario no tiene publicaciones disponibles."}
+                        </p>
                     )
                 }
             </div>
