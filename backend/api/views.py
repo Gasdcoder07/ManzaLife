@@ -246,3 +246,26 @@ class SystemRequestViewSet(viewsets.ModelViewSet):
         queryset = queryset.order_by('-created_at')
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+    
+    @action(detail=True, methods=['patch'], url_path='approve')
+    def approve(self, request, pk=None):
+        if not request.user.is_staff:
+            raise PermissionDenied("No tienes permiso para aprobar esta acción.")
+        
+        solicitud = self.get_object()
+        solicitud.status = 'approved'
+        solicitud.save()
+        
+        serializer = self.get_serializer(solicitud)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    @action(detail=True, methods=['patch'], url_path='reject')
+    def reject(self, request, pk=None): 
+        if not request.user.is_staff:
+            raise PermissionDenied("No tienes permiso para rechazar esta acción.")
+        
+        solicitud = self.get_object()
+        solicitud.status = 'rejected'
+        solicitud.save()
+        
+        seralizer = self.get_serializer(solicitud)
