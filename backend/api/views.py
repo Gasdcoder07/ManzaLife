@@ -44,7 +44,7 @@ class UnbanUserView(APIView):
         profile.user.save()
 
         return Response({ "message": "Usuario desbaneado exitosamente" })
-    
+
 class DashboardStatsView(APIView):
     def get(self, request):
         data = {
@@ -164,7 +164,7 @@ class PerfilView(APIView):
 
         serializer = UserSerializer(user)
         return Response(serializer.data)
-    
+
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
@@ -214,22 +214,22 @@ class UpdatePasswordView(APIView):
 class SystemRequestViewSet(viewsets.ModelViewSet):
     serializer_class = SystemRequestSerializer
     permission_classes = [permissions.IsAuthenticated]
-    
+
     def get_queryset(self):
         queryset = SystemRequest.objects.filter(user=self.request.user)
         status_param = self.request.query_params.get('status')
         type_param = self.request.query_params.get('type')
-        
+
         if status_param:
             queryset = queryset.filter(status=status_param)
         if type_param:
             queryset = queryset.filter(request_type=type_param)
-            
+
         return queryset.order_by('-created_at')
-    
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-    
+
     @action(detail=False, methods=['get'])
     def all_requests(self, request):
         if not request.user.is_staff:
@@ -242,30 +242,37 @@ class SystemRequestViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(status=status_param)
         if type_param:
             queryset = queryset.filter(request_type=type_param)
-        
+
         queryset = queryset.order_by('-created_at')
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-    
+
     @action(detail=True, methods=['patch'], url_path='approve')
     def approve(self, request, pk=None):
         if not request.user.is_staff:
             raise PermissionDenied("No tienes permiso para aprobar esta acción.")
-        
-        solicitud = self.get_object()
+
+        try: 
+            solicitud = SystemRequest.objects.get(pk=pk)
+        except SystemRequest.DoesNotExist:
+            return Response({"detail": "Solicitud no encontrada"}, status=404)
+
         solicitud.status = 'approved'
         solicitud.save()
-        
-        serializer = self.get_serializer(solicitud)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
+        return Response(self.get_serializer(solicitud).data, status=200)
+
     @action(detail=True, methods=['patch'], url_path='reject')
     def reject(self, request, pk=None): 
         if not request.user.is_staff:
             raise PermissionDenied("No tienes permiso para rechazar esta acción.")
-        
-        solicitud = self.get_object()
-        solicitud.status = 'rejected'
+
+        try:
+            solicitud = SystemRequest.objects.get(pk=pk)
+        except SystemRequest.DoesNotExist:
+            return Response({"detail": "Solicitud no encontrada"}, status=404)
+
+        solicitud.status = "rejected"
         solicitud.save()
-        
-        seralizer = self.get_serializer(solicitud)
+
+        return Response(self.get_serializer(solicitud).data, status=200)
