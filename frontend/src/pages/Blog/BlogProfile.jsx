@@ -196,13 +196,17 @@ const BlogProfile = () => {
 
                 {
                     loadingPosts && (
-                        <p className="text-neutral-300 italic">Cargando publicaciones...</p>
+                        <p className="text-neutral-300 italic">
+                            {idioma === "en" ? "Loading posts..." : "Cargando publicaciones..."}
+                        </p>
                     )
                 }
 
                 {
                     !loadingPosts && posts.length === 0 && (
-                        <p className="text-neutral-300 italic">Este usuario no tiene publicaciones disponibles!</p>
+                        <p className="text-neutral-300 italic">
+                            {idioma === "en" ? "This user has no posts available." : "Este usuario no tiene publicaciones disponibles."}
+                        </p>
                     )
                 }
             </div>
