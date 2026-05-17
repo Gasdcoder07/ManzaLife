@@ -3,7 +3,7 @@ export default function Board({ guesses, currentGuess, turn, solution }) {
     const rows = Array.from({length: 6})
 
     const styles = {
-        empty: "bg-transparent border-zinc-200 dark:border-zinc-700",
+        empty: "bg-[#fcfcfc] dark:bg-transparent border-zinc-200 dark:border-zinc-700",
         filled: "bg-zinc-200 border-zinc-200 dark:bg-zinc-800 dark:border-zinc-800",
         correct: "bg-green-500 border-green-500 dark:bg-green-600 dark:border-green-600",
         present: "bg-yellow-400 border-yellow-400 dark:bg-yellow-500 dark:border-yellow-500"
