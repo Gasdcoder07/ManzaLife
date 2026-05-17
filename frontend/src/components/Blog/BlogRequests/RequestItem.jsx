@@ -45,7 +45,7 @@ const RequestItem = ({ isEnglish, id, type, description, status }) => {
     return (
         <div
             onClick={() => setShowEditRequestModal(true)}
-            className="bg-[#fffbf8] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full">
+            className="bg-[#fcfcfc] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full">
             <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center gap-4">
                     <div className="flex items-center gap-2">

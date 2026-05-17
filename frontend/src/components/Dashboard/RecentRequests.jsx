@@ -2,7 +2,7 @@ const RecentRequests = ({ isEnglish, Requests }) => {
     console.log(Requests)
 
     return (
-        <div className="h-36 bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5">
+        <div className="h-36 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5">
             <p className="text-xl px-3 font-semibold">
                 {isEnglish ? "Recent requests" : "Solicitudes recientes"}
             </p>

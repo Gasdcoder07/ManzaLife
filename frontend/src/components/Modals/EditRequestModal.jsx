@@ -83,7 +83,7 @@ const EditRequestModal = ({ isEnglish, setRequest, setShowModal, requestId, requ
         <ModalLayout>
             <div
                 onClick={(e) => e.stopPropagation()}
-                className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
+                className="bg-[#fcfcfc] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
                 
                 <div className="space-y-2">
                     <h2 className="text-center tracking-wider italic text-shadow-zinc-950 dark:text-white">

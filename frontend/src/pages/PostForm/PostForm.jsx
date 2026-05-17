@@ -129,7 +129,7 @@ export default function PostForm({ mode, PostData = null }) {
             <div className="w-full max-w-2xl flex flex-col gap-6">
                 {/* Dropdown de Categorias */}
                 <div onClick={() => setDropdownVisible(!dropdownVisible)} className="relative w-full flex justify-end">
-                    <button className="bg-[#fffbf8] dark:bg-zinc-900/20 flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-neutral-300 dark:border-neutral-800 cursor-pointer">
+                    <button className="bg-[#fcfcfc] dark:bg-[#0d0d0f] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-neutral-300 dark:border-neutral-800 cursor-pointer">
                         <span>{formData.category_name}</span>
                         <MdArrowDropDown className={`text-xl ${dropdownVisible ? 'rotate-180' : ''}`}/>
                     </button>
@@ -138,7 +138,7 @@ export default function PostForm({ mode, PostData = null }) {
 
                     {
                         dropdownVisible && (
-                            <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg shadow-orange-600/10 border border-neutral-300 bg-[#fffbf8] dark:border-neutral-800 dark:bg-zinc-900 custom-scrollbar">
+                            <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg border border-neutral-300 bg-[#fcfcfc] dark:border-neutral-800 dark:bg-[#0d0d0f] custom-scrollbar">
                                 <ul className="flex flex-col px-4 py-2 gap-2">
                                     {
                                         categories.map((item) => {
@@ -160,7 +160,7 @@ export default function PostForm({ mode, PostData = null }) {
                 </div>
 
                 {/* Input de Titulo */}
-                <div className="group border border-zinc-800/20 dark:border-zinc-800 bg-[#fffbf8] dark:bg-zinc-900/20 rounded-2xl px-8 py-4 focus-within:border-orange-600 transition-all duration-300 ease-in-out shadow-lg">
+                <div className="group border border-zinc-800/20 dark:border-zinc-800 bg-[#fcfcfc] dark:bg-[#0d0d0f] rounded-2xl px-8 py-4 focus-within:border-orange-600 transition-all duration-300 ease-in-out shadow-lg">
                     <input
                         name="title"
                         type="text"
@@ -174,7 +174,7 @@ export default function PostForm({ mode, PostData = null }) {
                 {/* Input de Imagen */}
                 <div
                     onClick={() => !formData.imagePreview && fileInputRef.current.click()}
-                    className={`bg-[#fffbf8] dark:bg-transparent relative group border-2 border-dashed rounded-2xl h-80 flex flex-col items-center justify-center gap-4 transition-all overflow-hidden ${formData.imagePreview ? "border-solid border-zinc-700" : "border-zinc-800/20 dark:border-zinc-800 hover:border-orange-500/50 cursor-pointer"}`}
+                    className={`bg-[#fcfcfc] dark:bg-[#0d0d0f] relative group border-2 border-dashed rounded-2xl h-80 flex flex-col items-center justify-center gap-4 transition-all overflow-hidden ${formData.imagePreview ? "border-solid border-zinc-700" : "border-zinc-800/20 dark:border-zinc-800 hover:border-orange-500/50 cursor-pointer"}`}
                 >
                     {formData.imagePreview ? (
                         <>
@@ -211,7 +211,7 @@ export default function PostForm({ mode, PostData = null }) {
                 </div>
 
                 {/* TextArea */}
-                <div className="group border-2 border-zinc-800/20 dark:border-zinc-800 bg-[#fffbf8] dark:bg-zinc-900/10 rounded-2xl p-6 focus-within:border-orange-600 transition-all duration-300 ease-in-out">
+                <div className="group border-2 border-zinc-800/20 dark:border-zinc-800 bg-[#fcfcfc] dark:bg-[#0d0d0f] rounded-2xl p-6 focus-within:border-orange-600 transition-all duration-300 ease-in-out">
                     <div className="flex items-start">
                         <MdShortText className="text-3xl text-zinc-600" />
                         <textarea
@@ -225,7 +225,7 @@ export default function PostForm({ mode, PostData = null }) {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <button onClick={() => handleGuardarPost("draft")} className="border border-zinc-300 dark:border-zinc-800 flex justify-center items-center gap-4 bg-[#fffbf8] dark:bg-zinc-900/60 px-5 py-2 w-full cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1">
+                    <button onClick={() => handleGuardarPost("draft")} className="border border-zinc-300 dark:border-zinc-800 flex justify-center items-center gap-4 bg-[#fcfcfc] dark:bg-[#0d0d0f] px-5 py-2 w-full cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1">
                         <span>Guardar borrador</span>
                         <MdSave/>
                     </button>

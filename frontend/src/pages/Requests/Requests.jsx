@@ -33,7 +33,7 @@ const Requests = () => {
 
             <button
                 onClick={() => setShowRequestModal(true)}
-                className="hover:text-orange-600 bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-800/20 dark:border-neutral-800 flex justify-center items-center gap-2 px-6 py-2 rounded-xl cursor-pointer transition-colors ease-in-out duration-200 shadow-md shrink-0">
+                className="hover:text-orange-600 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-800/20 dark:border-neutral-800 flex justify-center items-center gap-2 px-6 py-2 rounded-xl cursor-pointer transition-colors ease-in-out duration-200 shadow-md shrink-0">
                 <FaPlus/>
                 <span>
                     {isEnglish ? 'Send request' : 'Enviar solicitud'}
