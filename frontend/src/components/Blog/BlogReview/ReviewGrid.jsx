@@ -10,6 +10,7 @@ const ReviewGrid = ({ isEnglish, Reviews }) => {
                             <ReviewItem
                                 key={review.id}
                                 isEnglish={isEnglish}
+                                id={review.id}
                                 username={review.username}
                                 type={review.request_type}
                                 date={review.created_at}
