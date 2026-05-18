@@ -20,8 +20,12 @@ import AdminUserModal from "../../components/Modals/AdminUserModal";
 const BlogProfile = () => {
     const { username } = useParams()
     const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const { user: currentUser, setUser: setCurrentUser } = useAuth();
+
     const Authorized = currentUser?.username === username;
+    const isAdmin = currentUser?.isAdmin && currentUser.user_type === "admin";
 
     const [showModal, setShowModal] = useState(false);
     const [showImageModal, setShowImageModal] = useState(false);
@@ -38,7 +42,6 @@ const BlogProfile = () => {
 
     const [posts, setPosts] = useState([]);
     const [loadingPosts, setLoadingPosts] = useState(true);
-
     
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -158,7 +161,7 @@ const BlogProfile = () => {
                             {
                                 profileData.is_banned && (
                                     <p className="text-red-500 dark:text-red-600 font-medium">
-                                        {idioma === "en" ? "This user is banned." : "Este usuario está baneado."}
+                                        {isEnglish ? "This user is banned." : "Este usuario está baneado."}
                                     </p>
                                 )
                             }
@@ -167,7 +170,7 @@ const BlogProfile = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
                             <p className="text-neutral-500 dark:text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
                             {
-                                currentUser?.isAdmin && !Authorized && (
+                                isAdmin && !Authorized && (
                                     <div
                                         className="shrink-0 flex items-center justify-center gap-4">
                                             <button
@@ -192,21 +195,21 @@ const BlogProfile = () => {
                                     <button
                                         onClick={() => setShowModal(true)}
                                         className="shrink-0 border border-neutral-700 rounded-sm w-full sm:w-fit px-4 py-2 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
-                                        {idioma === "en" ? "Edit profile" : "Editar perfil"}
+                                        {isEnglish ? "Edit profile" : "Editar perfil"}
                                     </button>
                                 )
                             }
                         </div>
                     </div>
                     
-                    <p className="text-neutral-400 dark:text-neutral-300"><span className="font-bold text-zinc-950 dark:text-white">{posts.length}</span> {idioma === "en" ? "Posts" : "Publicaciones"}</p>
+                    <p className="text-neutral-400 dark:text-neutral-300"><span className="font-bold text-zinc-950 dark:text-white">{posts.length}</span> {isEnglish ? "Posts" : "Publicaciones"}</p>
                 </div>
             </div>
         </div>
 
         <div className="bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 shadow-xl">
             <p className="font-semibold">
-                {idioma === "en" ? "Posts" : "Publicaciones"}
+                {isEnglish ? "Posts" : "Publicaciones"}
             </p>
 
             <div className="flex flex-col gap-4">
@@ -231,7 +234,7 @@ const BlogProfile = () => {
                 {
                     loadingPosts && (
                         <p className="text-neutral-300 italic">
-                            {idioma === "en" ? "Loading posts..." : "Cargando publicaciones..."}
+                            {isEnglish ? "Loading posts..." : "Cargando publicaciones..."}
                         </p>
                     )
                 }
@@ -239,7 +242,7 @@ const BlogProfile = () => {
                 {
                     !loadingPosts && posts.length === 0 && (
                         <p className="text-neutral-300 italic">
-                            {idioma === "en" ? "This user has no posts available." : "Este usuario no tiene publicaciones disponibles."}
+                            {isEnglish ? "This user has no posts available." : "Este usuario no tiene publicaciones disponibles."}
                         </p>
                     )
                 }
@@ -261,9 +264,10 @@ const BlogProfile = () => {
                     showAdminModal && (
                         <AdminUserModal
                             isAdmin={profileData.isAdmin}
-                            isEnglish={idioma === "en"}
+                            isEnglish={isEnglish}
                             setModal={setShowAdminModal}
                             username={username}
+                            setUser={setCurrentUser}
                         />
                     )
                 }

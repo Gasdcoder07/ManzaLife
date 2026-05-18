@@ -1,8 +1,47 @@
 import { useState } from "react";
 import ModalLayout from "../../layouts/ModalLayout";
+import { updateProfile } from "../../services/profileService";
+import toast from "react-hot-toast";
 
-const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, username }) => {
+const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, setUser, username }) => {
     const [loading, setLoading] = useState(false);
+
+    const handleMakeAdmin = async () => {
+        setLoading(true);
+
+        const toastId = toast.loading(
+            isEnglish ? "Making user admin..." : "Haciendo admin al usuario...",
+        );
+
+        try {
+
+            setUser(prev => ({
+                ...prev,
+                isAdmin: true,
+                user_type: "admin"
+            }));
+
+            toast.success(
+                isEnglish ? "User is now an admin." : "El usuario ahora es admin.",
+                {
+                    id: toastId,
+                }
+            );
+
+            setModal(false);
+        } catch (error) {
+            toast.error(
+                isEnglish ? "Failed to make user admin." : "Error al hacer admin al usuario.",
+                {
+                    id: toastId,
+                }
+            );
+
+            console.error("Error making user admin:", error);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     if (!isAdmin) {
         return (
@@ -21,6 +60,7 @@ const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, username
 
                     <div className="mt-2 flex justify-end items-center gap-4">
                         <button
+                            onClick={() => handleMakeAdmin()}
                             disabled={loading}
                             className={`${loading ? 'bg-zinc-700 text-zinc-500 cursor-not-allowed' : 'text-white bg-orange-600 hover:-translate-y-1 cursor-pointer'} transition-all duration-200 ease-in-out px-4 py-2 rounded`}>
                             {isEnglish ? "Make Admin" : "Hacer Admin"}
