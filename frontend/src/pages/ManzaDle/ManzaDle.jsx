@@ -7,6 +7,8 @@ import Keyboard from "./Keyboard"
 import GameModal from "./GameModal"
 import InfoModal from "./InfoModal"
 import ManzaDleNavBar from "./ManzaDleNavBar"
+import { useAuth } from "../../context/AuthContext"
+import { useNavigate } from "react-router"
 
 const STORAGE_KEY = "manzadle-status"
 
@@ -24,6 +26,14 @@ export default function ManzaDle() {
     const [guesses, setGuesses] = useState(Array(6).fill(null))
     const [currentGuess, setCurrentGuess] = useState("")
     const [turn, setTurn] = useState(0)
+    const { user } = useAuth()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (user && user.is_banned) {
+            navigate("/403")
+        }
+    }, [user, navigate])
 
     const [isGameOver, setIsGameOver] = useState(() => {
         const saved = localStorage.getItem(STORAGE_KEY);

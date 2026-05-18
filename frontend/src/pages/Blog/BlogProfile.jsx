@@ -153,6 +153,13 @@ const BlogProfile = () => {
                         <div className="space-y-1">
                             <h3 className="italic tracking-wide font-light">{profileData.first_name} {profileData.last_name}</h3>
                             <h2 className="text-2xl font-semibold tracking-widest">@{profileData.username}</h2>
+                            {
+                                profileData.is_banned && (
+                                    <p className="text-red-500 font-medium">
+                                        {idioma === "en" ? "This user is banned." : "Este usuario está baneado."}
+                                    </p>
+                                )
+                            }
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
@@ -161,8 +168,15 @@ const BlogProfile = () => {
                                 currentUser?.isAdmin ? (
                                     <button
                                         onClick={() => setShowBanModal(true)}
-                                        className="border border-red-500 text-red-500 rounded-xl w-full sm:w-fit px-4 py-2 hover:-translate-y-1 hover:bg-red-500 hover:text-white transition-all duration-200 ease-in-out cursor-pointer">
-                                        {idioma === "en" ? "Ban user" : "Banear usuario"}
+                                        className={`border rounded-xl w-full sm:w-fit px-4 py-2 hover:-translate-y-1 hover:text-white transition-all duration-200 ease-in-out cursor-pointer ${
+                                            profileData.is_banned 
+                                                ? 'border-green-500 text-green-500 hover:bg-green-500' 
+                                                : 'border-red-500 text-red-500 hover:bg-red-500'
+                                        }`}>
+                                        {profileData.is_banned 
+                                            ? (idioma === "en" ? "Unban user" : "Desbanear usuario")
+                                            : (idioma === "en" ? "Ban user" : "Banear usuario")
+                                        }
                                     </button>
                                 ) : null
                             }
@@ -229,6 +243,8 @@ const BlogProfile = () => {
                             setShowBanModal={setShowBanModal}
                             username={username}
                             userId={profileData.id}
+                            isBanned={profileData.is_banned}
+                            banReason={profileData.ban_reason}
                         />
                     )
                 }
