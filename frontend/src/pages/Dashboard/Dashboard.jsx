@@ -7,6 +7,7 @@ import { useDashboardStats } from "../../hooks/useDashboardStats";
 import { useRequests } from "../../hooks/useRequests";
 import DashboardSkeleton from "../../components/Dashboard/DashboardSkeleton";
 import { useEffect, useState } from "react";
+import { FaSquarePlus } from "react-icons/fa6";
 
 const Dashboard = () => {
     const { idioma } = useLanguage();
@@ -33,9 +34,19 @@ const Dashboard = () => {
 
   return (
     <div className="mt-4">
-        <h3 className="text-2xl font-semibold">
-            {isEnglish ? 'Welcome' : 'Bienvenido'} {user.first_name} 👋
-        </h3>
+        <div className="flex items-center justify-between gap-4">
+            <h3 className="text-2xl font-semibold tracking-wide">
+                {isEnglish ? 'Welcome' : 'Bienvenido'} {user.first_name} 👋
+            </h3>
+
+            <button
+                className="group shrink-0 flex justify-center items-center gap-2 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-5 py-2 cursor-pointer hover:text-orange-600">
+                <FaSquarePlus className="transition-colors duration-200 ease-in-out"/>
+                <span className="transition-colors duration-200 ease-in-out">
+                    {isEnglish ? 'Create category' : 'Crear categoria'}
+                </span>
+            </button>
+        </div>
 
         <DashboardGrid
             isEnglish={isEnglish}

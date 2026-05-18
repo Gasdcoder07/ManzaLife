@@ -24,8 +24,8 @@ const RecentUsersCard = ({ Classname, Users }) => {
                             <th className="px-3 py-1.5">
                                 {isEnglish ? 'Email' : 'Correo'}
                             </th>
-                            <th className="px-3 py-1.5 shrink-0">
-                                {isEnglish ? 'Actions' : 'Acciones'}
+                            <th className="w-16 px-3 py-1.5 shrink-0">
+                                {isEnglish ? 'View' : 'Ver'}
                             </th>
                         </tr>
                     </thead>
@@ -37,7 +37,7 @@ const RecentUsersCard = ({ Classname, Users }) => {
                                     <tr key={index}>
                                         <td className="px-3 py-1.5 truncate">{item.username}</td>
                                         <td className="px-3 py-1.5 truncate">{item.email}</td>
-                                        <td className="shrink-0 px-3 py-1.5">
+                                        <td className="w-16 shrink-0 px-3 py-1.5">
                                             <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
                                                 <Link
                                                     to={`/blog/profile/${item.username}`}
@@ -45,10 +45,10 @@ const RecentUsersCard = ({ Classname, Users }) => {
                                                     <FaEye/>
                                                 </Link>
 
-                                                <button
+                                                {/* <button
                                                     className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
                                                     <FaBan/>
-                                                </button>
+                                                </button> */}
                                             </div>
                                         </td>
                                     </tr>

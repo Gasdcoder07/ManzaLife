@@ -2,8 +2,10 @@
 const DashboardSkeleton = () => {
   return (
     <div className="mt-4 flex flex-col gap-4 animate-pulse">
-
-        <div className="rounded bg-black/10 dark:bg-white/10 w-1/2 h-8"/>
+        <div className="flex justify-center items-center gap-4">
+            <div className="rounded bg-black/10 dark:bg-white/10 w-4/5 h-8"/>
+            <div className="rounded bg-black/10 dark:bg-white/10 w-1/5 h-8"/>
+        </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[...Array(4)].map((_, i) => (
@@ -16,6 +18,7 @@ const DashboardSkeleton = () => {
             <div className="xl:col-span-2 h-64 bg-black/10 dark:bg-white/10 rounded-xl"/>
         </div>
 
+        <div className="h-36 bg-black/10 dark:bg-white/10 rounded-xl"/>
     </div>
   );
 };

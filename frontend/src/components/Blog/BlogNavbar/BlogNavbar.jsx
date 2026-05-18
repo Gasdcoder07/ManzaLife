@@ -17,6 +17,8 @@ import LoginBtn from "../../LoginBtn/LoginBtn";
 const BlogNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { idioma, setIdioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const navBar = useBlogSidebarItems();
     const LoginBtnStyles = "bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 hover:bg-[position:right_center] text-white tracking-wider px-3 py-1 rounded-md font-semibold transition-all duration-500 ease-in-out inline-block shadow-md hover:shadow-lg hover:-translate-y-0.5";
 
@@ -51,7 +53,7 @@ const BlogNavbar = () => {
                         className="hover:text-orange-600 transition-colors duration-200 ease-in-out"
                     >
                         <span>
-                            {idioma === "en" ? "Create Post" : "Crear Post"}
+                            {isEnglish ? "Create Post" : "Crear Post"}
                         </span>
                     </Link>
 
@@ -62,7 +64,7 @@ const BlogNavbar = () => {
                             }
                             onClick={handleLanguageChange}
                         >
-                            {idioma === "en" ? "En" : "Es"}
+                            {isEnglish ? "En" : "Es"}
                         </button>
 
                         <ToggleThemeButton isBlog={true}/>
