@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
@@ -23,7 +25,12 @@ class BanUserView(APIView):
                 }, 
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
+        reason = request.data.get("reason", "No especificado")
+
         profile.is_banned =  True
+        profile.ban_reason = reason
+        profile.ban_date = timezone.now()
         profile.save()
 
         profile.user.is_active = not profile.is_banned
@@ -38,6 +45,8 @@ class UnbanUserView(APIView):
         profile = get_object_or_404(UserProfile, user__id=id)
             
         profile.is_banned = False
+        profile.ban_reason = None
+        profile.ban_date = None
         profile.save()
 
         profile.user.is_active = True

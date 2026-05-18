@@ -22,6 +22,9 @@ class UserSerializer(serializers.ModelSerializer):
     avatar = serializers.ImageField(source='userprofile.avatar', read_only=True)
     banner = serializers.ImageField(source='userprofile.banner', read_only=True)
     isAdmin = serializers.BooleanField(source='is_staff', read_only=True)
+    user_type = serializers.CharField(source='userprofile.user_type', read_only=True)
+    is_banned = serializers.BooleanField(source='userprofile.is_banned', read_only=True)
+    ban_reason = serializers.CharField(source='userprofile.ban_reason', read_only=True)
     # profile = UserProfileSerializer(source='userprofile', read_only=True)
 
     class Meta:
