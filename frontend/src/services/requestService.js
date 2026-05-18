@@ -19,3 +19,13 @@ export const updateRequest = async (idRequest, data) => {
     const res = await api.patch(`requests/${idRequest}/`, data);
     return res.data;
 }
+
+export const deleteRequest = async (idRequest) => {
+    const res = await api.delete(`requests/${idRequest}/`);
+    return res.data;
+}
+
+export const updateRequestAsAdmin = async (idRequest, data) => {
+    const res = await api.patch(`requests/all_requests/${idRequest}/`, data);
+    return res.data;
+}

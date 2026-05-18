@@ -43,7 +43,8 @@ const Requests = () => {
 
         <RequestsGrid
             isEnglish={isEnglish}
-            Requests={Requests}/>
+            Requests={Requests}
+            setRequests={setRequests}/>
 
         {
             showRequestModal && (

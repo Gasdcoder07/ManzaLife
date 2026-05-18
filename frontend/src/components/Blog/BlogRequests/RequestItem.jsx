@@ -2,8 +2,9 @@ import { useState } from "react";
 import { TiPin } from "react-icons/ti";
 import { MdEdit, MdDelete } from "react-icons/md";
 import EditRequestModal from "../../Modals/EditRequestModal";
+import DeleteRequestModal from "../../Modals/DeleteRequestModal";
 
-const RequestItem = ({ isEnglish, id, type, description, status }) => {
+const RequestItem = ({ isEnglish, id, type, description, status, setRequests }) => {
     const lang = isEnglish ? 'en' : 'es';
 
     const statusMap = {
@@ -42,9 +43,10 @@ const RequestItem = ({ isEnglish, id, type, description, status }) => {
         description: description,
     });
 
+    const [showDeleteRequestModal, setShowDeleteRequestModal] = useState(false);
+
     return (
         <div
-            onClick={() => setShowEditRequestModal(true)}
             className="bg-[#fcfcfc] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex flex-col gap-6 w-full">
             <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center gap-4">
@@ -60,7 +62,10 @@ const RequestItem = ({ isEnglish, id, type, description, status }) => {
                             <MdEdit/>
                         </button>
 
-                        <button>
+                        <button
+                            onClick={() => setShowDeleteRequestModal(true)}
+                            className="cursor-pointer hover:text-red-600 transition-colors ease-in-out duration-200"
+                            >
                             <MdDelete/>
                         </button>
                     </div>
@@ -85,6 +90,16 @@ const RequestItem = ({ isEnglish, id, type, description, status }) => {
                         requestId={id}
                         requestDescription={request.description}
                         requestType={request.type}/>
+                )
+            }
+
+            {
+                showDeleteRequestModal && (
+                    <DeleteRequestModal
+                        isEnglish={isEnglish}
+                        setShowModal={setShowDeleteRequestModal}
+                        requestId={id}
+                        setRequests={setRequests}/>
                 )
             }
         </div>

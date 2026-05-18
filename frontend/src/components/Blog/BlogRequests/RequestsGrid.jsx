@@ -1,6 +1,6 @@
 import RequestItem from "./RequestItem";
 
-const RequestsGrid = ({ isEnglish, Requests }) => {
+const RequestsGrid = ({ isEnglish, Requests, setRequests }) => {
   return (
     <div className="h-full">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 py-4 gap-4">
@@ -13,7 +13,8 @@ const RequestsGrid = ({ isEnglish, Requests }) => {
                             id={request.id}
                             type={request.request_type}
                             description={request.details}
-                            status={request.status}/>
+                            status={request.status}
+                            setRequests={setRequests}/>
                     )
                 })
             }

@@ -4,6 +4,7 @@ import { FaUser, FaCheck,  } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
 import { IoTime, IoClose, IoCheckmarkSharp } from "react-icons/io5";
 import { FaMessage } from "react-icons/fa6";
+import { updateRequestAsAdmin } from "../../../services/requestService";
 
 const statusMap = {
     pending: {
@@ -35,8 +36,18 @@ const typeMap = {
     },
 };
 
-const ReviewItem = ({ isEnglish, username, type, date, details, status }) => {
+const ReviewItem = ({ isEnglish, id, username, type, date, details, status }) => {
     const lang = isEnglish ? 'en' : 'es';
+
+    const handleApprove = async () => {
+        const res = await updateRequestAsAdmin(id, { status: "approved" });
+        console.log(res);
+    };
+
+    const handleReject = async () => {
+        const res = await updateRequestAsAdmin(id, { status: "rejected" });
+        console.log(res);
+    }
 
     return (
         <div className="bg-[#fcfcfc] dark:bg-[#0d0d0f] rounded-xl border border-neutral-300 dark:border-neutral-800 p-6 flex flex-col gap-6 w-full shadow-xl">
@@ -72,11 +83,15 @@ const ReviewItem = ({ isEnglish, username, type, date, details, status }) => {
             </div>
 
             <div className="text-white w-full flex items-center justify-between gap-4">
-                <button className="flex justify-center items-center bg-green-600 dark:bg-green-700 hover:bg-green-500 dark:hover:bg-green-600 rounded-md px-6 py-3 cursor-pointer">
+                <button
+                    onClick={handleApprove}
+                    className="flex justify-center items-center bg-green-600 dark:bg-green-700 hover:bg-green-500 dark:hover:bg-green-600 rounded-md px-6 py-3 cursor-pointer">
                     <IoCheckmarkSharp className="text-lg"/>
                 </button>
 
-                <button className="flex justify-center items-center bg-red-600 dark:bg-red-700 hover:bg-red-500 dark:hover:bg-red-600 rounded-md px-6 py-3 cursor-pointer">
+                <button
+                    onClick={handleReject}
+                    className="flex justify-center items-center bg-red-600 dark:bg-red-700 hover:bg-red-500 dark:hover:bg-red-600 rounded-md px-6 py-3 cursor-pointer">
                     <IoClose className="text-lg"/>
                 </button>
             </div>

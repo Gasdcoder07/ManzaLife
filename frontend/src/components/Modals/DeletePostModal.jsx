@@ -42,7 +42,7 @@ const DeletePostModal = ({ postName, postSlug, setShowDeleteModal, deleteConfirm
                 <button
                     disabled={loading}
                     onClick={handleConfirmDelete}
-                    className={`text-white bg-red-600 hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer px-4 py-2 rounded`}>
+                    className={`${loading ? "bg-zinc-700 text-zinc-500 cursor-not-allowed" : 'hover:-translate-y-1 cursor-pointer'} text-white bg-red-600 transition-all duration-200 ease-in-out px-4 py-2 rounded`}>
                     {isEnglish ? "Delete" : "Eliminar"}
                 </button>
 
