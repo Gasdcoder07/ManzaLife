@@ -8,7 +8,7 @@ const BlogProfileError = () => {
 
   return (
     <div className="py-4 flex justify-center items-center h-full">
-        <div className="bg-[#fffbf8] dark:bg-[#0d0d0f] p-6 flex flex-col justify-center items-center gap-8 border border-neutral-300 dark:border-neutral-800 rounded-md shadow-md">
+        <div className="bg-[#fcfcfc] dark:bg-[#0d0d0f] p-6 flex flex-col justify-center items-center gap-8 border border-neutral-300 dark:border-neutral-800 rounded-md shadow-md">
             <div className="flex flex-col justify-center items-center gap-2">
                 <img
                     className="h-16 object-cover"

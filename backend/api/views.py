@@ -54,6 +54,46 @@ class UnbanUserView(APIView):
 
         return Response({ "message": "Usuario desbaneado exitosamente" })
 
+class MakeAdminView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminRole]
+
+    def patch(self, request, id):
+        profile = get_object_or_404(UserProfile, user__id=id)
+
+        if profile.user == request.user:
+            return Response(
+                {"error": "No puedes modificar tu propio rol"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        profile.user_type = "admin"
+        profile.user.is_staff = True
+
+        profile.save()
+        profile.user.save()
+
+        return Response({ "message": "Usuario promovido a admin exitosamente" })
+    
+class RemoveAdminView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminRole]
+
+    def patch(self, request, id):
+        profile = get_object_or_404(UserProfile, user__id=id)
+
+        if profile.user == request.user:
+            return Response(
+                {"error": "No puedes modificar tu propio rol"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        profile.user_type = "reader"
+        profile.user.is_staff = False
+
+        profile.save()
+        profile.user.save()
+
+        return Response({ "message": "Rol de admin removido exitosamente" })
+
 class DashboardStatsView(APIView):
     def get(self, request):
         data = {

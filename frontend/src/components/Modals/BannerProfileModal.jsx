@@ -65,7 +65,7 @@ const BannerProfileModal = ({ setShowBannerModal }) => {
                         onChange={(e) => setSelectedImage(e.target.files[0])}/>
 
                     <img
-                        className="object-cover rounded-full size-56"
+                        className="border-2 border-zinc-950 object-cover rounded-full size-56"
                         src={selectedImage ? URL.createObjectURL(selectedImage) : user?.banner ? user.banner : DefaultBanner}
                         alt={`Banner de ${user.username}`}/>
                     
