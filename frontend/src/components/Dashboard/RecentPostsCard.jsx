@@ -18,7 +18,14 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
     const handleDeleteConfirm = async (slug) => {
         await deletePost(slug);
         setPosts(prev => prev.filter(p => p.slug !== slug));
-    }    
+    }
+    
+    const postStatus = {
+        published: {
+            "en" : "Published",
+            "es" : "Publicado"
+        }
+    };
 
     return (
         <div className={`${Classname} h-64 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
@@ -49,11 +56,13 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
                     <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
                         {(Posts?.length > 0) ?
                             (Posts?.map((item, index) => {
+                                let status = postStatus[item.status]?.[idioma] || item.status;
+
                                 return (
                                     <tr key={index}>
                                         <td className="px-3 py-1.5 truncate">{item.title}</td>
                                         <td className="px-3 py-1.5 truncate">{item.author_name}</td>
-                                        <td className="px-3 py-1.5 text-green-500 dark:text-green-700 truncate">{item.status}</td>
+                                        <td className="px-3 py-1.5 text-green-500 dark:text-green-700 truncate">{status}</td>
                                         <td className="px-3 py-1.5">
                                             <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
                                                 <Link
