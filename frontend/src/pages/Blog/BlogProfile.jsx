@@ -6,7 +6,7 @@ import EditProfileModal from "../../components/Modals/EditProfileModal";
 import ImageProfileModal from "../../components/Modals/ImageProfileModal";
 import BlogProfileSkeleton from "../../components/Blog/BlogProfile/BlogProfileSkeleton";
 import BlogProfileError from "../../components/Blog/BlogProfile/BlogProfileError";
-import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { MdOutlineAddPhotoAlternate, MdBlock, MdLockOpen } from "react-icons/md";
 import BlogProfilePost from "../../components/Blog/BlogProfile/BlogProfilePost";
 import { deletePost, getPostsByUsername } from "../../services/postService";
 import { useLanguage } from "../../context/LanguageContext";
@@ -19,7 +19,7 @@ import BannerProfileModal from "../../components/Modals/BannerProfileModal";
 const BlogProfile = () => {
     const { username } = useParams()
     const { idioma } = useLanguage();
-    const { user: currentUser } = useAuth();
+    const { user: currentUser, setUser: setCurrentUser } = useAuth();
     const Authorized = currentUser?.username === username;
 
     const [showModal, setShowModal] = useState(false);
@@ -104,9 +104,9 @@ const BlogProfile = () => {
 
     // console.log(username)
     console.log("currentUser:", currentUser);
-    console.log("user_type:", currentUser?.user_type);
+    // console.log("user_type:", currentUser?.user_type);
     console.log("profileData:", profileData);
-    console.log("Authorized:", Authorized);
+    // console.log("Authorized:", Authorized);
 
   return (
     <div className="py-4 flex flex-col gap-4">
@@ -166,20 +166,19 @@ const BlogProfile = () => {
                             <p className="text-neutral-500 dark:text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
                             {
                                 currentUser?.isAdmin && !Authorized && (
-                                    <button
-                                        onClick={() => setShowBanModal(true)}
-                                        className={`border rounded-md w-full sm:w-fit px-4 py-2 hover:-translate-y-1 hover:text-white transition-all duration-200 ease-in-out cursor-pointer ${
-                                            profileData.is_banned 
-                                                ? 'border-green-500 dark:border-green-600 text-green-500 dark:text-green-600 hover:bg-green-500 dark:hover:bg-green-600' 
-                                                : 'border-red-500 dark:border-red-600 text-red-500 dark:text-red-600 hover:bg-red-500 dark:hover:bg-red-600'
-                                        }`}>
-                                        {profileData.is_banned 
-                                            ? (idioma === "en" ? "Unban user" : "Desbanear usuario")
-                                            : (idioma === "en" ? "Ban user" : "Banear usuario")
-                                        }
-                                    </button>
+                                    <div
+                                        className="shrink-0 flex items-center justify-center gap-4">
+                                            <button
+                                                onClick={() => setShowBanModal(true)}
+                                                className={`${profileData.is_banned ? 'text-green-500 hover:text-green-600 dark:text-green-600 dark:hover:text-green-700' : 'text-red-500 hover:text-red-600 dark:text-red-600 dark:hover:text-red-700'} hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out`}>
+                                                    {
+                                                        profileData.is_banned ? <MdLockOpen size={24}/> : <MdBlock size={24}/>
+                                                    }
+                                            </button>
+                                    </div>
                                 )
                             }
+                            
                             {
                                 Authorized && (
                                     <button
@@ -240,6 +239,7 @@ const BlogProfile = () => {
                 {
                     showBanModal && (
                         <BanUserModal
+                            setUser={setCurrentUser}
                             setShowBanModal={setShowBanModal}
                             username={username}
                             userId={profileData.id}

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import ModalLayout from "../../layouts/ModalLayout";
-import { banUser } from "../../services/userService";
+import { banUser, unbanUser } from "../../services/userService";
 
 import { useLanguage } from "../../context/LanguageContext";
 
-const BanUserModal = ({ username, userId, setShowBanModal, isBanned, banReason }) => {
+const BanUserModal = ({ setUser, username, userId, setShowBanModal, isBanned, banReason }) => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
     const [loading, setLoading] = useState(false);
@@ -18,16 +18,72 @@ const BanUserModal = ({ username, userId, setShowBanModal, isBanned, banReason }
         }
         
         setLoading(true);
+
+        const toastId = toast.loading(isEnglish ? "Banning user..." : "Baneando usuario...");
+
         try {
             await banUser(userId, reason);
-            toast.success(isEnglish ? "User banned successfully." : "Usuario baneado con éxito.");
+
+            setUser(prev => ({
+                ...prev,
+                is_banned: true,
+                ban_reason: reason
+            }));
+
+            toast.success(
+                isEnglish ? "User banned successfully." : "Usuario baneado con éxito.",
+                {
+                    id: toastId,
+                }
+            );
             setShowBanModal(false);
         } catch (error) {
-            toast.error(isEnglish ? "Failed to ban user." : "Error al banear al usuario.");
+            toast.error(
+                isEnglish ? "Failed to ban user." : "Error al banear al usuario.",
+                {
+                    id: toastId,
+                }
+            );
         } finally {
             setLoading(false);
         }
     }
+
+    const handleConfirmUnban = async () => {
+        setLoading(true);
+
+        const toastId = toast.loading(isEnglish ? "Unbanning user..." : "Desbaneando usuario...");
+
+        try {
+            await unbanUser(userId);
+
+            setUser((prev) => ({
+                ...prev,
+                is_banned: false,
+                ban_reason: null,
+            }));
+
+            toast.success(
+                isEnglish ? "User unbanned successfully." : "Usuario desbaneado con éxito.",
+                {
+                    id: toastId,
+                }
+            );
+            setShowBanModal(false);
+        } catch (error) {
+            toast.error(
+                isEnglish ? "Failed to unban user." : "Error al desbanear al usuario.",
+                {
+                    id: toastId,
+                }
+            );
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // Ban User Modal
     if (!isBanned) {
         return (
             <ModalLayout>
@@ -73,7 +129,9 @@ const BanUserModal = ({ username, userId, setShowBanModal, isBanned, banReason }
                 </div>
             </ModalLayout>
         )
-    } 
+    }
+
+    // Unban User Modal
     return (
         <ModalLayout>
             <div className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-500 dark:text-neutral-300">
@@ -97,6 +155,13 @@ const BanUserModal = ({ username, userId, setShowBanModal, isBanned, banReason }
                 </div>
 
                 <div className="mt-2 flex justify-end items-center gap-4">
+                    <button
+                        disabled={loading}
+                        onClick={handleConfirmUnban}
+                        className={`${loading ? 'bg-zinc-700 text-zinc-500 cursor-not-allowed' : 'text-white bg-orange-600 hover:-translate-y-1 cursor-pointer'} transition-all duration-200 ease-in-out px-4 py-2 rounded`}>
+                        {isEnglish ? "Unban" : "Desbanear"}
+                    </button>
+
                     <button
                         onClick={() => setShowBanModal(false)}
                         className="text-zinc-950 dark:text-white border border-neutral-700 px-4 py-2 rounded hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer">
