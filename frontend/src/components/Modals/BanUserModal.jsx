@@ -20,10 +20,10 @@ const BanUserModal = ({ username, userId, setShowBanModal }) => {
         setLoading(true);
         try {
             await banUser(userId, reason);
-            toast.success(isEnglish ? "User banned successfully." : "Usuario prohibido con éxito.");
+            toast.success(isEnglish ? "User banned successfully." : "Usuario baneado con éxito.");
             setShowBanModal(false);
         } catch (error) {
-            toast.error(isEnglish ? "Failed to ban user." : "Error al prohibir al usuario.");
+            toast.error(isEnglish ? "Failed to ban user." : "Error al banear al usuario.");
         } finally {
             setLoading(false);
         }

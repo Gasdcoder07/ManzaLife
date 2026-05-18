@@ -29,7 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner', 'isAdmin']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner', 'isAdmin', 'user_type', 'is_banned', 'ban_reason']
 
 class CommentReplySerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")

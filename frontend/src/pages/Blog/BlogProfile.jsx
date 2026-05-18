@@ -103,8 +103,10 @@ const BlogProfile = () => {
     }
 
     // console.log(username)
-    console.log(posts);
-    console.log(profileData)
+    console.log("currentUser:", currentUser);
+    console.log("user_type:", currentUser?.user_type);
+    console.log("profileData:", profileData);
+    console.log("Authorized:", Authorized);
 
   return (
     <div className="py-4 flex flex-col gap-4">
@@ -142,15 +144,6 @@ const BlogProfile = () => {
                                 </button>
                             )
                         }
-                        {
-                            currentUser.user_type === "admin" && !Authorized && (
-                                <button
-                                    onClick={() => setShowBanModal(true)}
-                                    className="absolute bottom-0 right-0 -translate-x-full bg-red-500/10 dark:bg-red-500/10 p-2 rounded-full cursor-pointer hover:bg-red-500/20 dark:hover:bg-red-500/20 transition-colors duration-200 ease-in-out">
-                                    {idioma === "en" ? "Ban user" : "Banear usuario"}
-                                </button>
-                            )
-                        }
                     </div>
 
                 </div>
@@ -164,6 +157,15 @@ const BlogProfile = () => {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
                             <p className="text-neutral-500 dark:text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
+                            {
+                                currentUser?.isAdmin ? (
+                                    <button
+                                        onClick={() => setShowBanModal(true)}
+                                        className="border border-red-500 text-red-500 rounded-xl w-full sm:w-fit px-4 py-2 hover:-translate-y-1 hover:bg-red-500 hover:text-white transition-all duration-200 ease-in-out cursor-pointer">
+                                        {idioma === "en" ? "Ban user" : "Banear usuario"}
+                                    </button>
+                                ) : null
+                            }
                             {
                                 Authorized && (
                                     <button
