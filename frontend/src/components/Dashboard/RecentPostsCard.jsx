@@ -18,7 +18,7 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
     const handleDeleteConfirm = async (slug) => {
         await deletePost(slug);
         setPosts(prev => prev.filter(p => p.slug !== slug));
-    }
+    }    
 
     return (
         <div className={`${Classname} h-64 bg-[#fffbf8] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
@@ -47,8 +47,8 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
                     </thead>
 
                     <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
-                        {
-                            Posts?.map((item, index) => {
+                        {(Posts?.length > 0) ?
+                            (Posts?.map((item, index) => {
                                 return (
                                     <tr key={index}>
                                         <td className="px-3 py-1.5 truncate">{item.title}</td>
@@ -84,7 +84,7 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
                                         </td>
                                     </tr>
                                 )
-                            })
+                            })) : <h1 className="text-white font-bold text-xl">No hay publicaciones de momento</h1>
                         }
                     </tbody>
                 </table>

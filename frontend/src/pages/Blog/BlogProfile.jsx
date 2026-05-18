@@ -11,6 +11,7 @@ import BlogProfilePost from "../../components/Blog/BlogProfile/BlogProfilePost";
 import { deletePost, getPostsByUsername } from "../../services/postService";
 import { useLanguage } from "../../context/LanguageContext";
 import DefaultBanner from "../../../imgs/LoginResources/Login_bg.png";
+import BanUserModal from "../../components/Modals/BanUserModal";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 import DeletePostModal from "../../components/Modals/DeletePostModal";
 import BannerProfileModal from "../../components/Modals/BannerProfileModal";
@@ -24,6 +25,7 @@ const BlogProfile = () => {
     const [showModal, setShowModal] = useState(false);
     const [showImageModal, setShowImageModal] = useState(false);
     const [showBannerModal, setShowBannerModal] = useState(false);
+    const [showBanModal, setShowBanModal] = useState(false);
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteSelectedPostName, setDeleteSelectedPostName] = useState(null);
@@ -140,6 +142,15 @@ const BlogProfile = () => {
                                 </button>
                             )
                         }
+                        {
+                            currentUser.user_type === "admin" && !Authorized && (
+                                <button
+                                    onClick={() => setShowBanModal(true)}
+                                    className="absolute bottom-0 right-0 -translate-x-full bg-red-500/10 dark:bg-red-500/10 p-2 rounded-full cursor-pointer hover:bg-red-500/20 dark:hover:bg-red-500/20 transition-colors duration-200 ease-in-out">
+                                    {idioma === "en" ? "Ban user" : "Banear usuario"}
+                                </button>
+                            )
+                        }
                     </div>
 
                 </div>
@@ -203,6 +214,16 @@ const BlogProfile = () => {
                 {
                     !loadingPosts && posts.length === 0 && (
                         <p className="text-neutral-300 italic">Este usuario no tiene publicaciones disponibles!</p>
+                    )
+                }
+
+                {
+                    showBanModal && (
+                        <BanUserModal
+                            setShowBanModal={setShowBanModal}
+                            username={username}
+                            userId={profileData.id}
+                        />
                     )
                 }
             </div>

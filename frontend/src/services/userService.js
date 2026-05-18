@@ -11,3 +11,13 @@ export const getUserByUsername = async (username) => {
     const res = await api.get(`usuarios/${username}/`);
     return res.data;
 }
+
+export const banUser = async (userId, reason) => {
+    const res = await api.post(`usuarios/${userId}/ban/`, { reason });
+    return res.data;
+}
+
+export const unbanUser = async (userId) => {
+    const res = await api.post(`usuarios/${userId}/unban/`);
+    return res.data;
+}
