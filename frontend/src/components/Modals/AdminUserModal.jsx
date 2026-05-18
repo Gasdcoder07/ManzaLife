@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ModalLayout from "../../layouts/ModalLayout";
 import { updateProfile } from "../../services/profileService";
+import { makeAdmin, removeAdmin } from "../../services/userService";
 import toast from "react-hot-toast";
 
-const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, setUser, username }) => {
+const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, setProfileData, userId, username }) => {
     const [loading, setLoading] = useState(false);
 
     const handleMakeAdmin = async () => {
@@ -14,8 +15,9 @@ const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, setUser,
         );
 
         try {
+            await makeAdmin(userId);
 
-            setUser(prev => ({
+            setProfileData(prev => ({
                 ...prev,
                 isAdmin: true,
                 user_type: "admin"
@@ -42,6 +44,48 @@ const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, setUser,
             setLoading(false);
         }
     }
+
+    const handleRemoveAdmin = async () => {
+        setLoading(true);
+
+        const toastId = toast.loading(
+            isEnglish ? "Removing admin privileges..." : "Eliminando privilegios de admin...",
+        );
+
+        try {
+            await removeAdmin(userId);
+
+            setProfileData(prev => ({
+                ...prev,
+                isAdmin: false,
+                user_type: "reader"
+            }));
+
+            toast.success(
+                isEnglish
+                    ? "User is no longer an admin."
+                    : "El usuario ya no es admin.",
+                {
+                    id: toastId,
+                },
+            );
+
+            setModal(false);
+        } catch (error) {
+            toast.error(
+                isEnglish
+                    ? "Failed to remove admin privileges."
+                    : "Error al quitar privilegios de admin.",
+                {
+                    id: toastId,
+                },
+            );
+
+            console.error("Error removing admin privileges:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     if (!isAdmin) {
         return (
@@ -98,6 +142,7 @@ const AdminUserModal = ({ isAdmin = false, isEnglish = false, setModal, setUser,
                 <div className="mt-2 flex justify-end items-center gap-4">
                     <button
                         disabled={loading}
+                        onClick={() => handleRemoveAdmin()}
                         className={`${loading ? "bg-zinc-700 text-zinc-500 cursor-not-allowed" : "text-white bg-red-600 hover:-translate-y-1 cursor-pointer"} transition-all duration-200 ease-in-out px-4 py-2 rounded`}
                     >
                         {isEnglish ? "Remove Admin" : "Quitar Admin"}

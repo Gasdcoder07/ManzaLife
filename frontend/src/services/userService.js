@@ -21,3 +21,13 @@ export const unbanUser = async (userId) => {
     const res = await api.patch(`usuarios/${userId}/unban/`);
     return res.data;
 }
+
+export const makeAdmin = async (userId) => {
+    const res = await api.patch(`usuarios/${userId}/make-admin/`);
+    return res.data;
+}
+
+export const removeAdmin = async (userId) => {
+    const res = await api.patch(`usuarios/${userId}/remove-admin/`);
+    return res.data;
+}

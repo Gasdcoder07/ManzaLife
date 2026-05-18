@@ -181,11 +181,16 @@ const BlogProfile = () => {
                                                     }
                                             </button>
 
-                                            <button
-                                                onClick={() => setShowAdminModal(true)}
-                                                className={`${profileData.isAdmin ? 'text-orange-500 hover:text-orange-600 dark:text-orange-600 dark:hover:text-orange-700' : 'text-green-500 hover:text-green-600 dark:text-green-600 dark:hover:text-green-700'} hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out`}>
-                                                    <MdAdminPanelSettings size={24}/>
-                                            </button>
+                                            {
+                                                !profileData.is_banned && (
+                                                    <button
+                                                        onClick={() => setShowAdminModal(true)}
+                                                        className={`${profileData.isAdmin ? 'text-orange-500 hover:text-orange-600 dark:text-orange-600 dark:hover:text-orange-700' : 'text-green-500 hover:text-green-600 dark:text-green-600 dark:hover:text-green-700'} hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out`}>
+                                                            <MdAdminPanelSettings size={24}/>
+                                                    </button>
+                                                )
+                                            }
+
                                     </div>
                                 )
                             }
@@ -250,7 +255,7 @@ const BlogProfile = () => {
                 {
                     showBanModal && (
                         <BanUserModal
-                            setUser={setCurrentUser}
+                            setProfileData={setProfileData}
                             setShowBanModal={setShowBanModal}
                             username={username}
                             userId={profileData.id}
@@ -267,7 +272,8 @@ const BlogProfile = () => {
                             isEnglish={isEnglish}
                             setModal={setShowAdminModal}
                             username={username}
-                            setUser={setCurrentUser}
+                            userId={profileData.id}
+                            setProfileData={setProfileData}
                         />
                     )
                 }

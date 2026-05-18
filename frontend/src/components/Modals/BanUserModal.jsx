@@ -5,7 +5,7 @@ import { banUser, unbanUser } from "../../services/userService";
 
 import { useLanguage } from "../../context/LanguageContext";
 
-const BanUserModal = ({ setUser, username, userId, setShowBanModal, isBanned, banReason }) => {
+const BanUserModal = ({ setProfileData, username, userId, setShowBanModal, isBanned, banReason }) => {
     const { idioma } = useLanguage();
     const isEnglish = idioma === "en";
     const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ const BanUserModal = ({ setUser, username, userId, setShowBanModal, isBanned, ba
         try {
             await banUser(userId, reason);
 
-            setUser(prev => ({
+            setProfileData(prev => ({
                 ...prev,
                 is_banned: true,
                 ban_reason: reason
@@ -57,7 +57,7 @@ const BanUserModal = ({ setUser, username, userId, setShowBanModal, isBanned, ba
         try {
             await unbanUser(userId);
 
-            setUser((prev) => ({
+            setProfileData(prev => ({
                 ...prev,
                 is_banned: false,
                 ban_reason: null,
