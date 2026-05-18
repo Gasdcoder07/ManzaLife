@@ -6,7 +6,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
   return (
     <Link
         to={`/blog/${Slug}`}
-        className="bg-[#fffbf8] dark:bg-[#0d0d0f] group hover:-translate-y-0.5 dark:hover:border-neutral-700 transition-all duration-200 ease-in-out w-full sm:h-56 border border-neutral-300 hover:border-neutral-400 dark:border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden shadow-xl">
+        className="bg-[#fcfcfc] dark:bg-[#0d0d0f] group hover:-translate-y-0.5 dark:hover:border-neutral-700 transition-all duration-200 ease-in-out w-full sm:h-56 border border-neutral-300 hover:border-neutral-400 dark:border-neutral-800 rounded-xl flex flex-col sm:flex-row overflow-hidden shadow-xl">
         <div className="relative h-56 w-full sm:h-full sm:w-1/3 shrink-0">
             <img
                 src={Image}
@@ -14,7 +14,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
                 loading="lazy"
                 className="w-full h-full object-cover"/>
             <div className="absolute inset-0 flex justify-start items-end py-3 px-5">
-                <div className="bg-[#fffbf8] dark:bg-neutral-800 px-3 py-2 rounded-xl">
+                <div className="bg-[#fcfcfc] dark:bg-neutral-800 px-3 py-2 rounded-xl">
                     <span className="text-orange-500 line-clamp-1">{Category}</span>
                 </div>
             </div>

@@ -16,7 +16,7 @@ const BlogPostDetail = () => {
     console.log(post);
 
   return (
-    <div className="m-4 flex flex-col gap-4 p-4 bg-[#fffbf8] border border-neutral-300 dark:bg-[#0d0d0f] dark:border-neutral-800 rounded-lg shadow-md">
+    <div className="m-4 flex flex-col gap-4 p-4 bg-[#fcfcfc] border border-neutral-300 dark:bg-[#0d0d0f] dark:border-neutral-800 rounded-lg shadow-md">
         <div className="rounded-xl overflow-hidden h-64 shadow-xl">
             <img
                 className="object-cover h-full w-full"

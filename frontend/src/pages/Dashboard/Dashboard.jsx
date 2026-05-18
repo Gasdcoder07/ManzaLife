@@ -4,6 +4,7 @@ import DashboardGrid from "../../components/Dashboard/DashboardGrid";
 import { usePosts } from "../../hooks/usePosts";
 import { useUsers } from "../../hooks/useUsers";
 import { useDashboardStats } from "../../hooks/useDashboardStats";
+import { useRequests } from "../../hooks/useRequests";
 import DashboardSkeleton from "../../components/Dashboard/DashboardSkeleton";
 import { useEffect, useState } from "react";
 
@@ -13,6 +14,7 @@ const Dashboard = () => {
     const { posts, loading: loadingPosts } = usePosts(1);
     const { users, loading: loadingUsers } = useUsers(1);
     const { stats, loading: loadingStats } = useDashboardStats();
+    const { requests, loading: loadingRequests } = useRequests({ all: true});
     
     const [ latestPosts, setLatestPosts ] = useState([]);
 
@@ -25,7 +27,7 @@ const Dashboard = () => {
     }, [posts]);
 
     // Estado global
-    const isInitialLoading = loadingPosts && loadingUsers && loadingStats;
+    const isInitialLoading = loadingPosts && loadingUsers && loadingStats && loadingRequests;
 
     if (isInitialLoading) { return <DashboardSkeleton/> }
 
@@ -41,7 +43,8 @@ const Dashboard = () => {
             LatestPosts={latestPosts}
             setLatestPosts={setLatestPosts}
             LatestUsers={users?.results || []}
-            LoadingStats={loadingStats}/>
+            LoadingStats={loadingStats}
+            LatestRequests={requests}/>
 
     </div>
   );

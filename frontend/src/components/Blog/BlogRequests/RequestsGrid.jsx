@@ -10,6 +10,7 @@ const RequestsGrid = ({ isEnglish, Requests }) => {
                         <RequestItem
                             key={request.id}
                             isEnglish={isEnglish}
+                            id={request.id}
                             type={request.request_type}
                             description={request.details}
                             status={request.status}/>

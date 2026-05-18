@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ModalLayout from "../../layouts/ModalLayout";
+import { updateRequest } from "../../services/requestService";
+import toast from "react-hot-toast";
 import { MdArrowDropDown } from "react-icons/md";
 
-const EditRequestModal = ({ isEnglish, setShowModal, requestDescription, requestType }) => {
+const EditRequestModal = ({ isEnglish, setRequest, setShowModal, requestId, requestDescription, requestType }) => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         request_type: requestType,
@@ -33,11 +35,55 @@ const EditRequestModal = ({ isEnglish, setShowModal, requestDescription, request
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    const handleClick = async (id) => {
+        setLoading(true);
+
+        const toastId = toast.loading(
+            isEnglish
+            ? 'Updating request...'
+            : 'Actualizando solicitud...'
+        );
+
+        try {
+            const res = await updateRequest(id, formData);
+
+            setRequest({
+                type: formData.request_type,
+                description: formData.details
+            });
+
+            toast.success(
+                isEnglish
+                ? 'Request updated succesfully'
+                : 'Solicitud actualizada correctamente',
+                {
+                    id: toastId
+                }
+            );
+        } catch (e) {
+            console.error(e);
+
+            toast.error(
+                isEnglish
+                    ? "Error updating request"
+                    : "Error al actualizar la solicitud",
+                {
+                    id: toastId,
+                },
+            );
+
+        } finally {
+            setLoading(false);
+        }
+
+        setShowModal(false);
+    };
+
     return (
         <ModalLayout>
             <div
                 onClick={(e) => e.stopPropagation()}
-                className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
+                className="bg-[#fcfcfc] dark:bg-zinc-950 border border-neutral-700 max-w-sm w-full rounded-xl px-6 py-4 flex flex-col gap-4 text-neutral-300">
                 
                 <div className="space-y-2">
                     <h2 className="text-center tracking-wider italic text-shadow-zinc-950 dark:text-white">
@@ -101,6 +147,7 @@ const EditRequestModal = ({ isEnglish, setShowModal, requestDescription, request
                     </button>
 
                     <button
+                        onClick={() => handleClick(requestId)}
                         disabled={loading}
                         className={`${loading ? 'bg-zinc-700 text-zinc-500 cursor-not-allowed' : 'text-white bg-orange-600 hover:-translate-y-1 cursor-pointer'} transition-all duration-200 ease-in-out px-4 py-2 rounded`}>
                         {isEnglish ? "Update" : "Actualizar"}

@@ -102,7 +102,7 @@ export default function ManzaDle() {
     }, [isWin, isGameOver])
 
     return (
-        <div className="min-h-screen bg-linear-to-b to-white from-zinc-100 dark:from-zinc-950 dark:to-orange-950 text-white flex flex-col font-sans">
+        <div className="min-h-screen bg-linear-to-b from-[#fcfcfc] to-[#f5f5f7] dark:from-[#0d0d0f] dark:to-orange-950 text-white flex flex-col font-sans">
             <ManzaDleNavBar />
             <main className="grow flex flex-col items-center pt-20 pb-8 px-4 w-full max-w-lg mx-auto relative">
                 <Header onOpenInfo={() => setShowInfo(true)}/>

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const BlogCommunityCard = ({ Avatar, FirstName, LastName, Username, Bio }) => {
   return (
-    <Link to={`/blog/profile/${Username}`} className="bg-[#fffbf8] dark:bg-[#0d0d0f] group h-32 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex gap-6 w-full hover:border-neutral-400 dark:hover:border-neutral-700 hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out shadow-xl">
+    <Link to={`/blog/profile/${Username}`} className="bg-[#fcfcfc] dark:bg-[#0d0d0f] group h-32 rounded-xl border border-neutral-300 dark:border-neutral-800 p-4 flex gap-6 w-full hover:border-neutral-400 dark:hover:border-neutral-700 hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out shadow-xl">
         <img
-            className="shrink-0 size-16 object-cover rounded-full"
+            className="shrink-0 size-16 object-cover rounded-full border border-zinc-950"
             src={Avatar}
             alt={Username} />
 

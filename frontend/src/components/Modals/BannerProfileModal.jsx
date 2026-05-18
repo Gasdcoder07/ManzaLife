@@ -47,7 +47,7 @@ const BannerProfileModal = ({ setShowBannerModal }) => {
 
   return (
     <ModalLayout>
-        <div className="bg-[#fffbf8] dark:bg-zinc-950 border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 text-zinc-950 dark:text-neutral-300">
+        <div className="bg-[#fcfcfc] dark:bg-zinc-950 border border-neutral-700 rounded-xl px-6 py-4 flex flex-col gap-4 text-zinc-950 dark:text-neutral-300">
             <div className="space-y-2">
                 <h2 className="text-center tracking-wider italic">
                     {isEnglish ? "Banner Image" : "Imagen de fondo"}

@@ -12,10 +12,11 @@ export default function Blog() {
     const { textos, idioma } = useLanguage();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [currentPage, setCurrentPage] = useState(1);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [categories, setCategories] = useState([]);
     const categoriaActivada = searchParams.get("category");
+
+    const currentPage = Number(searchParams.get("page")) || 1;
 
     const topRef = useRef(null);
     const dropdownRef = useRef(null);
@@ -26,7 +27,16 @@ export default function Blog() {
     
     const handlePageChange = (newPage) => {
         topRef.current?.scrollIntoView({ behavior: "smooth" });
-        setCurrentPage(newPage);
+        
+        const params = new URLSearchParams(searchParams);
+
+        if (newPage <= 1) {
+            params.delete("page");
+        } else {
+            params.set("page", newPage);
+        }
+
+        setSearchParams(params);
     };
 
     useEffect(() => {
@@ -81,7 +91,7 @@ export default function Blog() {
                     onClick={() => setDropdownVisible(!dropdownVisible)}
                     className="relative w-fit"
                 >
-                    <button className="bg-[#fffbf8] dark:bg-[#0d0d0f] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-neutral-300 dark:border-neutral-800 cursor-pointer">
+                    <button className="bg-[#fcfcfc] dark:bg-[#0d0d0f] flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-neutral-300 dark:border-neutral-800 cursor-pointer">
                         <span>{categoriaActual?.name || "Todas"}</span>
                         <MdArrowDropDown
                             className={`text-xl ${dropdownVisible ? "rotate-180" : ""}`}
@@ -90,7 +100,7 @@ export default function Blog() {
 
                     {/* Lista */}
                     {dropdownVisible && (
-                        <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg border border-neutral-300 dark:border-neutral-800 bg-[#fffbf8] dark:bg-[#0d0d0f] custom-scrollbar">
+                        <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg border border-neutral-300 dark:border-neutral-800 bg-[#fcfcfc] dark:bg-[#0d0d0f] custom-scrollbar">
                             <ul className="flex flex-col px-4 py-2 gap-2">
                                 {
                                     categorias.map((item, index) => (
@@ -98,13 +108,16 @@ export default function Blog() {
                                         key={index}
                                         className="block rounded-lg hover:bg-black/5 dark:hover:bg-white/5 px-2 py-1 cursor-pointer"
                                         onClick={() => {
+                                            const params = new URLSearchParams(searchParams);
+
                                             if (item.slug) {
-                                                setSearchParams({ category: item.slug })
+                                                params.set("category", item.slug);
                                             } else {
-                                                setSearchParams({});
+                                                params.delete("category");
                                             }
-                                            
-                                            setCurrentPage(1);
+
+                                            params.delete("page");
+                                            setSearchParams(params);
                                         }}
                                     >
                                         <span className="text-sm">{item.name}</span>
