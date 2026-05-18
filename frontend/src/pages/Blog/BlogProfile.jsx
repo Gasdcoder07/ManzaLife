@@ -155,7 +155,7 @@ const BlogProfile = () => {
                             <h2 className="text-2xl font-semibold tracking-widest">@{profileData.username}</h2>
                             {
                                 profileData.is_banned && (
-                                    <p className="text-red-500 font-medium">
+                                    <p className="text-red-500 dark:text-red-600 font-medium">
                                         {idioma === "en" ? "This user is banned." : "Este usuario está baneado."}
                                     </p>
                                 )
@@ -165,20 +165,20 @@ const BlogProfile = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start">
                             <p className="text-neutral-500 dark:text-neutral-400 whitespace-pre-line">{profileData.bio}</p>
                             {
-                                currentUser?.isAdmin ? (
+                                currentUser?.isAdmin && !Authorized && (
                                     <button
                                         onClick={() => setShowBanModal(true)}
-                                        className={`border rounded-xl w-full sm:w-fit px-4 py-2 hover:-translate-y-1 hover:text-white transition-all duration-200 ease-in-out cursor-pointer ${
+                                        className={`border rounded-md w-full sm:w-fit px-4 py-2 hover:-translate-y-1 hover:text-white transition-all duration-200 ease-in-out cursor-pointer ${
                                             profileData.is_banned 
-                                                ? 'border-green-500 text-green-500 hover:bg-green-500' 
-                                                : 'border-red-500 text-red-500 hover:bg-red-500'
+                                                ? 'border-green-500 dark:border-green-600 text-green-500 dark:text-green-600 hover:bg-green-500 dark:hover:bg-green-600' 
+                                                : 'border-red-500 dark:border-red-600 text-red-500 dark:text-red-600 hover:bg-red-500 dark:hover:bg-red-600'
                                         }`}>
                                         {profileData.is_banned 
                                             ? (idioma === "en" ? "Unban user" : "Desbanear usuario")
                                             : (idioma === "en" ? "Ban user" : "Banear usuario")
                                         }
                                     </button>
-                                ) : null
+                                )
                             }
                             {
                                 Authorized && (
