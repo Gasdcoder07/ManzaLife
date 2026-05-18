@@ -6,7 +6,7 @@ import EditProfileModal from "../../components/Modals/EditProfileModal";
 import ImageProfileModal from "../../components/Modals/ImageProfileModal";
 import BlogProfileSkeleton from "../../components/Blog/BlogProfile/BlogProfileSkeleton";
 import BlogProfileError from "../../components/Blog/BlogProfile/BlogProfileError";
-import { MdOutlineAddPhotoAlternate, MdBlock, MdLockOpen } from "react-icons/md";
+import { MdOutlineAddPhotoAlternate, MdBlock, MdLockOpen, MdAdminPanelSettings } from "react-icons/md";
 import BlogProfilePost from "../../components/Blog/BlogProfile/BlogProfilePost";
 import { deletePost, getPostsByUsername } from "../../services/postService";
 import { useLanguage } from "../../context/LanguageContext";
@@ -15,6 +15,7 @@ import BanUserModal from "../../components/Modals/BanUserModal";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 import DeletePostModal from "../../components/Modals/DeletePostModal";
 import BannerProfileModal from "../../components/Modals/BannerProfileModal";
+import AdminUserModal from "../../components/Modals/AdminUserModal";
 
 const BlogProfile = () => {
     const { username } = useParams()
@@ -26,6 +27,7 @@ const BlogProfile = () => {
     const [showImageModal, setShowImageModal] = useState(false);
     const [showBannerModal, setShowBannerModal] = useState(false);
     const [showBanModal, setShowBanModal] = useState(false);
+    const [showAdminModal, setShowAdminModal] = useState(false);
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteSelectedPostName, setDeleteSelectedPostName] = useState(null);
@@ -103,7 +105,7 @@ const BlogProfile = () => {
     }
 
     // console.log(username)
-    console.log("currentUser:", currentUser);
+    // console.log("currentUser:", currentUser);
     // console.log("user_type:", currentUser?.user_type);
     console.log("profileData:", profileData);
     // console.log("Authorized:", Authorized);
@@ -175,10 +177,16 @@ const BlogProfile = () => {
                                                         profileData.is_banned ? <MdLockOpen size={24}/> : <MdBlock size={24}/>
                                                     }
                                             </button>
+
+                                            <button
+                                                onClick={() => setShowAdminModal(true)}
+                                                className={`${profileData.isAdmin ? 'text-orange-500 hover:text-orange-600 dark:text-orange-600 dark:hover:text-orange-700' : 'text-green-500 hover:text-green-600 dark:text-green-600 dark:hover:text-green-700'} hover:-translate-y-0.5 cursor-pointer transition-all duration-200 ease-in-out`}>
+                                                    <MdAdminPanelSettings size={24}/>
+                                            </button>
                                     </div>
                                 )
                             }
-                            
+
                             {
                                 Authorized && (
                                     <button
@@ -245,6 +253,17 @@ const BlogProfile = () => {
                             userId={profileData.id}
                             isBanned={profileData.is_banned}
                             banReason={profileData.ban_reason}
+                        />
+                    )
+                }
+
+                {
+                    showAdminModal && (
+                        <AdminUserModal
+                            isAdmin={profileData.isAdmin}
+                            isEnglish={idioma === "en"}
+                            setModal={setShowAdminModal}
+                            username={username}
                         />
                     )
                 }
