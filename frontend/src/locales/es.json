@@ -115,9 +115,11 @@
     "no_tienes_cuenta": "¿No tienes cuenta?",
     "ir_blog": "Ir al blog",
     "ir_al_blog": "Volver al blog",
-    "link": "crea una ahora",
+    "link": "Crea una ahora",
     "olvide": "¿Olvidaste tu contraseña?",
-    "reset": "Recuperar contraseña"
+    "reset": "Recuperar contraseña",
+    "login_error": "Usuario o contraseña incorrectos. Intenta de nuevo.",
+    "login_success": "¡Inicio de sesión exitoso! Redirigiendo..."
   },
   "register": {
     "titulo": "Crear cuenta",
