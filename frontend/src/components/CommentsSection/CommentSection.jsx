@@ -4,6 +4,7 @@ import { postComment } from "../../services/commentService"
 import toast from 'react-hot-toast'
 import Comment from "./Comment"
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
+import validateText from "../../../utils/validateText.js"
 
 const CommentSection = ({ isEnglish, postId, comments = [] }) => {
     const { user } = useAuth()
@@ -18,6 +19,9 @@ const CommentSection = ({ isEnglish, postId, comments = [] }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!newComment.trim()) return;
+        if (validateText(newComment)) {
+            return toast.error(isEnglish ? "Your comment contains inappropriate words" : "Tu comentario incluye palabras inapropiadas");
+        }
 
         const commentPromise = postComment({
             post: postId,
@@ -65,7 +69,7 @@ const CommentSection = ({ isEnglish, postId, comments = [] }) => {
                 <img 
                     src={userAvatar} 
                     alt="Tu avatar"
-                    className="size-10 rounded-full object-cover mt-1" 
+                    className="size-10 rounded-full object-cover mt-1 border border-zinc-800 dark:border-zinc-900/50" 
                 />
 
                 <div className="flex-1 min-w-0 flex flex-col gap-4">

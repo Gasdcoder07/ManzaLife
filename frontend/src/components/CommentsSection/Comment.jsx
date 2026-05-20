@@ -4,6 +4,7 @@ import Reply from "./Reply";
 import toast from "react-hot-toast";
 import { postComment } from "../../services/commentService";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
+import validateText from "../../../utils/validateText.js";
 
 const Comment = ({ isEnglish, CommentId, PostId, AuthorUsername, AuthorAvatar, Content, CreatedDate, Replies = [] }) => {
     const [showReplyForm, setShowReplyForm] = useState(false);
@@ -15,6 +16,10 @@ const Comment = ({ isEnglish, CommentId, PostId, AuthorUsername, AuthorAvatar, C
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (validateText(reply)) {
+            return toast.error(isEnglish ? "Your reply contains inappropriate words" : "Tu respuesta incluye palabras inapropiadas");
+        }
 
         const replyPromise = postComment({
             post: PostId,
@@ -46,7 +51,7 @@ const Comment = ({ isEnglish, CommentId, PostId, AuthorUsername, AuthorAvatar, C
     <div className="flex flex-col gap-2 w-full">
         <div className="w-full flex gap-4">
             <img
-                className="shrink-0 size-10 rounded-full object-cover"
+                className="shrink-0 size-10 rounded-full object-cover border border-zinc-800 dark:border-zinc-900/50"
                 src={AuthorAvatar}
                 alt={AuthorUsername} />
 
