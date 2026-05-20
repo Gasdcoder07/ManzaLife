@@ -5,10 +5,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { updateProfile } from '../../services/profileService';
 import ModalLayout from '../../layouts/ModalLayout';
 
-const EditProfileModal = ({ setShowModal }) => {
-    const { idioma } = useLanguage();
-    const isEnglish = idioma === "en";
-
+const EditProfileModal = ({ setShowModal, isEnglish }) => {
     const { user, setUser } = useAuth();
 
     const [loading, setLoading] = useState(false);
@@ -28,6 +25,8 @@ const EditProfileModal = ({ setShowModal }) => {
     const handleUpdate = async () => {
         setLoading(true);
 
+        const toastId = toast.loading(isEnglish ? "Updating profile..." : "Actualizando perfil...");
+
         try {
             const updated = await updateProfile(modalData);
             
@@ -36,17 +35,16 @@ const EditProfileModal = ({ setShowModal }) => {
                 ...updated
             }));
 
-            toast.success("¡Perfil actualizado!");
+            toast.success(isEnglish ? "Profile updated!" : "¡Perfil actualizado!", { id: toastId });
+
             setShowModal(false);
         } catch (error) {
-            toast.error("Error al actualizar perfil...")
+            toast.error(isEnglish ? "Failed to update profile." : "Error al actualizar perfil.", { id: toastId });
             console.error(error)
         } finally {
             setLoading(false);
         }
     }
-
-    console.log(user);
 
   return (
     <ModalLayout>

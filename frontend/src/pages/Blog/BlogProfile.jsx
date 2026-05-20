@@ -284,12 +284,14 @@ const BlogProfile = () => {
         {
             showModal && 
                 <EditProfileModal
-                    setShowModal={setShowModal}/>
+                    setShowModal={setShowModal}
+                    isEnglish={isEnglish}/>
         }
         {
             showImageModal &&
                 <ImageProfileModal
-                    setShowImageModal={setShowImageModal}/>
+                    setShowImageModal={setShowImageModal}
+                    isEnglish={isEnglish}/>
         }
         {
             showDeleteModal && (
@@ -303,7 +305,8 @@ const BlogProfile = () => {
         {
             showBannerModal && (
                 <BannerProfileModal
-                    setShowBannerModal={setShowBannerModal}/>
+                    setShowBannerModal={setShowBannerModal}
+                    isEnglish={isEnglish}/>
             )
         }
     </div>
