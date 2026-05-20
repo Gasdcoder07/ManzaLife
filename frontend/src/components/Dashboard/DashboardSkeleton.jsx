@@ -14,11 +14,11 @@ const DashboardSkeleton = () => {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-5 gap-4">
-            <div className="xl:col-span-3 h-64 bg-black/10 dark:bg-white/10 rounded-xl"/>
-            <div className="xl:col-span-2 h-64 bg-black/10 dark:bg-white/10 rounded-xl"/>
+            <div className="xl:col-span-3 h-80 bg-black/10 dark:bg-white/10 rounded-xl"/>
+            <div className="xl:col-span-2 h-80 bg-black/10 dark:bg-white/10 rounded-xl"/>
         </div>
 
-        <div className="h-36 bg-black/10 dark:bg-white/10 rounded-xl"/>
+        {/* <div className="h-36 bg-black/10 dark:bg-white/10 rounded-xl"/> */}
     </div>
   );
 };

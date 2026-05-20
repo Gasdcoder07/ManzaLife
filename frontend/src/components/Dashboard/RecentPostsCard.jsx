@@ -93,7 +93,15 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
                                         </td>
                                     </tr>
                                 )
-                            })) : <h1 className="text-white font-bold text-xl">No hay publicaciones de momento</h1>
+                            })) : (
+                                <tr>
+                                    <td colSpan={3} className="px-3 py-1.5">
+                                        <h1 className="text-white font-bold text-sm">
+                                            {isEnglish ? "No posts available" : "No hay publicaciones de momento"}
+                                        </h1>
+                                    </td>
+                                </tr>
+                            )
                         }
                     </tbody>
                 </table>

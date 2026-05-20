@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
+import { useLanguage } from "../../context/LanguageContext";
 import { usePost } from "../../hooks/usePosts";
 import { formatDate } from "../../../utils/formatDate";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
@@ -7,13 +8,14 @@ import CommentSection from "../../components/CommentsSection/CommentSection";
 import BlogPostDetailSkeleton from "../../components/Blog/BlogPosts/BlogPostDetailSkeleton";
 
 const BlogPostDetail = () => {
+    const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const { slug } = useParams();
     const { post, loading } = usePost(slug);
 
     // if (!post) return <p className="mt-4">No se pudo cargar la publicación</p>
     if (loading) return <BlogPostDetailSkeleton/>
-
-    console.log(post);
 
   return (
     <div className="m-4 flex flex-col gap-4 p-4 bg-[#fcfcfc] border border-neutral-300 dark:bg-[#0d0d0f] dark:border-neutral-800 rounded-lg shadow-md">
@@ -48,7 +50,7 @@ const BlogPostDetail = () => {
             </div>
         </div>
         <div className="my-8 max-w-xl p-4">
-            <CommentSection postId={post.id} comments={post.comments}/>
+            <CommentSection isEnglish={isEnglish} postId={post.id} comments={post.comments}/>
         </div>
     </div>
 );

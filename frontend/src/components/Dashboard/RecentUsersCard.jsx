@@ -32,28 +32,36 @@ const RecentUsersCard = ({ Classname, Users }) => {
 
                     <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
                         {
-                            Users?.map((item, index) => {
-                                return (
-                                    <tr key={index}>
-                                        <td className="px-3 py-1.5 truncate">{item.username}</td>
-                                        <td className="px-3 py-1.5 truncate">{item.email}</td>
-                                        <td className="w-16 shrink-0 px-3 py-1.5">
-                                            <div className="flex justify-center items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
-                                                <Link
-                                                    to={`/blog/profile/${item.username}`}
-                                                    className='flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200'>
-                                                    <FaEye/>
-                                                </Link>
-
-                                                {/* <button
-                                                    className="cursor-pointer transition-all duration-200 ease-in-out hover:text-red-600">
-                                                    <FaBan/>
-                                                </button> */}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                )
-                            })
+                            (Users?.length > 0) ? (
+                                Users?.map((item, index) => {
+                                    return (
+                                        <tr key={index}> 
+                                            <td className="px-3 py-1.5 truncate">
+                                                {item.username}
+                                            </td>
+                                            <td className="px-3 py-1.5 truncate">
+                                                {item.email}
+                                            </td>
+                                            <td className="w-16 shrink-0 px-3 py-1.5">
+                                                <div className="flex justify-center items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
+                                                    <Link
+                                                        to={`/blog/profile/${item.username}`}
+                                                        className="flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200"
+                                                    >
+                                                        <FaEye/>
+                                                    </Link>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            ) : (
+                                <tr>
+                                    <td colSpan={3} className="px-3 py-1.5">
+                                        {isEnglish ? "No users available" : "No hay usuarios de momento"}
+                                    </td>
+                                </tr>
+                            )
                         }
                     </tbody>
                 </table>
