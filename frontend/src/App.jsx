@@ -23,7 +23,7 @@ function App() {
                             <Route path="categories" element={<BlogCategories/>} />
                             <Route path="community" element={<BlogCommunity/>}/>
                             <Route path="profile/:username" element={<BlogProfile/>}/>
-                            <Route path="requests" element={<Requests/>}/>
+                            {/* <Route path="requests" element={<Requests/>}/> */}
                     </Route>
 
                     <Route path="/manzadle" element={<ManzaDle />}/>
@@ -41,7 +41,7 @@ function App() {
                     <Route element={<AdminRoute/>}>
                         <Route path="/dashboard" element={<BlogLayout/>}>
                             <Route index element={<Dashboard/>}/>
-                            <Route path="review" element={<Review/>}/>
+                            {/* <Route path="review" element={<Review/>}/> */}
                         </Route>
                     </Route>
 

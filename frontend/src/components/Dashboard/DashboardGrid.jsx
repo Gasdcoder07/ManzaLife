@@ -51,9 +51,9 @@ const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts,
             </div>
 
             {/* RecentRequests */}
-            <RecentRequests
+            {/* <RecentRequests
                 isEnglish={isEnglish}
-                Requests={LatestRequests}/>
+                Requests={LatestRequests}/> */}
             
         </div>
     </div>
