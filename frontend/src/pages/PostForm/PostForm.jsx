@@ -5,15 +5,19 @@ import toast from "react-hot-toast";
 import { MdArrowDropDown, MdAdd, MdOutlineImage, MdShortText, MdClose, MdPublish, MdSave } from "react-icons/md";
 import validateText from "../../../utils/validateText.js"
 import { useNavigate } from "react-router";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function PostForm({ mode, PostData = null }) {
+    const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         title: "",
         content: "",
         category_id: null,
-        category_name: "Seleccionar categoría",
+        category_name: isEnglish ? "Select category" : "Seleccionar categoría",
         image: null,
         imagePreview: null,
         status: ""
@@ -25,13 +29,30 @@ export default function PostForm({ mode, PostData = null }) {
                 title: PostData.title || "",
                 content: PostData.content || "",
                 category_id: PostData.category?.id || null,
-                category_name: PostData.category?.name || "Seleccionar categoría",
+                category_name: PostData.category?.name || (isEnglish ? "Select category" : "Seleccionar categoría"),
                 image: null,
                 imagePreview: PostData.image || null,
                 imageDeleted : false
             });
         }
     }, [mode, PostData]);
+
+    useEffect(() => {
+        setFormData(prev => {
+            const placeholder = [
+                "Select category",
+                "Seleccionar categoría"
+            ];
+
+            if (!prev.category_id || placeholder.includes(prev.category_name)) {
+                return {
+                    ...prev,
+                    category_name: isEnglish ? "Select category" : "Seleccionar categoría"
+                };
+            }
+            return prev;
+        });
+    }, [isEnglish]);
 
     const fileInputRef = useRef(null);
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -67,14 +88,14 @@ export default function PostForm({ mode, PostData = null }) {
     }
 
     const handleGuardarPost = async (status) => {
-        if (!formData.category_id) return toast.error("Selecciona una categoría valida");
-        if (!formData.title.trim()) return toast.error("El titulo es obligatorio");
-        if (mode === "create" && !formData.image) return toast.error("Debes subir una foto para la publicación");
-        if (!formData.content.trim()) return toast.error("La descripción no puede estar vacía");
+        if (!formData.category_id) return toast.error(isEnglish ? "Select a valid category" : "Selecciona una categoría valida");
+        if (!formData.title.trim()) return toast.error(isEnglish ? "Title is required" : "El titulo es obligatorio");
+        if (mode === "create" && !formData.image) return toast.error(isEnglish ? "You must upload a photo for the publication" : "Debes subir una foto para la publicación");
+        if (!formData.content.trim()) return toast.error(isEnglish ? "Description cannot be empty" : "La descripción no puede estar vacía");
         console.log(formData.content)
-        if (validateText(formData.content)) return toast.error("Incluye malas palabras tu texto");
+        if (validateText(formData.content)) return toast.error(isEnglish ? "Your text contains inappropriate words" : "Incluye malas palabras tu texto");
 
-        const toastId = toast.loading(mode === "create" ? "Creando publicación..." : "Actualizando publicación...");
+        const toastId = toast.loading(mode === "create" ? (isEnglish ? "Creating publication..." : "Creando publicación...") : (isEnglish ? "Updating publication..." : "Actualizando publicación..."));
 
         const finalData = new FormData();
 
@@ -101,7 +122,7 @@ export default function PostForm({ mode, PostData = null }) {
             }
 
             toast.success(
-                mode === "create" ? "¡Post creado exitosamente!" : "Post actualizado",
+                mode === "create" ? (isEnglish ? "Post created successfully!" : "¡Post creado exitosamente!") : (isEnglish ? "Post updated" : "Post actualizado"),
                 { id: toastId }
             );
 
@@ -109,8 +130,9 @@ export default function PostForm({ mode, PostData = null }) {
 
         } catch (error) {
             if (error.response) {
+                toast.error(isEnglish ? "Backend error: " : "Error del backend: " + JSON.stringify(error.response.data), { id: toastId });
                 console.error("Error en ", error.response)
-                alert(`Error del backend: ${JSON.stringify(error.response.data)}`);
+                // alert(`Error del backend: ${JSON.stringify(error.response.data)}`);
             } else {
                 console.error(`Error al crear o actualizar el post: ${error}`)
             }
@@ -121,7 +143,7 @@ export default function PostForm({ mode, PostData = null }) {
         <div className="flex flex-col justify-center items-center gap-4 py-12">
             <div className="flex flex-col justify-center items-center gap-4">
                 <h3 className="text-center text-2xl text-orange-600 tracking-wide">
-                    { mode === "create" ? "Empieza a publicar ahora" : "Edita tu publicación"}
+                    { mode === "create" ? (isEnglish ? "Start publishing now" : "Empieza a publicar ahora") : (isEnglish ? "Edit your post" : "Edita tu publicación")}
                 </h3>
                 <MdArrowDropDown className="text-4xl text-neutral-300 dark:text-neutral-700 animate-bounce transition-all duration-300 ease-in-out" />
             </div>
@@ -164,7 +186,7 @@ export default function PostForm({ mode, PostData = null }) {
                     <input
                         name="title"
                         type="text"
-                        placeholder="Agregar un título a la publicación"
+                        placeholder={isEnglish ? "Add a title to your post" : "Agrega un título a tu publicación"}
                         value={formData.title}
                         onChange={handleChange}
                         className="w-full bg-transparent text-xl font-light outline-none placeholder:text-zinc-600"
@@ -197,7 +219,7 @@ export default function PostForm({ mode, PostData = null }) {
                                 <MdOutlineImage className="text-4xl text-zinc-600 group-hover:text-orange-600" />
                             </div>
                             <p className="text-lg font-light text-zinc-500 dark:group-hover:text-white text-center">
-                                Agrega una imagen a tu publicación
+                                {isEnglish ? "Add an image to your post" : "Agrega una imagen a tu publicación"}
                             </p>
                         </>
                     )}
@@ -216,7 +238,7 @@ export default function PostForm({ mode, PostData = null }) {
                         <MdShortText className="text-3xl text-zinc-600" />
                         <textarea
                             name="content"
-                            placeholder="Agrega una descripción a tu publicación"
+                            placeholder={isEnglish ? "Write the content of your post here..." : "Escribe el contenido de tu publicación aquí..."}
                             value={formData.content}
                             onChange={handleChange}
                             className="w-full px-4 bg-transparent h-24 outline-none resize-none placeholder:text-zinc-600 font-light dark:text-white custom-scrollbar"
@@ -230,7 +252,7 @@ export default function PostForm({ mode, PostData = null }) {
                         <MdSave/>
                     </button> */}
                     <button onClick={() => handleGuardarPost("published")} className="bg-orange-500 dark:bg-orange-600 flex justify-center items-center gap-4 px-5 py-2 w-full sm:w-1/2 cursor-pointer hover:text-zinc-950 transition-all duration-300 ease-in-out hover:-translate-y-1">
-                        <span>Publicar ahora</span>
+                        <span>{isEnglish ? "Publish now" : "Publicar ahora"}</span>
                         <MdPublish/>
                     </button>
                 </div>
