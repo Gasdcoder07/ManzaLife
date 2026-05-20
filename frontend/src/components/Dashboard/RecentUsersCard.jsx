@@ -8,7 +8,7 @@ const RecentUsersCard = ({ Classname, Users }) => {
     const isEnglish = idioma === "en";
 
     return (
-        <div className={`${Classname} h-64 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
+        <div className={`${Classname} h-80 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
             <p className="text-xl px-3 font-semibold">
                 {isEnglish ? 'Recent users' : 'Usuarios recientes'}
             </p>
@@ -38,7 +38,7 @@ const RecentUsersCard = ({ Classname, Users }) => {
                                         <td className="px-3 py-1.5 truncate">{item.username}</td>
                                         <td className="px-3 py-1.5 truncate">{item.email}</td>
                                         <td className="w-16 shrink-0 px-3 py-1.5">
-                                            <div className="flex items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
+                                            <div className="flex justify-center items-center gap-4 overflow-x-auto whitespace-nowrap custom-scrollbar">
                                                 <Link
                                                     to={`/blog/profile/${item.username}`}
                                                     className='flex justify-center items-center hover:text-blue-500 dark:hover:text-blue-800 transition-colors ease-in-out duration-200'>

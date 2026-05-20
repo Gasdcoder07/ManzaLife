@@ -225,11 +225,11 @@ export default function PostForm({ mode, PostData = null }) {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <button onClick={() => handleGuardarPost("draft")} className="border border-zinc-300 dark:border-zinc-800 flex justify-center items-center gap-4 bg-[#fcfcfc] dark:bg-[#0d0d0f] px-5 py-2 w-full cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1">
+                    {/* <button onClick={() => handleGuardarPost("draft")} className="border border-zinc-300 dark:border-zinc-800 flex justify-center items-center gap-4 bg-[#fcfcfc] dark:bg-[#0d0d0f] px-5 py-2 w-full cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1">
                         <span>Guardar borrador</span>
                         <MdSave/>
-                    </button>
-                    <button onClick={() => handleGuardarPost("published")} className="bg-orange-500 dark:bg-orange-600 flex justify-center items-center gap-4 px-5 py-2 w-full cursor-pointer hover:text-zinc-950 transition-all duration-300 ease-in-out hover:-translate-y-1">
+                    </button> */}
+                    <button onClick={() => handleGuardarPost("published")} className="bg-orange-500 dark:bg-orange-600 flex justify-center items-center gap-4 px-5 py-2 w-full sm:w-1/2 cursor-pointer hover:text-zinc-950 transition-all duration-300 ease-in-out hover:-translate-y-1">
                         <span>Publicar ahora</span>
                         <MdPublish/>
                     </button>
