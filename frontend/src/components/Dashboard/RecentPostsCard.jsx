@@ -28,7 +28,7 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
     };
 
     return (
-        <div className={`${Classname} h-64 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
+        <div className={`${Classname} h-80 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-2 py-3 flex flex-col gap-2.5`}>
             <p className="text-xl px-3 font-semibold">
                 {isEnglish ? 'Recent posts' : 'Publicaciones recientes'}
             </p>
@@ -93,7 +93,15 @@ const RecentPostsCard = ({ Classname, Posts, setPosts }) => {
                                         </td>
                                     </tr>
                                 )
-                            })) : <h1 className="text-white font-bold text-xl">No hay publicaciones de momento</h1>
+                            })) : (
+                                <tr>
+                                    <td colSpan={3} className="px-3 py-1.5">
+                                        <h1 className="text-white font-bold text-sm">
+                                            {isEnglish ? "No posts available" : "No hay publicaciones de momento"}
+                                        </h1>
+                                    </td>
+                                </tr>
+                            )
                         }
                     </tbody>
                 </table>

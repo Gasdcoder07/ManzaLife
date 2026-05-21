@@ -4,8 +4,9 @@ import { postComment } from "../../services/commentService"
 import toast from 'react-hot-toast'
 import Comment from "./Comment"
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
+import validateText from "../../../utils/validateText.js"
 
-const CommentSection = ({ postId, comments = [] }) => {
+const CommentSection = ({ isEnglish, postId, comments = [] }) => {
     const { user } = useAuth()
     const [newComment, setNewComment] = useState("")
     const [localComments, setLocalComments] = useState(comments);
@@ -18,25 +19,29 @@ const CommentSection = ({ postId, comments = [] }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!newComment.trim()) return;
+        if (validateText(newComment)) {
+            return toast.error(isEnglish ? "Your comment contains inappropriate words" : "Tu comentario incluye palabras inapropiadas");
+        }
 
         const commentPromise = postComment({
             post: postId,
             content: newComment,
         });
 
-        toast.promise(commentPromise, {
-            loading: "Publicando comentario...",
-            success: "Comentario publicado!",
-            error: "Error al publicar...",
-        });
+        setLoading(true);
+
+        const toastId = toast.loading(isEnglish ? "Posting comment..." : "Publicando comentario...");
 
         try {
-            setLoading(true)
             const nuevoComentario = await commentPromise;
             setLocalComments(prev => [nuevoComentario, ...prev]);
 
+            toast.success(isEnglish ? "Comment posted!" : "Comentario publicado!", { id: toastId });
+
             setNewComment("");
         } catch (error) {
+            toast.error(isEnglish ? "Error posting comment" : "Error al publicar", { id: toastId });
+
             console.log("Error al publicar", error)
         } finally {
             setLoading(false);
@@ -52,7 +57,9 @@ const CommentSection = ({ postId, comments = [] }) => {
                 <span className="text-orange-500">
                     {localComments.length}
                 </span>
-                Comentarios
+                {
+                    isEnglish ? "Comments" : "Comentarios"
+                }
             </h4>
 
             <form 
@@ -62,13 +69,13 @@ const CommentSection = ({ postId, comments = [] }) => {
                 <img 
                     src={userAvatar} 
                     alt="Tu avatar"
-                    className="size-10 rounded-full object-cover mt-1" 
+                    className="size-10 rounded-full object-cover mt-1 border border-zinc-800 dark:border-zinc-900/50" 
                 />
 
                 <div className="flex-1 min-w-0 flex flex-col gap-4">
                     <textarea 
                         className="w-full dark:bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 text-zinc-950 dark:text-white placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar shadow-xl" 
-                        placeholder="Añade un comentario..."
+                        placeholder={isEnglish ? "Add a comment..." : "Añade un comentario..."}
                         rows="3"
                         value={newComment}
                         onChange={(e)=>setNewComment(e.target.value)}
@@ -79,14 +86,18 @@ const CommentSection = ({ postId, comments = [] }) => {
                             onClick={() => setNewComment("")}
                             className="px-4 sm:px-6 py-2 text-zinc-400 hover:text-zinc-500 dark:hover:text-white rounded-full transition-all font-semibold text-sm uppercase tracking-wide cursor-pointer"
                         >
-                            Cancelar
+                            {
+                                isEnglish ? "Cancel" : "Cancelar"
+                            }
                         </button>
                         <button 
                             type="submit"
                             disabled={!newComment.trim() || loading} // Deshabilitar si está vacío
                             className="px-4 sm:px-6 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-zinc-700 disabled:text-zinc-500 text-white rounded-full transition-all font-bold text-sm uppercase tracking-wide cursor-pointer disabled:cursor-not-allowed"
                         >
-                            Comentar
+                            {
+                                isEnglish ? "Comment" : "Comentar"
+                            }
                         </button>
                     </div>
                 </div>
@@ -101,6 +112,7 @@ const CommentSection = ({ postId, comments = [] }) => {
                             return (
                                 <Comment
                                     key={comment.id}
+                                    isEnglish={isEnglish}
                                     CommentId={comment.id}
                                     PostId={postId}
                                     AuthorAvatar={comment?.author_avatar || DefaultAvatar}
@@ -111,7 +123,9 @@ const CommentSection = ({ postId, comments = [] }) => {
                             )
                         })
                     ) : (
-                        <p className="text-zinc-500 text-sm italic">No hay comentarios todavía. Axl es hermoso.</p>
+                        <p className="text-zinc-500 text-sm italic">
+                            {isEnglish ? "No comments yet. Axl is beautiful." : "No hay comentarios todavía. Axl es hermoso."}
+                        </p>
                     )
                 }
             </div>

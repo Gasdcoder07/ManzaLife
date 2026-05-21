@@ -118,6 +118,7 @@
     "link": "Crea una ahora",
     "olvide": "¿Olvidaste tu contraseña?",
     "reset": "Recuperar contraseña",
+    "login_loading": "Iniciando sesión...",
     "login_error": "Usuario o contraseña incorrectos. Intenta de nuevo.",
     "login_success": "¡Inicio de sesión exitoso! Redirigiendo..."
   },

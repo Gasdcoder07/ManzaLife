@@ -7,21 +7,24 @@ import ModalLayout from "../../layouts/ModalLayout";
 import { TbPhotoEdit } from "react-icons/tb";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 
-const ImageProfileModal = ({ setShowImageModal }) => {
-    const { idioma } = useLanguage();
-    const isEnglish = idioma === "en";
-
+const ImageProfileModal = ({ setShowImageModal, isEnglish }) => {
     const { user, setUser } = useAuth();
     const [loading, setLoading] = useState(false);
     const fileInputRef = useRef(null);
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleUpdate = async () => {
-        if (!selectedImage) return;
+        if (!selectedImage) {
+            toast.error(isEnglish ? "Please select an image first." : "Por favor selecciona una imagen primero.");
+            return;
+        };
+
         setLoading(true);
 
         const formData = new FormData();
         formData.append("avatar", selectedImage);
+
+        const toastId = toast.loading(isEnglish ? "Updating image..." : "Actualizando imagen...");
 
         try {
             const updated = await updateProfile(formData);
@@ -31,10 +34,12 @@ const ImageProfileModal = ({ setShowImageModal }) => {
                 ...updated
             }));
 
-            toast.success("¡Imagen actualizada!")
+            toast.success(isEnglish ? "Image updated!" : "¡Imagen actualizada!", { id: toastId });
+
             setShowImageModal(false)
         } catch (e) {
-            toast.error("Error al actualizar la imagen...");
+            toast.error(isEnglish ? "Failed to update image." : "Error al actualizar la imagen.", { id: toastId });
+
             console.error(e);
         } finally {
             setLoading(false);

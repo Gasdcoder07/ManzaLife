@@ -1,8 +1,12 @@
 import BlogCommunityCard from "./BlogCommunityCard";
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp";
 import PaginationControls from "../PaginationControls";
+import { useLanguage } from "../../../context/LanguageContext";
 
 const BlogCommunityGrid = ({ Users, CurrentPage, TotalPages, OnPageChange }) => {
+    const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
   return (
     <div className="h-full">
         <div className="w-full py-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -15,7 +19,8 @@ const BlogCommunityGrid = ({ Users, CurrentPage, TotalPages, OnPageChange }) => 
                             FirstName={user.first_name}
                             LastName={user.last_name}
                             Username={user.username}
-                            Bio={user.bio}/>
+                            Bio={user.bio}
+                            isEnglish={isEnglish}/>
                     )
                 })
             }

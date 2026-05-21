@@ -10,6 +10,8 @@ import { useSearchParams } from "react-router-dom";
 
 export default function Blog() {
     const { textos, idioma } = useLanguage();
+    const isEnglish = idioma === "en";
+
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -68,7 +70,7 @@ export default function Blog() {
             <div className="mt-4 flex items-center justify-between">
                
                 <h3 className="text-2xl">
-                    {idioma === "en" ? (
+                    {isEnglish ? (
                         <>
                             {textos?.main_blog?.home?.subtitle}{" "}
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-orange-800">
@@ -134,6 +136,7 @@ export default function Blog() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
+                isEnglish={isEnglish}
             />
         </div>
     );

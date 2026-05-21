@@ -2,7 +2,7 @@ import PostActionButton from "../../PostsSection/PostActionButton"
 import DefaultAvatar from "../../../../imgs/DefaultAvatar.webp"
 import { Link } from "react-router-dom";
 
-const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, AutorName, Date}) => {
+const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, AutorName, Date, isEnglish}) => {
   return (
     <Link
         to={`/blog/${Slug}`}
@@ -31,7 +31,7 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
             </div>
 
             <div className="flex justify-end my-2">
-                <PostActionButton/>
+                <PostActionButton isEnglish={isEnglish}/>
             </div>
 
             <hr className="border border-neutral-300 dark:border-neutral-800 my-2" />

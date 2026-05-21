@@ -12,10 +12,13 @@ const DeletePostModal = ({ postName, postSlug, setShowDeleteModal, deleteConfirm
     const handleConfirmDelete = async () => {
         setLoading(true);
 
+        const toastId = toast.loading(isEnglish ? "Deleting post..." : "Eliminando publicación...");
+
         try {
             const res = await deleteConfirm(postSlug);
-            toast.success("Publicación eliminada con éxito.")
+            toast.success(isEnglish ? "Post deleted successfully!" : "¡Publicación eliminada con éxito!", { id: toastId });
         } catch (e) {
+            toast.error(isEnglish ? "Error deleting post" : "Error al eliminar la publicación", { id: toastId });
             console.error("Error al eliminar la publicación: ", e);
         } finally {
             setLoading(false);

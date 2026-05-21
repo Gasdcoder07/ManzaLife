@@ -118,6 +118,7 @@
     "ir_al_blog": "Back to blog",
     "olvide": "Forgot your password?",
     "reset": "Recover password",
+    "login_loading": "Logging in...",
     "login_error": "Incorrect username or password. Try again.",
     "login_success": "Login successful! Redirecting..."
   },

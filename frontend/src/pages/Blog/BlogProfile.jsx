@@ -110,7 +110,7 @@ const BlogProfile = () => {
     // console.log(username)
     // console.log("currentUser:", currentUser);
     // console.log("user_type:", currentUser?.user_type);
-    console.log("profileData:", profileData);
+    // console.log("profileData:", profileData);
     // console.log("Authorized:", Authorized);
 
   return (
@@ -155,12 +155,12 @@ const BlogProfile = () => {
 
                 <div className="flex flex-col gap-4">
                     <div className="space-y-4">
-                        <div className="space-y-1">
+                        <div className="flex flex-col gap-1">
                             <h3 className="italic tracking-wide font-light">{profileData.first_name} {profileData.last_name}</h3>
                             <h2 className="text-2xl font-semibold tracking-widest">@{profileData.username}</h2>
                             {
                                 profileData.is_banned && (
-                                    <p className="text-red-500 dark:text-red-600 font-medium">
+                                    <p className="mt-1 text-red-500 dark:text-red-600 font-medium">
                                         {isEnglish ? "This user is banned." : "Este usuario está baneado."}
                                     </p>
                                 )
@@ -238,7 +238,7 @@ const BlogProfile = () => {
 
                 {
                     loadingPosts && (
-                        <p className="text-neutral-300 italic">
+                        <p className="text-neutral-400 dark:text-neutral-300 italic">
                             {isEnglish ? "Loading posts..." : "Cargando publicaciones..."}
                         </p>
                     )
@@ -246,7 +246,7 @@ const BlogProfile = () => {
 
                 {
                     !loadingPosts && posts.length === 0 && (
-                        <p className="text-neutral-300 italic">
+                        <p className="text-neutral-400 dark:text-neutral-300 italic">
                             {isEnglish ? "This user has no posts available." : "Este usuario no tiene publicaciones disponibles."}
                         </p>
                     )
@@ -284,12 +284,14 @@ const BlogProfile = () => {
         {
             showModal && 
                 <EditProfileModal
-                    setShowModal={setShowModal}/>
+                    setShowModal={setShowModal}
+                    isEnglish={isEnglish}/>
         }
         {
             showImageModal &&
                 <ImageProfileModal
-                    setShowImageModal={setShowImageModal}/>
+                    setShowImageModal={setShowImageModal}
+                    isEnglish={isEnglish}/>
         }
         {
             showDeleteModal && (
@@ -303,7 +305,8 @@ const BlogProfile = () => {
         {
             showBannerModal && (
                 <BannerProfileModal
-                    setShowBannerModal={setShowBannerModal}/>
+                    setShowBannerModal={setShowBannerModal}
+                    isEnglish={isEnglish}/>
             )
         }
     </div>

@@ -4,8 +4,9 @@ import Reply from "./Reply";
 import toast from "react-hot-toast";
 import { postComment } from "../../services/commentService";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
+import validateText from "../../../utils/validateText.js";
 
-const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, CreatedDate, Replies = [] }) => {
+const Comment = ({ isEnglish, CommentId, PostId, AuthorUsername, AuthorAvatar, Content, CreatedDate, Replies = [] }) => {
     const [showReplyForm, setShowReplyForm] = useState(false);
     const [reply, setReply] = useState("");
     const [showReply, setShowReply] = useState(false);
@@ -16,27 +17,30 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (validateText(reply)) {
+            return toast.error(isEnglish ? "Your reply contains inappropriate words" : "Tu respuesta incluye palabras inapropiadas");
+        }
+
         const replyPromise = postComment({
             post: PostId,
             content: reply,
             parent: CommentId,
         });
 
-        toast.promise(replyPromise, {
-            loading: "Enviando respuesta...",
-            success: "Respuesta publicada!",
-            error: "Error al responder"
-        });
+        setLoading(true);
+        const toastId = toast.loading(isEnglish ? "Posting reply..." : "Enviando respuesta...");
 
         try {
-            setLoading(true);
             const nuevaRespuesta = await replyPromise;
             setLocalReplies(prev => [...prev, nuevaRespuesta]);
+
+            toast.success(isEnglish ? "Reply posted!" : "Respuesta publicada!", { id: toastId });
 
             setReply("");
             setShowReplyForm(false);
             setShowReply(true);
         } catch (error) {
+            toast.error(isEnglish ? "Error posting reply" : "Error al responder", { id: toastId });
             console.error("Error al hacer reply: ", error)
         } finally {
             setLoading(false);
@@ -47,7 +51,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
     <div className="flex flex-col gap-2 w-full">
         <div className="w-full flex gap-4">
             <img
-                className="shrink-0 size-10 rounded-full object-cover"
+                className="shrink-0 size-10 rounded-full object-cover border border-zinc-800 dark:border-zinc-900/50"
                 src={AuthorAvatar}
                 alt={AuthorUsername} />
 
@@ -77,7 +81,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                                 value={reply}
                                 onChange={(e) => setReply(e.target.value)}
                                 className="w-full dark:bg-zinc-900/50 border border-zinc-800 rounded-lg p-2 placeholder:text-zinc-600 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none text-sm custom-scrollbar shadow-xl"
-                                placeholder="Añade una respuesta..."
+                                placeholder={isEnglish ? "Add a reply..." : "Añade una respuesta..."}
                                 rows={1}/>
 
                             <div className="flex justify-end gap-4">
@@ -85,13 +89,13 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                                     type="button"
                                     onClick={() => setShowReplyForm(false)}
                                     className="px-4 sm:px-6 py-2 text-zinc-400 hover:text-white rounded-full transition-all font-semibold text-sm uppercase tracking-wide cursor-pointer">
-                                    Cancelar
+                                    {isEnglish ? "Cancel" : "Cancelar"}
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={!reply.trim() || loading}
                                     className="px-4 sm:px-6 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-zinc-700 disabled:text-zinc-500 rounded-full transition-all font-bold text-sm uppercase tracking-wide cursor-pointer disabled:cursor-not-allowed">
-                                    Responder
+                                    {isEnglish ? "Reply" : "Responder"}
                                 </button>
                             </div>
                         </form>
@@ -100,7 +104,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                             <button
                                 onClick={() => setShowReplyForm(true)}
                                 className="w-fit text-xs text-zinc-400 mt-2 hover:text-zinc-500 dark:hover:text-white transition-colors font-semibold uppercase tracking-wider cursor-pointer">
-                                <span>Responder</span>
+                                <span>{isEnglish ? "Reply" : "Responder"}</span>
                             </button>
                         </div>
                     )
@@ -114,7 +118,7 @@ const Comment = ({ CommentId, PostId, AuthorUsername, AuthorAvatar, Content, Cre
                     <span
                         onClick={() => setShowReply(!showReply)}
                         className="text-zinc-400 text-sm hover:text-zinc-500 dark:hover:text-white cursor-pointer transition-all duration-200 ease-in-out">
-                        { showReply ? 'Ocultar respuestas' : 'Ver respuestas' }
+                        { isEnglish ? (showReply ? 'Hide replies' : 'Show replies') : (showReply ? 'Ocultar respuestas' : 'Ver respuestas') }
                     </span>
 
                     {

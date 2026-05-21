@@ -7,10 +7,7 @@ import ModalLayout from "../../layouts/ModalLayout";
 import { TbPhotoEdit } from "react-icons/tb";
 import DefaultBanner from "../../../imgs/LoginResources/Login_bg.png"
 
-const BannerProfileModal = ({ setShowBannerModal }) => {
-    const { idioma } = useLanguage();
-    const isEnglish = idioma === "en";
-
+const BannerProfileModal = ({ setShowBannerModal, isEnglish }) => {
     const { user, setUser } = useAuth();
 
     const [loading, setLoading] = useState(false);
@@ -19,11 +16,17 @@ const BannerProfileModal = ({ setShowBannerModal }) => {
     const fileInputRef = useRef(null);
     
     const handleUpdate = async () => {
-        if (!selectedImage) return;
+        if (!selectedImage) {
+            toast.error(isEnglish ? "Please select an image first." : "Por favor selecciona una imagen primero.");
+            return;
+        }
+
         setLoading(true);
 
         const formData = new FormData();
         formData.append("banner", selectedImage);
+
+        const toastId = toast.loading(isEnglish ? "Updating banner..." : "Actualizando banner...");
 
         try {
             const updated = await updateProfile(formData);
@@ -33,17 +36,16 @@ const BannerProfileModal = ({ setShowBannerModal }) => {
                 ...updated
             }));
 
-            toast.success("Banner actualizado!");
+            toast.success(isEnglish ? "Banner updated!" : "¡Banner actualizado!", { id: toastId });
+            
             setShowBannerModal(false);
         } catch (e) {
             console.error(e);
-            toast.error("Error al actualizar el banner...")
+            toast.error(isEnglish ? "Failed to update banner." : "Error al actualizar el banner.", { id: toastId });
         } finally {
             setLoading(false);
         }
     }
-
-    console.log(user)
 
   return (
     <ModalLayout>

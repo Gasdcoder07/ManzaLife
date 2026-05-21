@@ -5,12 +5,16 @@ import { getPostBySlug } from "../../services/postService";
 import PostForm from "../PostForm/PostForm";
 import PostFormSkeleton from "../../components/Blog/PostForm/PostFormSkeleton";
 import PostFormError from "../../components/Blog/PostForm/PostFormError";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 const EditPostPage = () => {
     const { user } = useAuth();
     const { slug } = useParams();
     const [post, setPost] = useState(null);
     const navigate = useNavigate();
+
+    const { idioma } = useLanguage();
+    const isEnglish = idioma === "en";
 
     // console.log(user)
     console.log(post)
@@ -39,9 +43,9 @@ const EditPostPage = () => {
 
     if (!post) return <PostFormSkeleton/>
     if (!user) return null;
-    if (!isAuthor && !isAdmin) return <PostFormError/>
+    if (!isAuthor && !isAdmin) return <PostFormError isEnglish={isEnglish}/>
 
-  return <PostForm mode={"edit"} PostData={post}/>
+  return <PostForm isEnglish={isEnglish} mode={"edit"} PostData={post}/>
 };
 
 export default EditPostPage;

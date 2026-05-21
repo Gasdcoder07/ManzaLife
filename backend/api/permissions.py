@@ -5,7 +5,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         
-        return obj.author == request.user
+        return (obj.author == request.user or request.user.is_staff)
     
 class IsAdminRole(permissions.BasePermission):
     message = "Acceso denegado, solo administradores peuden accdeder"
