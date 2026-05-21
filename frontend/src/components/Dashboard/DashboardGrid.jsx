@@ -7,7 +7,7 @@ import { FaUsers } from "react-icons/fa6";
 import { IoMailUnread } from "react-icons/io5";
 import RecentRequests from "./RecentRequests";
 
-const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts, LatestUsers, LoadingStats, LatestRequests }) => {
+const DashboardGrid = ({ isEnglish, DashboardStats, LatestPosts, setLatestPosts, LatestUsers, LoadingStats }) => {
   return (
     <div className="h-full flex flex-col gap-4">
         <div className="flex flex-col py-4 gap-4">
