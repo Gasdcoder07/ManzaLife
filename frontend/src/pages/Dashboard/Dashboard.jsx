@@ -15,7 +15,7 @@ const Dashboard = () => {
     const { posts, loading: loadingPosts } = usePosts(1);
     const { users, loading: loadingUsers } = useUsers(1);
     const { stats, loading: loadingStats } = useDashboardStats();
-    const { requests, loading: loadingRequests } = useRequests({ all: true});
+    // const { requests, loading: loadingRequests } = useRequests({ all: true});
     
     const [ latestPosts, setLatestPosts ] = useState([]);
 
@@ -28,7 +28,7 @@ const Dashboard = () => {
     }, [posts]);
 
     // Estado global
-    const isInitialLoading = loadingPosts && loadingUsers && loadingStats && loadingRequests;
+    const isInitialLoading = loadingPosts && loadingUsers && loadingStats;
 
     if (isInitialLoading) { return <DashboardSkeleton/> }
 
@@ -54,8 +54,7 @@ const Dashboard = () => {
             LatestPosts={latestPosts}
             setLatestPosts={setLatestPosts}
             LatestUsers={users?.results || []}
-            LoadingStats={loadingStats}
-            LatestRequests={requests}/>
+            LoadingStats={loadingStats}/>
 
     </div>
   );
