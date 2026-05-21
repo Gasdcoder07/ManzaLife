@@ -28,7 +28,11 @@ El proyecto está construido utilizando una arquitectura moderna con:
 
 📰 Pantalla Blog
 <img width="1574" height="757" alt="image" src="https://github.com/user-attachments/assets/6bdd282f-e0cf-49fa-aa41-aa19638595d8" />
-<img width="1532" height="766" alt="image" src="https://github.com/user-attachments/assets/4c2dc3ec-022f-41bc-8ed3-9677e80341cd" />
+<img width="1516" height="762" alt="image" src="https://github.com/user-attachments/assets/4b31e963-fed4-4a8a-a89d-c6b7603d4a20" />
+
+
+🕹️ Pantalla ManzaDle
+<img width="1539" height="771" alt="image" src="https://github.com/user-attachments/assets/134aebdd-bb64-4d5e-8482-73a4c173025f" />
 
 
 ![Python 3.12+](https://img.shields.io/badge/Python-3.13%2B-blue?style=for-the-badge&logo=python)
