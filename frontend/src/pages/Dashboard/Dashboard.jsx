@@ -39,13 +39,13 @@ const Dashboard = () => {
                 {isEnglish ? 'Welcome' : 'Bienvenido'} {user.first_name} 👋
             </h3>
 
-            <button
+            {/* <button
                 className="group shrink-0 flex justify-center items-center gap-2 bg-[#fcfcfc] dark:bg-[#0d0d0f] border border-neutral-300 dark:border-neutral-800 rounded-xl shadow-xl px-5 py-2 cursor-pointer hover:text-orange-600">
                 <FaSquarePlus className="transition-colors duration-200 ease-in-out"/>
                 <span className="transition-colors duration-200 ease-in-out">
                     {isEnglish ? 'Create category' : 'Crear categoria'}
                 </span>
-            </button>
+            </button> */}
         </div>
 
         <DashboardGrid

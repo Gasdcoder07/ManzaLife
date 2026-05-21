@@ -46,7 +46,7 @@ export default function Blog() {
     }, [])
     
     const categorias = [
-        { name: "Todas", slug: null },
+        { name: isEnglish ? 'All' : 'Todas', slug: null },
         ...categories
     ];
 
