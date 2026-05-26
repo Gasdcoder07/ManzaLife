@@ -20,9 +20,11 @@ const BlogPostsCard = ({Image, Category, Title, Description, Slug, AutorAvatar, 
             </div>
         </div>
         <div className="flex-1 flex flex-col px-5 py-3 gap-2">
-            <h3 className="group-hover:text-orange-600 text-lg font-bold tracking-wide truncate">
-                {Title}
-            </h3>
+            <div className="min-w-0 flex-1">
+                <h3 className="group-hover:text-orange-600 text-lg font-bold tracking-wide truncate">
+                    {Title}
+                </h3>
+            </div>
 
             <div className="h-24 sm:flex-1 overflow-hidden overflow-y-scroll no-scrollbar">
                 <p className="text-neutral-500">
