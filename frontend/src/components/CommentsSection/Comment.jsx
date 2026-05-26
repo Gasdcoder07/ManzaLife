@@ -1,21 +1,26 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Reply from "./Reply";
 import toast from "react-hot-toast";
 import { postComment } from "../../services/commentService";
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp";
 import validateText from "../../../utils/validateText.js";
+import { useNavigate } from "react-router-dom";
 
-const Comment = ({ isEnglish, CommentId, PostId, AuthorUsername, AuthorAvatar, Content, CreatedDate, Replies = [] }) => {
+const Comment = ({ isEnglish, currentUser, CommentId, PostId, AuthorUsername, AuthorAvatar, Content, CreatedDate, Replies = [] }) => {    
     const [showReplyForm, setShowReplyForm] = useState(false);
     const [reply, setReply] = useState("");
     const [showReply, setShowReply] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const navigate = useNavigate();
+
     const [localReplies, setLocalReplies] = useState(Replies);
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        if (!currentUser) { return navigate("/auth/login"); }
 
         if (validateText(reply)) {
             return toast.error(isEnglish ? "Your reply contains inappropriate words" : "Tu respuesta incluye palabras inapropiadas");
@@ -142,4 +147,4 @@ const Comment = ({ isEnglish, CommentId, PostId, AuthorUsername, AuthorAvatar, C
   );
 };
 
-export default Comment;
+export default React.memo(Comment);

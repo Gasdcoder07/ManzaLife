@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import Comment from "./Comment"
 import DefaultAvatar from "../../../imgs/DefaultAvatar.webp"
 import validateText from "../../../utils/validateText.js"
+import { useNavigate } from "react-router-dom";
 
 const CommentSection = ({ isEnglish, postId, comments = [] }) => {
     const { user } = useAuth()
@@ -12,12 +13,17 @@ const CommentSection = ({ isEnglish, postId, comments = [] }) => {
     const [localComments, setLocalComments] = useState(comments);
     const [loading, setLoading] = useState(false);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         setLocalComments(comments);
     }, [comments]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!user) { return navigate("/auth/login"); }
+
         if (!newComment.trim()) return;
         if (validateText(newComment)) {
             return toast.error(isEnglish ? "Your comment contains inappropriate words" : "Tu comentario incluye palabras inapropiadas");
@@ -113,6 +119,7 @@ const CommentSection = ({ isEnglish, postId, comments = [] }) => {
                                 <Comment
                                     key={comment.id}
                                     isEnglish={isEnglish}
+                                    currentUser={user}
                                     CommentId={comment.id}
                                     PostId={postId}
                                     AuthorAvatar={comment?.author_avatar || DefaultAvatar}

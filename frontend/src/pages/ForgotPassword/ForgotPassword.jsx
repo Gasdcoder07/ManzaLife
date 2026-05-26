@@ -24,7 +24,7 @@ export default function ForgotPassword() {
         try {
             setLoading(true);
             const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: 'http://localhost:5173/auth/resetpassword',
+                redirectTo: 'https://manza-life.vercel.app/auth/resetpassword',
             });
 
             if (error) {
