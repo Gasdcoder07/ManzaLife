@@ -102,7 +102,7 @@ export default function Blog() {
 
                     {/* Lista */}
                     {dropdownVisible && (
-                        <div className="absolute top-full z-10 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg border border-neutral-300 dark:border-neutral-800 bg-[#fcfcfc] dark:bg-[#0d0d0f] custom-scrollbar">
+                        <div className="absolute top-full z-20 right-0 mt-2 w-48 max-h-32 overflow-y-auto rounded-xl shadow-lg border border-neutral-300 dark:border-neutral-800 bg-[#fcfcfc] dark:bg-[#0d0d0f] custom-scrollbar">
                             <ul className="flex flex-col px-4 py-2 gap-2">
                                 {
                                     categorias.map((item, index) => (
