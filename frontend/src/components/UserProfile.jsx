@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
-const UserProfile = ({ UserAvatar, Username }) => {
+const UserProfile = ({ UserAvatar, Username, isEnglish }) => {
     const navigate = useNavigate();
     const { logout } = useAuth();
 
@@ -50,18 +50,18 @@ const UserProfile = ({ UserAvatar, Username }) => {
                             <div className="flex flex-col gap-2">
                                 <Link
                                     to={`/blog/profile/${Username}`}
-                                    className="flex gap-2 items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg">
+                                    className="flex gap-2 items-center justify-start px-2 py-1 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors duration-200 ease-in-out">
                                     <FaUser className="text-lg"/>
-                                    <span>Perfil</span>
+                                    <span>{isEnglish ? 'Profile' : 'Perfil'}</span>
                                 </Link>
 
                                 <hr className="text-neutral-600"/>
 
                                 <button
                                     onClick={(handleLogout)}
-                                    className="cursor-pointer rounded-lg flex gap-2 justify-center items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-white/5">
+                                    className="cursor-pointer rounded-lg flex gap-2 justify-start items-center px-2 py-1 hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-200 ease-in-out">
                                     <IoLogOut className="text-lg"/>
-                                    <span>Cerrar sesión</span>
+                                    <span>{isEnglish ? 'Log out' : 'Cerrar sesión'}</span>
                                 </button>
                             </div>
                         </div>

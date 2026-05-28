@@ -74,6 +74,7 @@ const BlogNavbar = () => {
                         <UserProfile
                             UserAvatar={user?.avatar || DefaultAvatar}
                             Username={user.username}
+                            isEnglish={isEnglish}
                         />
                     ) : (
                         <LoginBtn />

@@ -34,7 +34,7 @@ const DeletePostModal = ({ postName, postSlug, setShowDeleteModal, deleteConfirm
                     {isEnglish ? "Delete Post" : "Borrar publicación"}
                 </h2>
 
-                <span className="tracking-widest leading-relaxed">
+                <span className="tracking-widest leading-relaxed wrap-break-word">
                     {isEnglish ? "The post" : "La publicación"} "{postName}" {isEnglish ? "will be" : "será"} <strong className="text-red-600">{isEnglish ? "deleted" : "eliminada"}</strong> {isEnglish ? "permanently." : "permanentemente."}
                 </span>
             </div>
