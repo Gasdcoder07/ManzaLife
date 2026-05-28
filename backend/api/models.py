@@ -51,7 +51,10 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.title)
+            words = self.title.split()[:8]
+            short_title = " ".join(words)
+
+            base_slug = slugify(short_title)
             slug = base_slug
             counter = 1
 
