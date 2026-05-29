@@ -6,9 +6,9 @@ const ToggleThemeButton = ({ isNavbar = false, isBlog = false, isManzaDle = fals
     let styles = "";
 
     if (isNavbar) {
-        styles = "text-black md:text-white hover:text-orange-600";
+        styles = "text-black dark:text-white md:text-white hover:text-orange-600";
     } else if (isBlog) {
-        styles = "text-black dark:text-white hover:text-orange-600";
+        styles = "text-white hover:text-orange-600";
     } else if (isManzaDle) {
         styles = "text-orange-600";
     }
