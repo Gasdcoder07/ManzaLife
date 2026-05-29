@@ -57,7 +57,7 @@ const BlogNavbar = () => {
                         </span>
                     </Link>
 
-                    <div className="flex justify-center items-center gap-2">
+                    <div className="hidden md:flex justify-center items-center gap-2">
                         <button
                             className={
                                 "cursor-pointer hover:text-orange-600 transition-colors ease-in-out duration-200 px-3 py-1"
@@ -84,7 +84,7 @@ const BlogNavbar = () => {
 
             {/* IsOpen? */}
             {isOpen && (
-                <div className="sm:hidden absolute inset-0 bg-black/85 z-10">
+                <div className="sm:hidden absolute inset-0 bg-black/85 z-50">
                     <div className="relative">
                         <IoClose
                             onClick={() => setIsOpen(false)}
@@ -96,34 +96,48 @@ const BlogNavbar = () => {
                             return (
                                 <div
                                     key={index}
-                                    className="flex flex-col gap-4 w-full justify-center items-center">
-
-                                    {
-                                        navBar.length > 1 && (
-                                            <p className="italic tracking-wider text-[#fcfcfc] text-xl">{section.section}</p>
-                                        )
-                                    }
+                                    className="flex flex-col gap-4 w-full justify-center items-center"
+                                >
+                                    {navBar.length > 1 && (
+                                        <p className="italic tracking-wider text-[#fcfcfc] text-xl">
+                                            {section.section}
+                                        </p>
+                                    )}
 
                                     <ul className="w-full flex flex-col justify-center items-center gap-2">
-                                        {
-                                            section.items.map((item, index) => {
-                                                return (
-                                                    <li
-                                                        key={index}>
-                                                            <Link
-                                                                onClick={() => setIsOpen(false)}
-                                                                to={item.path}
-                                                                className="tracking-wider text-center text-[#fcfcfc] text-2xl">
-                                                                {item.text}
-                                                            </Link>
-                                                    </li>
-                                                )
-                                            })
-                                        }
+                                        {section.items.map((item, index) => {
+                                            return (
+                                                <li key={index}>
+                                                    <Link
+                                                        onClick={() =>
+                                                            setIsOpen(false)
+                                                        }
+                                                        to={item.path}
+                                                        className="tracking-wider text-center text-[#fcfcfc] text-2xl"
+                                                    >
+                                                        {item.text}
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
+
                                 </div>
                             );
                         })}
+
+                        <div className="flex flex-col items-center gap-2">
+                            <button
+                                className={
+                                    "text-white text-2xl cursor-pointer hover:text-orange-600 transition-colors ease-in-out duration-200 px-3 py-1"
+                                }
+                                onClick={handleLanguageChange}
+                            >
+                                {isEnglish ? "En" : "Es"}
+                            </button>
+
+                            <ToggleThemeButton isBlog={true}/>
+                        </div>
                     </ul>
                 </div>
             )}
