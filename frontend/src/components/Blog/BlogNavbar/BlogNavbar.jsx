@@ -136,7 +136,7 @@ const BlogNavbar = () => {
                                 {isEnglish ? "En" : "Es"}
                             </button>
 
-                            <ToggleThemeButton isBlog={true}/>
+                            <ToggleThemeButton isMenuMobile={true}/>
                         </div>
                     </ul>
                 </div>
