@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+import random
 
 # Nuestros modelos irán a partir de aquí:
 
@@ -27,6 +28,7 @@ class UserProfile(models.Model):
     is_banned = models.BooleanField(default=False)
     ban_reason = models.TextField(blank=True, null=True)
     ban_date = models.DateTimeField(blank=True, null=True)
+    is_email_verified = models.BooleanField(default=False)
     user_type = models.CharField(
         max_length=20,
         choices=USER_TYPES,
@@ -116,3 +118,12 @@ class SystemRequest(models.Model):
     
     def __str__(self):
         return f"{self.user.username} - {self.request_type} ({self.status})"
+
+class EmailVerification(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def generate_code(self):
+        self.code = str(random.randint(100000, 999999))
+        self.save()

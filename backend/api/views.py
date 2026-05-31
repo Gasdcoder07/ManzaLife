@@ -7,8 +7,10 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
 from rest_framework.exceptions import PermissionDenied
-from .models import Post, Category, User, Comment, Review, SystemRequest, UserProfile
+from .models import Post, Category, User, Comment, Review, SystemRequest, UserProfile, EmailVerification
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.conf import settings
 from .permissions import IsAuthorOrReadOnly, IsAdminRole, IsNotBanned
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer, SystemRequestSerializer
 
@@ -230,6 +232,23 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+    
+    def perform_create(self, serializer):
+        user = serializer.save()
+
+        verification = EmailVerification(user=user)
+        verification.generate_code()
+        
+        asunto = 'Verificación tu cuenta de Manzalife'
+        mensaje = f'Hola {user.username},\n\nGracias por registrarte en Manzalife. Tu código de verificación es: {verification.code}\n\n¡Bienvenido a la comunidad!'
+
+        send_mail(
+            asunto,
+            mensaje,
+            settings.EMAIL_HOST_USER,
+            [user.email],
+            fail_silently=False,
+        )
 
 class UpdatePasswordView(APIView):
     permission_classes = [AllowAny]
@@ -325,3 +344,29 @@ class SystemRequestViewSet(viewsets.ModelViewSet):
         solicitud.save()
 
         return Response(self.get_serializer(solicitud).data, status=200)
+
+class VerifyEmailView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        email = request.data.get('email')
+        code = request.data.get('code')
+        
+        if not email or not code:
+            return Response({"error": "Faltan datos de email o código"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = User.objects.get(email=email)
+            verification = EmailVerification.objects.get(user=user)
+            
+            if verification.code == code:
+                user.userprofile.is_email_verified = True
+                user.userprofile.save()
+                verification.delete()
+                return Response({"message": "Correo verificado exitosamente"}, status=status.HTTP_200_OK)
+            else:
+                return Response({"error": "Código de verificación incorrecto"}, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            return Response({"error": "Usuario no encontrado"}, status=status.HTTP_400_BAD_REQUEST)
+        except EmailVerification.DoesNotExist:
+            return Response({"error": "No se encontró una verificación para este usuario"}, status=status.HTTP_400_BAD_REQUEST)
