@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Post, Category, UserProfile, Comment, Review, SystemRequest
 from django.contrib.auth.models import User
+from rest_framework.validators import UniqueValidator
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -120,6 +121,13 @@ class PostListSerializer(serializers.ModelSerializer):
         return obj.content
 
 class RegisterSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(
+        required=True,
+        validators = [UniqueValidator(
+            queryset=User.objects.all(),
+            message="Este correo ya está registrado."
+        )]
+    )
     password = serializers.CharField(write_only=True)
     password_confirm = serializers.CharField(write_only=True)
 
