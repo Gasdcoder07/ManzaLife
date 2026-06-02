@@ -1,5 +1,5 @@
 ## ManzaLife🚀 Equipo 5️⃣
-Plataforma web turistica para enfocada en mostrar los mejores lugares, experiencias y actividades de Manzanillo 
+Plataforma web turistica para enfocada en mostrar los mejores lugares, experiencias y actividades de Manzanillo <br>
 Link en Vercel: <a href="https://manza-life.vercel.app">ManzaLife</a>
 
 ## 📖 Descripción del Proyecto
