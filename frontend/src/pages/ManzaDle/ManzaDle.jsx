@@ -9,6 +9,7 @@ import InfoModal from "./InfoModal"
 import ManzaDleNavBar from "./ManzaDleNavBar"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router"
+import LoginBtn from "../../components/LoginBtn/LoginBtn"
 
 const STORAGE_KEY = "manzadle-status"
 
@@ -114,6 +115,25 @@ export default function ManzaDle() {
     return (
         <div className="min-h-screen bg-linear-to-b from-[#fcfcfc] to-[#f5f5f7] dark:from-[#0d0d0f] dark:to-orange-950 text-white flex flex-col font-sans">
             <ManzaDleNavBar />
+            {!user && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/60 backdrop-blur-md px-4">
+                    <div className="dark:bg-zinc-900/50 bg-white max-w-md m-auto p-8 rounded-2xl border-orange-500 border-2 shadow-2xl backdrop-blur-sm flex flex-col items-center text-center gap-6">
+                        <div className="w-16 h-16 bg-orange-100 dark:bg-orange-500/10 text-orange-500 flex items-center justify-center rounded-full text-3xl shadow-inner">
+                            🔒
+                        </div>
+                        <div className="space-y-2">
+                            <h1 className="text-2xl md:text-3xl font-bold text-zinc-800 dark:text-white tracking-tight">
+                                ¡Lo sentimos!
+                            </h1>
+                            <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                Para poder disfrutar de <span className="font-semibold text-orange-500 dark:text-orange-400">ManzaDle</span>, necesitas iniciar sesión :)
+                            </p>
+                        </div>
+                        <LoginBtn />
+                    </div>
+                </div>
+                )
+            }
             <main className="grow flex flex-col items-center pt-20 pb-8 px-4 w-full max-w-lg mx-auto relative">
                 <Header onOpenInfo={() => setShowInfo(true)}/>
                 {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
