@@ -1,6 +1,6 @@
 ## ManzaLife🚀 Equipo 5️⃣
 Plataforma web turistica para enfocada en mostrar los mejores lugares, experiencias y actividades de Manzanillo 
-
+Link en Vercel: <a href="https://manza-life.vercel.app">ManzaLife</a>
 
 ## 📖 Descripción del Proyecto
 Manzalife es una plataforma web desarrollada para turistas y residentes a descubrir los mejores lugares de Manzanillo.
@@ -159,11 +159,11 @@ ManzaLife/
 ## 🚀 Instalación
 1️⃣ Clonar el repositorio
 - git clone https://github.com/Gasdcoder07/Proyecto-semestre-2-PI.git.
-- cd Proyecto-semestre-2-PI.
+- cd ManzaLife.
 
 ⚙ Configuración del Backend
 
-2️⃣ Entrar a la carpeta backend
+2️⃣ Entrar a la carpeta backend (en caso de querer correrlo localmente)
 - cd backend.
 
 3️⃣ Crear entorno virtual
