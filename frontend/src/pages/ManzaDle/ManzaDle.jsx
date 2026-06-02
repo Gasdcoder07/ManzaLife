@@ -63,6 +63,7 @@ export default function ManzaDle() {
 
     const handleKeyPress = (key) => {
         if (isGameOver) return
+        if (!user) return
 
         if (key === 'BACKSPACE' || key === 'Backspace' || key === 'DELETE') {
             setCurrentGuess((prev) => prev.slice(0, -1))
