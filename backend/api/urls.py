@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import BanUserView, UnbanUserView, PostViewSet, CategoryViewSet, RegisterView, PerfilView, CommentViewSet, ReviewViewSet, UpdatePasswordView, UserViewSet, DashboardStatsView, SystemRequestViewSet, MakeAdminView, RemoveAdminView, VerifyEmailView
+from .views import ManzaDleResultadoView, BanUserView, UnbanUserView, PostViewSet, CategoryViewSet, RegisterView, PerfilView, CommentViewSet, ReviewViewSet, UpdatePasswordView, UserViewSet, DashboardStatsView, SystemRequestViewSet, MakeAdminView, RemoveAdminView, VerifyEmailView
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
 router = DefaultRouter()
@@ -27,4 +27,5 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('verify-email/', VerifyEmailView.as_view(), name='verify_email'),
+    path('manzadle/resultado/', ManzaDleResultadoView.as_view(), name="Manzadle_view")
 ]
