@@ -34,6 +34,9 @@ class UserProfile(models.Model):
         choices=USER_TYPES,
         default="reader"
     )
+    manzadle_streak = models.IntegerField(default=0)
+    manzadle_last_played = models.DateField(null=True, blank=True)
+    manzadle_max_streak = models.IntegerField(default=0)
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
