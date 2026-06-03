@@ -10,6 +10,7 @@ import ManzaDleNavBar from "./ManzaDleNavBar"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router"
 import LoginBtn from "../../components/LoginBtn/LoginBtn"
+import { registrarResultado } from "../../services/ManzaDleService"
 
 const STORAGE_KEY = "manzadle-status"
 
@@ -110,6 +111,7 @@ export default function ManzaDle() {
                 status: isWin ? "win" : "loss"
             }
             localStorage.setItem(STORAGE_KEY, JSON.stringify(gameStatus))
+            registrarResultado(isWin ? "win" : "loss").catch(console.errro)
         }
     }, [isWin, isGameOver])
 
