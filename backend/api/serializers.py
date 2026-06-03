@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner', 'isAdmin', 'user_type', 'is_banned', 'ban_reason']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'bio', 'avatar', 'banner', 'isAdmin', 'user_type', 'is_banned', 'ban_reason', 'manzadle_streak', 'manzadle_max_streak', 'manzadle_last_played']
 
 class CommentReplySerializer(serializers.ModelSerializer):
     author_name = serializers.ReadOnlyField(source="author.username")
