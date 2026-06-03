@@ -16,7 +16,7 @@ class CategoryDropdownSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['bio', 'avatar', 'banner', 'is_local_business']
+        fields = ['bio', 'avatar', 'banner', 'is_local_business', 'manzadle_streak', 'manzadle_max_streak', 'manzadle_last_played']
 
 class UserSerializer(serializers.ModelSerializer):
     bio = serializers.CharField(source='userprofile.bio', read_only=True)
@@ -26,6 +26,9 @@ class UserSerializer(serializers.ModelSerializer):
     user_type = serializers.CharField(source='userprofile.user_type', read_only=True)
     is_banned = serializers.BooleanField(source='userprofile.is_banned', read_only=True)
     ban_reason = serializers.CharField(source='userprofile.ban_reason', read_only=True)
+    manzadle_streak = serializers.IntegerField(source='userprofile.manzadle_streak', read_only=True)
+    manzadle_max_streak = serializers.IntegerField(source='userprofile.manzadle_max_streak', read_only=True)
+    manzadle_last_played = serializers.DateField(source='userprofile.manzadle_last_played', read_only=True)
     # profile = UserProfileSerializer(source='userprofile', read_only=True)
 
     class Meta:

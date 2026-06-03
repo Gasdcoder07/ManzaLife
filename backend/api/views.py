@@ -14,6 +14,8 @@ from django.conf import settings
 from .permissions import IsAuthorOrReadOnly, IsAdminRole, IsNotBanned
 from .serializers import PostSerializer, PostListSerializer, CategorySerializer, CategoryDropdownSerializer, RegisterSerializer, UserSerializer, CommentSerializer, ReviewSerializer, SystemRequestSerializer
 
+from datetime import date, timedelta
+
 class BanUserView(APIView):
     permission_classes = [IsAuthenticated, IsAdminRole]
 
@@ -344,6 +346,37 @@ class SystemRequestViewSet(viewsets.ModelViewSet):
         solicitud.save()
 
         return Response(self.get_serializer(solicitud).data, status=200)
+    
+class ManzaDleResultadoView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        resultado = request.data.get("status")
+        today = date.today()
+        profile = user.userprofile
+
+        if profile.manzadle_last_played == today:
+            return Response({"detail": "Ya registraste tu partida hoy."}, status=400)
+        
+        if resultado == "win":
+            yesterday = today - timedelta(days=1)
+            if profile.manzadle_last_played == yesterday:
+                profile.manzadle_streak += 1
+            else:
+                profile.manzadle_streak = 1
+            profile.manzadle_max_streak = max(profile.manzadle_streak, profile.manzadle_max_streak)
+        else:
+            profile.manzadle_streak = 0
+
+        profile.manzadle_last_played = today
+        profile.save(update_fields=["manzadle_streak", "manzadle_last_played", "manzadle_max_streak"])
+
+        return Response ({
+            "streak": profile.manzadle_streak,
+            "max_streak": profile.manzadle_max_streak
+        })
+
 
 class VerifyEmailView(APIView):
     permission_classes = [AllowAny]
