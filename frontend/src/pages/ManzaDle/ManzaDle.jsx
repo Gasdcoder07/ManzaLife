@@ -31,6 +31,7 @@ export default function ManzaDle() {
     const { user } = useAuth()
     const navigate = useNavigate()
     const justFinished = useRef(false)
+    const finishedThisSession = useRef(false)
 
     useEffect(() => {
         if (user && user.is_banned) {
@@ -94,9 +95,11 @@ export default function ManzaDle() {
             if (currentGuess === solution) {
                 setIsWin(true)
                 justFinished.current = true
+                finishedThisSession.current = true
                 setIsGameOver(true)
             } else if (turn === 5) {
                 justFinished.current = false
+                finishedThisSession.current = true
                 setIsGameOver(true)
             }
 
@@ -119,15 +122,8 @@ export default function ManzaDle() {
     }, [currentGuess, turn, isGameOver])
 
     useEffect(() => {
-        if (isWin || isGameOver) {
-            const gameStatus = {
-                completed: true,
-                date: new Date().toLocaleDateString('en-CA'),
-                status: isWin ? "win" : "loss"
-            }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(gameStatus))
+        if (isGameOver && finishedThisSession.current) {
             registrarResultado(isWin ? "win" : "loss").catch(console.error)
-            console.log("esto se hizo")
         }
     }, [isGameOver])
 
