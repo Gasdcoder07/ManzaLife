@@ -359,6 +359,8 @@ class ManzaDleResultadoView(APIView):
         if profile.manzadle_last_played == today:
             return Response({"detail": "Ya registraste tu partida hoy."}, status=400)
         
+        profile.manzadle_last_result = resultado
+        
         if resultado == "win":
             yesterday = today - timedelta(days=1)
             if profile.manzadle_last_played == yesterday:
@@ -370,13 +372,22 @@ class ManzaDleResultadoView(APIView):
             profile.manzadle_streak = 0
 
         profile.manzadle_last_played = today
-        profile.save(update_fields=["manzadle_streak", "manzadle_last_played", "manzadle_max_streak"])
+        profile.save(update_fields=["manzadle_streak", "manzadle_last_played", "manzadle_max_streak", "manzadle_last_result"])
 
         return Response ({
             "streak": profile.manzadle_streak,
             "max_streak": profile.manzadle_max_streak
         })
-
+    
+    def get(self, request):
+        profile = request.user.userprofile
+        return Response({
+            "last_played": profile.manzadle_last_played,
+            "last_result": profile.manzadle_last_result,
+            "streak": profile.manzadle_streak,
+            "max_streak": profile.manzadle_max_streak,
+            "played_today": profile.manzadle_last_played == date.today()
+        })
 
 class VerifyEmailView(APIView):
     permission_classes = [AllowAny]

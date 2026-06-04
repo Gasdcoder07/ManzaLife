@@ -38,7 +38,7 @@ const UserProfile = ({ UserAvatar, Username, isEnglish }) => {
                 <img
                     src={UserAvatar}
                     alt={Username}
-                    className="size-10 object-cover rounded-full cursor-pointer"/>
+                    className="size-10 object-cover rounded-full cursor-pointer border border-orange-500"/>
 
                 <div className="absolute bottom-0 translate-x-1/2 size-2 rounded-full bg-green-600"/>
             </div>

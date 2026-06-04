@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { DICTIONARY } from "../../../utils/manzadleWords"
 import { Navbar } from "../../components"
 import Header from "./HeaderManzaDle"
@@ -30,12 +30,17 @@ export default function ManzaDle() {
     const [turn, setTurn] = useState(0)
     const { user } = useAuth()
     const navigate = useNavigate()
+    const justFinished = useRef(false)
 
     useEffect(() => {
         if (user && user.is_banned) {
             navigate("/403")
         }
     }, [user, navigate])
+
+    useEffect(() => {
+        console.log(user)
+    }, [])
 
     const [isGameOver, setIsGameOver] = useState(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -80,8 +85,10 @@ export default function ManzaDle() {
 
             if (currentGuess === solution) {
                 setIsWin(true)
+                justFinished.current = true
                 setIsGameOver(true)
             } else if (turn === 5) {
+                justFinished.current = false
                 setIsGameOver(true)
             }
 
@@ -111,9 +118,10 @@ export default function ManzaDle() {
                 status: isWin ? "win" : "loss"
             }
             localStorage.setItem(STORAGE_KEY, JSON.stringify(gameStatus))
-            registrarResultado(isWin ? "win" : "loss").catch(console.errro)
+            registrarResultado(isWin ? "win" : "loss").catch(console.error)
+            console.log("esto se hizo")
         }
-    }, [isWin, isGameOver])
+    }, [isGameOver])
 
     return (
         <div className="min-h-screen bg-linear-to-b from-[#fcfcfc] to-[#f5f5f7] dark:from-[#0d0d0f] dark:to-orange-950 text-white flex flex-col font-sans">
@@ -141,27 +149,27 @@ export default function ManzaDle() {
                 <Header onOpenInfo={() => setShowInfo(true)}/>
                 {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
                 <div className="w-full grow flex flex-col justify-center items-center mb-6">
-                    {!isGameOver && !isWin && (
+                    {!isGameOver && !isWin ? (
                         <Board guesses={guesses} currentGuess={currentGuess} turn={turn} solution={solution} />
-                    )}
-                </div>
-                <div className="w-full min-h-[200px] flex flex-col justify-center">
-                    {!isGameOver ? (
-                        <Keyboard onKeyPress={handleKeyPress} />
                     ) : (
-                        <div className="flex flex-col items-center justify-center p-6 dark:bg-zinc-900/50 rounded-2xl border border-white/10 text-center animate-fade-in">
+                        <div className="flex flex-col items-center justify-center p-6 dark:bg-zinc-900/50 bg-white rounded-2xl border border-white/10 text-center animate-fade-in shadow-xl">
                             {isWin ? (
-                                <>
+                                <div>
                                   <h2 className="text-3xl font-bold text-green-400 mb-2 drop-shadow-md">¡Adivinaste!</h2>
                                   <p className="dark:text-zinc-300 text-zinc-400">Eres un máster, mañana habrá una nueva palabra</p>
-                                </>
+                                </div>
                             ) : (
-                                <>
+                                <div>
                                   <h2 className="text-3xl font-bold text-red-500 mb-2 drop-shadow-md">Game Over</h2>
                                   <p className="text-zinc-300 text-lg">La palabra era: <span className="font-bold text-white">{solution}</span></p>
-                                </>
+                                </div>
                             )}
                         </div>
+                    )}
+                </div>
+                <div className="w-full min-h-50 flex flex-col justify-center">
+                    {!isGameOver && (
+                        <Keyboard onKeyPress={handleKeyPress} />
                     )}
                 </div>
 

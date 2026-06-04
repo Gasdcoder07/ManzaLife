@@ -20,6 +20,12 @@ class UserProfile(models.Model):
         ("writter", "Escritor"),
         ("reader", "Lector")
     ]
+
+    MANZADLE_STATES = [
+        ("win", "Win"),
+        ("loss", "Loss")
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     avatar = models.ImageField(upload_to="avatars/", null=True, blank=True)
@@ -37,6 +43,7 @@ class UserProfile(models.Model):
     manzadle_streak = models.IntegerField(default=0)
     manzadle_last_played = models.DateField(null=True, blank=True)
     manzadle_max_streak = models.IntegerField(default=0)
+    manzadle_last_result = models.CharField(max_length=20, choices=MANZADLE_STATES)
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
