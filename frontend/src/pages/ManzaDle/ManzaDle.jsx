@@ -10,7 +10,7 @@ import ManzaDleNavBar from "./ManzaDleNavBar"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router"
 import LoginBtn from "../../components/LoginBtn/LoginBtn"
-import { registrarResultado } from "../../services/ManzaDleService"
+import { registrarResultado, consultarResultado } from "../../services/ManzaDleService"
 
 const STORAGE_KEY = "manzadle-status"
 
@@ -31,16 +31,13 @@ export default function ManzaDle() {
     const { user } = useAuth()
     const navigate = useNavigate()
     const justFinished = useRef(false)
+    const finishedThisSession = useRef(false)
 
     useEffect(() => {
         if (user && user.is_banned) {
             navigate("/403")
         }
     }, [user, navigate])
-
-    useEffect(() => {
-        console.log(user)
-    }, [])
 
     const [isGameOver, setIsGameOver] = useState(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -61,6 +58,18 @@ export default function ManzaDle() {
         }
         return false;
     });
+
+    useEffect(() => {
+        if (!user) return
+        consultarResultado()
+            .then(({ data }) => {
+                if (data.played_today) {
+                    setIsGameOver(true)
+                    setIsWin(data.last_result === "win")
+                }
+            })
+            .catch(console.error)
+    }, [user])
 
     const [showInfo, setShowInfo] = useState(false)
 
@@ -86,9 +95,11 @@ export default function ManzaDle() {
             if (currentGuess === solution) {
                 setIsWin(true)
                 justFinished.current = true
+                finishedThisSession.current = true
                 setIsGameOver(true)
             } else if (turn === 5) {
                 justFinished.current = false
+                finishedThisSession.current = true
                 setIsGameOver(true)
             }
 
@@ -111,15 +122,8 @@ export default function ManzaDle() {
     }, [currentGuess, turn, isGameOver])
 
     useEffect(() => {
-        if (isWin || isGameOver) {
-            const gameStatus = {
-                completed: true,
-                date: new Date().toLocaleDateString('en-CA'),
-                status: isWin ? "win" : "loss"
-            }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(gameStatus))
+        if (isGameOver && finishedThisSession.current) {
             registrarResultado(isWin ? "win" : "loss").catch(console.error)
-            console.log("esto se hizo")
         }
     }, [isGameOver])
 
