@@ -10,7 +10,7 @@ import ManzaDleNavBar from "./ManzaDleNavBar"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router"
 import LoginBtn from "../../components/LoginBtn/LoginBtn"
-import { registrarResultado } from "../../services/ManzaDleService"
+import { registrarResultado, consultarResultado } from "../../services/ManzaDleService"
 
 const STORAGE_KEY = "manzadle-status"
 
@@ -38,10 +38,6 @@ export default function ManzaDle() {
         }
     }, [user, navigate])
 
-    useEffect(() => {
-        console.log(user)
-    }, [])
-
     const [isGameOver, setIsGameOver] = useState(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
@@ -61,6 +57,18 @@ export default function ManzaDle() {
         }
         return false;
     });
+
+    useEffect(() => {
+        if (!user) return
+        consultarResultado()
+            .then(({ data }) => {
+                if (data.played_today) {
+                    setIsGameOver(true)
+                    setIsWin(data.last_result === "win")
+                }
+            })
+            .catch(console.error)
+    }, [user])
 
     const [showInfo, setShowInfo] = useState(false)
 
