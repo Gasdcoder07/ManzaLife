@@ -43,7 +43,7 @@ class UserProfile(models.Model):
     manzadle_streak = models.IntegerField(default=0)
     manzadle_last_played = models.DateField(null=True, blank=True)
     manzadle_max_streak = models.IntegerField(default=0)
-    manzadle_last_result = models.CharField(max_length=20, choices=MANZADLE_STATES)
+    manzadle_last_result = models.CharField(max_length=20, choices=MANZADLE_STATES, blank=True, default="")
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
