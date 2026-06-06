@@ -8,7 +8,7 @@ function Header() {
   const { textos } = useLanguage();
   console.log(textos);
   return (
-    <section className="relative h-screen flex justify-center items-center">
+    <section className="relative h-screen flex justify-center items-center transition-all">
       <Navbar />
 
       <div className="absolute inset-0 -z-20 h-full w-full overflow-hidden">
@@ -19,7 +19,7 @@ function Header() {
         />
       </div>
 
-      <div className="absolute inset-0 dark:bg-black/60 -z-20" />
+      <div className="absolute inset-0 dark:bg-black/60 -z-20 transition-all" />
       <div className="absolute inset-0 bg-linear-to-b from-black/40 to-zinc-50/30 dark:from-transparent dark:to-zinc-950 -z-10" />
 
       <div className="flex flex-col items-center gap-4 px-4">
