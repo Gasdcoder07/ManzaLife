@@ -152,6 +152,8 @@ export default function ManzaDle() {
                 )
             }
             <main className="grow flex flex-col items-center pt-20 pb-8 px-4 w-full max-w-lg mx-auto relative">
+                <Header onOpenInfo={() => setShowInfo(true)}/>
+                {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
                 {loading ? (
                     <div className="flex flex-col items-center justify-center h-64 gap-4">
                         <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
@@ -159,8 +161,6 @@ export default function ManzaDle() {
                     </div>
                 ) : (
                 <>
-                        <Header onOpenInfo={() => setShowInfo(true)}/>
-                        {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
                         <div className="w-full grow flex flex-col justify-center items-center mb-6">
                             {!isGameOver && !isWin ? (
                                 <Board guesses={guesses} currentGuess={currentGuess} turn={turn} solution={solution} />
