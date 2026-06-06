@@ -3,6 +3,7 @@ import { IoHome } from "react-icons/io5";
 import { BiSolidCategory } from "react-icons/bi";
 import { TbChartBarPopular } from "react-icons/tb";
 import { FaUsers } from "react-icons/fa6";
+import { FaBook } from "react-icons/fa";
 
 export const BlogSidebarItems = [
     {

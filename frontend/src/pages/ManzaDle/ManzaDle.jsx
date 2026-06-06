@@ -23,7 +23,7 @@ const getDailyWord = () => {
 }
 
 export default function ManzaDle() {
-
+    const [loading, setLoading] = useState(false)
     const [solutionData, setSolutionData] = useState(getDailyWord())
     const [guesses, setGuesses] = useState(Array(6).fill(null))
     const [currentGuess, setCurrentGuess] = useState("")
@@ -61,6 +61,7 @@ export default function ManzaDle() {
 
     useEffect(() => {
         if (!user) return
+        setLoading(true)
         consultarResultado()
             .then(({ data }) => {
                 if (data.played_today) {
@@ -69,6 +70,7 @@ export default function ManzaDle() {
                 }
             })
             .catch(console.error)
+            .finally(() => setLoading(false))
     }, [user])
 
     const [showInfo, setShowInfo] = useState(false)
@@ -150,36 +152,45 @@ export default function ManzaDle() {
                 )
             }
             <main className="grow flex flex-col items-center pt-20 pb-8 px-4 w-full max-w-lg mx-auto relative">
-                <Header onOpenInfo={() => setShowInfo(true)}/>
-                {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
-                <div className="w-full grow flex flex-col justify-center items-center mb-6">
-                    {!isGameOver && !isWin ? (
-                        <Board guesses={guesses} currentGuess={currentGuess} turn={turn} solution={solution} />
-                    ) : (
-                        <div className="flex flex-col items-center justify-center p-6 dark:bg-zinc-900/50 bg-white rounded-2xl border border-white/10 text-center animate-fade-in shadow-xl">
-                            {isWin ? (
-                                <div>
-                                  <h2 className="text-3xl font-bold text-green-400 mb-2 drop-shadow-md">¡Adivinaste!</h2>
-                                  <p className="dark:text-zinc-300 text-zinc-400">Eres un máster, mañana habrá una nueva palabra</p>
-                                </div>
+                {loading ? (
+                    <div className="flex flex-col items-center justify-center h-64 gap-4">
+                        <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                        <p className="text-zinc-500 dark:text-zinc-400 font-medium">Cargando partida...</p>
+                    </div>
+                ) : (
+                <>
+                        <Header onOpenInfo={() => setShowInfo(true)}/>
+                        {showInfo && (<InfoModal onClose={() => setShowInfo(false)}/>)}
+                        <div className="w-full grow flex flex-col justify-center items-center mb-6">
+                            {!isGameOver && !isWin ? (
+                                <Board guesses={guesses} currentGuess={currentGuess} turn={turn} solution={solution} />
                             ) : (
-                                <div>
-                                  <h2 className="text-3xl font-bold text-red-500 mb-2 drop-shadow-md">Game Over</h2>
-                                  <p className="text-zinc-300 text-lg">La palabra era: <span className="font-bold text-white">{solution}</span></p>
+                                <div className="flex flex-col items-center justify-center p-6 dark:bg-zinc-900/50 bg-white rounded-2xl border border-white/10 text-center animate-fade-in shadow-xl">
+                                    {isWin ? (
+                                        <div>
+                                        <h2 className="text-3xl font-bold text-green-400 mb-2 drop-shadow-md">¡Adivinaste!</h2>
+                                        <p className="dark:text-zinc-300 text-zinc-400">Eres un máster, mañana habrá una nueva palabra</p>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                        <h2 className="text-3xl font-bold text-red-500 mb-2 drop-shadow-md">Game Over</h2>
+                                        <p className="text-zinc-300 text-lg">La palabra era: <span className="font-bold text-white">{solution}</span></p>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
-                    )}
-                </div>
-                <div className="w-full min-h-50 flex flex-col justify-center">
-                    {!isGameOver && (
-                        <Keyboard onKeyPress={handleKeyPress} />
-                    )}
-                </div>
+                        <div className="w-full min-h-50 flex flex-col justify-center">
+                            {!isGameOver && (
+                                <Keyboard onKeyPress={handleKeyPress} />
+                            )}
+                        </div>
 
-                {isGameOver && (
-                    <GameModal isWin={isWin} secretWord={solution} description={description}/>
-                )}
+                        {isGameOver && (
+                            <GameModal isWin={isWin} secretWord={solution} description={description}/>
+                        )}
+                    </>
+                )}  
             </main>
         </div>
     )

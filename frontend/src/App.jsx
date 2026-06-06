@@ -6,6 +6,7 @@ import AuthLayout from "./layouts/AuthLayout.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import AdminRoute from "./routes/AdminRoute.jsx";
 import NotAuthorized from "./pages/NotAuthorized.jsx";
+import { HistoryPage } from "./pages/History/HistoryPage.jsx";
 
 function App() {
 
@@ -27,6 +28,10 @@ function App() {
                     </Route>
 
                     <Route path="/manzadle" element={<ManzaDle />}/>
+
+                    <Route path="/history" element={<BlogLayout />} >
+                        <Route index element={<HistoryPage />}/>
+                    </Route>
 
                     <Route path="/pruebas" element={<Pruebas />} />
 

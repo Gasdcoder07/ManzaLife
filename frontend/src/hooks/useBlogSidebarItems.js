@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext"
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaBook, FaRegUserCircle } from "react-icons/fa";
 import { IoHome, IoKeypad, IoMailUnread } from "react-icons/io5";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
@@ -20,7 +20,8 @@ export const useBlogSidebarItems = () => {
         },
         // { icon: IoIosSend, text: textos.main_blog.sidebar_elements.explore_section.items.requests, 
         //     path: user ? "/blog/requests" : "/auth/login" },
-        { icon: IoKeypad, text: "ManzaDle", path: "/manzadle" }
+        { icon: IoKeypad, text: "ManzaDle", path: "/manzadle" },
+        { icon: FaBook, text: "Historia", path: "/history" }
     ];
 
     const sections = [
