@@ -3,10 +3,12 @@ import Manza from "../../../imgs/Manza.jpeg"
 export const HistoryPage = () => {
 
     return (
-        <div className="relative overflow-hidden mt-10 dark:bg-zinc-900 bg-zinc-50 rounded-2xl p-10 max-h-[85vh] shadow-2xl transition-all">
-            <div className="p-5 overflow-y-auto h-full max-h-[85vh]">
-                <h1 className="text-4xl font-bold">Historia de Manzanillo</h1>
+        <div className="relative overflow-hidden mt-10 border border-zinc-300 dark:border-zinc-800 dark:bg-zinc-950 rounded-2xl max-h-[85vh] shadow-2xl transition-all">
+            <div className="absolute top-0 left-0 w-full h-24 bg-linear-to-b from-zinc-50/80 dark:from-zinc-900 to-transparent pointer-events-none rounded-b-2xl"></div>
+            <div className="overflow-y-auto h-full max-h-[85vh] p-10 pb-24">
+                <h1 className="text-4xl font-bold">Historia de Manzanillo 🌴</h1>
                 <h2 className="text-zinc-500">Crónica de un puerto con historia.</h2>
+                <h2 className="text-zinc-400 dark:text-zinc-600 italic">Greco Alejandro Serna Díaz</h2>
                 <p className="text-justify dark:text-zinc-300 mt-5">
                     Los orígenes de Manzanillo se entrelazan con la historia de la exploración marítima en América. 
                     Si bien se estima que las costas de Colima estuvieron habitadas desde épocas prehispánicas 
