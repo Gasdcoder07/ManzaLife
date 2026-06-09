@@ -157,7 +157,9 @@ const BlogProfile = () => {
                     <div className="space-y-4">
                         <div className="flex flex-col gap-1">
                             <h3 className="italic tracking-wide font-light">{profileData.first_name} {profileData.last_name}</h3>
-                            <h3 className="italic tracking-wide font-light text-right">ManzaDle streak: {profileData.manzadle_streak} ManzaDle MaxStreak: {profileData.manzadle_max_streak}</h3>
+                            <div className="bg-linear-to-r from-orange-500/1 dark:to-orange-800 to-orange-600 p-1 rounded-r-2xl">
+                                <h3 className="tracking-wide font-bold text-right text-white">ManzaDle streak: {profileData.manzadle_streak} ManzaDle MaxStreak: {profileData.manzadle_max_streak}</h3>
+                            </div>
                             <h2 className="text-2xl font-semibold tracking-widest">@{profileData.username}</h2>
                             {
                                 profileData.is_banned && (
