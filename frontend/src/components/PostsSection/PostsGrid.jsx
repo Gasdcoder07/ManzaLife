@@ -12,7 +12,7 @@ const PostsGrid = () => {
       <div className="overflow-x-auto scroll-smooth no-scrollbar">
           <div className="flex gap-8 w-max py-2">
             {
-                posts.results.map((post) => {
+                posts?.results?.map((post) => {
                     return (
                         <PostItem
                             key={post.id}
