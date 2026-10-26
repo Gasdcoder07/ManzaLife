@@ -1,0 +1,67 @@
+{
+    "Register": {
+        "name": "Nombre",
+        "lastName": "Apellido",
+        "email": "Email",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar contraseña",
+        "showPassword": "Mostrar contraseña",
+        "hidePassword": "Ocultar contraseña",
+        "continue": "Continuar",
+        "back": "Volver",
+        "createAccount": "Crear cuenta",
+        "companyName": "Nombre de la empresa",
+        "companyAddress": "Domicilio",
+        "companyPhone": "Teléfono",
+        "companyDescription": "Descripción de la empresa",
+        "descriptionPlaceholder": "Breve descripción de a qué se dedica",
+        "haveAccount": "¿Ya tienes una cuenta?",
+        "login": "Inicia sesión.",
+        "fillAll": "Por favor, completa todos los campos.",
+        "passwordsMismatch": "Las contraseñas no coinciden.",
+        "fillCompany": "Completa todos los datos de la empresa.",
+        "success": "Cuenta creada exitosamente",
+        "defaultError": "Ocurrió un error durante el registro."
+    }
+,
+ "Login": {
+        "title": "Accede a tu cuenta",
+        "subtitle": "Ingresa tus credenciales para acceder a tu cuenta.",
+        "heroTitle": "Todo tu negocio, bajo control.",
+        "heroSubtitle": "Gestiona tus sucursales, ventas e inventario de forma simple y eficiente.",
+        "email": "Email",
+        "password": "Contraseña",
+        "showPassword": "Mostrar contraseña",
+        "hidePassword": "Ocultar contraseña",
+        "forgotPassword": "¿Olvidaste tu contraseña?",
+        "submit": "Iniciar sesión",
+        "noAccount": "¿No tienes una cuenta?",
+        "registerNow": "Regístrate ahora.",
+        "fillAll": "Por favor, completa todos los campos",
+        "success": "Inicio de sesión exitoso",
+        "invalidCredentials": "Correo o contraseña incorrectos"
+    },
+    "Navbar": {
+    "loading": "Cargando...",
+    "user": "Usuario"
+    },
+    "BusinessContext": {
+    "company": "Compañía",
+    "branch": "Sucursal",
+    "companyAlt": "Companña",
+    "userCompanyAlt": "Compañía del usuario",
+    "loading": "Cargando..."
+    },
+    "Sidebar": {
+    "hide": "Ocultar",
+    "sectionBranch": "Sucursal",
+    "sectionAdmin": "Administración",
+    "sell": "Ventas",
+    "dashboard": "Dashboard",
+    "inventory": "Inventario",
+    "branches": "Sucursales",
+    "users": "Usuarios",
+    "settings": "Ajustes"
+}
+    
+}

@@ -1,0 +1,67 @@
+{
+    "Register": {
+        "name": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "continue": "Continue",
+        "back": "Back",
+        "createAccount": "Create account",
+        "companyName": "Company name",
+        "companyAddress": "Address",
+        "companyPhone": "Phone",
+        "companyDescription": "Company description",
+        "descriptionPlaceholder": "Brief description of what it does",
+        "haveAccount": "Already have an account?",
+        "login": "Log in.",
+        "fillAll": "Please fill in all fields.",
+        "passwordsMismatch": "Passwords do not match.",
+        "fillCompany": "Please fill in all company details.",
+        "success": "Account created successfully",
+        "defaultError": "An error occurred during registration."
+    }
+,
+  "Login": {
+        "title": "Access your account",
+        "subtitle": "Enter your credentials to access your account.",
+        "heroTitle": "Your whole business, under control.",
+        "heroSubtitle": "Manage your branches, sales and inventory simply and efficiently.",
+        "email": "Email",
+        "password": "Password",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "forgotPassword": "Forgot your password?",
+        "submit": "Log in",
+        "noAccount": "Don't have an account?",
+        "registerNow": "Sign up now.",
+        "fillAll": "Please fill in all fields.",
+        "success": "Logged in successfully",
+        "invalidCredentials": "Incorrect email or password"
+    },
+    "Navbar": {
+    "loading": "Loading...",
+    "user": "User"
+    },
+    "BusinessContext": {
+    "company": "Company",
+    "branch": "Branch",
+    "companyAlt": "Company",
+    "userCompanyAlt": "User's company",
+    "loading": "Loading..."
+    },
+  "Sidebar": {
+    "hide": "Hide",
+    "sectionBranch": "Branch",
+    "sectionAdmin": "Administration",
+    "sell": "Sales",
+    "dashboard": "Dashboard",
+    "inventory": "Inventory",
+    "branches": "Branches",
+    "users": "Users",
+    "settings": "Settings"
+}
+
+}
